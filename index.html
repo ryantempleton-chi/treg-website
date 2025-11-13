@@ -2,11 +2,131 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Templeton Real Estate Group</title>
+    <title>Templeton Real Estate Group | Chicago Real Estate</title>
+    <meta
+      name="description"
+      content="The Templeton Real Estate Group helps you buy, sell, and rent across Chicago’s neighborhoods with boutique-level service and modern marketing."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Brand fonts via Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
-    <h1>Templeton Real Estate Group</h1>
-    <p>This site is connected and under construction.</p>
-    <p><a href="/neighborhoods/west-loop.html">View West Loop neighborhood page</a></p>
+    <div class="page">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <div class="brand-block">
+            <div class="brand-primary">ryantempleton.</div>
+            <div class="brand-secondary">chicago.</div>
+            <div class="brand-tagline">buy | sell | rent</div>
+          </div>
+          <nav class="main-nav">
+            <a href="/">Home</a>
+            <a href="#neighborhoods">Neighborhoods</a>
+            <a href="#work-with-us">Work with us</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="main">
+        <!-- Hero -->
+        <section class="hero">
+          <div class="hero-inner">
+            <div class="hero-grid">
+              <div>
+                <div class="hero-label">Chicago residential real estate</div>
+                <h1 class="hero-title">Boutique real estate, Chicago-wide.</h1>
+                <p class="hero-subtitle">
+                  The Templeton Real Estate Group helps you buy, sell, and rent across Chicago — from first
+                  apartments to forever homes. Clear guidance, honest advice, and a modern approach to every move.
+                </p>
+              </div>
+              <aside class="snapshot">
+                <div class="snapshot-item">
+                  <div class="snapshot-label">Services</div>
+                  <div class="snapshot-value">Buy · Sell · Rent</div>
+                </div>
+                <div class="snapshot-item">
+                  <div class="snapshot-label">Focus</div>
+                  <div class="snapshot-value">Chicago &amp; surrounding suburbs</div>
+                </div>
+                <div class="snapshot-item">
+                  <div class="snapshot-label">Approach</div>
+                  <div class="snapshot-value">Boutique service, long-term relationships</div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- Neighborhoods section -->
+        <section class="section" id="neighborhoods">
+          <div class="container">
+            <h2 class="section-heading">Explore neighborhoods</h2>
+            <p class="section-lede">
+              Chicago is made up of dozens of distinct neighborhoods — each with its own feel, housing mix, and
+              pace. Start with a few favorites and we’ll help you narrow things down from there.
+            </p>
+
+            <div class="neighborhood-grid">
+              <article class="neighborhood-card">
+                <h3>West Loop</h3>
+                <p>
+                  Trendy, walkable, and restaurant-forward — lofts and amenity buildings just west of the Loop.
+                </p>
+                <a href="/neighborhoods/west-loop.html">View guide</a>
+              </article>
+
+              <!-- As we build others, we’ll add more cards here (e.g., River North, Gold Coast, Lincoln Park, etc.) -->
+              <article class="neighborhood-card">
+                <h3>Coming soon</h3>
+                <p>
+                  We’re building out detailed guides for more of the neighborhoods where our clients love to live.
+                </p>
+                <a href="#work-with-us">Work with us</a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Work with us -->
+        <section class="section" id="work-with-us">
+          <div class="container section-cta">
+            <div class="section-cta-title">Work with the Templeton Real Estate Group</div>
+            <div class="section-cta-text">
+              With nearly a decade of experience helping clients buy, sell, and rent across Chicago, our team is
+              built on relationships, not transactions. We’ll meet you where you are, clarify your options, and
+              walk with you through every step of the process.
+            </div>
+            <div class="section-cta-meta">
+              lead broker &amp; founder: ryan templeton · templeton real estate group, llc
+            </div>
+            <div class="btn-row">
+              <a href="mailto:ryan@ryantempleton.com" class="btn btn-primary">Email our team</a>
+              <a href="tel:+13126759379" class="btn btn-ghost">Call (312) 675-9379</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <div class="footer-brand">templeton real estate group · chicago, il</div>
+          <div>&copy; <span id="year"></span> Templeton Real Estate Group, LLC.</div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
