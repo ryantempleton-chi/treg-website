@@ -9,6 +9,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Brand fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,6 +21,7 @@
   </head>
   <body>
     <div class="page">
+      <!-- Same header/nav as homepage -->
       <header class="site-header">
         <div class="site-header-inner">
           <div class="brand-block">
@@ -28,15 +30,26 @@
             <div class="brand-tagline">buy | sell | rent</div>
           </div>
           <nav class="main-nav">
-            <a href="/">Home</a>
-            <a href="/#neighborhoods">Neighborhoods</a>
-            <a href="/#work-with-us">Work with us</a>
+            <a href="/" class="nav-link">Home</a>
+            <a href="/#about" class="nav-link">About</a>
+
+            <div class="nav-dropdown">
+              <span class="nav-link nav-dropdown-toggle">Work with us</span>
+              <div class="nav-dropdown-menu">
+                <a href="/#buy">Buy</a>
+                <a href="/#sell">Sell</a>
+                <a href="/#rent">Rent</a>
+              </div>
+            </div>
+
+            <a href="/#neighborhoods" class="nav-link nav-active">Neighborhoods</a>
+            <a href="/#contact" class="nav-link">Contact</a>
           </nav>
         </div>
       </header>
 
       <main class="main">
-        <!-- Hero -->
+        <!-- Neighborhood hero (text + snapshot card) -->
         <section class="hero">
           <div class="hero-inner">
             <div class="hero-grid">
@@ -44,9 +57,9 @@
                 <div class="hero-label">Chicago neighborhood guide</div>
                 <h1 class="hero-title">west loop</h1>
                 <p class="hero-subtitle">
-                  West Loop blends converted warehouse lofts, glassy new high-rises, and some of the best
-                  restaurants in the city — all just west of downtown. It’s a neighborhood where work, play, and
-                  home all live within a few blocks of each other.
+                  West Loop blends converted warehouse lofts, glassy new high-rises, and some of the best restaurants
+                  in the city — all just west of downtown. It’s a neighborhood where work, play, and home all live
+                  within a few blocks of each other.
                 </p>
               </div>
 
@@ -80,6 +93,7 @@
               Once a warehouse and industrial corridor, West Loop has transformed into one of Chicago’s most
               in-demand neighborhoods — home to Restaurant Row, Fulton Market, and a steady flow of new openings.
             </p>
+
             <div class="section-grid two">
               <div>
                 <p>
@@ -90,10 +104,11 @@
                 </p>
                 <p>
                   By day, easy access to the Loop, nearby office hubs, and major expressways makes West Loop
-                  especially popular with professionals who want a short commute without giving up a true
-                  neighborhood feel.
+                  especially popular with professionals who want a short commute without giving up a true neighborhood
+                  feel.
                 </p>
               </div>
+
               <div>
                 <h3 class="section-heading" style="font-size: 1rem;">Who this area works well for</h3>
                 <ul>
@@ -110,10 +125,11 @@
         <section class="section">
           <div class="container">
             <h2 class="section-heading">Homes &amp; rentals in West Loop</h2>
-            <p class="section-lede">
+          <p class="section-lede">
               From classic brick-and-timber lofts to full-amenity new construction, West Loop offers a wide range of
               options for both renters and buyers — but homes can move quickly.
             </p>
+
             <div class="section-grid two">
               <div>
                 <h3 class="section-heading" style="font-size: 1rem;">What you’ll typically see</h3>
@@ -131,8 +147,11 @@
                   </li>
                 </ul>
               </div>
+
               <div>
-                <h3 class="section-heading" style="font-size: 1rem;">How the Templeton Real Estate Group helps</h3>
+                <h3 class="section-heading" style="font-size: 1rem;">
+                  How the Templeton Real Estate Group helps
+                </h3>
                 <p>
                   West Loop inventory can be competitive, especially in peak seasons. The Templeton Real Estate Group
                   keeps a close eye on what’s coming to market — and what’s already quietly available — so you’re not
@@ -148,7 +167,7 @@
           </div>
         </section>
 
-        <!-- CTA -->
+        <!-- Neighborhood CTA -->
         <section class="section section-cta">
           <div class="container">
             <div class="section-cta-title">Ready to explore West Loop?</div>
@@ -158,7 +177,7 @@
               timeline.
             </div>
             <div class="section-cta-meta">
-              lead broker &amp; founder: ryan templeton · templeton real estate group, llc
+              lead broker &amp; founder: ryan templeton · the templeton real estate group, llc
             </div>
             <div class="btn-row">
               <a href="mailto:ryan@ryantempleton.com" class="btn btn-primary">Email our team</a>
@@ -168,10 +187,11 @@
         </section>
       </main>
 
+      <!-- Same footer as homepage -->
       <footer class="site-footer">
         <div class="site-footer-inner">
-          <div class="footer-brand">templeton real estate group · chicago, il</div>
-          <div>&copy; <span id="year"></span> Templeton Real Estate Group, LLC.</div>
+          <div class="footer-brand">the templeton real estate group · chicago, il</div>
+          <div>&copy; <span id="year"></span> The Templeton Real Estate Group, LLC.</div>
         </div>
       </footer>
     </div>
