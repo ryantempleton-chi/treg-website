@@ -367,3 +367,112 @@ li + li {
   letter-spacing: 0.14em;
   color: var(--treg-slate);
 }
+/* === HOMEPAGE HERO (mockup-style) === */
+
+.home-hero {
+  position: relative;
+  background-image: url("/assets/img/hero-chicago.jpg");
+  background-size: cover;
+  background-position: center bottom;
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.home-hero-overlay {
+  background: #faf5ef;
+  margin: 4rem 1.25rem;
+  padding: 3rem 3.25rem;
+  max-width: 720px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.home-hero-title {
+  font-family: "PT Serif", Georgia, "Times New Roman", serif;
+  font-size: 2.6rem;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+}
+
+.home-hero-button-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Outline button like the mockup */
+.btn-outline-bronze {
+  background: transparent;
+  color: var(--treg-charcoal);
+  border-color: var(--treg-bronze);
+}
+
+.btn-outline-bronze:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* === NAV: WORK WITH US DROPDOWN === */
+
+.nav-link {
+  text-decoration: none;
+  color: var(--treg-slate);
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+
+.nav-link.nav-active {
+  border-bottom-color: var(--treg-bronze);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle::after {
+  content: "▾";
+  font-size: 0.6rem;
+  margin-left: 0.25rem;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 115%;
+  left: 0;
+  min-width: 140px;
+  background: #ffffff;
+  border-radius: 0.4rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
+  padding: 0.4rem 0;
+  display: none;
+  z-index: 20;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--treg-slate);
+}
+
+.nav-dropdown-menu a:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+  display: block;
+}
+
+/* Slight tweak so header nav items sit nicely */
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
