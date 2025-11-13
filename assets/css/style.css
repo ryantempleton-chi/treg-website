@@ -1,103 +1,155 @@
-/* Base layout */
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  margin: 0;
-  background: #f5f4f2;
-  color: #1e180d;
+/* Base styles: colors from TREG brand */
+:root {
+  --treg-charcoal: #1e180d;
+  --treg-slate: #373a3a;
+  --treg-cream: #fafafa;
+  --treg-taupe: #c9b8a4;
+  --treg-bronze: #cfb18e;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "PT Serif", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--treg-cream);
+  color: var(--treg-charcoal);
+}
+
+/* Simple page frame */
 .page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Simple container */
-.container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 1.5rem;
+.main {
+  flex: 1 0 auto;
 }
 
-/* Header */
+/* Layout helpers */
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem;
+}
+
+/* Header / logo / nav */
 .site-header {
   background: #ffffff;
-  border-bottom: 1px solid #e1ddd5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .site-header-inner {
-  max-width: 980px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.brand-primary {
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
+/* “Logo” lockup using brand typography */
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
-.brand-tagline {
+.brand-primary {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+  color: var(--treg-charcoal);
+}
+
+.brand-secondary {
+  font-family: "Oswald", system-ui, sans-serif;
   font-size: 0.7rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #7a746a;
+  color: var(--treg-slate);
+}
+
+/* Tagline line under logo */
+.brand-tagline {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--treg-bronze);
+}
+
+/* Nav */
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
 }
 
 .main-nav a {
-  margin-left: 1rem;
   text-decoration: none;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #3a3834;
+  color: var(--treg-slate);
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid transparent;
 }
 
 .main-nav a:hover {
-  text-decoration: underline;
+  border-color: var(--treg-bronze);
 }
 
-/* Hero area */
+/* Hero (homepage + neighborhood hero) */
 .hero {
-  background: #f5f4f2;
-  border-bottom: 1px solid #e1ddd5;
+  background: var(--treg-cream);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .hero-inner {
-  max-width: 980px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 2rem 1.5rem 2.5rem;
+  padding: 2.5rem 1.25rem 2.75rem;
 }
 
 .hero-label {
-  font-size: 0.75rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #7a746a;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.16em;
+  color: var(--treg-slate);
+  margin-bottom: 0.4rem;
 }
 
 .hero-title {
-  font-size: 2.2rem;
-  margin: 0.1rem 0 0.5rem;
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  text-transform: lowercase;
+  margin: 0 0 0.4rem;
+  color: var(--treg-charcoal);
 }
 
 .hero-subtitle {
   max-width: 720px;
-  margin: 0.5rem 0 1.25rem;
-  color: #4a453c;
+  margin: 0.4rem 0 1rem;
+  color: var(--treg-slate);
 }
 
-/* Simple grid for snapshot + content */
+/* Hero layout grid */
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-  gap: 1.75rem;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+  gap: 2rem;
   align-items: flex-start;
 }
 
@@ -107,34 +159,35 @@ body {
   }
 }
 
-/* Snapshot cards */
+/* Snapshot card (neighborhoods) */
 .snapshot {
   background: #ffffff;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  border: 1px solid #e1ddd5;
+  border-radius: 0.9rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.snapshot-item {
-  margin-bottom: 0.75rem;
+.snapshot-item + .snapshot-item {
+  margin-top: 0.75rem;
 }
 
 .snapshot-label {
+  font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #7a746a;
-  margin-bottom: 0.1rem;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
 }
 
 .snapshot-value {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  margin-top: 0.12rem;
 }
 
 /* Sections */
 .section {
-  padding: 2rem 0;
-  border-bottom: 1px solid #e1ddd5;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .section:last-of-type {
@@ -143,22 +196,25 @@ body {
 }
 
 .section-heading {
+  font-family: "Oswald", system-ui, sans-serif;
   font-size: 1.3rem;
-  margin-bottom: 0.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 0.4rem;
 }
 
 .section-lede {
-  color: #4a453c;
-  margin-bottom: 1.25rem;
+  margin: 0 0 1.25rem;
+  color: var(--treg-slate);
 }
 
 .section-grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .section-grid.two {
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
 }
 
 @media (max-width: 800px) {
@@ -176,27 +232,31 @@ li + li {
   margin-top: 0.35rem;
 }
 
-/* CTA block */
+/* CTA */
 .section-cta {
   text-align: center;
 }
 
 .section-cta-title {
-  font-size: 1.4rem;
+  font-family: "Oswald", system-ui, sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   margin-bottom: 0.5rem;
 }
 
 .section-cta-text {
   max-width: 640px;
   margin: 0 auto 0.75rem;
-  color: #4a453c;
+  color: var(--treg-slate);
 }
 
 .section-cta-meta {
+  font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #7a746a;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
   margin-bottom: 1rem;
 }
 
@@ -213,18 +273,19 @@ li + li {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.55rem 1.2rem;
+  padding: 0.55rem 1.4rem;
   border-radius: 999px;
-  border: 1px solid #1e180d;
-  font-size: 0.85rem;
-  text-decoration: none;
+  border: 1px solid var(--treg-charcoal);
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.12em;
+  text-decoration: none;
 }
 
 .btn-primary {
-  background: #1e180d;
-  color: #f5f4f2;
+  background: var(--treg-charcoal);
+  color: var(--treg-cream);
 }
 
 .btn-primary:hover {
@@ -233,33 +294,76 @@ li + li {
 
 .btn-ghost {
   background: transparent;
-  color: #1e180d;
+  color: var(--treg-charcoal);
 }
 
 .btn-ghost:hover {
-  background: #eae6df;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Neighborhood cards on homepage */
+.neighborhood-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.neighborhood-card {
+  background: #ffffff;
+  border-radius: 0.9rem;
+  padding: 1rem 1.1rem 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.neighborhood-card h3 {
+  font-family: "Oswald", system-ui, sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.2rem;
+}
+
+.neighborhood-card p {
+  margin: 0.3rem 0 0.8rem;
+  font-size: 0.9rem;
+  color: var(--treg-slate);
+}
+
+.neighborhood-card a {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: var(--treg-charcoal);
+  border-bottom: 1px solid var(--treg-bronze);
+  padding-bottom: 0.03rem;
+}
+
+.neighborhood-card a:hover {
+  border-bottom-color: var(--treg-charcoal);
 }
 
 /* Footer */
 .site-footer {
-  margin-top: auto;
-  border-top: 1px solid #e1ddd5;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   background: #ffffff;
 }
 
 .site-footer-inner {
-  max-width: 980px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
-  font-size: 0.8rem;
+  padding: 1rem 1.25rem;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 0.5rem;
+  font-size: 0.8rem;
 }
 
 .footer-brand {
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #7a746a;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
 }
