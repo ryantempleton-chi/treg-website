@@ -244,16 +244,20 @@ body {
 
 .home-hero-text {
   text-align: right;
-  max-width: 720px;
+
+  /* widen the overall panel */
+  max-width: 760px;              /* was 680px — this will keep buttons together */
+
   margin-left: auto;
 
-  /* New background panel */
-  background: rgba(255, 255, 255, 0.12);        /* very light, translucent */
-  padding: 2rem 2.4rem;
-  border-radius: 16px;                           /* soft rounded corners */
-  border: 1px solid rgba(255, 255, 255, 0.25);   /* subtle edge definition */
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);   /* soft shadow, not harsh */
+  /* background panel */
+  background: rgba(255, 255, 255, 0.12);
+  padding: 2.2rem 2.6rem;        /* slightly more internal padding */
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
 }
+
 
 .home-hero-title {
   font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
@@ -275,13 +279,11 @@ body {
 }
 
 /* Buttons inside hero */
-.hero .btn-primary {
-  font-size: 0.95rem;
-  padding-inline: 1.75rem;
-}
-
+.hero .btn-primary,
 .hero .btn-ghost {
-  font-size: 0.95rem;
+  font-size: 0.9rem;            /* slightly smaller font */
+  padding: 0.5rem 1.3rem;       /* slightly smaller button */
+  white-space: nowrap;          /* prevents text wrapping individually */
 }
 
 /* ========================= */
