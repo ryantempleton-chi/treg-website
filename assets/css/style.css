@@ -90,15 +90,23 @@ body {
   text-transform: uppercase;
   border: none;
   background: none;
-  padding: 0;
+  padding: 0; 
   margin: 0;
   cursor: pointer;
   color: #1e180d;
-  text-decoration: none;   /* remove default underline */
+  text-decoration: none;
 
-  display: inline-flex;    /* keeps everything aligned */
+  display: inline-flex;
   align-items: center;
-  line-height: 1;
+
+  /* FIX: force all nav items onto the same baseline */
+  line-height: 1.2;      /* normalize text height */
+  padding-bottom: 0.2rem; /* creates identical final alignment */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
 }
 
 .nav-link:hover,
