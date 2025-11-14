@@ -77,8 +77,8 @@ body {
 }
 
 .nav-item {
-  display: flex;          /* ensures same vertical centering for links & button */
-  align-items: center;
+  display: flex;
+  align-items: center; /* ensures same vertical centering for nav links */
 }
 
 .nav-link,
@@ -94,8 +94,9 @@ body {
   margin: 0;
   cursor: pointer;
   color: #1e180d;
+  text-decoration: none;   /* remove default underline */
 
-  display: inline-flex;
+  display: inline-flex;    /* keeps everything aligned */
   align-items: center;
   line-height: 1;
 }
@@ -214,7 +215,7 @@ body {
   position: relative;
   min-height: 70vh;
   color: #ffffff;
-  background-image: url("/assets/img/hero-chicago.jpg");
+  background-image: url("/assets/img/hero-chicago.jpg"); /* make sure this matches your actual file name */
   background-size: cover;
   background-position: center center;
 }
@@ -245,14 +246,14 @@ body {
 .home-hero-text {
   text-align: right;
 
-  /* widen the overall panel a bit more */
-  max-width: 840px;              /* was smaller before */
+  /* widen the overall panel */
+  max-width: 840px;
 
   margin-left: auto;
 
   /* background panel */
   background: rgba(255, 255, 255, 0.12);
-  padding: 2.3rem 2.9rem;        /* slightly more internal padding */
+  padding: 2.3rem 2.9rem;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
@@ -286,20 +287,6 @@ body {
   white-space: nowrap;
 }
 
-/* White button specifically for hero */
-.btn-white {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--treg-charcoal);
-  color: var(--treg-charcoal);
-  font-size: 0.9rem;
-  padding: 0.5rem 1.3rem;
-  white-space: nowrap;
-  border-radius: 999px;
-}
-
-.btn-white:hover {
-  background: #ffffff;
-}
 /* White button specifically for hero / calls-to-action */
 .btn-white {
   background: rgba(255, 255, 255, 0.95);
@@ -315,6 +302,7 @@ body {
 .btn-white:hover {
   background: #ffffff;
 }
+
 /* Keep hero buttons on one line on larger screens */
 .hero .btn-row {
   justify-content: flex-end;  /* aligns them to the right edge of the panel */
@@ -328,6 +316,7 @@ body {
     flex-wrap: wrap;          /* back to stacking on small screens */
   }
 }
+
 /* ========================= */
 /* SNAPSHOT CARD (NEIGHBOR.) */
 /* ========================= */
