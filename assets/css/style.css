@@ -66,44 +66,40 @@ body {
   flex: 1;
 }
 
+/* main nav list */
 .nav-list {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: center; /* vertical centering for all items */
   gap: 2.2rem;
   list-style: none;
   margin: 0;
   padding: 0;
-
-  height: 48px;          /* <--- NEW: gives all nav items a shared vertical box */
 }
 
+/* each nav item wrapper */
 .nav-item {
   display: flex;
-  align-items: center; /* ensures same vertical centering for nav links */
+  align-items: center;
 }
 
+/* top-level nav links, including BUY | SELL | RENT */
 .nav-link,
 .nav-link-dropdown {
   font-family: "Oswald", system-ui, sans-serif;
   font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  text-decoration: none;
   color: #1e180d;
   cursor: pointer;
+  text-decoration: none;
+  border: 0;
+  background: none;
 
-  display: flex;         /* <--- important */
-  align-items: center;   /* <--- horizontally centered vertically */
-  height: 100%;          /* <--- fills the 48px parent height */
-  padding: 0; 
+  display: inline-block;
+  line-height: 1;
+  padding: 0.2rem 0 0.18rem; /* SAME top/bottom padding for every item */
   margin: 0;
-  line-height: 1;        /* <--- prevents default font baseline issues */
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
 }
 
 .nav-link:hover,
@@ -114,12 +110,12 @@ body {
   text-underline-offset: 0.25em;
 }
 
-/* Dropdown */
-
+/* Dropdown container */
 .nav-item.has-dropdown {
   position: relative;
 }
 
+/* Dropdown panel */
 .nav-dropdown {
   position: absolute;
   right: 0;
@@ -145,6 +141,7 @@ body {
   transform: translateY(0);
 }
 
+/* links inside dropdown */
 .nav-dropdown-link {
   display: block;
   padding: 0.5rem 1rem;
@@ -154,6 +151,7 @@ body {
   text-transform: none;
   color: #1e180d;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .nav-dropdown-link:hover,
