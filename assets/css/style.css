@@ -373,7 +373,7 @@ li + li {
   position: relative;
   background-image: url("/assets/img/hero-chicago.jpg");
   background-size: cover;
-  background-position: center bottom;
+  background-position: center center;
   min-height: 70vh;
   display: flex;
   align-items: flex-end;
