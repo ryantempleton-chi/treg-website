@@ -20,35 +20,8 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
 
-  <body>
-    <div class="page">
-      <!-- HEADER -->
-      <header class="site-header">
-        <div class="site-header-inner">
-          <div class="brand-block">
-            <div class="brand-primary">ryantempleton.</div>
-            <div class="brand-secondary">chicago.</div>
-            <div class="brand-tagline">buy | sell | rent</div>
-          </div>
+      <div id="site-header"></div>
 
-          <nav class="main-nav">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/#about" class="nav-link">About</a>
-
-            <div class="nav-dropdown">
-              <span class="nav-link nav-dropdown-toggle">Work with us</span>
-              <div class="nav-dropdown-menu">
-                <a href="/#buy">Buy</a>
-                <a href="/#sell">Sell</a>
-                <a href="/#rent">Rent</a>
-              </div>
-            </div>
-
-            <a href="/#neighborhoods" class="nav-link nav-active">Neighborhoods</a>
-            <a href="/#contact" class="nav-link">Contact</a>
-          </nav>
-        </div>
-      </header>
 
       <main class="main">
         <!-- HERO -->
@@ -197,16 +170,14 @@
       </main>
 
       <!-- FOOTER -->
-      <footer class="site-footer">
-        <div class="site-footer-inner">
-          <div class="footer-brand">the templeton real estate group · chicago, il</div>
-          <div>&copy; <span id="year"></span> The Templeton Real Estate Group, LLC.</div>
-        </div>
-      </footer>
+            <div id="site-footer"></div>
     </div>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    </div>
+
+        <script src="/assets/js/layout.js"></script>
+  </body>
+</html>
+
   </body>
 </html>
