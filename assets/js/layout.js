@@ -1,4 +1,4 @@
-function loadFragment(targetId, url) {
+function loadFragment(targetId, url, callback) {
   fetch(url)
     .then(function (response) {
       return response.text();
@@ -8,6 +8,7 @@ function loadFragment(targetId, url) {
       if (el) {
         el.innerHTML = html;
       }
+      if (callback) callback();
     })
     .catch(function (err) {
       console.error("Error loading fragment:", url, err);
@@ -15,13 +16,14 @@ function loadFragment(targetId, url) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Load shared header + footer
+  // Load header first
   loadFragment("site-header", "/partials/header.html");
-  loadFragment("site-footer", "/partials/footer.html");
 
-  // Update the year in the footer
-  var yearSpan = document.getElementById("year");
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
+  // Load footer, then update the year AFTER it's ready
+  loadFragment("site-footer", "/partials/footer.html", function () {
+    var yearSpan = document.getElementById("year");
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+  });
 });
