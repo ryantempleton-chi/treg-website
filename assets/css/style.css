@@ -246,6 +246,13 @@ body {
   text-align: right;
   max-width: 520px;
   margin-left: auto;
+
+  /* New background panel */
+  background: rgba(255, 255, 255, 0.12);        /* very light, translucent */
+  padding: 1.75rem 2rem;
+  border-radius: 16px;                           /* soft rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.25);   /* subtle edge definition */
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);   /* soft shadow, not harsh */
 }
 
 .home-hero-title {
