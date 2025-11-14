@@ -5,11 +5,11 @@
     <title>Templeton Real Estate Group | Chicago Real Estate</title>
     <meta
       name="description"
-      content="The Templeton Real Estate Group helps you buy, sell, and rent across Chicago’s neighborhoods with boutique-level service and modern marketing."
+      content="Templeton Real Estate Group is a Chicago-based boutique real estate team helping clients buy, sell, and rent across the city and beyond. Your first choice in the Second City."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Brand fonts via Google Fonts -->
+    <!-- Brand fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,150 +19,100 @@
 
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
+
   <body>
     <div class="page">
-      <!-- Header -->
-      <header class="site-header">
-        <div class="site-header-inner">
-          <div class="brand-block">
-            <div class="brand-primary">ryantempleton.</div>
-            <div class="brand-secondary">chicago.</div>
-            <div class="brand-tagline">buy | sell | rent</div>
-          </div>
-          <nav class="main-nav">
-            <a href="/" class="nav-link nav-active">Home</a>
-            <a href="#about" class="nav-link">About</a>
-
-            <div class="nav-dropdown">
-              <span class="nav-link nav-dropdown-toggle">Work with us</span>
-              <div class="nav-dropdown-menu">
-                <a href="#buy">Buy</a>
-                <a href="#sell">Sell</a>
-                <a href="#rent">Rent</a>
-              </div>
-            </div>
-
-            <a href="#neighborhoods" class="nav-link">Neighborhoods</a>
-            <a href="#contact" class="nav-link">Contact</a>
-          </nav>
-        </div>
-      </header>
+      <!-- Shared header -->
+      <div id="site-header"></div>
 
       <main class="main">
-        <!-- HERO that matches the mockup -->
-        <section class="home-hero">
+        <!-- HERO -->
+        <section class="hero home-hero">
           <div class="home-hero-overlay">
-            <h1 class="home-hero-title">
-              Your First Choice in<br />
-              the Second City.
-            </h1>
-            <div class="home-hero-button-row">
-              <a href="#contact" class="btn btn-outline-bronze">Contact us</a>
+            <div class="hero-inner home-hero-inner">
+              <div class="home-hero-grid">
+                <!-- empty spacer on left so text feels right-aligned on desktop -->
+                <div class="home-hero-spacer"></div>
+
+                <div class="home-hero-text">
+                  <div class="hero-label">chicago real estate</div>
+
+                  <h1 class="home-hero-title">
+                    your first choice<br />
+                    in the second city.
+                  </h1>
+
+                  <p class="home-hero-subtitle">
+                    The Templeton Real Estate Group is a Chicago-based boutique team helping clients buy, sell, and rent
+                    across the city and beyond — with modern marketing, clear expectations, and service that feels
+                    personal from start to finish.
+                  </p>
+
+                  <div class="btn-row">
+                    <a href="/buy.html" class="btn btn-primary">Start your search</a>
+                    <a href="/contact.html" class="btn btn-ghost">Schedule a call</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- ABOUT RYAN -->
-        <section class="section" id="about">
-          <div class="container">
-            <h2 class="section-heading">About Ryan</h2>
-            <p class="section-lede">
-              Ryan Templeton is the Lead Broker &amp; Founder of the Templeton Real Estate Group — a boutique Chicago
-              team built on relationships, not transactions. With nearly a decade of experience helping clients buy,
-              sell, and rent across the city, Ryan brings a calm, organized, and straightforward approach to every
-              move.
-            </p>
-            <p>
-              From first-time renters planning their very first lease to buyers and sellers navigating their next big
-              chapter, Ryan’s focus is on clarity, communication, and long-term trust. When he’s not working with
-              clients, you’ll often find him exploring new neighborhoods, checking out Chicago’s restaurant scene, or
-              taking in whatever the city has to offer — from seasonal events to game days and everything in between.
-            </p>
-          </div>
-        </section>
-
-        <!-- WORK WITH US: BUY / SELL / RENT -->
-        <section class="section" id="work-with-us">
+        <!-- WORK WITH THE TEMPLETON REG -->
+        <section class="section section-muted">
           <div class="container">
             <h2 class="section-heading">Work with the Templeton Real Estate Group</h2>
+
             <p class="section-lede">
-              Wherever you are in your real estate journey, our team is here to meet you there — with a plan that fits
-              your timing, budget, and goals.
+              Nearly a decade of helping Chicagoans buy, sell, and rent — with a focus on clear communication, honest
+              guidance, and treating every client like a long-term relationship, not a one-time transaction.
             </p>
 
-            <div class="neighborhood-grid">
-              <article class="neighborhood-card" id="buy">
-                <h3>Buy</h3>
-                <p>
-                  From first-time buyers to seasoned homeowners, we’ll help you understand the market, refine your
-                  search, and negotiate confidently when it’s time to write an offer.
+            <div class="section-grid three home-services-grid">
+              <article class="card service-card">
+                <h3 class="card-title">Buy.</h3>
+                <p class="card-text">
+                  From first-time buyers to seasoned homeowners, we’ll help you understand the trade-offs between
+                  neighborhoods, building types, and budgets — so you can move forward with confidence, not guesswork.
                 </p>
-                <a href="#contact">Talk about buying</a>
+                <a href="/buy.html" class="card-link">Explore buying &rarr;</a>
               </article>
 
-              <article class="neighborhood-card" id="sell">
-                <h3>Sell</h3>
-                <p>
-                  Strategic pricing, thoughtful preparation, and modern marketing designed to showcase your home to the
-                  right buyers — not just the most buyers.
+              <article class="card service-card">
+                <h3 class="card-title">Sell.</h3>
+                <p class="card-text">
+                  Thoughtful prep, modern marketing, and strategy tailored to your property — not a copy-paste plan.
+                  We’ll walk you through pricing, timing, and positioning so your home shows up at its best.
                 </p>
-                <a href="#contact">Talk about selling</a>
+                <a href="/sell.html" class="card-link">Explore selling &rarr;</a>
               </article>
 
-              <article class="neighborhood-card" id="rent">
-                <h3>Rent</h3>
-                <p>
-                  We guide renters through Chicago’s fast-moving rental market, from downtown high-rises to neighborhood
-                  walk-ups and lofts — with clear expectations at every step.
+              <article class="card service-card">
+                <h3 class="card-title">Rent.</h3>
+                <p class="card-text">
+                  Whether you’re renting out a condo or choosing your next apartment, we’ll help you compare options,
+                  understand true costs, and line up a place that fits the way you actually live.
                 </p>
-                <a href="#contact">Talk about renting</a>
+                <a href="/rent.html" class="card-link">Explore rentals &rarr;</a>
               </article>
             </div>
           </div>
         </section>
 
-        <!-- NEIGHBORHOODS -->
-        <section class="section" id="neighborhoods">
+        <!-- READY TO TALK CTA -->
+        <section class="section section-cta home-cta">
           <div class="container">
-            <h2 class="section-heading">Neighborhoods</h2>
-            <p class="section-lede">
-              Chicago is a city of neighborhoods — each with its own feel, housing mix, and pace. Start with a few that
-              feel like “you,” and we’ll help you compare the details.
-            </p>
+            <div class="section-cta-title">Ready to talk through your next move?</div>
 
-            <div class="neighborhood-grid">
-              <article class="neighborhood-card">
-                <h3>West Loop</h3>
-                <p>
-                  Trendy, walkable, and restaurant-forward — lofts and amenity buildings just west of the Loop with
-                  easy access to restaurants and transit.
-                </p>
-                <a href="/neighborhoods/west-loop.html">View West Loop guide</a>
-              </article>
-
-              <article class="neighborhood-card">
-                <h3>More neighborhoods coming soon</h3>
-                <p>
-                  We’re building out guides for the areas where our clients most often buy, sell, and rent — across the
-                  city and nearby suburbs.
-                </p>
-                <a href="#contact">Ask which areas fit you</a>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <!-- CONTACT / CTA -->
-        <section class="section section-cta" id="contact">
-          <div class="container">
-            <div class="section-cta-title">Ready to talk about your next move?</div>
             <div class="section-cta-text">
-              Whether you’re planning to buy, sell, or rent, the Templeton Real Estate Group is here to be your first
-              choice in the Second City — and your real estate resource long after the keys change hands.
+              Whether you’re planning ahead or ready to act now, the Templeton Real Estate Group is here to help you
+              buy, sell, or rent with a clear plan — and a team who actually picks up the phone.
             </div>
+
             <div class="section-cta-meta">
               lead broker &amp; founder: ryan templeton · the templeton real estate group, llc
             </div>
+
             <div class="btn-row">
               <a href="mailto:ryan@ryantempleton.com" class="btn btn-primary">Email our team</a>
               <a href="tel:+13126759379" class="btn btn-ghost">Call (312) 675-9379</a>
@@ -171,17 +121,10 @@
         </section>
       </main>
 
-      <!-- Footer -->
-      <footer class="site-footer">
-        <div class="site-footer-inner">
-          <div class="footer-brand">the templeton real estate group · chicago, il</div>
-          <div>&copy; <span id="year"></span> The Templeton Real Estate Group, LLC.</div>
-        </div>
-      </footer>
+      <!-- Shared footer -->
+      <div id="site-footer"></div>
     </div>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <script src="/assets/js/layout.js"></script>
   </body>
 </html>
