@@ -560,3 +560,64 @@ li + li {
   letter-spacing: 0.14em;
   color: var(--treg-slate);
 }
+/* ========================= */
+/* ABOUT PAGE / TEAM CARDS   */
+/* ========================= */
+
+.about-photo {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.team-card {
+  background: #ffffff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.team-card-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  margin: 0 0 0.2rem;
+}
+
+.team-card-role {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
+  margin-bottom: 0.6rem;
+}
+
+.team-card-text {
+  font-size: 0.9rem;
+  color: var(--treg-slate);
+  margin: 0 0 0.9rem;
+}
+
+.team-card-link {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: var(--treg-charcoal);
+  border-bottom: 1px solid var(--treg-bronze);
+  padding-bottom: 0.05rem;
+}
+
+.team-card-link:hover {
+  border-bottom-color: var(--treg-charcoal);
+}
