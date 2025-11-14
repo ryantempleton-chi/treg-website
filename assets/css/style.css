@@ -69,11 +69,13 @@ body {
 .nav-list {
   display: flex;
   justify-content: flex-end;
-  align-items: center; /* keeps everything on same baseline */
+  align-items: center;
   gap: 2.2rem;
   list-style: none;
   margin: 0;
   padding: 0;
+
+  height: 48px;          /* <--- NEW: gives all nav items a shared vertical box */
 }
 
 .nav-item {
@@ -83,25 +85,20 @@ body {
 
 .nav-link,
 .nav-link-dropdown {
-  font-family: "Oswald", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: "Oswald", system-ui, sans-serif;
   font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border: none;
-  background: none;
+  text-decoration: none;
+  color: #1e180d;
+  cursor: pointer;
+
+  display: flex;         /* <--- important */
+  align-items: center;   /* <--- horizontally centered vertically */
+  height: 100%;          /* <--- fills the 48px parent height */
   padding: 0; 
   margin: 0;
-  cursor: pointer;
-  color: #1e180d;
-  text-decoration: none;
-
-  display: inline-flex;
-  align-items: center;
-
-  /* FIX: force all nav items onto the same baseline */
-  line-height: 1.2;      /* normalize text height */
-  padding-bottom: 0.2rem; /* creates identical final alignment */
+  line-height: 1;        /* <--- prevents default font baseline issues */
 }
 
 .nav-item {
