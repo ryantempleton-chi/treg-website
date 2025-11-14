@@ -697,3 +697,185 @@ li + li {
 .home-cta {
   margin-top: 0;
 }
+
+/* === HEADER / NAV OVERRIDES === */
+
+.site-header {
+  background: #fafafa;
+  border-bottom: 1px solid #e5e1d8;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 0;
+  gap: 2rem;
+}
+
+.logo-img {
+  max-height: 42px;
+  width: auto;
+  display: block;
+}
+
+.nav {
+  flex: 1;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; /* keeps everything on same baseline */
+  gap: 2.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: flex;          /* ensures same vertical centering for links & button */
+  align-items: center;
+}
+
+.nav-link,
+.nav-link-dropdown {
+  font-family: "Oswald", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: #1e180d;
+
+  display: flex;          /* fixes HOME being higher than the rest */
+  align-items: center;
+  line-height: 1;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link-dropdown:hover,
+.nav-link-dropdown:focus {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* Dropdown */
+
+.nav-item.has-dropdown {
+  position: relative;
+}
+
+.nav-dropdown {
+  position: absolute;
+  right: 0;
+  top: 120%;
+  min-width: 180px;
+  background: #ffffff;
+  border: 1px solid #e5e1d8;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 0;
+  list-style: none;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+  z-index: 20;
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown,
+.nav-item.has-dropdown:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 0.9rem;
+  text-transform: none;
+  color: #1e180d;
+  white-space: nowrap;
+}
+
+.nav-dropdown-link:hover,
+.nav-dropdown-link:focus {
+  background: #faf7f1;
+}
+
+/* === HOMEPAGE HERO STYLES === */
+
+.home-hero {
+  position: relative;
+  min-height: 70vh;
+  color: #ffffff;
+  background-image: url("/assets/img/hero-home.jpg"); /* <--- make sure this file name matches exactly */
+  background-size: cover;
+  background-position: center center;
+}
+
+.home-hero-overlay {
+  background: linear-gradient(
+    to right,
+    rgba(10, 7, 3, 0.72),
+    rgba(10, 7, 3, 0.4),
+    rgba(10, 7, 3, 0.15)
+  );
+  width: 100%;
+  height: 100%;
+}
+
+.home-hero-inner {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.home-hero-text {
+  text-align: right;
+  max-width: 520px;
+  margin-left: auto;
+}
+
+.home-hero-title {
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: clamp(2.4rem, 3.2vw + 1.5rem, 3.4rem);
+  line-height: 1.1;
+  text-transform: lowercase;
+  margin: 0.6rem 0 1rem;
+}
+
+.home-hero-subtitle {
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-bottom: 1.75rem;
+}
+
+.hero .btn-primary {
+  font-size: 0.95rem;
+  padding-inline: 1.75rem;
+}
+
+.hero .btn-ghost {
+  font-size: 0.95rem;
+}
