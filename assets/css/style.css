@@ -270,9 +270,9 @@ body {
 .home-hero-subtitle {
   font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  font-size: 1rem;
+  font-size: 0.95rem;       /* slightly smaller font = fewer lines */
   line-height: 1.6;
-  max-width: 32rem;
+  max-width: 40rem;         /* a bit wider so the text can stretch out */
   margin-left: auto;
   margin-bottom: 1.75rem;
 }
@@ -315,7 +315,19 @@ body {
 .btn-white:hover {
   background: #ffffff;
 }
+/* Keep hero buttons on one line on larger screens */
+.hero .btn-row {
+  justify-content: flex-end;  /* aligns them to the right edge of the panel */
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+}
 
+@media (max-width: 640px) {
+  .hero .btn-row {
+    justify-content: center;
+    flex-wrap: wrap;          /* back to stacking on small screens */
+  }
+}
 /* ========================= */
 /* SNAPSHOT CARD (NEIGHBOR.) */
 /* ========================= */
