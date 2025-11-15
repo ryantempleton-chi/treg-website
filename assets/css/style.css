@@ -630,6 +630,65 @@ li + li {
 }
 
 /* ========================= */
+/* NEIGHBORHOOD TILE STYLES  */
+/* ========================= */
+
+.neighborhoods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+.neighborhood-tile {
+  display: block;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1rem 1.1rem 1.4rem;
+  text-decoration: none;
+  color: var(--treg-charcoal);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.neighborhood-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+}
+
+/* BIGGER, STRONGER TITLES */
+.neighborhood-tile-header {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.65rem;       /* ← INCREASED from default */
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+
+/* Image */
+.neighborhood-tile-image-wrapper {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 0.85rem;
+}
+
+.neighborhood-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Description text */
+.neighborhood-tile-body {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--treg-slate);
+}
+
+/* ========================= */
 /* FOOTER                    */
 /* ========================= */
 
