@@ -22,12 +22,24 @@
 
   <body>
     <div class="page">
-      <!-- Shared header placeholder -->
+      <!-- Shared header -->
       <div id="site-header"></div>
 
       <main class="main">
-        <!-- HERO -->
-        <section class="hero">
+        <!-- NEIGHBORHOOD HERO WITH PHOTO -->
+        <section class="hero hero-neighborhood">
+          <!-- Hero image block -->
+          <div class="neighborhood-hero-photo-wrapper">
+            <div class="neighborhood-hero-photo">
+              <!-- 👇 Update this src to match your actual West Loop hero filename -->
+              <img
+                src="/assets/img/neighborhoods/heroes/west-loop-hero.jpg"
+                alt="West Loop Chicago skyline and streetscape"
+              />
+            </div>
+          </div>
+
+          <!-- Existing hero text / snapshot -->
           <div class="hero-inner">
             <div class="hero-grid">
               <div>
@@ -149,6 +161,90 @@
           </div>
         </section>
 
+        <!-- WEST LOOP HIGHLIGHTS (MAGAZINE STYLE) -->
+        <section class="neighborhood-highlights">
+          <div class="container">
+            <div class="neighborhood-highlights-intro">
+              <h2 class="section-heading">Highlights in West Loop</h2>
+              <p class="section-lede">
+                From destination dining to local parks and coffee spots, West Loop offers plenty of places to make part
+                of your routine. Here are a few favorites to get you started.
+              </p>
+            </div>
+
+            <div class="highlights-grid">
+              <!-- HIGHLIGHT 1 -->
+              <article class="highlight-card">
+                <div class="highlight-image">
+                  <!-- 👇 Update to match your actual image file -->
+                  <img
+                    src="/assets/img/neighborhoods/west-loop/randolph-street.jpg"
+                    alt="Randolph Street restaurant row in West Loop"
+                  />
+                </div>
+                <div class="highlight-body">
+                  <h3 class="highlight-title">randolph street · restaurant row</h3>
+                  <p class="highlight-text">
+                    The stretch that put West Loop on the map — lined with award-winning restaurants, lively patios,
+                    and destination-worthy bars that stay busy most nights of the week.
+                  </p>
+                  <div class="highlight-meta">
+                    <a href="https://goo.gl/maps/" target="_blank" rel="noopener noreferrer">
+                      view on google maps
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- HIGHLIGHT 2 -->
+              <article class="highlight-card">
+                <div class="highlight-image">
+                  <img
+                    src="/assets/img/neighborhoods/west-loop/fulton-market.jpg"
+                    alt="Fulton Market district in West Loop Chicago"
+                  />
+                </div>
+                <div class="highlight-body">
+                  <h3 class="highlight-title">fulton market district</h3>
+                  <p class="highlight-text">
+                    A former meatpacking district turned creative hub — home to offices, hotels, rooftops, and
+                    high-energy nightlife, all within a short walk of downtown.
+                  </p>
+                  <div class="highlight-meta">
+                    <a href="https://goo.gl/maps/" target="_blank" rel="noopener noreferrer">
+                      explore the area
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- HIGHLIGHT 3 -->
+              <article class="highlight-card">
+                <div class="highlight-image">
+                  <img
+                    src="/assets/img/neighborhoods/west-loop/mary-bartelme-park.jpg"
+                    alt="Mary Bartelme Park in West Loop"
+                  />
+                </div>
+                <div class="highlight-body">
+                  <h3 class="highlight-title">mary bartelme park</h3>
+                  <p class="highlight-text">
+                    A neighborhood green space with sculptural fountains, open lawn, and a popular dog area — a calm
+                    counterpoint to the busier streets nearby.
+                  </p>
+                  <div class="highlight-meta">
+                    <a href="https://goo.gl/maps/" target="_blank" rel="noopener noreferrer">
+                      park information
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- You can add more highlight-card blocks here if you have more photos -->
+            </div>
+          </div>
+        </section>
+
         <!-- CTA -->
         <section class="section section-cta">
           <div class="container">
@@ -171,7 +267,7 @@
         </section>
       </main>
 
-      <!-- Shared footer placeholder -->
+      <!-- Shared footer -->
       <div id="site-footer"></div>
     </div>
 
