@@ -327,6 +327,63 @@ body {
     flex-wrap: wrap;          /* back to stacking on small screens */
   }
 }
+/* ========================= */
+/* NEIGHBORHOOD HERO         */
+/* ========================= */
+
+.hero-neighborhood {
+  position: relative;
+  color: #ffffff;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-bottom: none;
+}
+
+/* soft dark overlay on top of the photo */
+.hero-neighborhood::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(10, 7, 3, 0.78),
+    rgba(10, 7, 3, 0.38)
+  );
+}
+
+.hero-neighborhood .hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* make sure text in the hero is white */
+.hero-neighborhood .hero-label,
+.hero-neighborhood .hero-title,
+.hero-neighborhood .hero-subtitle {
+  color: #ffffff;
+}
+
+/* snapshot card floats on top in a bright panel */
+.hero-neighborhood .snapshot {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--treg-charcoal);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
+}
+
+.hero-neighborhood .snapshot-label {
+  color: var(--treg-slate);
+}
+
+.hero-neighborhood .snapshot-value {
+  color: var(--treg-charcoal);
+}
+
+/* optional tiny tweak: a bit more padding in neighborhood hero */
+.hero-neighborhood .hero-inner {
+  padding-top: 3.3rem;
+  padding-bottom: 3.3rem;
+}
 
 /* ========================= */
 /* SNAPSHOT CARD (NEIGHBOR.) */
