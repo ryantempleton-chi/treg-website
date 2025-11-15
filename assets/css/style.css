@@ -967,3 +967,154 @@ li + li {
 .neighborhood-highlight-links a:hover {
   border-bottom-color: var(--treg-charcoal);
 }
+/* ========================= */
+/* NEIGHBORHOOD HERO IMAGE   */
+/* ========================= */
+
+.hero-neighborhood {
+  background: var(--treg-cream);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Wraps the photo above the text block */
+.neighborhood-hero-photo-wrapper {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 0;
+}
+
+.neighborhood-hero-photo {
+  width: 100%;
+  max-height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+
+.neighborhood-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* TREG "bright" filter */
+  filter: brightness(1.05) contrast(1.04) saturate(1.06);
+  transform: scale(1.02);
+  transition: transform 0.25s ease;
+}
+
+.neighborhood-hero-photo:hover img {
+  transform: scale(1.06);
+}
+
+/* Pull the hero-inner a touch closer to the image */
+.hero-neighborhood .hero-inner {
+  padding-top: 1.75rem;
+}
+
+/* ========================= */
+/* NEIGHBORHOOD HIGHLIGHTS   */
+/* ========================= */
+
+.neighborhood-highlights {
+  padding: 2.25rem 0 2.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.neighborhood-highlights-intro {
+  max-width: 720px;
+  margin-bottom: 1.5rem;
+}
+
+.neighborhood-highlights-intro .section-heading {
+  margin-bottom: 0.4rem;
+}
+
+/* Card grid (magazine style) */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+/* Individual highlight card */
+.highlight-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Top: image */
+.highlight-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* Same TREG bright filter */
+  filter: brightness(1.05) contrast(1.04) saturate(1.06);
+  transform: scale(1.02);
+  transition: transform 0.22s ease;
+}
+
+.highlight-card:hover .highlight-image img {
+  transform: scale(1.06);
+}
+
+/* Bottom: text block */
+.highlight-body {
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+.highlight-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.35rem;
+}
+
+.highlight-text {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--treg-slate);
+  margin: 0 0 0.6rem;
+}
+
+/* Meta line for website / socials / address */
+.highlight-meta {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+}
+
+.highlight-meta a {
+  color: var(--treg-charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--treg-bronze);
+  padding-bottom: 1px;
+}
+
+.highlight-meta a:hover {
+  border-bottom-color: var(--treg-charcoal);
+}
