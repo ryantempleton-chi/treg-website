@@ -70,7 +70,7 @@ body {
 .nav-list {
   display: flex;
   justify-content: flex-end;
-  align-items: center; /* vertical centering for all items */
+  align-items: center;
   gap: 2.2rem;
   list-style: none;
   margin: 0;
@@ -98,11 +98,11 @@ body {
 
   display: inline-block;
   line-height: 1;
-  padding: 0.2rem 0 0.18rem; /* SAME top/bottom padding for every item */
+  padding: 0.2rem 0 0.18rem;
   margin: 0;
 
   position: relative;
-  top: -1px; /* nudge all nav items up */
+  top: -1px;
 }
 
 /* keep HOME (first item) at original baseline */
@@ -153,8 +153,8 @@ body {
 .nav-dropdown-link {
   display: block;
   padding: 0.5rem 1rem;
-  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   text-transform: none;
   color: #1e180d;
@@ -171,7 +171,6 @@ body {
 /* HERO (GLOBAL + HOME)      */
 /* ========================= */
 
-/* Base hero (used by neighborhood pages too) */
 .hero {
   background: var(--treg-cream);
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -207,7 +206,7 @@ body {
   color: var(--treg-slate);
 }
 
-/* Hero layout grid (for neighborhoods) */
+/* Hero layout grid (for neighborhoods, if needed) */
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
@@ -226,7 +225,7 @@ body {
   position: relative;
   min-height: 70vh;
   color: #ffffff;
-  background-image: url("/assets/img/hero-chicago.jpg"); /* make sure this matches your actual file name */
+  background-image: url("/assets/img/hero-chicago.jpg");
   background-size: cover;
   background-position: center center;
 }
@@ -256,13 +255,8 @@ body {
 
 .home-hero-text {
   text-align: right;
-
-  /* widen the overall panel */
   max-width: 840px;
-
   margin-left: auto;
-
-  /* background panel */
   background: rgba(255, 255, 255, 0.12);
   padding: 2.3rem 2.9rem;
   border-radius: 16px;
@@ -273,18 +267,18 @@ body {
 .home-hero-title {
   font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  font-size: clamp(2.2rem, 3vw + 1.4rem, 3.1rem); /* a touch smaller */
+  font-size: clamp(2.2rem, 3vw + 1.4rem, 3.1rem);
   line-height: 1.12;
   text-transform: lowercase;
   margin: 0.6rem 0 1rem;
 }
 
 .home-hero-subtitle {
-  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  font-size: 0.95rem;       /* slightly smaller font = fewer lines */
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 0.95rem;
   line-height: 1.6;
-  max-width: 40rem;         /* a bit wider so the text can stretch out */
+  max-width: 40rem;
   margin-left: auto;
   margin-bottom: 1.75rem;
 }
@@ -314,9 +308,9 @@ body {
   background: #ffffff;
 }
 
-/* Keep hero buttons on one line on larger screens */
+/* Keep hero buttons aligned */
 .hero .btn-row {
-  justify-content: flex-end;  /* aligns them to the right edge of the panel */
+  justify-content: flex-end;
   flex-wrap: nowrap;
   gap: 0.75rem;
 }
@@ -324,69 +318,36 @@ body {
 @media (max-width: 640px) {
   .hero .btn-row {
     justify-content: center;
-    flex-wrap: wrap;          /* back to stacking on small screens */
+    flex-wrap: wrap;
   }
 }
+
 /* ========================= */
-/* NEIGHBORHOOD HERO         */
+/* NEIGHBORHOOD HERO IMAGE   */
 /* ========================= */
 
-.hero-neighborhood {
-  position: relative;
-  color: #ffffff;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  border-bottom: none;
+.neighborhood-photo-hero {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  background: #111; /* mostly covered by photo */
 }
 
-/* soft dark overlay on top of the photo */
-.hero-neighborhood::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(10, 7, 3, 0.78),
-    rgba(10, 7, 3, 0.38)
-  );
+.neighborhood-photo-hero-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 0;
 }
 
-.hero-neighborhood .hero-inner {
-  position: relative;
-  z-index: 1;
-}
-
-/* make sure text in the hero is white */
-.hero-neighborhood .hero-label,
-.hero-neighborhood .hero-title,
-.hero-neighborhood .hero-subtitle {
-  color: #ffffff;
-}
-
-/* snapshot card floats on top in a bright panel */
-.hero-neighborhood .snapshot {
-  background: rgba(255, 255, 255, 0.96);
-  color: var(--treg-charcoal);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
-}
-
-.hero-neighborhood .snapshot-label {
-  color: var(--treg-slate);
-}
-
-.hero-neighborhood .snapshot-value {
-  color: var(--treg-charcoal);
-}
-
-/* optional tiny tweak: a bit more padding in neighborhood hero */
-.hero-neighborhood .hero-inner {
-  padding-top: 3.3rem;
-  padding-bottom: 3.3rem;
+.neighborhood-photo-hero-img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
 }
 
 /* ========================= */
-/* SNAPSHOT CARD (NEIGHBOR.) */
+/* SNAPSHOT CARD             */
 /* ========================= */
 
 .snapshot {
@@ -496,11 +457,6 @@ li + li {
   margin-bottom: 1rem;
 }
 
-/* Muted background section (used on home “Work with TREG”) */
-.section-muted {
-  background: #faf7f1;
-}
-
 /* ========================= */
 /* BUTTONS                   */
 /* ========================= */
@@ -590,6 +546,7 @@ li + li {
 .neighborhood-card a:hover {
   border-bottom-color: var(--treg-charcoal);
 }
+
 /* ========================= */
 /* NEIGHBORHOOD TILE GRID    */
 /* ========================= */
@@ -622,78 +579,9 @@ li + li {
 
 .neighborhoods-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem 0 3rem;
-}
-
-.neighborhood-tile {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  background: #ffffff;
-  border-radius: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-  transition: transform 0.18s ease, box-shadow 0.18s ease,
-    border-color 0.18s ease;
-  color: var(--treg-charcoal);
-}
-
-.neighborhood-tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-/* Top: neighborhood name in League Spartan */
-
-.neighborhood-tile-header {
-  padding: 0.85rem 1rem 0.35rem;
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.1rem;
-  text-transform: lowercase;
-  letter-spacing: 0.03em;
-}
-
-/* Middle: image */
-
-.neighborhood-tile-image-wrapper {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-}
-
-.neighborhood-tile-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform: scale(1.02);
-  transition: transform 0.2s ease;
-}
-
-.neighborhood-tile:hover .neighborhood-tile-image-wrapper img {
-  transform: scale(1.06);
-}
-
-/* Bottom: description */
-
-.neighborhood-tile-body {
-  padding: 0.9rem 1rem 1.2rem;
-  font-size: 0.9rem;
-  color: var(--treg-slate);
-}
-
-/* ========================= */
-/* NEIGHBORHOOD TILE STYLES  */
-/* ========================= */
-
-.neighborhoods-grid {
-  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.6rem;
+  padding: 2rem 0 3rem;
 }
 
 .neighborhood-tile {
@@ -704,25 +592,24 @@ li + li {
   text-decoration: none;
   color: var(--treg-charcoal);
   border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .neighborhood-tile:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* BIGGER, STRONGER TITLES */
 .neighborhood-tile-header {
   font-family: "League Spartan", sans-serif;
-  font-size: 1.65rem;       /* ← INCREASED from default */
+  font-size: 1.65rem;
   font-weight: 600;
   text-transform: lowercase;
   letter-spacing: 0.02em;
   margin-bottom: 0.75rem;
 }
 
-/* Image */
 .neighborhood-tile-image-wrapper {
   width: 100%;
   height: 160px;
@@ -731,67 +618,277 @@ li + li {
   margin-bottom: 0.85rem;
 }
 
+.neighborhood-tile-image-wrapper img,
 .neighborhood-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Description text */
 .neighborhood-tile-body {
   font-family: "Roboto", sans-serif;
   font-size: 0.92rem;
   line-height: 1.45;
   color: var(--treg-slate);
 }
+
 /* ========================= */
-/* NEIGHBORHOOD HERO IMAGE   */
+/* NEIGHBORHOOD OVERVIEW GRID */
 /* ========================= */
 
-.neighborhood-photo-hero {
-  margin-top: 0;
+.neighborhood-overview-stack .neighborhood-intro-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.4rem 1.6rem 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.6rem;
 }
 
-.neighborhood-photo-hero-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 1.5rem 1.25rem 0.5rem;
+/* Life in <Neighborhood> card */
+.neighborhood-intro-card--life {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.4rem 1.6rem 1.6rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
-.neighborhood-photo-hero-img {
+/* grid holding snapshot + stats + map */
+.neighborhood-overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* left column: snapshot + stats stacked */
+.neighborhood-overview-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .neighborhood-overview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ========================= */
+/* NEIGHBORHOOD — BY THE NUMBERS CARD */
+/* ========================= */
+
+.neighborhood-numbers-card {
+  background: #ffffff;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  padding: 1rem 1.25rem 1.4rem;
+}
+
+.neighborhood-numbers-header {
+  margin-bottom: 0.75rem;
+}
+
+.neighborhood-numbers-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.numbers-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.numbers-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
+}
+
+.numbers-value {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--treg-charcoal);
+}
+
+/* Disclaimer text */
+.numbers-disclaimer {
+  margin-top: 1rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--treg-slate);
+  opacity: 0.85;
+}
+
+/* ========================= */
+/* MAP CARD                  */
+/* ========================= */
+
+.neighborhood-map-card {
+  background: #ffffff;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.neighborhood-map-header {
+  padding: 0.85rem 1rem 0.5rem;
+}
+
+.neighborhood-map-embed iframe {
   width: 100%;
-  max-height: 420px;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  height: 260px;
+  border: 0;
+  display: block;
+}
+
+.neighborhood-map-meta {
+  padding: 0.6rem 1rem 0.85rem;
+  font-size: 0.8rem;
+  color: var(--treg-slate);
 }
 
 /* ========================= */
-/* NEIGHBORHOOD HIGHLIGHTS – CAROUSEL */
+/* NEIGHBORHOOD HIGHLIGHTS   */
+/* ========================= */
+
+.neighborhood-highlights {
+  padding: 2.25rem 0 2.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  background: #faf7f1;
+}
+
+.neighborhood-highlights-intro {
+  max-width: 720px;
+  margin-bottom: 1.5rem;
+}
+
+.neighborhood-highlights-intro .section-heading {
+  margin-bottom: 0.4rem;
+}
+
+/* Base card styling for highlights */
+.highlight-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Top: image */
+.highlight-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.05) contrast(1.04) saturate(1.06);
+  transform: scale(1.02);
+  transition: transform 0.22s ease;
+}
+
+.highlight-card:hover .highlight-image img {
+  transform: scale(1.06);
+}
+
+/* Bottom: text block */
+.highlight-body {
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+.highlight-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.35rem;
+}
+
+.highlight-text {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--treg-slate);
+  margin: 0 0 0.6rem;
+}
+
+/* Meta line for website / socials / address */
+.highlight-meta {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+}
+
+.highlight-meta a {
+  color: var(--treg-charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--treg-bronze);
+  padding-bottom: 1px;
+}
+
+.highlight-meta a:hover {
+  border-bottom-color: var(--treg-charcoal);
+}
+
+/* ========================= */
+/* HIGHLIGHTS – CAROUSEL     */
 /* ========================= */
 
 .highlights-carousel {
   position: relative;
   margin: 1.75rem auto 0;
-  max-width: 1040px;           /* match page width */
 }
 
 /* visible window */
 .highlights-window {
+  position: relative;
   overflow: hidden;
   padding: 0 2.8rem;           /* room for arrows on left/right */
 }
 
-/* sliding track */
+/* sliding track (JS moves this with translateX) */
 .highlights-track {
   display: flex;
   gap: 1.4rem;
+  transition: transform 0.35s ease;
 }
 
-/* each slide/card */
+/* one card per view, centered */
 .highlights-track .highlight-card {
-  flex: 0 0 280px;             /* base slide width */
-  max-width: 320px;
+  flex: 0 0 100%;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 /* nav buttons */
@@ -799,16 +896,18 @@ li + li {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
   border-radius: 999px;
-  border: 0;
-  background: #ffffff;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
-  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--treg-charcoal);
 }
 
 .highlights-nav--prev {
@@ -819,13 +918,12 @@ li + li {
   right: 0.6rem;
 }
 
-/* simple arrow glyphs if you're using text icons */
-.highlights-nav span {
-  font-size: 0.9rem;
-  line-height: 1;
+.highlights-nav:focus-visible {
+  outline: 2px solid var(--treg-charcoal);
+  outline-offset: 2px;
 }
 
-/* dots row (from earlier answer, keep as-is or add if missing) */
+/* dots row */
 .highlights-dots {
   display: flex;
   justify-content: center;
@@ -848,135 +946,17 @@ li + li {
   background: var(--treg-charcoal);
 }
 
-/* Mobile tweak */
+/* On small screens, rely on natural swipe/scroll and hide arrows */
 @media (max-width: 640px) {
   .highlights-window {
     padding: 0 2.1rem;
   }
 
-  .highlights-track .highlight-card {
-    flex: 0 0 240px;
-  }
-}
-/* === Neighborhood highlights carousel layout fix === */
-
-/* Make sure the window hides overflow */
-.highlights-window {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Track is a horizontal flex row of slides */
-.highlights-track {
-  display: flex;
-}
-
-/* Each card = one full slide, centered */
-.highlights-track .highlight-card {
-  flex: 0 0 100%;         /* one full viewport width per slide */
-  max-width: 420px;       /* keep the card from getting too huge */
-  margin: 0 auto;         /* center card in the window */
-}
-
-/* ========================= */
-/* NEIGHBORHOOD HIGHLIGHTS – CAROUSEL */
-/* ========================= */
-
-.highlights-carousel {
-  position: relative;
-  margin-top: 1.5rem;
-}
-
-.highlights-track {
-  display: flex;
-  gap: 1.4rem;
-  overflow-x: auto;
-  padding: 0.25rem 0 0.6rem;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: 0.25rem;
-}
-
-/* nice slim scrollbar */
-.highlights-track::-webkit-scrollbar {
-  height: 6px;
-}
-
-.highlights-track::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.18);
-  border-radius: 999px;
-}
-
-.highlights-track .highlight-card {
-  flex: 0 0 min(320px, 80%);
-  scroll-snap-align: start;
-}
-
-/* Prev / next buttons */
-
-.highlights-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
-  border-radius: 999px;
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.1rem;
-  color: var(--treg-charcoal);
-}
-
-.highlights-nav--prev {
-  left: -0.6rem;
-}
-
-.highlights-nav--next {
-  right: -0.6rem;
-}
-
-.highlights-nav:focus-visible {
-  outline: 2px solid var(--treg-charcoal);
-  outline-offset: 2px;
-}
-
-/* On small screens, rely on natural swipe/scroll */
-@media (max-width: 640px) {
   .highlights-nav {
     display: none;
   }
 }
 
-/* ========================= */
-/* FOOTER                    */
-/* ========================= */
-
-.site-footer {
-  flex-shrink: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-  background: #ffffff;
-}
-
-.site-footer-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 1rem 1.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.footer-brand {
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-}
 /* ========================= */
 /* ABOUT PAGE / TEAM CARDS   */
 /* ========================= */
@@ -1038,610 +1018,30 @@ li + li {
 .team-card-link:hover {
   border-bottom-color: var(--treg-charcoal);
 }
+
 /* ========================= */
-/* NEIGHBORHOOD HERO IMAGE   */
+/* FOOTER                    */
 /* ========================= */
 
-.neighborhood-photo-hero {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  background: #111; /* mostly covered by photo */
+.site-footer {
+  flex-shrink: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background: #ffffff;
 }
 
-.neighborhood-photo-hero-inner {
+.site-footer-inner {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem 0;
-}
-
-.neighborhood-photo-hero-img {
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
-  border-radius: 14px;
-  display: block;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-}
-
-/* ========================= */
-/* NEIGHBORHOOD HIGHLIGHTS   */
-/* ========================= */
-
-.neighborhood-highlights {
-  background: #faf7f1;
-}
-
-.neighborhood-highlights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.neighborhood-highlight-card {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  overflow: hidden;
+  padding: 1rem 1.25rem;
   display: flex;
-  flex-direction: column;
-}
-
-.neighborhood-highlight-media {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-}
-
-.neighborhood-highlight-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.neighborhood-highlight-body {
-  padding: 0.9rem 1rem 1.1rem;
-  font-size: 0.9rem;
-  color: var(--treg-slate);
-}
-
-.neighborhood-highlight-name {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1rem;
-  text-transform: lowercase;
-  margin-bottom: 0.1rem;
-}
-
-.neighborhood-highlight-meta {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--treg-slate);
-  margin-bottom: 0.5rem;
-}
-
-.neighborhood-highlight-links {
-  margin-top: 0.45rem;
-  font-size: 0.8rem;
-}
-
-.neighborhood-highlight-links a {
-  color: var(--treg-charcoal);
-  text-decoration: none;
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 0.02rem;
-}
-
-.neighborhood-highlight-links a:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-/* ========================= */
-/* NEIGHBORHOOD HERO IMAGE   */
-/* ========================= */
-
-.hero-neighborhood {
-  background: var(--treg-cream);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-/* Wraps the photo above the text block */
-.neighborhood-hero-photo-wrapper {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 1.75rem 1.25rem 0;
-}
-
-.neighborhood-hero-photo {
-  width: 100%;
-  max-height: 420px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-}
-
-.neighborhood-hero-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  /* TREG "bright" filter */
-  filter: brightness(1.05) contrast(1.04) saturate(1.06);
-  transform: scale(1.02);
-  transition: transform 0.25s ease;
-}
-
-.neighborhood-hero-photo:hover img {
-  transform: scale(1.06);
-}
-
-/* Pull the hero-inner a touch closer to the image */
-.hero-neighborhood .hero-inner {
-  padding-top: 1.75rem;
-}
-
-/* ========================= */
-/* NEIGHBORHOOD HIGHLIGHTS   */
-/* ========================= */
-
-.neighborhood-highlights {
-  padding: 2.25rem 0 2.75rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.neighborhood-highlights-intro {
-  max-width: 720px;
-  margin-bottom: 1.5rem;
-}
-
-.neighborhood-highlights-intro .section-heading {
-  margin-bottom: 0.4rem;
-}
-
-/* Card grid (magazine style) */
-.highlights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.6rem;
-}
-
-/* Individual highlight card */
-.highlight-card {
-  background: #ffffff;
-  border-radius: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: transform 0.18s ease, box-shadow 0.18s ease,
-    border-color 0.18s ease;
-}
-
-.highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-/* Top: image */
-.highlight-image {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.highlight-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  /* Same TREG bright filter */
-  filter: brightness(1.05) contrast(1.04) saturate(1.06);
-  transform: scale(1.02);
-  transition: transform 0.22s ease;
-}
-
-.highlight-card:hover .highlight-image img {
-  transform: scale(1.06);
-}
-
-/* Bottom: text block */
-.highlight-body {
-  padding: 1rem 1.15rem 1.2rem;
-}
-
-.highlight-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.1rem;
-  text-transform: lowercase;
-  letter-spacing: 0.03em;
-  margin: 0 0 0.35rem;
-}
-
-.highlight-text {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: var(--treg-slate);
-  margin: 0 0 0.6rem;
-}
-
-/* Meta line for website / socials / address */
-.highlight-meta {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-}
-
-.highlight-meta a {
-  color: var(--treg-charcoal);
-  text-decoration: none;
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 1px;
-}
-
-.highlight-meta a:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-/* ========================= */
-/* NEIGHBORHOOD DETAIL PAGES */
-/* ========================= */
-
-/* Hero with photo on the right */
-.hero--neighborhood {
-  background: #fafafa;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.hero-neighborhood-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 2.5rem 1.25rem 2.75rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
-  gap: 2.25rem;
-  align-items: center;
-}
-
-.hero-neighborhood-copy .hero-label {
-  margin-bottom: 0.6rem;
-}
-
-.hero-neighborhood-copy .hero-title {
-  font-size: 2.7rem;        /* make neighborhood name pop */
-  margin-bottom: 0.6rem;
-}
-
-.hero-neighborhood-copy .hero-subtitle {
-  font-size: 0.98rem;
-  line-height: 1.7;
-}
-
-.hero-neighborhood-photo {
-  width: 100%;
-  max-height: 340px;
-  object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-}
-
-/* Map + quick facts band */
-
-.section-neighborhood-intro .section-heading {
-  margin-bottom: 0.6rem;
-}
-
-.section-neighborhood-intro .section-lede {
-  margin-bottom: 1.2rem;
-}
-
-.neighborhood-map-card {
-  background: #ffffff;
-  border-radius: 0.95rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.neighborhood-map-header {
-  padding: 0.85rem 1rem 0.5rem;
-}
-
-.neighborhood-map-embed iframe {
-  width: 100%;
-  height: 260px;
-  border: 0;
-  display: block;
-}
-
-.neighborhood-map-meta {
-  padding: 0.6rem 1rem 0.85rem;
-  font-size: 0.8rem;
-  color: var(--treg-slate);
-}
-
-/* Highlights grid – smaller "magazine" cards */
-
-.neighborhood-highlights {
-  padding-top: 1.5rem;
-}
-
-.highlight-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.4rem;
-}
-
-.highlight-card {
-  background: #ffffff;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.highlight-image {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-}
-
-.highlight-body {
-  padding: 0.85rem 1rem 1.05rem;
-}
-
-.highlight-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.05rem;
-  text-transform: lowercase;
-  margin: 0 0 0.1rem;
-}
-
-.highlight-meta {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--treg-slate);
-  margin-bottom: 0.45rem;
-}
-
-.highlight-text {
-  font-size: 0.9rem;
-  color: var(--treg-slate);
-  margin: 0 0 0.55rem;
-}
-
-.highlight-link {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  text-decoration: none;
-  color: var(--treg-charcoal);
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 0.05rem;
-}
-
-.highlight-link:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-
-/* Responsive tweaks */
-@media (max-width: 800px) {
-  .hero-neighborhood-inner {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-neighborhood-photo {
-    max-height: none;
-  }
-}
-
-/* ========================= */
-/* NEIGHBORHOOD HERO WITH    */
-/* INLINE FULL-WIDTH PHOTO   */
-/* ========================= */
-
-.hero-with-photo {
-  background: var(--treg-cream);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  padding-bottom: 2.5rem;
-}
-
-/* Full-width image at the top of the section */
-.hero-photo-full {
-  width: 100%;
-  max-height: 380px;
-  object-fit: cover;
-  display: block;
-  border-radius: 16px;
-  margin: 0 auto 1.75rem;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-
-  /* TREG bright filter */
-  filter: brightness(1.05) contrast(1.04) saturate(1.06);
-}
-
-/* Pull the text a bit closer to the photo */
-.hero-with-photo .hero-inner {
-  padding-top: 0;
-}
-
-/* Make neighborhood name pop more on these pages */
-.hero-with-photo .hero-title {
-  font-size: 2.8rem;
-}
-
-@media (max-width: 640px) {
-  .hero-photo-full {
-    max-height: 260px;
-    border-radius: 12px;
-  }
-
-  .hero-with-photo .hero-title {
-    font-size: 2.3rem;
-  }
-}
-/* ========================= */
-/* NEIGHBORHOOD OVERVIEW GRID */
-/* ========================= */
-
-.neighborhood-overview-stack .neighborhood-intro-card {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.6rem 1.5rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.6rem;
-}
-
-/* grid holding snapshot + map + stats (under the big intro card) */
-.neighborhood-overview-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr);
-  gap: 1.5rem;
-  align-items: flex-start;
-}
-
-/* left column: snapshot + stats stacked */
-.neighborhood-overview-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* “By the numbers” card (orange box in your mock) */
-.neighborhood-stat-card {
-  background: #ffffff;
-  border-radius: 0.95rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 0.95rem 1rem 1rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-}
-
-.neighborhood-stat-label {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  margin-bottom: 0.45rem;
-  color: var(--treg-slate);
-}
-
-.neighborhood-stat-metric {
-  font-size: 0.88rem;
-  margin-top: 0.25rem;
-}
-
-.neighborhood-stat-metric strong {
-  font-weight: 700;
-}
-
-.neighborhood-stat-note {
-  font-size: 0.72rem;
-  color: var(--treg-slate);
-  margin-top: 0.5rem;
-}
-
-/* make Life in Avondale match the card look */
-.neighborhood-intro-card--life {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.6rem 1.6rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* responsive tweaks */
-@media (max-width: 800px) {
-  .neighborhood-overview-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-/* ========================= */
-/* NEIGHBORHOOD — BY THE NUMBERS CARD */
-/* ========================= */
-
-.neighborhood-numbers-card {
-  background: #ffffff;
-  border-radius: 0.95rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  padding: 1rem 1.25rem 1.4rem;
-}
-
-.neighborhood-numbers-header {
-  margin-bottom: 0.75rem;
-}
-
-.neighborhood-numbers-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.numbers-row {
-  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
 }
 
-.numbers-label {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.82rem;
+.footer-brand {
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--treg-slate);
 }
-
-.numbers-value {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  color: var(--treg-charcoal);
-}
-
-/* Disclaimer text */
-.numbers-disclaimer {
-  margin-top: 1rem;
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.45;
-  color: var(--treg-slate);
-  opacity: 0.85;
-}
-.highlights-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.4rem;
-  margin-top: 1rem;
-}
-
-.highlights-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  border: 0;
-  padding: 0;
-  background: rgba(0, 0, 0, 0.18);
-  cursor: pointer;
-}
-
-.highlights-dot.is-active {
-  width: 16px;
-  background: var(--treg-charcoal);
-}
-
