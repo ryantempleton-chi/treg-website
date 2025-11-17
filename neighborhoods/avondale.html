@@ -19,34 +19,67 @@
 
     <main class="main">
 
-      <!-- HERO: photo on right, copy on left -->
-      <section class="hero hero--neighborhood">
-        <div class="hero-neighborhood-inner">
-
-          <!-- Text side -->
-          <div class="hero-neighborhood-copy">
-            <div class="hero-label">Chicago neighborhood guide</div>
-            <h1 class="hero-title">avondale.</h1>
-            <p class="hero-subtitle">
-              Avondale is a Northwest Side pocket with classic Chicago flats, tree-lined streets,
-              and a growing mix of restaurants, bars, and cafés — close to Logan Square, but a bit
-              more laid-back.
-            </p>
-          </div>
-
-          <!-- Photo side -->
-          <div>
-            <img
-              src="/assets/img/neighborhoods/heroes/avondale-hero.jpg"
-              alt="Avondale Chicago"
-              class="hero-neighborhood-photo"
-            />
-          </div>
-
+      <!-- BIG HERO PHOTO AT TOP -->
+      <section class="neighborhood-photo-hero">
+        <div class="neighborhood-photo-hero-inner">
+          <img
+            src="/assets/img/neighborhoods/heroes/avondale-hero.jpg"
+            alt="Avondale Chicago"
+            class="neighborhood-photo-hero-img"
+          />
         </div>
       </section>
 
-      <!-- SECTION: LIFE IN AVONDALE + MAP / QUICK FACTS -->
+      <!-- HERO TEXT + SNAPSHOT (NO PHOTO HERE) -->
+      <section class="hero hero--neighborhood-header">
+        <div class="hero-inner">
+          <div class="hero-grid">
+            <!-- Left: label, title, intro -->
+            <div>
+              <div class="hero-label">Chicago neighborhood guide</div>
+              <h1 class="hero-title" style="font-size: 2.9rem;">
+                avondale.
+              </h1>
+              <p class="hero-subtitle">
+                Avondale is a Northwest Side pocket with classic Chicago flats, tree-lined streets,
+                and a growing mix of restaurants, bars, and cafés — close to Logan Square, but a bit
+                more laid-back.
+              </p>
+            </div>
+
+            <!-- Right: snapshot card -->
+            <aside class="snapshot">
+              <div class="snapshot-item">
+                <div class="snapshot-label">Area vibe</div>
+                <div class="snapshot-value">Residential · low-key · up-and-coming</div>
+              </div>
+
+              <div class="snapshot-item">
+                <div class="snapshot-label">Housing mix</div>
+                <div class="snapshot-value">
+                  Classic 2- and 3-flats · single-family homes · walk-up condos
+                </div>
+              </div>
+
+              <div class="snapshot-item">
+                <div class="snapshot-label">Ideal for</div>
+                <div class="snapshot-value">
+                  Buyers or renters wanting a quieter neighborhood feel without leaving the city
+                </div>
+              </div>
+
+              <div class="snapshot-item">
+                <div class="snapshot-label">Transit access</div>
+                <div class="snapshot-value">
+                  Blue Line · I-90/94 · multiple CTA bus routes
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIFE IN AVONDALE + MAP -->
       <section class="section section-neighborhood-intro">
         <div class="container section-grid two">
 
@@ -71,7 +104,7 @@
             </p>
           </div>
 
-          <!-- Right: map + quick facts -->
+          <!-- Right: map card -->
           <aside class="neighborhood-map-card">
             <div class="neighborhood-map-header">
               <div class="section-heading" style="font-size:1rem; margin-bottom:0.35rem;">
@@ -83,9 +116,9 @@
             </div>
 
             <div class="neighborhood-map-embed">
-              <!-- You can swap this for a more precise embed later if you’d like -->
+              <!-- Your real Google Maps embed -->
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m3!1d2969.905507107887!2d-87.712!3d41.941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd2e4b5f8b4b7%3A0x8e9e9f0c4c2adf5e!2sAvondale%2C%20Chicago%2C%20IL!5e0!3m2!1sen!2sus!4v0000000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23742.738322576497!2d-87.75047740890628!3d41.939240150028965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fcd9c32ef66f7%3A0xc59066fecdd34358!2sAvondale%2C%20Chicago%2C%20IL!5e0!3m2!1sen!2sus!4v1763347974693!5m2!1sen!2sus"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
@@ -100,7 +133,7 @@
         </div>
       </section>
 
-      <!-- SECTION: HIGHLIGHTS (TILE CARDS) -->
+      <!-- NEIGHBORHOOD HIGHLIGHTS (TILE CARDS) -->
       <section class="section neighborhood-highlights">
         <div class="container">
           <div class="neighborhood-highlights-intro">
@@ -112,7 +145,6 @@
           </div>
 
           <div class="highlight-grid">
-
             <!-- Highlight 1: Revolution Brewing Taproom -->
             <article class="highlight-card">
               <div class="highlight-image">
@@ -184,7 +216,6 @@
                 </div>
               </div>
             </article>
-
           </div>
         </div>
       </section>
