@@ -27,3 +27,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".highlights-carousel").forEach((carousel) => {
+    const track = carousel.querySelector(".highlights-track");
+    if (!track) return;
+
+    const cards = track.querySelectorAll(".highlight-card");
+    if (!cards.length) return;
+
+    const prevBtn = carousel.querySelector(".highlights-nav--prev");
+    const nextBtn = carousel.querySelector(".highlights-nav--next");
+
+    const getStep = () => {
+      const first = cards[0].getBoundingClientRect();
+      return first.width + 16; // approx. the gap
+    };
+
+    prevBtn && prevBtn.addEventListener("click", () => {
+      track.scrollBy({ left: -getStep(), behavior: "smooth" });
+    });
+
+    nextBtn && nextBtn.addEventListener("click", () => {
+      track.scrollBy({ left: getStep(), behavior: "smooth" });
+    });
+  });
+});
