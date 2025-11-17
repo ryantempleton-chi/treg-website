@@ -1175,3 +1175,163 @@ li + li {
 .highlight-meta a:hover {
   border-bottom-color: var(--treg-charcoal);
 }
+/* ========================= */
+/* NEIGHBORHOOD DETAIL PAGES */
+/* ========================= */
+
+/* Hero with photo on the right */
+.hero--neighborhood {
+  background: #fafafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.hero-neighborhood-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 2.75rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.hero-neighborhood-copy .hero-label {
+  margin-bottom: 0.6rem;
+}
+
+.hero-neighborhood-copy .hero-title {
+  font-size: 2.7rem;        /* make neighborhood name pop */
+  margin-bottom: 0.6rem;
+}
+
+.hero-neighborhood-copy .hero-subtitle {
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.hero-neighborhood-photo {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+/* Map + quick facts band */
+
+.section-neighborhood-intro .section-heading {
+  margin-bottom: 0.6rem;
+}
+
+.section-neighborhood-intro .section-lede {
+  margin-bottom: 1.2rem;
+}
+
+.neighborhood-map-card {
+  background: #ffffff;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.neighborhood-map-header {
+  padding: 0.85rem 1rem 0.5rem;
+}
+
+.neighborhood-map-embed iframe {
+  width: 100%;
+  height: 260px;
+  border: 0;
+  display: block;
+}
+
+.neighborhood-map-meta {
+  padding: 0.6rem 1rem 0.85rem;
+  font-size: 0.8rem;
+  color: var(--treg-slate);
+}
+
+/* Highlights grid – smaller "magazine" cards */
+
+.neighborhood-highlights {
+  padding-top: 1.5rem;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.4rem;
+}
+
+.highlight-card {
+  background: #ffffff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.highlight-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.highlight-body {
+  padding: 0.85rem 1rem 1.05rem;
+}
+
+.highlight-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.05rem;
+  text-transform: lowercase;
+  margin: 0 0 0.1rem;
+}
+
+.highlight-meta {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
+  margin-bottom: 0.45rem;
+}
+
+.highlight-text {
+  font-size: 0.9rem;
+  color: var(--treg-slate);
+  margin: 0 0 0.55rem;
+}
+
+.highlight-link {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: var(--treg-charcoal);
+  border-bottom: 1px solid var(--treg-bronze);
+  padding-bottom: 0.05rem;
+}
+
+.highlight-link:hover {
+  border-bottom-color: var(--treg-charcoal);
+}
+
+/* Responsive tweaks */
+@media (max-width: 800px) {
+  .hero-neighborhood-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-neighborhood-photo {
+    max-height: none;
+  }
+}
