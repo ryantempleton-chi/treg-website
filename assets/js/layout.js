@@ -1,3 +1,5 @@
+// ============ FRAGMENT LOADER (HEADER + FOOTER) ============
+
 function loadFragment(targetId, url, callback) {
   fetch(url)
     .then(function (response) {
@@ -16,10 +18,10 @@ function loadFragment(targetId, url, callback) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Load header first
+  // Load header
   loadFragment("site-header", "/partials/header.html");
 
-  // Load footer, then update the year AFTER it's ready
+  // Load footer, then update year
   loadFragment("site-footer", "/partials/footer.html", function () {
     var yearSpan = document.getElementById("year");
     if (yearSpan) {
@@ -27,44 +29,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".highlights-carousel").forEach((carousel) => {
-    const track = carousel.querySelector(".highlights-track");
-    if (!track) return;
 
-    const cards = track.querySelectorAll(".highlight-card");
-    if (!cards.length) return;
+// ============ HIGHLIGHTS CAROUSEL (INFINITE, NO AUTOPLAY) ============
 
-    const prevBtn = carousel.querySelector(".highlights-nav--prev");
-    const nextBtn = carousel.querySelector(".highlights-nav--next");
-
-    const getStep = () => {
-      const first = cards[0].getBoundingClientRect();
-      return first.width + 16; // approx. the gap
-    };
-
-    prevBtn && prevBtn.addEventListener("click", () => {
-      track.scrollBy({ left: -getStep(), behavior: "smooth" });
-    });
-
-    nextBtn && nextBtn.addEventListener("click", () => {
-      track.scrollBy({ left: getStep(), behavior: "smooth" });
-    });
-  });
-});
 document.addEventListener("DOMContentLoaded", () => {
   const carousels = document.querySelectorAll(".highlights-carousel");
   if (!carousels.length) return;
 
-  const AUTOPLAY_DELAY = 6000; // ms
-
   carousels.forEach((carousel) => {
     const track = carousel.querySelector(".highlights-track");
-    const windowEl = carousel.querySelector(".highlights-window") || track.parentElement;
+    const windowEl =
+      carousel.querySelector(".highlights-window") || track?.parentElement;
     const prevButton = carousel.querySelector(".highlights-nav--prev");
     const nextButton = carousel.querySelector(".highlights-nav--next");
 
-    if (!track || !prevButton || !nextButton) return;
+    if (!track || !windowEl || !prevButton || !nextButton) return;
 
     let slides = Array.from(track.children);
     if (slides.length <= 1) return; // no need for carousel
@@ -110,15 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
       track.style.transition = "none";
       track.style.transform = `translateX(${-slideWidth * index}px)`;
       requestAnimationFrame(() => {
-        // allow browser to apply transform before allowing transitions again
         track.style.transition = "";
       });
     }
 
     measure();
-    window.addEventListener("resize", () => {
-      measure();
-    });
+    window.addEventListener("resize", measure);
 
     function setActiveDot() {
       const realIndex = (index - 1 + realSlideCount) % realSlideCount; // 0-based
@@ -162,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       setActiveDot();
-      // Small timeout so quick double-clicks don’t break things
       setTimeout(() => {
         isAnimating = false;
       }, 20);
@@ -170,57 +145,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ---- 5. Buttons ----
     nextButton.addEventListener("click", () => {
-      stopAutoplay();
       goToNext();
     });
 
     prevButton.addEventListener("click", () => {
-      stopAutoplay();
       goToPrev();
     });
 
     // ---- 6. Dots click ----
     dots.forEach((dot, i) => {
       dot.addEventListener("click", () => {
-        stopAutoplay();
         // real slide i corresponds to index i + 1 (because of leading clone)
         goToIndex(i + 1);
       });
     });
 
-    // ---- 7. Autoplay ----
-    let autoplayId = null;
-
-    function startAutoplay() {
-      if (AUTOPLAY_DELAY <= 0 || autoplayId) return;
-      autoplayId = setInterval(() => {
-        if (!document.hidden) {
-          goToNext();
-        }
-      }, AUTOPLAY_DELAY);
-    }
-
-    function stopAutoplay() {
-      if (!autoplayId) return;
-      clearInterval(autoplayId);
-      autoplayId = null;
-    }
-
-    // Pause on hover / focus
-    carousel.addEventListener("mouseenter", stopAutoplay);
-    carousel.addEventListener("mouseleave", startAutoplay);
-
-    carousel.addEventListener("focusin", stopAutoplay);
-    carousel.addEventListener("focusout", startAutoplay);
-
-    startAutoplay();
-
-    // ---- 8. Swipe / drag (desktop + mobile) ----
+    // ---- 7. Swipe / drag (desktop + mobile) ----
     let isDragging = false;
     let startX = 0;
     let currentTranslate = 0;
     let prevTranslate = 0;
-    let dragStartIndex = index;
 
     function getEventClientX(e) {
       if (e.type.startsWith("touch")) {
@@ -230,11 +174,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function pointerDown(e) {
-      stopAutoplay();
       isDragging = true;
       track.style.transition = "none";
       startX = getEventClientX(e);
-      dragStartIndex = index;
       prevTranslate = -slideWidth * index;
       currentTranslate = prevTranslate;
 
@@ -246,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function pointerMove(e) {
       if (!isDragging) return;
-      if (e.type === "touchmove") e.preventDefault(); // prevent page scroll while swiping
+      if (e.type === "touchmove") e.preventDefault();
 
       const currentX = getEventClientX(e);
       const deltaX = currentX - startX;
@@ -279,11 +221,9 @@ document.addEventListener("DOMContentLoaded", () => {
       window.removeEventListener("mouseup", pointerUp);
       window.removeEventListener("touchmove", pointerMove);
       window.removeEventListener("touchend", pointerUp);
-      startAutoplay();
     }
 
     windowEl.addEventListener("mousedown", pointerDown);
     windowEl.addEventListener("touchstart", pointerDown, { passive: true });
   });
 });
-
