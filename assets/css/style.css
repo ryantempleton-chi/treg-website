@@ -858,6 +858,25 @@ li + li {
     flex: 0 0 240px;
   }
 }
+/* === Neighborhood highlights carousel layout fix === */
+
+/* Make sure the window hides overflow */
+.highlights-window {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Track is a horizontal flex row of slides */
+.highlights-track {
+  display: flex;
+}
+
+/* Each card = one full slide, centered */
+.highlights-track .highlight-card {
+  flex: 0 0 100%;         /* one full viewport width per slide */
+  max-width: 420px;       /* keep the card from getting too huge */
+  margin: 0 auto;         /* center card in the window */
+}
 
 /* ========================= */
 /* NEIGHBORHOOD HIGHLIGHTS – CAROUSEL */
