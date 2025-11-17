@@ -14,122 +14,176 @@
 
 <body>
   <div class="page">
+    <!-- Shared header -->
     <div id="site-header"></div>
 
     <main class="main">
 
-                  <!-- HERO WITH IMAGE -->
-      <section class="hero hero-with-photo" style="padding-bottom: 0;">
-        <img 
-          src="/assets/img/neighborhoods/heroes/avondale-hero.jpg"
-          alt="Avondale Chicago"
-          class="hero-photo-full"
-          style="width:100%; height: 360px; object-fit: cover; display:block;"
-        />
+      <!-- HERO: photo on right, copy on left -->
+      <section class="hero hero--neighborhood">
+        <div class="hero-neighborhood-inner">
 
-        <div class="hero-inner">
-          <div class="hero-grid">
-
-            <div>
-              <div class="hero-label">Chicago neighborhood guide</div>
-              <h1 class="hero-title">avondale.</h1>
-              <p class="hero-subtitle">
-                Avondale is a Northwest Side pocket with classic Chicago flats, tree-lined streets,
-                and a growing mix of restaurants, bars, and cafés — close to Logan Square, but a bit more laid-back.
-              </p>
-            </div>
-
-            <!-- SNAPSHOT SIDEBAR -->
-            <aside class="snapshot">
-              <div class="snapshot-item">
-                <div class="snapshot-label">Area vibe</div>
-                <div class="snapshot-value">Residential · low-key · up-and-coming</div>
-              </div>
-
-              <div class="snapshot-item">
-                <div class="snapshot-label">Housing mix</div>
-                <div class="snapshot-value">Classic 2- and 3-flats · single-family homes · walk-up condos</div>
-              </div>
-
-              <div class="snapshot-item">
-                <div class="snapshot-label">Ideal for</div>
-                <div class="snapshot-value">Buyers or renters wanting a quieter neighborhood feel without leaving the city</div>
-              </div>
-
-              <div class="snapshot-item">
-                <div class="snapshot-label">Transit access</div>
-                <div class="snapshot-value">Blue Line · I-90/94 · Multiple CTA buses</div>
-              </div>
-            </aside>
+          <!-- Text side -->
+          <div class="hero-neighborhood-copy">
+            <div class="hero-label">Chicago neighborhood guide</div>
+            <h1 class="hero-title">avondale.</h1>
+            <p class="hero-subtitle">
+              Avondale is a Northwest Side pocket with classic Chicago flats, tree-lined streets,
+              and a growing mix of restaurants, bars, and cafés — close to Logan Square, but a bit
+              more laid-back.
+            </p>
           </div>
+
+          <!-- Photo side -->
+          <div>
+            <img
+              src="/assets/img/neighborhoods/heroes/avondale-hero.jpg"
+              alt="Avondale Chicago"
+              class="hero-neighborhood-photo"
+            />
+          </div>
+
         </div>
       </section>
 
+      <!-- SECTION: LIFE IN AVONDALE + MAP / QUICK FACTS -->
+      <section class="section section-neighborhood-intro">
+        <div class="container section-grid two">
 
-      <!-- SECTION: LIFE IN NEIGHBORHOOD -->
-      <section class="section">
-        <div class="container">
-          <h2 class="section-heading">Life in Avondale</h2>
-          <p class="section-lede">
-            Avondale feels like classic Chicago — calm residential streets, corner staples, 
-            and a growing lineup of spots that make it easy to stay local.
-          </p>
+          <!-- Left: narrative -->
+          <div>
+            <h2 class="section-heading">Life in Avondale</h2>
+            <p class="section-lede">
+              Avondale feels like classic Chicago — calm residential streets, corner staples,
+              and a growing lineup of local spots that make it easy to stay close to home.
+            </p>
 
-          <p>
-            You'll see a mix of long-time residents and newer arrivals, with many choosing Avondale 
-            for its balance of value, space, and access to nearby neighborhoods like 
-            Logan Square, Roscoe Village, and Irving Park. Main corridors bring in more restaurants, 
-            bars, and cafés each year, while quieter side streets offer a comfortable, everyday pace.
-          </p>
+            <p>
+              You’ll see a mix of long-time residents and newer arrivals, many choosing Avondale
+              for its balance of value, space, and proximity to neighborhoods like Logan Square,
+              Roscoe Village, and Irving Park. Main corridors bring more restaurants, bars, and cafés
+              each year, while quieter side streets offer a comfortable, everyday pace.
+            </p>
+
+            <p>
+              Whether you’re looking for a classic two-flat, a walk-up condo, or more room to grow,
+              Avondale offers a “just-right” mix of neighborhood calm with easy access to the city.
+            </p>
+          </div>
+
+          <!-- Right: map + quick facts -->
+          <aside class="neighborhood-map-card">
+            <div class="neighborhood-map-header">
+              <div class="section-heading" style="font-size:1rem; margin-bottom:0.35rem;">
+                Where you’ll find Avondale
+              </div>
+              <div style="font-size:0.9rem; color:#6a6966;">
+                Northwest Side · along the Kennedy Expressway and the Blue Line
+              </div>
+            </div>
+
+            <div class="neighborhood-map-embed">
+              <!-- You can swap this for a more precise embed later if you’d like -->
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m3!1d2969.905507107887!2d-87.712!3d41.941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd2e4b5f8b4b7%3A0x8e9e9f0c4c2adf5e!2sAvondale%2C%20Chicago%2C%20IL!5e0!3m2!1sen!2sus!4v0000000000000"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
+            <div class="neighborhood-map-meta">
+              <strong>Transit:</strong> Blue Line · I-90/94 · multiple CTA bus routes<br />
+              <strong>Nearby:</strong> Logan Square · Roscoe Village · Irving Park
+            </div>
+          </aside>
+
         </div>
       </section>
 
-      <!-- SECTION: HIGHLIGHTS (MAGAZINE STYLE GRID) -->
-      <section class="section">
+      <!-- SECTION: HIGHLIGHTS (TILE CARDS) -->
+      <section class="section neighborhood-highlights">
         <div class="container">
-          <h2 class="section-heading">Neighborhood Highlights</h2>
-          <p class="section-lede">A few spots that help define the Avondale experience.</p>
+          <div class="neighborhood-highlights-intro">
+            <h2 class="section-heading">Neighborhood highlights</h2>
+            <p class="section-lede">
+              A few local favorites that give Avondale its character. These are great starting points
+              if you’re getting to know the neighborhood.
+            </p>
+          </div>
 
-          <div class="section-grid two">
+          <div class="highlight-grid">
 
-            <!-- Highlight 1 -->
-            <div>
-              <img src="/assets/img/neighborhoods/highlights/avondale-revolution-tap-room.jpg"
-                class="about-photo" alt="Revolution Brewing Avondale" />
-            </div>
-            <div>
-              <h3 class="section-heading" style="font-size:1.1rem;">Revolution Brewing — Taproom</h3>
-              <p class="section-lede">
-                One of Chicago’s best-known breweries, offering guided tours, tastings, and 
-                a lively industrial-chic taproom experience. A local staple for beer lovers.
-              </p>
-            </div>
+            <!-- Highlight 1: Revolution Brewing Taproom -->
+            <article class="highlight-card">
+              <div class="highlight-image">
+                <img
+                  src="/assets/img/neighborhoods/highlights/avondale-revolution-tap-room.jpg"
+                  alt="Revolution Brewing Taproom in Avondale"
+                />
+              </div>
+              <div class="highlight-body">
+                <h3 class="highlight-title">revolution brewing — taproom.</h3>
+                <div class="highlight-meta">brewery · tours · tasting room</div>
+                <p class="highlight-text">
+                  One of Chicago’s best-known breweries, with guided tours, tastings,
+                  and an industrial taproom that draws locals and visitors alike.
+                </p>
+                <div class="highlight-meta">
+                  3340 N Kedzie Ave, Chicago, IL 60618<br />
+                  <a href="https://revbrew.com/locations/avondale-taproom" target="_blank" rel="noopener noreferrer">
+                    visit website
+                  </a>
+                </div>
+              </div>
+            </article>
 
-            <!-- Highlight 2 -->
-            <div>
-              <img src="/assets/img/neighborhoods/highlights/avondale-bowl.jpg"
-                class="about-photo" alt="Avondale Bowl Chicago" />
-            </div>
-            <div>
-              <h3 class="section-heading" style="font-size:1.1rem;">Avondale Bowl</h3>
-              <p class="section-lede">
-                A vintage 8-lane bowling alley restored with incredible character — cocktails, 
-                small bites, and a perfect retro vibe.
-              </p>
-            </div>
+            <!-- Highlight 2: Avondale Bowl -->
+            <article class="highlight-card">
+              <div class="highlight-image">
+                <img
+                  src="/assets/img/neighborhoods/highlights/avondale-bowl.jpg"
+                  alt="Avondale Bowl in Chicago"
+                />
+              </div>
+              <div class="highlight-body">
+                <h3 class="highlight-title">avondale bowl.</h3>
+                <div class="highlight-meta">vintage bowling alley · cocktails</div>
+                <p class="highlight-text">
+                  A restored 8-lane bowling alley with an incredible retro feel, classic cocktails,
+                  and small bites — perfect for low-key nights out with friends.
+                </p>
+                <div class="highlight-meta">
+                  3118 N Milwaukee Ave, Chicago, IL 60618<br />
+                  <a href="https://avondalebowl.com" target="_blank" rel="noopener noreferrer">
+                    visit website
+                  </a>
+                </div>
+              </div>
+            </article>
 
-            <!-- Highlight 3 -->
-            <div>
-              <img src="/assets/img/neighborhoods/highlights/avondale-first-ascent-avondale.jpg"
-                class="about-photo" alt="First Ascent Avondale" />
-            </div>
-            <div>
-              <h3 class="section-heading" style="font-size:1.1rem;">First Ascent Climbing Gym</h3>
-              <p class="section-lede">
-                A popular bouldering and fitness hub offering classes, community events, 
-                and one of the best climbing facilities on the Northwest Side.
-              </p>
-            </div>
+            <!-- Highlight 3: First Ascent Avondale -->
+            <article class="highlight-card">
+              <div class="highlight-image">
+                <img
+                  src="/assets/img/neighborhoods/highlights/avondale-first-ascent-avondale.jpg"
+                  alt="First Ascent Climbing Gym in Avondale"
+                />
+              </div>
+              <div class="highlight-body">
+                <h3 class="highlight-title">first ascent — avondale.</h3>
+                <div class="highlight-meta">climbing gym · fitness · community</div>
+                <p class="highlight-text">
+                  A popular bouldering and fitness hub with classes, training, and events — a go-to
+                  spot for climbers from across the Northwest Side.
+                </p>
+                <div class="highlight-meta">
+                  3516 N Spaulding Ave, Chicago, IL 60618<br />
+                  <a href="https://www.firstascentclimbing.com/avondale" target="_blank" rel="noopener noreferrer">
+                    visit website
+                  </a>
+                </div>
+              </div>
+            </article>
 
           </div>
         </div>
@@ -140,8 +194,8 @@
         <div class="container">
           <div class="section-cta-title">Thinking about Avondale?</div>
           <div class="section-cta-text">
-            Tell us what you're looking for — we’ll help you compare Avondale with 
-            nearby neighborhoods and find the right fit.
+            Tell us what you're looking for — we’ll help you compare Avondale with nearby
+            neighborhoods and find the right fit.
           </div>
           <div class="btn-row">
             <a href="mailto:ryan@ryantempleton.com" class="btn btn-primary">Email our team</a>
@@ -152,6 +206,7 @@
 
     </main>
 
+    <!-- Shared footer -->
     <div id="site-footer"></div>
   </div>
 
