@@ -1584,3 +1584,25 @@ li + li {
   color: var(--treg-slate);
   opacity: 0.85;
 }
+.highlights-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.highlights-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.highlights-dot.is-active {
+  width: 16px;
+  background: var(--treg-charcoal);
+}
+
