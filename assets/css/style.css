@@ -767,76 +767,96 @@ li + li {
 }
 
 /* ========================= */
-/* NEIGHBORHOOD HIGHLIGHTS   */
+/* NEIGHBORHOOD HIGHLIGHTS – CAROUSEL */
 /* ========================= */
 
-.neighborhood-highlights {
-  padding-top: 1.5rem; /* a little tighter after the main copy */
+.highlights-carousel {
+  position: relative;
+  margin: 1.75rem auto 0;
+  max-width: 1040px;           /* match page width */
 }
 
-.neighborhood-highlights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.neighborhood-highlight {
-  background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1rem 1.1rem 1.2rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-}
-
-.neighborhood-highlight-img-wrap {
-  border-radius: 12px;
+/* visible window */
+.highlights-window {
   overflow: hidden;
-  margin-bottom: 0.75rem;
+  padding: 0 2.8rem;           /* room for arrows on left/right */
 }
 
-.neighborhood-highlight-img-wrap img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  display: block;
-}
-
-.neighborhood-highlight-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.05rem;
-  text-transform: lowercase;
-  letter-spacing: 0.05em;
-  margin: 0 0 0.4rem;
-}
-
-.neighborhood-highlight-text {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--treg-slate);
-  margin-bottom: 0.5rem;
-}
-
-.neighborhood-highlight-meta {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--treg-slate);
+/* sliding track */
+.highlights-track {
   display: flex;
-  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+
+/* each slide/card */
+.highlights-track .highlight-card {
+  flex: 0 0 280px;             /* base slide width */
+  max-width: 320px;
+}
+
+/* nav buttons */
+.highlights-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 0;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.highlights-nav--prev {
+  left: 0.6rem;
+}
+
+.highlights-nav--next {
+  right: 0.6rem;
+}
+
+/* simple arrow glyphs if you're using text icons */
+.highlights-nav span {
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* dots row (from earlier answer, keep as-is or add if missing) */
+.highlights-dots {
+  display: flex;
+  justify-content: center;
   gap: 0.4rem;
+  margin-top: 1rem;
 }
 
-.neighborhood-highlight-meta a {
-  text-decoration: none;
-  color: inherit;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
-  padding-bottom: 0.03rem;
+.highlights-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.18);
+  cursor: pointer;
 }
 
-.neighborhood-highlight-meta a:hover {
-  border-bottom-color: var(--treg-charcoal);
+.highlights-dot.is-active {
+  width: 16px;
+  background: var(--treg-charcoal);
+}
+
+/* Mobile tweak */
+@media (max-width: 640px) {
+  .highlights-window {
+    padding: 0 2.1rem;
+  }
+
+  .highlights-track .highlight-card {
+    flex: 0 0 240px;
+  }
 }
 
 /* ========================= */
