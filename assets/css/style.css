@@ -1381,3 +1381,79 @@ li + li {
     font-size: 2.3rem;
   }
 }
+/* ========================= */
+/* NEIGHBORHOOD OVERVIEW GRID */
+/* ========================= */
+
+.neighborhood-overview-stack .neighborhood-intro-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.4rem 1.6rem 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.6rem;
+}
+
+/* grid holding snapshot + map + stats (under the big intro card) */
+.neighborhood-overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr);
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* left column: snapshot + stats stacked */
+.neighborhood-overview-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* “By the numbers” card (orange box in your mock) */
+.neighborhood-stat-card {
+  background: #ffffff;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 0.95rem 1rem 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+.neighborhood-stat-label {
+  font-family: "Oswald", system-ui, sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.45rem;
+  color: var(--treg-slate);
+}
+
+.neighborhood-stat-metric {
+  font-size: 0.88rem;
+  margin-top: 0.25rem;
+}
+
+.neighborhood-stat-metric strong {
+  font-weight: 700;
+}
+
+.neighborhood-stat-note {
+  font-size: 0.72rem;
+  color: var(--treg-slate);
+  margin-top: 0.5rem;
+}
+
+/* make Life in Avondale match the card look */
+.neighborhood-intro-card--life {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.4rem 1.6rem 1.6rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* responsive tweaks */
+@media (max-width: 800px) {
+  .neighborhood-overview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
