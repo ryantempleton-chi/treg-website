@@ -1,5 +1,6 @@
-// ============ FRAGMENT LOADER (HEADER + FOOTER) ============
-
+// =============================
+// Load header / footer partials
+// =============================
 function loadFragment(targetId, url, callback) {
   fetch(url)
     .then(function (response) {
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Load header
   loadFragment("site-header", "/partials/header.html");
 
-  // Load footer, then update year
+  // Load footer, then update the year AFTER it's ready
   loadFragment("site-footer", "/partials/footer.html", function () {
     var yearSpan = document.getElementById("year");
     if (yearSpan) {
@@ -30,200 +31,143 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// ============ HIGHLIGHTS CAROUSEL (INFINITE, NO AUTOPLAY) ============
-
+// =============================
+// Neighborhood highlights carousel
+// - shows multiple cards at once
+// - arrows move ONE CARD at a time
+// - works with 3 slides (Avondale) or 5+ (Bucktown)
+// - infinite loop (wraps around)
+// =============================
 document.addEventListener("DOMContentLoaded", () => {
   const carousels = document.querySelectorAll(".highlights-carousel");
   if (!carousels.length) return;
 
-  carousels.forEach((carousel) => {
+  carousels.forEach(setupCarousel);
+
+  function setupCarousel(carousel) {
+    const windowEl = carousel.querySelector(".highlights-window");
     const track = carousel.querySelector(".highlights-track");
-    const windowEl =
-      carousel.querySelector(".highlights-window") || track?.parentElement;
-    const prevButton = carousel.querySelector(".highlights-nav--prev");
-    const nextButton = carousel.querySelector(".highlights-nav--next");
+    const prevBtn = carousel.querySelector(".highlights-nav--prev");
+    const nextBtn = carousel.querySelector(".highlights-nav--next");
 
-    if (!track || !windowEl || !prevButton || !nextButton) return;
+    if (!windowEl || !track || !prevBtn || !nextBtn) return;
 
-    let slides = Array.from(track.children);
-    if (slides.length <= 1) return; // no need for carousel
+    const originalSlides = Array.from(track.children);
+    const realCount = originalSlides.length;
+    if (realCount <= 1) return; // nothing to slide
 
-    // ---- 1. Clone slides for infinite loop ----
-    const firstClone = slides[0].cloneNode(true);
-    const lastClone = slides[slides.length - 1].cloneNode(true);
+    // ---- 1. Clone first & last slide for infinite loop ----
+    const firstClone = originalSlides[0].cloneNode(true);
+    const lastClone = originalSlides[realCount - 1].cloneNode(true);
     firstClone.classList.add("clone");
     lastClone.classList.add("clone");
 
-    track.insertBefore(lastClone, slides[0]);
+    track.insertBefore(lastClone, originalSlides[0]);
     track.appendChild(firstClone);
 
     const allSlides = Array.from(track.children);
-    const realSlideCount = slides.length;
 
-    // ---- 2. Create dots / indicators ----
+    // ---- 2. Measure "stride" (distance from one card to the next) ----
+    function getStride() {
+      if (allSlides.length < 2) {
+        return windowEl.getBoundingClientRect().width;
+      }
+      const rect1 = allSlides[0].getBoundingClientRect();
+      const rect2 = allSlides[1].getBoundingClientRect();
+      return rect2.left - rect1.left; // includes the gap between cards
+    }
+
+    let stride = getStride();
+
+    let index = 1;          // start on first REAL slide (after lastClone)
+    let isAnimating = false;
+
+    // ---- 3. Dots / indicators ----
     let dotsWrapper = carousel.querySelector(".highlights-dots");
     if (!dotsWrapper) {
       dotsWrapper = document.createElement("div");
       dotsWrapper.className = "highlights-dots";
       carousel.appendChild(dotsWrapper);
+    } else {
+      dotsWrapper.innerHTML = "";
     }
 
-    dotsWrapper.innerHTML = "";
     const dots = [];
-    for (let i = 0; i < realSlideCount; i++) {
+    for (let i = 0; i < realCount; i++) {
       const dot = document.createElement("button");
       dot.type = "button";
       dot.className = "highlights-dot";
       dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
       dotsWrapper.appendChild(dot);
       dots.push(dot);
-    }
 
-    let index = 1; // start on first "real" slide (after lastClone)
-    let slideWidth = 0;
-    let isAnimating = false;
-
-    // ---- 3. Measure & position ----
-    function measure() {
-      slideWidth = windowEl.getBoundingClientRect().width;
-      track.style.transition = "none";
-      track.style.transform = `translateX(${-slideWidth * index}px)`;
-      requestAnimationFrame(() => {
-        track.style.transition = "";
+      dot.addEventListener("click", () => {
+        goTo(i + 1); // +1 because index 0 is the cloned last slide
       });
     }
 
-    measure();
-    window.addEventListener("resize", measure);
-
-    function setActiveDot() {
-      const realIndex = (index - 1 + realSlideCount) % realSlideCount; // 0-based
+    function updateDots() {
+      const realIndex = (index - 1 + realCount) % realCount; // 0-based
       dots.forEach((dot, i) => {
         dot.classList.toggle("is-active", i === realIndex);
       });
     }
-    setActiveDot();
 
-    // ---- 4. Core movement helpers ----
-    function goToIndex(newIndex) {
+    // ---- 4. Movement helpers ----
+    function jumpWithoutAnimation(newIndex) {
+      track.style.transition = "none";
+      track.style.transform = `translateX(${-stride * newIndex}px)`;
+      // force a reflow so the browser applies it immediately
+      track.getBoundingClientRect();
+      track.style.transition = "transform 0.35s ease";
+    }
+
+    function goTo(newIndex) {
       if (isAnimating) return;
       isAnimating = true;
       index = newIndex;
-      track.style.transition = "transform 0.4s ease";
-      track.style.transform = `translateX(${-slideWidth * index}px)`;
+      track.style.transform = `translateX(${-stride * index}px)`;
+      updateDots();
     }
 
-    function goToNext() {
-      if (isAnimating) return;
-      goToIndex(index + 1);
+    function goNext() {
+      goTo(index + 1);
     }
 
-    function goToPrev() {
-      if (isAnimating) return;
-      goToIndex(index - 1);
+    function goPrev() {
+      goTo(index - 1);
     }
 
+    // Start positioned on the first real slide
+    jumpWithoutAnimation(index);
+    updateDots();
+
+    // ---- 5. Handle infinite loop snapping ----
     track.addEventListener("transitionend", () => {
-      // If we’re on a clone, snap back to the corresponding real slide
       if (allSlides[index].classList.contains("clone")) {
-        track.style.transition = "none";
-        if (index === allSlides.length - 1) {
-          // at the cloned first slide, snap to real first
+        if (index === 0) {
+          // we slid onto the cloned last slide -> snap to real last
+          index = realCount;
+        } else if (index === allSlides.length - 1) {
+          // we slid onto the cloned first slide -> snap to real first
           index = 1;
-        } else if (index === 0) {
-          // at the cloned last slide, snap to real last
-          index = allSlides.length - 2;
         }
-        track.style.transform = `translateX(${-slideWidth * index}px)`;
+        jumpWithoutAnimation(index);
       }
-
-      setActiveDot();
+      // allow the next animation
       setTimeout(() => {
         isAnimating = false;
       }, 20);
     });
 
-    // ---- 5. Buttons ----
-    nextButton.addEventListener("click", () => {
-      goToNext();
+    // ---- 6. Buttons ----
+    nextBtn.addEventListener("click", goNext);
+    prevBtn.addEventListener("click", goPrev);
+
+    // ---- 7. Resize: recompute stride so cards stay aligned ----
+    window.addEventListener("resize", () => {
+      stride = getStride();
+      jumpWithoutAnimation(index);
     });
-
-    prevButton.addEventListener("click", () => {
-      goToPrev();
-    });
-
-    // ---- 6. Dots click ----
-    dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => {
-        // real slide i corresponds to index i + 1 (because of leading clone)
-        goToIndex(i + 1);
-      });
-    });
-
-    // ---- 7. Swipe / drag (desktop + mobile) ----
-    let isDragging = false;
-    let startX = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
-
-    function getEventClientX(e) {
-      if (e.type.startsWith("touch")) {
-        return e.touches[0].clientX;
-      }
-      return e.clientX;
-    }
-
-    function pointerDown(e) {
-      isDragging = true;
-      track.style.transition = "none";
-      startX = getEventClientX(e);
-      prevTranslate = -slideWidth * index;
-      currentTranslate = prevTranslate;
-
-      window.addEventListener("mousemove", pointerMove);
-      window.addEventListener("mouseup", pointerUp);
-      window.addEventListener("touchmove", pointerMove, { passive: false });
-      window.addEventListener("touchend", pointerUp);
-    }
-
-    function pointerMove(e) {
-      if (!isDragging) return;
-      if (e.type === "touchmove") e.preventDefault();
-
-      const currentX = getEventClientX(e);
-      const deltaX = currentX - startX;
-      currentTranslate = prevTranslate + deltaX;
-      track.style.transform = `translateX(${currentTranslate}px)`;
-    }
-
-    function pointerUp(e) {
-      if (!isDragging) return;
-      isDragging = false;
-
-      const endX = getEventClientX(e);
-      const deltaX = endX - startX;
-      const threshold = slideWidth * 0.25;
-
-      track.style.transition = "transform 0.4s ease";
-
-      if (deltaX < -threshold) {
-        // swipe left => next
-        goToNext();
-      } else if (deltaX > threshold) {
-        // swipe right => prev
-        goToPrev();
-      } else {
-        // snap back
-        track.style.transform = `translateX(${-slideWidth * index}px)`;
-      }
-
-      window.removeEventListener("mousemove", pointerMove);
-      window.removeEventListener("mouseup", pointerUp);
-      window.removeEventListener("touchmove", pointerMove);
-      window.removeEventListener("touchend", pointerUp);
-    }
-
-    windowEl.addEventListener("mousedown", pointerDown);
-    windowEl.addEventListener("touchstart", pointerDown, { passive: true });
-  });
+  }
 });
