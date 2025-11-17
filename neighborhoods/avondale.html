@@ -19,7 +19,7 @@
 
     <main class="main">
 
-      <!-- BIG HERO PHOTO AT TOP -->
+      <!-- FULL-WIDTH HERO PHOTO -->
       <section class="neighborhood-photo-hero">
         <div class="neighborhood-photo-hero-inner">
           <img
@@ -30,61 +30,109 @@
         </div>
       </section>
 
-      <!-- HERO TEXT + SNAPSHOT (NO PHOTO HERE) -->
-      <section class="hero hero--neighborhood-header">
-        <div class="hero-inner">
-          <div class="hero-grid">
-            <!-- Left: label, title, intro -->
-            <div>
-              <div class="hero-label">Chicago neighborhood guide</div>
-              <h1 class="hero-title" style="font-size: 2.9rem;">
-                avondale.
-              </h1>
-              <p class="hero-subtitle">
-                Avondale is a Northwest Side pocket with classic Chicago flats, tree-lined streets,
-                and a growing mix of restaurants, bars, and cafés — close to Logan Square, but a bit
-                more laid-back.
-              </p>
+      <!-- OVERVIEW STACK: BIG INTRO CARD + SNAPSHOT / MAP / STATS -->
+      <section class="section neighborhood-overview-stack">
+        <div class="container">
+
+          <!-- Top: Chicago neighborhood guide + name + blurb -->
+          <div class="neighborhood-intro-card">
+            <div class="hero-label">Chicago neighborhood guide</div>
+            <h1 class="hero-title">avondale.</h1>
+            <p class="hero-subtitle">
+              Avondale is a Northwest Side pocket with classic Chicago flats, tree-lined streets,
+              and a growing mix of restaurants, bars, and cafés — close to Logan Square, but a bit
+              more laid-back.
+            </p>
+          </div>
+
+          <!-- Grid: snapshot + stats (left) and map (right) -->
+          <div class="neighborhood-overview-grid">
+
+            <!-- LEFT COLUMN: snapshot + by-the-numbers -->
+            <div class="neighborhood-overview-left">
+
+              <!-- Snapshot card (area vibe, housing, etc.) -->
+              <aside class="snapshot">
+                <div class="snapshot-item">
+                  <div class="snapshot-label">Area vibe</div>
+                  <div class="snapshot-value">Residential · low-key · up-and-coming</div>
+                </div>
+
+                <div class="snapshot-item">
+                  <div class="snapshot-label">Housing mix</div>
+                  <div class="snapshot-value">
+                    Classic 2- and 3-flats · single-family homes · walk-up condos
+                  </div>
+                </div>
+
+                <div class="snapshot-item">
+                  <div class="snapshot-label">Ideal for</div>
+                  <div class="snapshot-value">
+                    Buyers or renters wanting a quieter neighborhood feel without leaving the city
+                  </div>
+                </div>
+
+                <div class="snapshot-item">
+                  <div class="snapshot-label">Transit access</div>
+                  <div class="snapshot-value">Blue Line · I-90/94 · multiple CTA bus routes</div>
+                </div>
+              </aside>
+
+              <!-- By the numbers (orange box in your mock) -->
+              <aside class="neighborhood-stat-card">
+                <div class="neighborhood-stat-label">By the numbers</div>
+                <div class="neighborhood-stat-metric">
+                  <strong>Approx. population:</strong> around 35,000 residents
+                </div>
+                <div class="neighborhood-stat-metric">
+                  <strong>Median household income:</strong> roughly $92,000
+                </div>
+                <div class="neighborhood-stat-metric">
+                  <strong>Housing feel:</strong> strong mix of vintage 2–4 flats, single-family homes, and walk-up condos
+                </div>
+                <div class="neighborhood-stat-note">
+                  Estimates based on recent neighborhood data – great for a high-level snapshot, not an appraisal.
+                </div>
+              </aside>
+
             </div>
 
-            <!-- Right: snapshot card -->
-            <aside class="snapshot">
-              <div class="snapshot-item">
-                <div class="snapshot-label">Area vibe</div>
-                <div class="snapshot-value">Residential · low-key · up-and-coming</div>
-              </div>
-
-              <div class="snapshot-item">
-                <div class="snapshot-label">Housing mix</div>
-                <div class="snapshot-value">
-                  Classic 2- and 3-flats · single-family homes · walk-up condos
+            <!-- RIGHT COLUMN: map card -->
+            <aside class="neighborhood-map-card">
+              <div class="neighborhood-map-header">
+                <div class="section-heading" style="font-size:1rem; margin-bottom:0.35rem;">
+                  Where you’ll find Avondale
+                </div>
+                <div style="font-size:0.9rem; color:#6a6966;">
+                  Northwest Side · along the Kennedy Expressway and the Blue Line
                 </div>
               </div>
 
-              <div class="snapshot-item">
-                <div class="snapshot-label">Ideal for</div>
-                <div class="snapshot-value">
-                  Buyers or renters wanting a quieter neighborhood feel without leaving the city
-                </div>
+              <div class="neighborhood-map-embed">
+                <!-- Your real Google Maps embed -->
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23742.738322576497!2d-87.75047740890628!3d41.939240150028965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fcd9c32ef66f7%3A0xc59066fecdd34358!2sAvondale%2C%20Chicago%2C%20IL!5e0!3m2!1sen!2sus!4v1763347974693!5m2!1sen!2sus"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
 
-              <div class="snapshot-item">
-                <div class="snapshot-label">Transit access</div>
-                <div class="snapshot-value">
-                  Blue Line · I-90/94 · multiple CTA bus routes
-                </div>
+              <div class="neighborhood-map-meta">
+                <strong>Transit:</strong> Blue Line · I-90/94 · multiple CTA bus routes<br />
+                <strong>Nearby:</strong> Logan Square · Roscoe Village · Irving Park
               </div>
             </aside>
+
           </div>
         </div>
       </section>
 
-      <!-- LIFE IN AVONDALE + MAP -->
-      <section class="section section-neighborhood-intro">
-        <div class="container section-grid two">
-
-          <!-- Left: narrative -->
-          <div>
+      <!-- LIFE IN AVONDALE (full-width card) -->
+      <section class="section">
+        <div class="container">
+          <div class="neighborhood-intro-card--life">
             <h2 class="section-heading">Life in Avondale</h2>
             <p class="section-lede">
               Avondale feels like classic Chicago — calm residential streets, corner staples,
@@ -103,37 +151,10 @@
               Avondale offers a “just-right” mix of neighborhood calm with easy access to the city.
             </p>
           </div>
-
-          <!-- Right: map card -->
-          <aside class="neighborhood-map-card">
-            <div class="neighborhood-map-header">
-              <div class="section-heading" style="font-size:1rem; margin-bottom:0.35rem;">
-                Where you’ll find Avondale
-              </div>
-              <div style="font-size:0.9rem; color:#6a6966;">
-                Northwest Side · along the Kennedy Expressway and the Blue Line
-              </div>
-            </div>
-
-            <div class="neighborhood-map-embed">
-              <!-- Your real Google Maps embed -->
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23742.738322576497!2d-87.75047740890628!3d41.939240150028965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fcd9c32ef66f7%3A0xc59066fecdd34358!2sAvondale%2C%20Chicago%2C%20IL!5e0!3m2!1sen!2sus!4v1763347974693!5m2!1sen!2sus"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-
-            <div class="neighborhood-map-meta">
-              <strong>Transit:</strong> Blue Line · I-90/94 · multiple CTA bus routes<br />
-              <strong>Nearby:</strong> Logan Square · Roscoe Village · Irving Park
-            </div>
-          </aside>
-
         </div>
       </section>
 
-      <!-- NEIGHBORHOOD HIGHLIGHTS (TILE CARDS) -->
+      <!-- HIGHLIGHTS GRID -->
       <section class="section neighborhood-highlights">
         <div class="container">
           <div class="neighborhood-highlights-intro">
@@ -145,6 +166,7 @@
           </div>
 
           <div class="highlight-grid">
+
             <!-- Highlight 1: Revolution Brewing Taproom -->
             <article class="highlight-card">
               <div class="highlight-image">
@@ -216,6 +238,7 @@
                 </div>
               </div>
             </article>
+
           </div>
         </div>
       </section>
