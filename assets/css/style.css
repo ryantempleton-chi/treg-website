@@ -1457,3 +1457,48 @@ li + li {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ========================= */
+/* NEIGHBORHOOD — BY THE NUMBERS CARD */
+/* ========================= */
+
+.neighborhood-numbers-card {
+  background: #ffffff;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.neighborhood-numbers-header {
+  margin-bottom: 0.65rem;
+}
+
+.neighborhood-numbers-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.numbers-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.numbers-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
+}
+
+.numbers-value {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--treg-charcoal);
+}
+
