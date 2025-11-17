@@ -761,14 +761,13 @@ li + li {
 }
 
 /* ========================= */
-/* NEIGHBORHOOD HIGHLIGHTS   */
+/* NEIGHBORHOOD HIGHLIGHTS – CAROUSEL */
 /* ========================= */
 
 .neighborhood-highlights {
-  padding: 2.25rem 0 2.75rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.04);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   background: #faf7f1;
+  padding: 2.25rem 0 2.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .neighborhood-highlights-intro {
@@ -780,7 +779,32 @@ li + li {
   margin-bottom: 0.4rem;
 }
 
-/* Base card styling for highlights */
+/* Carousel wrapper */
+.highlights-carousel {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+/* Visible window */
+.highlights-window {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Track holds all slides horizontally */
+.highlights-track {
+  display: flex;
+  gap: 1.4rem;
+  will-change: transform;
+}
+
+/* Each card/slide */
+.highlights-track .highlight-card {
+  flex: 0 0 320px;
+  max-width: 320px;
+}
+
+/* Card styling (same look everywhere) */
 .highlight-card {
   background: #ffffff;
   border-radius: 1rem;
@@ -800,7 +824,7 @@ li + li {
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-/* Top: image */
+/* Image */
 .highlight-image {
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -820,7 +844,7 @@ li + li {
   transform: scale(1.06);
 }
 
-/* Bottom: text block */
+/* Text body */
 .highlight-body {
   padding: 1rem 1.15rem 1.2rem;
 }
@@ -841,7 +865,6 @@ li + li {
   margin: 0 0 0.6rem;
 }
 
-/* Meta line for website / socials / address */
 .highlight-meta {
   font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.78rem;
@@ -860,6 +883,75 @@ li + li {
 .highlight-meta a:hover {
   border-bottom-color: var(--treg-charcoal);
 }
+
+/* Prev / next buttons */
+.highlights-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--treg-charcoal);
+  z-index: 5; /* keep arrows above cards */
+}
+
+.highlights-nav--prev {
+  left: 0.25rem;
+}
+
+.highlights-nav--next {
+  right: 0.25rem;
+}
+
+.highlights-nav:focus-visible {
+  outline: 2px solid var(--treg-charcoal);
+  outline-offset: 2px;
+}
+
+/* Dots */
+.highlights-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.highlights-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.highlights-dot.is-active {
+  width: 16px;
+  background: var(--treg-charcoal);
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  .highlights-track .highlight-card {
+    flex: 0 0 260px;
+    max-width: 260px;
+  }
+
+  .highlights-nav {
+    display: none; /* rely on swipe on phones */
+  }
+}
+
 
 /* ========================= */
 /* HIGHLIGHTS – CAROUSEL     */
