@@ -1335,3 +1335,49 @@ li + li {
     max-height: none;
   }
 }
+
+/* ========================= */
+/* NEIGHBORHOOD HERO WITH    */
+/* INLINE FULL-WIDTH PHOTO   */
+/* ========================= */
+
+.hero-with-photo {
+  background: var(--treg-cream);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  padding-bottom: 2.5rem;
+}
+
+/* Full-width image at the top of the section */
+.hero-photo-full {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  margin: 0 auto 1.75rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+
+  /* TREG bright filter */
+  filter: brightness(1.05) contrast(1.04) saturate(1.06);
+}
+
+/* Pull the text a bit closer to the photo */
+.hero-with-photo .hero-inner {
+  padding-top: 0;
+}
+
+/* Make neighborhood name pop more on these pages */
+.hero-with-photo .hero-title {
+  font-size: 2.8rem;
+}
+
+@media (max-width: 640px) {
+  .hero-photo-full {
+    max-height: 260px;
+    border-radius: 12px;
+  }
+
+  .hero-with-photo .hero-title {
+    font-size: 2.3rem;
+  }
+}
