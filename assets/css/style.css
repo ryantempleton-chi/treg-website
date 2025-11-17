@@ -1468,11 +1468,11 @@ li + li {
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  padding: 1rem 1.25rem 1.25rem;
+  padding: 1rem 1.25rem 1.4rem;
 }
 
 .neighborhood-numbers-header {
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.75rem;
 }
 
 .neighborhood-numbers-body {
@@ -1502,3 +1502,12 @@ li + li {
   color: var(--treg-charcoal);
 }
 
+/* Disclaimer text */
+.numbers-disclaimer {
+  margin-top: 1rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--treg-slate);
+  opacity: 0.85;
+}
