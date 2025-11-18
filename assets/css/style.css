@@ -1532,6 +1532,36 @@ li + li {
   margin-right: 0;
 }
 
+/* small rating strip above review cards */
+.reviews-rating-summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.55rem;
+  margin-bottom: 1.6rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--treg-slate);
+}
+
+.reviews-rating-score {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1rem;
+  color: var(--treg-charcoal);
+}
+
+.reviews-rating-stars {
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  color: #f2a300; /* star gold */
+}
+
+.reviews-rating-label {
+  opacity: 0.9;
+}
+
 /* ============= */
 /* REVIEWS GRID  */
 /* ============= */
