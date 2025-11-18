@@ -1798,3 +1798,19 @@ li + li {
   text-transform: lowercase;
   letter-spacing: 0.08em;
 }
+
+/* Enhanced emphasis for BUY / SELL / RENT labels */
+.section-services .card-label {
+  font-size: 1.45rem;        /* make these BIG — feel free to adjust */
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;    /* reduces the space before the subtitle */
+  color: var(--treg-slate);
+  font-weight: 600;          /* stronger visual presence */
+}
+
+/* Tighter spacing for subtitles (for buyers. etc.) */
+.section-services .card-title {
+  margin-top: 0rem;         /* pulls subtitle closer to BUY/SELL/RENT */
+  margin-bottom: 0.85rem;   /* gentle spacing before body text */
+}
