@@ -1830,3 +1830,13 @@ li + li {
   margin-top: 0rem;
   margin-bottom: 0.85rem;
 }
+
+/* Larger (but still thin) BUY / SELL / RENT labels */
+.section-services .card-label {
+  font-size: 1.75rem;        /* bumped up for stronger visual presence */
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  color: var(--treg-slate);
+  font-weight: 400;          /* keep the thin, elegant weight */
+}
