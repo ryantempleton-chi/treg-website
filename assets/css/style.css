@@ -1044,3 +1044,107 @@ li + li {
   letter-spacing: 0.14em;
   color: var(--treg-slate);
 }
+/* ========================= */
+/* REVIEWS / TESTIMONIALS    */
+/* ========================= */
+
+.reviews-summary {
+  margin-top: 1.5rem;
+  padding: 1rem 1.2rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.reviews-summary-main {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.reviews-stars {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #f2a300; /* star gold */
+}
+
+.reviews-summary-text {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: var(--treg-slate);
+}
+
+.reviews-summary-cta .btn {
+  white-space: nowrap;
+}
+
+/* Testimonials grid */
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.4rem 1.5rem 1.5rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.testimonial-type {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+}
+
+.testimonial-name {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+  color: var(--treg-charcoal);
+}
+
+.testimonial-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--treg-slate);
+  margin: 0;
+}
+
+.testimonial-meta {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--treg-slate);
+  opacity: 0.9;
+  margin-top: 0.2rem;
+}
+
+.reviews-bottom-cta {
+  margin-top: 2.25rem;
+  text-align: center;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reviews-bottom-cta p {
+  margin: 0;
+  color: var(--treg-slate);
+}
