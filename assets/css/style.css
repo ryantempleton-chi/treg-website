@@ -378,16 +378,6 @@ body {
 /* SECTIONS / GRID / LISTS   */
 /* ========================= */
 
-.section {
-  padding: 2.25rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.section:last-of-type {
-  border-bottom: none;
-  padding-bottom: 3rem;
-}
-
 .section-heading {
   font-family: "Oswald", system-ui, sans-serif;
   font-size: 1.3rem;
@@ -454,50 +444,6 @@ li + li {
   letter-spacing: 0.12em;
   color: var(--treg-slate);
   margin-bottom: 1rem;
-}
-
-/* ========================= */
-/* BUTTONS                   */
-/* ========================= */
-
-.btn-row {
-  margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.55rem 1.4rem;
-  border-radius: 999px;
-  border: 1px solid var(--treg-charcoal);
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background: var(--treg-charcoal);
-  color: var(--treg-cream);
-}
-
-.btn-primary:hover {
-  background: #3a3327;
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--treg-charcoal);
-}
-
-.btn-ghost:hover {
-  background: rgba(0, 0, 0, 0.03);
 }
 
 /* ========================= */
@@ -1312,6 +1258,7 @@ li + li {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
 /* ======================================= */
 /* GLOBAL SECTIONS & TYPOGRAPHY FOR HOMEPAGE */
 /* ======================================= */
@@ -1506,14 +1453,6 @@ li + li {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
-}
-
-.neighborhood-card {
-  background: #ffffff;
-  border-radius: 1.2rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.6rem 1.6rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
 }
 
 .neighborhood-tag {
@@ -1773,17 +1712,14 @@ li + li {
   }
 }
 
-/* Services cards layout & CTA buttons on homepage */
+/* ======================================= */
+/* HOMEPAGE – SERVICES CARDS TUNING        */
+/* ======================================= */
 
+/* Layout + CTA buttons in cards */
 .section-services .card {
   display: flex;
   flex-direction: column;
-}
-
-.section-services .card-label {
-  font-size: 1rem;
-  letter-spacing: 0.18em;
-  margin-bottom: 0.6rem;
 }
 
 .card-footer {
@@ -1799,44 +1735,18 @@ li + li {
   letter-spacing: 0.08em;
 }
 
-/* Enhanced emphasis for BUY / SELL / RENT labels */
-.section-services .card-label {
-  font-size: 1.45rem;        /* make these BIG — feel free to adjust */
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;    /* reduces the space before the subtitle */
-  color: var(--treg-slate);
-  font-weight: 600;          /* stronger visual presence */
-}
+/* BUY / SELL / RENT label + subtitle tuning */
 
-/* Tighter spacing for subtitles (for buyers. etc.) */
-.section-services .card-title {
-  margin-top: 0rem;         /* pulls subtitle closer to BUY/SELL/RENT */
-  margin-bottom: 0.85rem;   /* gentle spacing before body text */
-}
-
-/* Enhanced emphasis for BUY / SELL / RENT labels — LARGE but NOT BOLD */
 .section-services .card-label {
-  font-size: 1.45rem;        /* large and prominent */
+  font-size: 1.75rem;        /* large and prominent */
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin-bottom: 0.25rem;    /* tighter pairing with subtitle */
   color: var(--treg-slate);
-  font-weight: 400;          /* <-- restores the thinner look */
+  font-weight: 400;          /* keep the thin, elegant look */
 }
 
-/* Tighter spacing for subtitles */
 .section-services .card-title {
-  margin-top: 0rem;
-  margin-bottom: 0.85rem;
-}
-
-/* Larger (but still thin) BUY / SELL / RENT labels */
-.section-services .card-label {
-  font-size: 1.75rem;        /* bumped up for stronger visual presence */
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
-  color: var(--treg-slate);
-  font-weight: 400;          /* keep the thin, elegant weight */
+  margin-top: 0rem;          /* pulls subtitle closer to BUY/SELL/RENT */
+  margin-bottom: 0.85rem;    /* gentle spacing before body text */
 }
