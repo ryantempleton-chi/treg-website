@@ -1294,7 +1294,7 @@ li + li {
 .section-title {
   font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  font-size: 3.0rem;
+  font-size: 2.8rem;
   line-height: 1.2;
   text-transform: lowercase;
   color: var(--treg-charcoal);
@@ -1686,7 +1686,7 @@ li + li {
   }
 
   .section-title {
-    font-size: 1.7rem;
+    font-size: 2.2rem;
   }
 
   .section-header {
