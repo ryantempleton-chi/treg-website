@@ -1814,3 +1814,19 @@ li + li {
   margin-top: 0rem;         /* pulls subtitle closer to BUY/SELL/RENT */
   margin-bottom: 0.85rem;   /* gentle spacing before body text */
 }
+
+/* Enhanced emphasis for BUY / SELL / RENT labels — LARGE but NOT BOLD */
+.section-services .card-label {
+  font-size: 1.45rem;        /* large and prominent */
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;    /* tighter pairing with subtitle */
+  color: var(--treg-slate);
+  font-weight: 400;          /* <-- restores the thinner look */
+}
+
+/* Tighter spacing for subtitles */
+.section-services .card-title {
+  margin-top: 0rem;
+  margin-bottom: 0.85rem;
+}
