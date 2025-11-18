@@ -788,6 +788,7 @@ li + li {
 .highlights-window {
   position: relative;
   overflow: hidden;
+  padding: 0 3.25rem; /* space so arrows sit off the card edges */
 }
 
 /* Track holds all slides horizontally (moved via JS translateX) */
@@ -798,10 +799,10 @@ li + li {
   will-change: transform;
 }
 
-/* Each slide occupies one "window width" (JS uses window width as stride) */
+/* Each slide is a fixed-width tile so ~3 fit in the window on desktop */
 .highlights-track .highlight-card {
-  flex: 0 0 100%;
-  max-width: 100%;
+  flex: 0 0 320px;
+  max-width: 320px;
 }
 
 /* Card styling (used inside carousel and consistent site-wide) */
