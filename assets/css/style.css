@@ -1772,3 +1772,29 @@ li + li {
     text-align: left;
   }
 }
+
+/* Services cards layout & CTA buttons on homepage */
+
+.section-services .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-services .card-label {
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.6rem;
+}
+
+.card-footer {
+  margin-top: auto;         /* pushes footer to bottom of card */
+  text-align: right;
+  padding-top: 0.75rem;
+}
+
+.btn-card {
+  padding: 0.45rem 1.15rem;
+  font-size: 0.78rem;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+}
