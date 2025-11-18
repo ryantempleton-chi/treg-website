@@ -1311,7 +1311,7 @@ li + li {
   line-height: 1.2;
   text-transform: lowercase;
   color: var(--treg-charcoal);
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.12rem 0 0.55rem;
 }
 
 .section-intro {
