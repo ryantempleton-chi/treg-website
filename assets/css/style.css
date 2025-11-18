@@ -1,4 +1,8 @@
-/* Base styles: colors from TREG brand */
+/* ======================================= */
+/* BASE STYLES – TREG BRAND                */
+/* ======================================= */
+
+/* Brand colors */
 :root {
   --treg-charcoal: #1e180d;
   --treg-slate: #373a3a;
@@ -1260,7 +1264,7 @@ li + li {
 }
 
 /* ======================================= */
-/* GLOBAL SECTIONS & TYPOGRAPHY FOR HOMEPAGE */
+/* GLOBAL SECTIONS & TYPOGRAPHY (HOMEPAGE) */
 /* ======================================= */
 
 .section {
@@ -1282,19 +1286,28 @@ li + li {
   margin-bottom: 1.5rem;
 }
 
+/* base eyebrow, if used outside section-header */
 .eyebrow {
   font-family: "Oswald", system-ui, sans-serif;
-  font-size: 1.6rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   color: var(--treg-slate);
-  margin-bottom: 0.05rem;
+  margin-bottom: 0.35rem;
+}
+
+/* STRONGER eyebrow for HOW WE HELP / WHAT CLIENTS ARE SAYING / READY WHEN YOU ARE */
+.section-header .eyebrow {
+  font-size: 1.8rem;          /* really prominent */
+  letter-spacing: 0.2em;
+  margin-bottom: 0.05rem;     /* very tight gap before big title */
+  line-height: 1.1;
 }
 
 .section-title {
   font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.2rem;          /* slightly larger to lead */
   line-height: 1.2;
   text-transform: lowercase;
   color: var(--treg-charcoal);
@@ -1679,11 +1692,6 @@ li + li {
   .stats-grid {
     grid-template-columns: minmax(0, 1fr);
   }
-  
-    .eyebrow {
-    font-size: 1.2rem;        /* keeps it big but manageable on mobile */
-    margin-bottom: 0.05rem;
-  }
 
   .section-inner,
   .section-inner-cta {
@@ -1691,11 +1699,16 @@ li + li {
   }
 
   .section-title {
-    font-size: 1.9rem;
+    font-size: 1.9rem;          /* keep hierarchy on mobile */
   }
 
   .section-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .section-header .eyebrow {
+    font-size: 1.4rem;
+    margin-bottom: 0.05rem;
   }
 
   .section-cta-row {
