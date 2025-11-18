@@ -1279,22 +1279,22 @@ li + li {
 }
 
 .section-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .eyebrow {
   font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.8rem;
+  font-size: 1.25rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.2em;
   color: var(--treg-slate);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
 }
 
 .section-title {
   font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  font-size: 2.8rem;
+  font-size: 2rem;
   line-height: 1.2;
   text-transform: lowercase;
   color: var(--treg-charcoal);
@@ -1686,7 +1686,7 @@ li + li {
   }
 
   .section-title {
-    font-size: 2.2rem;
+    font-size: 1.7rem;
   }
 
   .section-header {
