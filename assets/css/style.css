@@ -1778,7 +1778,7 @@ li + li {
 .section-reviews .eyebrow,
 .section-cta .eyebrow {
   font-family: "Oswald", system-ui, sans-serif;
-  font-size: 1.4rem;      /* much larger */
+  font-size: 1.1rem;      /* much larger */
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--treg-slate);
