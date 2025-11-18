@@ -1044,6 +1044,17 @@ li + li {
   letter-spacing: 0.14em;
   color: var(--treg-slate);
 }
+
+.footer-links a {
+  color: var(--treg-charcoal);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 /* ========================= */
 /* REVIEWS / TESTIMONIALS    */
 /* ========================= */
