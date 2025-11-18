@@ -1284,17 +1284,17 @@ li + li {
 
 .eyebrow {
   font-family: "Oswald", system-ui, sans-serif;
-  font-size: 1.25rem;
+  font-size: 2.0rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--treg-slate);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
 }
 
 .section-title {
   font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  font-size: 2rem;
+  font-size: 2.2rem;
   line-height: 1.2;
   text-transform: lowercase;
   color: var(--treg-charcoal);
@@ -1686,7 +1686,7 @@ li + li {
   }
 
   .section-title {
-    font-size: 1.7rem;
+    font-size: 1.9rem;
   }
 
   .section-header {
