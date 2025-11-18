@@ -1510,30 +1510,70 @@ li + li {
   color: var(--treg-slate);
 }
 
+/* SPECIAL LAYOUT FOR REVIEWS SECTION */
+.section-reviews {
+  background: #ffffff; /* white band to contrast services section */
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.section-reviews .section-inner {
+  max-width: 1000px;
+}
+
+.section-reviews .section-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.section-reviews .section-intro {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ============= */
 /* REVIEWS GRID  */
 /* ============= */
 
 .reviews-preview {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns instead of 3 */
   gap: 1.5rem;
+}
+
+/* make the last review span full width on desktop for variety */
+.reviews-preview .review-card:last-child {
+  grid-column: span 2;
 }
 
 .review-card {
   background: #ffffff;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.6rem 1.6rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  border-radius: 1.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.6rem 1.7rem 1.7rem;
+  box-shadow: none;                 /* lighter than services cards */
+  position: relative;
+}
+
+/* big soft quote mark in the corner */
+.review-card::before {
+  content: "“";
+  position: absolute;
+  top: 0.4rem;
+  left: 1.2rem;
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.06);
 }
 
 .review-body {
   font-family: "PT Serif", Georgia, serif;
-  font-size: 0.95rem;
+  font-size: 0.96rem;
   line-height: 1.7;
   color: var(--treg-charcoal);
   margin-bottom: 0.9rem;
+  font-style: italic;
 }
 
 .review-meta {
