@@ -235,18 +235,10 @@ body {
   position: relative;
   min-height: 70vh;
   color: #ffffff;
-  background-image: url("/assets/img/hero-chicago.jpg");
-  background-size: cover;
-  background-position: center center;
-}
 
-.home-hero-overlay {
-  width: 100%;
-  height: 100%;
-
-  /* Extended fade so no line appears mid-image */
+  /* Image + gradients all on ONE element */
   background:
-    /* Vertical fade — extended much lower */
+    /* vertical fade */
     linear-gradient(
       to bottom,
       rgba(10, 7, 3, 0.48) 0%,
@@ -255,15 +247,25 @@ body {
       rgba(10, 7, 3, 0.12) 88%,
       rgba(10, 7, 3, 0.08) 100%
     ),
-
-    /* Horizontal fade (unchanged) */
+    /* horizontal fade */
     linear-gradient(
       to right,
       rgba(10, 7, 3, 0.55) 0%,
       rgba(10, 7, 3, 0.30) 40%,
       rgba(10, 7, 3, 0.16) 75%,
       rgba(10, 7, 3, 0.10) 100%
-    );
+    ),
+    url("/assets/img/hero-chicago.jpg");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.home-hero-overlay {
+  width: 100%;
+  height: 100%;
+  background: none;  /* gradients now live on .home-hero */
 }
 
 .home-hero-inner {
