@@ -241,15 +241,9 @@ body {
 }
 
 .home-hero-overlay {
-  background: linear-gradient(
-      to bottom,
-      rgba(10, 7, 3, 0.6) 0%,
-      rgba(10, 7, 3, 0.45) 40%,
-      rgba(10, 7, 3, 0.25) 70%,
-      rgba(10, 7, 3, 0.15) 100%
-  );
-  width: 100%;
-  height: 100%;
+  background:
+    linear-gradient(to bottom, rgba(10,7,3,0.45), rgba(10,7,3,0.1)),
+    linear-gradient(to right, rgba(10,7,3,0.55), rgba(10,7,3,0.15));
 }
 
 .home-hero-inner {
