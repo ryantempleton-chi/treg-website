@@ -1624,11 +1624,6 @@ li + li {
   margin-top: 1.75rem;
 }
 
-/* make the last review span full width on desktop for variety */
-.reviews-preview .review-card:last-child {
-  grid-column: span 2;
-}
-
 .review-card {
   background: #ffffff;
   border-radius: 1.1rem;
