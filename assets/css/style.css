@@ -1899,20 +1899,6 @@ li + li {
   margin-top: 0rem;          /* pulls subtitle closer to BUY/SELL/RENT */
   margin-bottom: 0.85rem;    /* gentle spacing before body text */
 }
-/* Tan buttons for HOW WE HELP cards only */
-.section-services .btn-card {
-  background-color: var(--treg-bronze);
-  border-color: var(--treg-bronze);
-  color: var(--treg-charcoal);
-}
-
-/* Hover / focus state */
-.section-services .btn-card:hover,
-.section-services .btn-card:focus {
-  background-color: var(--treg-charcoal);
-  border-color: var(--treg-charcoal);
-  color: #ffffff;
-}
 
 /* ======================================= */
 /* FORCE HOMEPAGE EYEBROWS + TIGHTER GAP   */
