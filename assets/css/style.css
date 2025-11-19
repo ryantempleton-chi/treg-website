@@ -1884,6 +1884,22 @@ li + li {
   letter-spacing: 0.08em;
 }
 
+/* HOW WE HELP card buttons — black default, bronze on hover */
+.section-services .btn-card {
+  background-color: var(--treg-charcoal);   /* black */
+  border-color: var(--treg-charcoal);
+  color: #ffffff;                           /* white text */
+  transition: all 0.25s ease;
+}
+
+/* Hover → bronze background, white text */
+.section-services .btn-card:hover,
+.section-services .btn-card:focus {
+  background-color: var(--treg-bronze);
+  border-color: var(--treg-bronze);
+  color: #ffffff;
+}
+
 /* BUY / SELL / RENT label + subtitle tuning */
 
 .section-services .card-label {
