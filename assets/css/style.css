@@ -61,10 +61,15 @@ body {
 }
 
 .logo-img {
--  max-height: 42px;
-+  max-height: 52px;   /* or 52px if you want a hair smaller */
+  height: 48px;          /* tweak to 42 / 50 later if you want */
   width: auto;
   display: block;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  max-height: 48px;
 }
 
 .nav {
