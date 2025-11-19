@@ -287,6 +287,14 @@ body {
   margin-bottom: 1.75rem;
 }
 
+/* Home hero label tuning */
+.home-hero .hero-label {
+  font-size: 0.85rem;          /* was 0.7rem */
+  letter-spacing: 0.18em;      /* tiny bit more presence */
+  font-weight: 500;            /* subtle bold */
+  text-transform: uppercase;
+}
+
 /* Buttons inside hero */
 .hero .btn-primary,
 .hero .btn-ghost,
