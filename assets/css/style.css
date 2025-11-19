@@ -1661,14 +1661,16 @@ li + li {
 
 .review-meta {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem;
+  justify-content: flex-end;     /* push name to the right */
   font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--treg-slate);
+}
+
+.review-name {
+  text-align: right;
 }
 
 /* center the reviews CTA button and make it feel a bit bolder */
