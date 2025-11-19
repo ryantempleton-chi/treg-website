@@ -1940,3 +1940,14 @@ li + li {
   margin-top: 0.1rem;     /* kills the big default top margin */
   margin-bottom: 0.55rem; /* keep existing bottom spacing */
 }
+
+/* Right-align the "read more client reviews" button ONLY in the reviews section */
+.section-reviews .section-cta-row {
+  display: flex;
+  justify-content: flex-end;   /* push button to the right */
+  padding-right: 2rem;         /* optional: offset from the right edge */
+}
+
+.section-reviews .section-cta-row .btn {
+  margin-left: auto;           /* ensures it's fully right-aligned */
+}
