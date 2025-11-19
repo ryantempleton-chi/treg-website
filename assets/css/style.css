@@ -1562,14 +1562,66 @@ li + li {
   opacity: 0.9;
 }
 
+/* rating / stats strip above review cards */
+.reviews-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.reviews-stat-card {
+  border-radius: 999px;
+  border: 1px solid var(--treg-charcoal);
+  padding: 0.7rem 1.4rem;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.reviews-stat-value {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--treg-charcoal);
+}
+
+.reviews-stat-stars {
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  color: #f2a300; /* star gold */
+  margin-left: 0.3rem;
+}
+
+.reviews-stat-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--treg-slate);
+  margin-top: 0.18rem;
+}
+
+/* stack stats on small screens */
+@media (max-width: 720px) {
+  .reviews-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* ============= */
 /* REVIEWS GRID  */
 /* ============= */
 
 .reviews-preview {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns instead of 3 */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
+  margin-top: 1.75rem;
 }
 
 /* make the last review span full width on desktop for variety */
@@ -1617,6 +1669,17 @@ li + li {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--treg-slate);
+}
+
+/* center the reviews CTA button and make it feel a bit bolder */
+.section-reviews .section-cta-row {
+  justify-content: center;
+  margin-top: 2.25rem;
+}
+
+.reviews-cta-btn {
+  padding: 0.9rem 2.6rem;
+  font-size: 0.92rem;
 }
 
 /* ============= */
