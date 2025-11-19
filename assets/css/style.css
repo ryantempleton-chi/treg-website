@@ -61,7 +61,8 @@ body {
 }
 
 .logo-img {
-  max-height: 42px;
+-  max-height: 42px;
++  max-height: 56px;   /* or 52px if you want a hair smaller */
   width: auto;
   display: block;
 }
