@@ -2227,3 +2227,31 @@ li + li {
 .team-card {
   padding: 1.25rem 1.35rem 1.35rem;  /* was 1.4/1.5/1.6 */
 }
+/* ======================================= */
+/* FORCE "ABOUT PAGE" LINK TO STAY TEXT    */
+/* ======================================= */
+
+/* Any inline text link inside intro copy */
+.section p a,
+.section-lede a {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  color: var(--treg-charcoal);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+/* Hover stays text-only */
+.section p a:hover,
+.section-lede a:hover {
+  background: none !important;
+  color: var(--treg-charcoal);
+}
