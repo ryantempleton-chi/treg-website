@@ -962,6 +962,12 @@ li + li {
   padding: 1.4rem 1.5rem 1.6rem;
 }
 
+.team-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
 .team-card-title {
   font-family: "League Spartan", system-ui, sans-serif;
   font-size: 1.1rem;
@@ -997,6 +1003,20 @@ li + li {
 
 .team-card-link:hover {
   border-bottom-color: var(--treg-charcoal);
+}
+
+/* Full-card clickable overlay */
+.team-card-link-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  text-indent: -9999px; /* accessible, but invisible */
+  overflow: hidden;
+}
+
+/* Make it feel clickable */
+.team-card {
+  cursor: pointer;
 }
 
 /* ========================= */
