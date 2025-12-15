@@ -2118,15 +2118,22 @@ li + li {
   transform: scale(1.06);
 }
 
-/* Whole-card clickable overlay link */
-.team-card-link-overlay {
-  position: absolute;
-  inset: 0;
+.team-card { position: relative; cursor: pointer; }
+
+.team-card-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
   border-radius: 0.9rem;
-  z-index: 1;
-  text-indent: -9999px;
-  overflow: hidden;
+  text-decoration:none;
 }
+
+.team-card a:not(.team-card-overlay){
+  position:relative;
+  z-index:2;
+}
+
+.team-card-overlay:hover{ text-decoration:none; }
 
 /* Keep real links above overlay so they still work */
 .team-card a,
