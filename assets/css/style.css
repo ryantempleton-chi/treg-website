@@ -19,8 +19,8 @@
 
 body {
   margin: 0;
-  font-family: "PT Serif", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: "PT Serif", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   background: var(--treg-cream);
   color: var(--treg-charcoal);
 }
@@ -61,7 +61,7 @@ body {
 }
 
 .logo-img {
-  height: 48px;          /* tweak to 42 / 50 later if you want */
+  height: 48px;
   width: auto;
   display: block;
 }
@@ -163,8 +163,8 @@ body {
 .nav-dropdown-link {
   display: block;
   padding: 0.5rem 1rem;
-  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   font-size: 0.9rem;
   text-transform: none;
   color: #1e180d;
@@ -216,202 +216,13 @@ body {
   color: var(--treg-slate);
 }
 
-/* Hero layout grid (for neighborhoods, if needed) */
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-@media (max-width: 800px) {
-  .hero-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-/* Homepage full-bleed hero */
-.home-hero {
-  position: relative;
-  min-height: 70vh;
-  color: #ffffff;
-
-  /* Image + gradients all on ONE element */
-  background:
-    /* vertical fade */
-    linear-gradient(
-      to bottom,
-      rgba(10, 7, 3, 0.48) 0%,
-      rgba(10, 7, 3, 0.38) 35%,
-      rgba(10, 7, 3, 0.22) 70%,
-      rgba(10, 7, 3, 0.12) 88%,
-      rgba(10, 7, 3, 0.08) 100%
-    ),
-    /* horizontal fade */
-    linear-gradient(
-      to right,
-      rgba(10, 7, 3, 0.55) 0%,
-      rgba(10, 7, 3, 0.30) 40%,
-      rgba(10, 7, 3, 0.16) 75%,
-      rgba(10, 7, 3, 0.10) 100%
-    ),
-    url("/assets/img/hero-chicago.jpg");
-
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.home-hero-overlay {
-  width: 100%;
-  height: 100%;
-  background: none;  /* gradients now live on .home-hero */
-}
-
-.home-hero-inner {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.home-hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.home-hero-text {
-  text-align: right;
-  max-width: 840px;
-  margin-left: auto;
-  background: rgba(255, 255, 255, 0.12);
-  padding: 2.3rem 2.9rem;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
-}
-
-.home-hero-title {
-  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: clamp(2.2rem, 3vw + 1.4rem, 3.1rem);
-  line-height: 1.12;
-  text-transform: lowercase;
-  margin: 0.6rem 0 1rem;
-}
-
-.home-hero-subtitle {
-  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  max-width: 40rem;
-  margin-left: auto;
-  margin-bottom: 1.75rem;
-}
-
-/* Home hero label tuning */
-.home-hero .hero-label {
-  font-size: 0.85rem;          /* was 0.7rem */
-  letter-spacing: 0.18em;      /* tiny bit more presence */
-  font-weight: 500;            /* subtle bold */
-  text-transform: uppercase;
-}
-
-/* Buttons inside hero */
-.hero .btn-primary,
-.hero .btn-ghost,
-.hero .btn-white {
-  font-size: 0.9rem;
-  padding: 0.5rem 1.3rem;
-  white-space: nowrap;
-}
-
-/* White button specifically for hero / calls-to-action */
-.btn-white {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid var(--treg-charcoal);
-  color: var(--treg-charcoal);
-  font-size: 0.9rem;
-  padding: 0.5rem 1.3rem;
-  white-space: nowrap;
-  border-radius: 999px;
-  text-decoration: none;
-}
-
-.btn-white:hover {
-  background: #ffffff;
-}
-
-/* Keep hero buttons aligned */
-.hero .btn-row {
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  gap: 0.75rem;
-}
-
-@media (max-width: 640px) {
-  .hero .btn-row {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-}
-
-/* ========================= */
-/* NEIGHBORHOOD HERO IMAGE   */
-/* ========================= */
-
-.neighborhood-photo-hero {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  background: #111; /* mostly covered by photo */
-}
-
-.neighborhood-photo-hero-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 1.5rem 1.25rem 0;
-}
-
-.neighborhood-photo-hero-img {
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
-  border-radius: 14px;
-  display: block;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-}
-
-/* ========================= */
-/* SNAPSHOT CARD             */
-/* ========================= */
-
-.snapshot {
-  background: #ffffff;
-  border-radius: 0.9rem;
-  padding: 1rem 1.1rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.snapshot-item + .snapshot-item {
-  margin-top: 0.75rem;
-}
-
-.snapshot-label {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-}
-
-.snapshot-value {
-  font-size: 0.9rem;
-  margin-top: 0.12rem;
-}
-
 /* ========================= */
 /* SECTIONS / GRID / LISTS   */
 /* ========================= */
+
+.section {
+  padding: 3rem 0;
+}
 
 .section-heading {
   font-family: "Oswald", system-ui, sans-serif;
@@ -466,12 +277,6 @@ li + li {
   margin-bottom: 0.5rem;
 }
 
-.section-cta-text {
-  max-width: 640px;
-  margin: 0 auto 0.75rem;
-  color: var(--treg-slate);
-}
-
 .section-cta-meta {
   font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.8rem;
@@ -482,463 +287,7 @@ li + li {
 }
 
 /* ========================= */
-/* NEIGHBORHOOD CARDS (HOME) */
-/* ========================= */
-
-.neighborhood-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 1rem;
-}
-
-.neighborhood-card {
-  background: #ffffff;
-  border-radius: 0.9rem;
-  padding: 1rem 1.1rem 1.2rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.neighborhood-card h3 {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0 0 0.2rem;
-}
-
-.neighborhood-card p {
-  margin: 0.3rem 0 0.8rem;
-  font-size: 0.9rem;
-  color: var(--treg-slate);
-}
-
-.neighborhood-card a {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  text-decoration: none;
-  color: var(--treg-charcoal);
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 0.03rem;
-}
-
-.neighborhood-card a:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-
-/* ========================= */
-/* NEIGHBORHOOD TILE GRID    */
-/* ========================= */
-
-.neighborhoods-hero {
-  padding-top: 2.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.neighborhoods-intro {
-  max-width: 720px;
-  margin: 0 auto 2rem;
-  text-align: center;
-}
-
-.neighborhoods-intro h1 {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 2.2rem;
-  text-transform: lowercase;
-  margin: 0 0 0.5rem;
-}
-
-.neighborhoods-intro p {
-  margin: 0;
-  color: var(--treg-slate);
-}
-
-/* Tile grid */
-
-.neighborhoods-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.6rem;
-  padding: 2rem 0 3rem;
-}
-
-.neighborhood-tile {
-  display: block;
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 1rem 1.1rem 1.4rem;
-  text-decoration: none;
-  color: var(--treg-charcoal);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.neighborhood-tile:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-}
-
-.neighborhood-tile-header {
-  font-family: "League Spartan", sans-serif;
-  font-size: 1.65rem;
-  font-weight: 600;
-  text-transform: lowercase;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.75rem;
-}
-
-.neighborhood-tile-image-wrapper {
-  width: 100%;
-  height: 160px;
-  overflow: hidden;
-  border-radius: 10px;
-  margin-bottom: 0.85rem;
-}
-
-.neighborhood-tile-image-wrapper img,
-.neighborhood-thumb {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.neighborhood-tile-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 0.92rem;
-  line-height: 1.45;
-  color: var(--treg-slate);
-}
-
-/* ========================= */
-/* NEIGHBORHOOD OVERVIEW GRID */
-/* ========================= */
-
-.neighborhood-overview-stack .neighborhood-intro-card {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.6rem 1.5rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.6rem;
-}
-
-/* Life in <Neighborhood> card */
-.neighborhood-intro-card--life {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.6rem 1.6rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* grid holding snapshot + stats + map */
-.neighborhood-overview-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr);
-  gap: 1.5rem;
-  align-items: flex-start;
-}
-
-/* left column: snapshot + stats stacked */
-.neighborhood-overview-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-@media (max-width: 800px) {
-  .neighborhood-overview-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-/* ========================= */
-/* NEIGHBORHOOD — BY THE NUMBERS CARD */
-/* ========================= */
-
-.neighborhood-numbers-card {
-  background: #ffffff;
-  border-radius: 0.95rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  padding: 1rem 1.25rem 1.4rem;
-}
-
-.neighborhood-numbers-header {
-  margin-bottom: 0.75rem;
-}
-
-.neighborhood-numbers-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.numbers-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.numbers-label {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--treg-slate);
-}
-
-.numbers-value {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  color: var(--treg-charcoal);
-}
-
-/* Disclaimer text */
-.numbers-disclaimer {
-  margin-top: 1rem;
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.45;
-  color: var(--treg-slate);
-  opacity: 0.85;
-}
-
-/* ========================= */
-/* MAP CARD                  */
-/* ========================= */
-
-.neighborhood-map-card {
-  background: #ffffff;
-  border-radius: 0.95rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.neighborhood-map-header {
-  padding: 0.85rem 1rem 0.5rem;
-}
-
-.neighborhood-map-embed iframe {
-  width: 100%;
-  height: 260px;
-  border: 0;
-  display: block;
-}
-
-.neighborhood-map-meta {
-  padding: 0.6rem 1rem 0.85rem;
-  font-size: 0.8rem;
-  color: var(--treg-slate);
-}
-
-/* ========================= */
-/* NEIGHBORHOOD HIGHLIGHTS – CAROUSEL */
-/* ========================= */
-
-.neighborhood-highlights {
-  background: #faf7f1;
-  padding: 2.25rem 0 2.75rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.neighborhood-highlights-intro {
-  max-width: 720px;
-  margin-bottom: 1.5rem;
-}
-
-.neighborhood-highlights-intro .section-heading {
-  margin-bottom: 0.4rem;
-}
-
-/* Carousel wrapper */
-.highlights-carousel {
-  position: relative;
-  margin: 1.75rem auto 0;
-}
-
-/* Visible window */
-.highlights-window {
-  position: relative;
-  overflow: hidden;
-  padding: 0 3.25rem; /* space so arrows sit off the card edges */
-}
-
-/* Track holds all slides horizontally (moved via JS translateX) */
-.highlights-track {
-  display: flex;
-  gap: 1.4rem;
-  transition: transform 0.4s ease;
-  will-change: transform;
-}
-
-/* Each slide is a fixed-width tile so ~3 fit in the window on desktop */
-.highlights-track .highlight-card {
-  flex: 0 0 320px;
-  max-width: 320px;
-}
-
-/* Card styling (used inside carousel and consistent site-wide) */
-.highlight-card {
-  background: #ffffff;
-  border-radius: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: transform 0.18s ease, box-shadow 0.18s ease,
-    border-color 0.18s ease;
-}
-
-.highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-/* Image */
-.highlight-image {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.highlight-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(1.05) contrast(1.04) saturate(1.06);
-  transform: scale(1.02);
-  transition: transform 0.22s ease;
-}
-
-.highlight-card:hover .highlight-image img {
-  transform: scale(1.06);
-}
-
-/* Text body */
-.highlight-body {
-  padding: 1rem 1.15rem 1.2rem;
-}
-
-.highlight-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.1rem;
-  text-transform: lowercase;
-  letter-spacing: 0.03em;
-  margin: 0 0 0.35rem;
-}
-
-.highlight-text {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: var(--treg-slate);
-  margin: 0 0 0.6rem;
-}
-
-.highlight-meta {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-}
-
-.highlight-meta a {
-  color: var(--treg-charcoal);
-  text-decoration: none;
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 1px;
-}
-
-.highlight-meta a:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-
-/* UPDATED Prev / next buttons – larger, darker, outside cards */
-.highlights-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-
-  background: rgba(30, 24, 13, 0.92);
-  color: #ffffff;
-
-  width: 46px;
-  height: 46px;
-  font-size: 1.35rem;
-  border-radius: 999px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  z-index: 20;
-
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-
-/* Hover effect */
-.highlights-nav:hover {
-  background: rgba(30, 24, 13, 1);
-  transform: translateY(-50%) scale(1.05);
-}
-
-/* Position them OUTSIDE the visible carousel area */
-.highlights-nav--prev {
-  left: -2.75rem;
-}
-
-.highlights-nav--next {
-  right: -2.75rem;
-}
-
-/* Dots */
-.highlights-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.4rem;
-  margin-top: 1rem;
-}
-
-.highlights-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  border: 0;
-  padding: 0;
-  background: rgba(0, 0, 0, 0.18);
-  cursor: pointer;
-}
-
-.highlights-dot.is-active {
-  width: 16px;
-  background: var(--treg-charcoal);
-}
-
-/* On small screens, rely on natural swipe/scroll and hide arrows */
-@media (max-width: 740px) {
-  .highlights-nav {
-    display: none;
-  }
-}
-
-/* ========================= */
-/* ABOUT PAGE / TEAM CARDS   */
+/* ABOUT PHOTO               */
 /* ========================= */
 
 .about-photo {
@@ -948,26 +297,99 @@ li + li {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
 }
 
+/* ========================= */
+/* TEAM INDEX                */
+/* ========================= */
+
+/* tighter vertical whitespace around the team section */
+.section.section-muted {
+  padding-top: 2.2rem;
+  padding-bottom: 2.2rem;
+}
+
+/* Optional: slightly tighten the intro section right above */
+.section:not(.section-muted):not(.section-cta) {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
-  margin-top: 1.75rem;
+  margin-top: 1.5rem;
 }
 
+/* Card */
 .team-card {
+  position: relative;
   background: #ffffff;
   border-radius: 0.9rem;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.5rem 1.6rem;
-}
 
-.team-card {
-  position: relative;
+  padding: 1.25rem 1.35rem 1.35rem;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
+/* thumbnail */
+.team-thumb {
+  width: 100%;
+  height: 190px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.team-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+
+  transform: scale(1.02);
+  transition: transform 0.22s ease;
+}
+
+/* hover lift */
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.team-card:hover .team-thumb img {
+  transform: scale(1.06);
+}
+
+.team-card:hover .team-card-title {
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+/* overlay = whole card clickable */
+.team-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  border-radius: 0.9rem;
+  text-decoration: none;
+}
+
+/* Keep real links (the gold button) above the overlay */
+.team-card a:not(.team-card-overlay) {
+  position: relative;
+  z-index: 2;
+}
+
+/* text */
 .team-card-title {
   font-family: "League Spartan", system-ui, sans-serif;
   font-size: 1.1rem;
@@ -987,36 +409,75 @@ li + li {
 .team-card-text {
   font-size: 0.9rem;
   color: var(--treg-slate);
-  margin: 0 0 0.9rem;
+  margin: 0 0 1.1rem;
 }
 
+/* gold button pinned bottom + centered */
 .team-card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Oswald", system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+
+  background: var(--treg-bronze);
+  border: 1px solid var(--treg-bronze);
+  color: #ffffff;
+
+  text-decoration: none;
+
+  margin-top: auto;     /* pins to bottom */
+  align-self: center;   /* centers */
+}
+
+.team-card-link:hover,
+.team-card-link:focus {
+  background: var(--treg-taupe);
+  border-color: var(--treg-taupe);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .team-thumb {
+    height: 170px;
+  }
+}
+
+/* ========================= */
+/* FORCE “ABOUT PAGE” LINK   */
+/* stays text-style only     */
+/* ========================= */
+
+/* ONLY targets inline links in section paragraphs/lede,
+   does not affect the gold team buttons (not inside a <p>) */
+.section p a,
+.section-lede a {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+
   font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.8rem;
+  font-size: inherit;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  text-decoration: none;
+
   color: var(--treg-charcoal);
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 0.05rem;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
-.team-card-link:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-
-/* Full-card clickable overlay */
-.team-card-link-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  text-indent: -9999px; /* accessible, but invisible */
-  overflow: hidden;
-}
-
-/* Make it feel clickable */
-.team-card {
-  cursor: pointer;
+.section p a:hover,
+.section-lede a:hover {
+  background: none !important;
+  color: var(--treg-charcoal);
 }
 
 /* ========================= */
@@ -1054,1224 +515,4 @@ li + li {
 .footer-links a:hover {
   text-decoration: underline;
   text-underline-offset: 0.15em;
-}
-
-/* ========================= */
-/* REVIEWS / TESTIMONIALS    */
-/* ========================= */
-
-.reviews-summary {
-  margin-top: 1.5rem;
-  padding: 1rem 1.2rem;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  background: #ffffff;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-}
-
-.reviews-summary-main {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-}
-
-.reviews-stars {
-  font-size: 1.4rem;
-  line-height: 1;
-  color: #f2a300; /* star gold */
-}
-
-.reviews-summary-text {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.9rem;
-  color: var(--treg-slate);
-}
-
-.reviews-summary-cta .btn {
-  white-space: nowrap;
-}
-
-/* Testimonials grid */
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.75rem;
-}
-
-.testimonial-card {
-  background: #ffffff;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.5rem 1.5rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.testimonial-type {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-}
-
-.testimonial-name {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.1rem;
-  text-transform: lowercase;
-  letter-spacing: 0.03em;
-  margin: 0;
-  color: var(--treg-charcoal);
-}
-
-.testimonial-text {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--treg-slate);
-  margin: 0;
-}
-
-.testimonial-meta {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.8rem;
-  color: var(--treg-slate);
-  opacity: 0.9;
-  margin-top: 0.2rem;
-}
-
-.reviews-bottom-cta {
-  margin-top: 2.25rem;
-  text-align: center;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.reviews-bottom-cta p {
-  margin: 0;
-  color: var(--treg-slate);
-}
-
-/* ========================= */
-/* CONTACT PAGE              */
-/* ========================= */
-
-.contact-layout {
-  align-items: flex-start;
-}
-
-.contact-form {
-  background: #ffffff;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.6rem 1.6rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-}
-
-.form-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 0.9rem;
-}
-
-.form-field {
-  flex: 1 1 min(260px, 100%);
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.form-field label {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--treg-slate);
-}
-
-.form-field input,
-.form-field select,
-.form-field textarea {
-  font-family: "PT Serif", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.9rem;
-  padding: 0.45rem 0.55rem;
-  border-radius: 6px;
-  border: 1px solid #d0ccc4;
-  background: #fefdfb;
-}
-
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-  outline: none;
-  border-color: var(--treg-bronze);
-  box-shadow: 0 0 0 1px rgba(207, 177, 142, 0.4);
-}
-
-.form-actions {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-note {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.8rem;
-  color: var(--treg-slate);
-}
-
-/* Contact aside cards */
-
-.contact-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-card {
-  background: #ffffff;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.2rem 1.4rem 1.35rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-}
-
-.contact-lede {
-  font-size: 0.9rem;
-  color: var(--treg-slate);
-  margin: 0 0 0.9rem;
-}
-
-.contact-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.contact-list-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-label {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-}
-
-.contact-value {
-  font-size: 0.9rem;
-}
-
-.contact-value a {
-  color: var(--treg-charcoal);
-  text-decoration: none;
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 1px;
-}
-
-.contact-value a:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-
-/* Mini review block on contact */
-
-.reviews-mini {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin-bottom: 0.5rem;
-}
-
-.reviews-mini-stars {
-  font-size: 1.2rem;
-  line-height: 1;
-  color: #f2a300;
-}
-
-.reviews-mini-text {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.82rem;
-  color: var(--treg-slate);
-}
-
-@media (max-width: 800px) {
-  .contact-layout {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-}
-
-/* ======================================= */
-/* GLOBAL SECTIONS & TYPOGRAPHY (HOMEPAGE) */
-/* ======================================= */
-
-.section {
-  padding: 3rem 0;
-}
-
-.section-alt {
-  background-color: var(--treg-cream);
-}
-
-.section-inner,
-.section-inner-cta {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.section-header {
-  margin-bottom: 1.5rem;
-}
-
-/* base eyebrow, if used outside section-header */
-.eyebrow {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--treg-slate);
-  margin-bottom: 0.35rem;
-}
-
-/* STRONGER eyebrow for HOW WE HELP / WHAT CLIENTS ARE SAYING / READY WHEN YOU ARE */
-.section-header .eyebrow {
-  font-size: 1.8rem;          /* really prominent */
-  letter-spacing: 0.2em;
-  margin-bottom: 0.05rem;     /* very tight gap before big title */
-  line-height: 1.1;
-}
-
-.section-title {
-  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 2.2rem;          /* slightly larger to lead */
-  line-height: 1.2;
-  text-transform: lowercase;
-  color: var(--treg-charcoal);
-  margin-bottom: 0.12rem 0 0.55rem;
-}
-
-.section-intro {
-  font-family: "PT Serif", Georgia, "Times New Roman", serif;
-  font-size: 0.98rem;
-  line-height: 1.7;
-  color: var(--treg-slate);
-  max-width: 48rem;
-}
-
-/* ============ */
-/* BUTTONS      */
-/* ============ */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 0.9rem;
-  text-transform: lowercase;
-  letter-spacing: 0.08em;
-  padding: 0.7rem 1.6rem;
-  text-decoration: none;
-  cursor: pointer;
-  gap: 0.35rem;
-}
-
-.btn-primary {
-  background-color: var(--treg-charcoal);
-  color: #ffffff;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: #000000;
-  text-decoration: none;
-}
-
-.btn-outline {
-  background-color: transparent;
-  border-color: var(--treg-charcoal);
-  color: var(--treg-charcoal);
-}
-
-.btn-outline:hover,
-.btn-outline:focus {
-  background-color: var(--treg-charcoal);
-  color: #ffffff;
-}
-
-.btn-ghost {
-  background-color: transparent;
-  border-color: rgba(0, 0, 0, 0.08);
-  color: var(--treg-charcoal);
-}
-
-.btn-ghost:hover,
-.btn-ghost:focus {
-  background-color: rgba(0, 0, 0, 0.04);
-}
-
-.btn-link {
-  background: none;
-  border: 0;
-  padding: 0;
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: #ffffff;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  cursor: pointer;
-}
-
-/* ============ */
-/* CARDS GRID   */
-/* ============ */
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.75rem;
-}
-
-.card {
-  background: #ffffff;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.5rem 1.6rem 1.7rem;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
-}
-
-.card-label {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--treg-slate);
-  margin-bottom: 0.4rem;
-}
-
-.card-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.3rem;
-  text-transform: lowercase;
-  color: var(--treg-charcoal);
-  margin-bottom: 0.45rem;
-}
-
-.card-body {
-  font-family: "PT Serif", Georgia, serif;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--treg-slate);
-  margin-bottom: 0.75rem;
-}
-
-.card-list {
-  margin: 0 0 0.75rem;
-  padding-left: 1.15rem;
-  font-family: "PT Serif", Georgia, serif;
-  font-size: 0.92rem;
-  color: var(--treg-slate);
-}
-
-.card-list li + li {
-  margin-top: 0.25rem;
-}
-
-.card-link {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.88rem;
-  color: var(--treg-charcoal);
-  text-decoration: none;
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 0.02rem;
-}
-
-.card-link:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-
-/* ===================== */
-/* NEIGHBORHOODS PREVIEW */
-/* ===================== */
-
-.neighborhoods-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-.neighborhood-tag {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--treg-slate);
-  margin-bottom: 0.4rem;
-}
-
-.neighborhood-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.2rem;
-  text-transform: lowercase;
-  margin-bottom: 0.4rem;
-  color: var(--treg-charcoal);
-}
-
-.neighborhood-body {
-  font-family: "PT Serif", Georgia, serif;
-  font-size: 0.94rem;
-  line-height: 1.7;
-  color: var(--treg-slate);
-  margin-bottom: 0.75rem;
-}
-
-.section-cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  margin-top: 2rem;
-}
-
-.section-cta-text {
-  max-width: 34rem;
-  font-family: "PT Serif", Georgia, serif;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--treg-slate);
-}
-
-/* SPECIAL LAYOUT FOR REVIEWS SECTION */
-.section-reviews {
-  background: #ffffff; /* subtle white band */
-  border-top: 1px solid rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-.section-reviews .section-inner {
-  max-width: 1100px;
-}
-
-/* match formatting/spacing of HOW WE HELP */
-.section-reviews .section-header {
-  text-align: left;
-  margin-bottom: 1.5rem;
-}
-
-.section-reviews .section-intro {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-/* small rating strip above review cards */
-.reviews-rating-summary {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.55rem;
-  margin-bottom: 1.6rem;
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--treg-slate);
-}
-
-.reviews-rating-score {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1rem;
-  color: var(--treg-charcoal);
-}
-
-.reviews-rating-stars {
-  font-size: 0.95rem;
-  letter-spacing: 0.18em;
-  color: #f2a300; /* star gold */
-}
-
-.reviews-rating-label {
-  opacity: 0.9;
-}
-
-/* rating / stats strip above review cards */
-.reviews-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-.reviews-stat-card {
-  border-radius: 999px;
-  border: 1px solid var(--treg-charcoal);
-  padding: 0.7rem 1.4rem;
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.reviews-stat-value {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--treg-charcoal);
-}
-
-.reviews-stat-stars {
-  font-size: 0.9rem;
-  letter-spacing: 0.18em;
-  color: #f2a300; /* star gold */
-  margin-left: 0.3rem;
-}
-
-.reviews-stat-label {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--treg-slate);
-  margin-top: 0.18rem;
-}
-
-/* stack stats on small screens */
-@media (max-width: 720px) {
-  .reviews-stats {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-/* ============= */
-/* REVIEWS GRID  */
-/* ============= */
-
-.reviews-preview {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.75rem;
-}
-
-.review-card {
-  background: #ffffff;
-  border-radius: 1.1rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 1.6rem 1.7rem 1.7rem;
-  box-shadow: none;                 /* lighter than services cards */
-  position: relative;
-}
-
-/* big soft quote mark in the corner */
-.review-card::before {
-  content: "“";
-  position: absolute;
-  top: 0.4rem;
-  left: 1.2rem;
-  font-family: "PT Serif", Georgia, serif;
-  font-size: 2.6rem;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.06);
-}
-
-.review-body {
-  font-family: "PT Serif", Georgia, serif;
-  font-size: 0.96rem;
-  line-height: 1.7;
-  color: var(--treg-charcoal);
-  margin-bottom: 0.9rem;
-  font-style: italic;
-}
-
-.review-meta {
-  display: flex;
-  justify-content: flex-end;     /* push name to the right */
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--treg-slate);
-}
-
-.review-name {
-  text-align: right;
-}
-
-/* center the reviews CTA button and make it feel a bit bolder */
-.section-reviews .section-cta-row {
-  justify-content: center;
-  margin-top: 2.25rem;
-}
-
-.reviews-cta-btn {
-  padding: 0.9rem 2.6rem;
-  font-size: 0.92rem;
-}
-
-/* ============= */
-/* STATS GRID    */
-/* ============= */
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-.stat-card {
-  background: #ffffff;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.4rem 1.6rem 1.6rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-}
-
-.stat-label {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--treg-slate);
-  margin-bottom: 0.3rem;
-}
-
-.stat-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.2rem;
-  text-transform: lowercase;
-  margin-bottom: 0.4rem;
-  color: var(--treg-charcoal);
-}
-
-.stat-body {
-  font-family: "PT Serif", Georgia, serif;
-  font-size: 0.94rem;
-  line-height: 1.7;
-  color: var(--treg-slate);
-}
-
-/* ============= */
-/* FINAL CTA     */
-/* ============= */
-
-.section.section-cta {
-  background-color: var(--treg-cream);
-}
-
-.section-inner-cta {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: 2.5rem;
-  align-items: center;
-  text-align: left;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.section-cta-text-block .section-title {
-  margin-bottom: 0.75rem;
-}
-
-.section-cta-actions {
-  text-align: left;
-}
-
-.section-cta-main {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--treg-charcoal);
-  margin-bottom: 0.25rem;
-}
-
-.section-cta-meta {
-  font-family: "PT Serif", Georgia, serif;
-  font-size: 0.95rem;
-  color: var(--treg-slate);
-  margin-bottom: 1rem;
-}
-
-.btn-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-/* ============= */
-/* HOMEPAGE META */
-/* ============= */
-
-.home-hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 1.25rem;
-  margin-top: 1.75rem;
-}
-
-.meta-item {
-  text-align: right;
-}
-
-.meta-label {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--treg-cream);
-  opacity: 0.8;
-  margin-bottom: 0.1rem;
-}
-
-.meta-value {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 0.95rem;
-  color: #ffffff;
-}
-
-/* Responsive tweaks */
-
-@media (max-width: 960px) {
-  .cards-grid,
-  .neighborhoods-grid,
-  .reviews-preview,
-  .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .section-inner-cta {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 720px) {
-  .cards-grid,
-  .neighborhoods-grid,
-  .reviews-preview,
-  .stats-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .section-inner,
-  .section-inner-cta {
-    padding: 0 1.1rem;
-  }
-
-  .section-title {
-    font-size: 1.9rem;          /* keep hierarchy on mobile */
-  }
-
-  .section-header {
-    margin-bottom: 1.4rem;
-  }
-
-  .section-header .eyebrow {
-    font-size: 1.4rem;
-    margin-bottom: 0.05rem;
-  }
-
-  .section-cta-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .section-cta-text {
-    max-width: 100%;
-  }
-
-  .home-hero-meta {
-    justify-content: flex-start;
-    text-align: left;
-  }
-
-  .meta-item {
-    text-align: left;
-  }
-}
-
-/* ======================================= */
-/* HOMEPAGE – SERVICES CARDS TUNING        */
-/* ======================================= */
-
-/* Layout + CTA buttons in cards */
-.section-services .card {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-footer {
-  margin-top: auto;         /* pushes footer to bottom of card */
-  text-align: right;
-  padding-top: 0.75rem;
-}
-
-.btn-card {
-  padding: 0.45rem 1.15rem;
-  font-size: 0.78rem;
-  text-transform: lowercase;
-  letter-spacing: 0.08em;
-}
-
-/* HOW WE HELP card buttons — black default, bronze on hover */
-.section-services .btn-card {
-  background-color: var(--treg-charcoal);   /* black */
-  border-color: var(--treg-charcoal);
-  color: #ffffff;                           /* white text */
-  transition: all 0.25s ease;
-}
-
-/* Hover → bronze background, white text */
-.section-services .btn-card:hover,
-.section-services .btn-card:focus {
-  background-color: var(--treg-bronze);
-  border-color: var(--treg-bronze);
-  color: #ffffff;
-}
-
-/* BUY / SELL / RENT label + subtitle tuning */
-
-.section-services .card-label {
-  font-size: 1.75rem;        /* large and prominent */
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;    /* tighter pairing with subtitle */
-  color: var(--treg-slate);
-  font-weight: 400;          /* keep the thin, elegant look */
-}
-
-.section-services .card-title {
-  margin-top: 0rem;          /* pulls subtitle closer to BUY/SELL/RENT */
-  margin-bottom: 0.85rem;    /* gentle spacing before body text */
-}
-
-/* ======================================= */
-/* FORCE HOMEPAGE EYEBROWS + TIGHTER GAP   */
-/* ======================================= */
-
-/* Bigger "HOW WE HELP" / "WHAT CLIENTS ARE SAYING" / "READY WHEN YOU ARE" */
-.section-services .eyebrow,
-.section-reviews .eyebrow,
-.section-cta .eyebrow {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 1.1rem;      /* much larger */
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--treg-slate);
-  margin-bottom: 0.05rem; /* tiny gap above the big line */
-  line-height: 1.1;
-}
-
-/* Reduce the gap between eyebrow and the main line underneath */
-.section-services .section-title,
-.section-reviews .section-title,
-.section-cta .section-title {
-  margin-top: 0.1rem;     /* kills the big default top margin */
-  margin-bottom: 0.55rem; /* keep existing bottom spacing */
-}
-
-/* Right-align the "read more client reviews" button ONLY in the reviews section */
-.section-reviews .section-cta-row {
-  display: flex;
-  justify-content: flex-end;   /* push button to the right */
-  padding-right: 2rem;         /* optional: offset from the right edge */
-}
-
-.section-reviews .section-cta-row .btn {
-  margin-left: auto;           /* ensures it's fully right-aligned */
-}
-
-/* ============================= */
-/* TEAM BIO: ICON CONTACT + CTA  */
-/* ============================= */
-
-.icon-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 12px 0 0;
-}
-
-.icon-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 999px;
-
-  /* Gold tone + no default link styling */
-  border: 1px solid rgba(207, 177, 142, 0.6);
-  background: transparent;
-  text-decoration: none;
-  color: var(--treg-charcoal);
-
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.icon-action__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--treg-bronze); /* icon stroke color */
-}
-
-.icon-action__label {
-  font-family: "Oswald", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  letter-spacing: 0.03em;
-  text-transform: lowercase;
-  font-size: 0.95rem;
-  color: var(--treg-charcoal);
-}
-
-.icon-action:hover,
-.icon-action:focus {
-  background: rgba(207, 177, 142, 0.12); /* soft bronze wash */
-  border-color: var(--treg-bronze);
-  transform: translateY(-1px);
-  outline: none;
-}
-
-/* CTA buttons row (centered + separated) */
-.page-actions {
-  margin-top: 26px;
-  padding-top: 18px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-/* NOTE: You already have a global .btn system above.
-   This only adjusts the two buttons used on team pages without breaking the rest. */
-
-.page-actions .btn {
-  padding: 12px 18px;
-}
-
-/* Primary CTA stays charcoal */
-.page-actions .btn-primary {
-  background-color: var(--treg-charcoal);
-  color: #ffffff;
-  border-color: var(--treg-charcoal);
-}
-
-.page-actions .btn-primary:hover,
-.page-actions .btn-primary:focus {
-  background-color: #000000;
-  border-color: #000000;
-  text-decoration: none;
-}
-
-/* Secondary CTA becomes gold-outline + gold hover */
-.page-actions .btn-ghost {
-  background: transparent;
-  color: var(--treg-charcoal);
-  border: 1px solid var(--treg-bronze);
-}
-
-.page-actions .btn-ghost:hover,
-.page-actions .btn-ghost:focus {
-  background: rgba(207, 177, 142, 0.12);
-  border-color: var(--treg-bronze);
-  text-decoration: none;
-}
-/* ======================================= */
-/* TEAM INDEX: THUMBNAILS + HOVER + CLICK  */
-/* ======================================= */
-
-/* Make the entire team card feel clickable */
-.team-card {
-  position: relative;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-}
-
-/* Thumbnail wrapper (consistent crop) */
-.team-thumb {
-  width: 100%;
-  height: 190px;              /* consistent crop height */
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 0.9rem;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
-}
-
-.team-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* crops consistently */
-  object-position: center;    /* centers faces well */
-  display: block;
-  transform: scale(1.02);
-  transition: transform 0.22s ease;
-}
-
-/* Hover lift */
-.team-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-.team-card:hover .team-thumb img {
-  transform: scale(1.06);
-}
-
-.team-card { position: relative; cursor: pointer; }
-
-.team-card-overlay{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  border-radius: 0.9rem;
-  text-decoration:none;
-}
-
-.team-card a:not(.team-card-overlay){
-  position:relative;
-  z-index:2;
-}
-
-.team-card-overlay:hover{ text-decoration:none; }
-
-/* Keep real links above overlay so they still work */
-.team-card a,
-.team-card .team-card-link {
-  position: relative;
-  z-index: 2;
-}
-
-/* Underline title on hover (subtle premium touch) */
-.team-card:hover .team-card-title {
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
-}
-
-/* Mobile tweak */
-@media (max-width: 720px) {
-  .team-thumb { height: 170px; }
-}
-
-/* ======================================= */
-/* TEAM GRID TUNING — BUTTONS + SPACING    */
-/* ======================================= */
-
-/* 1) Tighten vertical whitespace around the team section */
-.section.section-muted {
-  padding-top: 2.2rem;   /* was 3rem via .section */
-  padding-bottom: 2.2rem;
-}
-
-/* Optional: slightly tighten the intro section right above */
-.section:not(.section-muted):not(.section-cta) {
-  padding-top: 2.4rem;
-  padding-bottom: 2.4rem;
-}
-
-/* 2) Make all team cards equal-behavior and allow button to pin bottom */
-.team-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-
-/* Give the text block consistent breathing room */
-.team-card-text {
-  margin-bottom: 1.1rem;
-}
-
-/* 3) Gold button style + center + pin to bottom */
-.team-card-link {
-  /* turn link into a real button */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-
-  padding: 0.65rem 1.25rem;
-  border-radius: 999px;
-
-  background: var(--treg-bronze);
-  border: 1px solid var(--treg-bronze);
-  color: #ffffff;
-
-  text-decoration: none;
-  border-bottom: none; /* kill the underline style from earlier rules */
-
-  /* This is the magic: push to the bottom, center it */
-  margin-top: auto;
-  align-self: center;
-}
-
-/* Hover */
-.team-card-link:hover,
-.team-card-link:focus {
-  background: var(--treg-taupe);
-  border-color: var(--treg-taupe);
-  color: #ffffff;
-  text-decoration: none;
-}
-
-/* 4) Ensure overlay doesn't block button clicks */
-.team-card a:not(.team-card-overlay) {
-  position: relative;
-  z-index: 2;
-}
-
-/* 5) Slightly reduce internal padding so cards feel tighter */
-.team-card {
-  padding: 1.25rem 1.35rem 1.35rem;  /* was 1.4/1.5/1.6 */
-}
-/* ======================================= */
-/* FORCE "ABOUT PAGE" LINK TO STAY TEXT    */
-/* ======================================= */
-
-/* Any inline text link inside intro copy */
-.section p a,
-.section-lede a {
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: inherit;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-
-  color: var(--treg-charcoal);
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
-}
-
-/* Hover stays text-only */
-.section p a:hover,
-.section-lede a:hover {
-  background: none !important;
-  color: var(--treg-charcoal);
 }
