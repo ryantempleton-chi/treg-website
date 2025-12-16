@@ -1,6 +1,6 @@
 /* ======================================= */
 /* NEIGHBORHOOD PAGES ONLY (TREG)          */
-/* neighborhoods.css                        */
+/* neighborhoods.css                       */
 /* ======================================= */
 
 /* ========================= */
@@ -44,99 +44,84 @@
   background: var(--treg-cream);
 }
 
-/* Ensure cards fill the container width consistently */
-.neighborhood-overview-stack .neighborhood-intro-card,
-.neighborhood-intro-card--life {
+/* ========================= */
+/* HEADLINE SYSTEM           */
+/* (outside-the-card titles) */
+/* ========================= */
+
+.neighborhood-headline {
+  max-width: 1040px;
+  margin: 2.1rem auto 0.95rem;
+  padding: 0 1.25rem; /* match .container padding */
+}
+
+.neighborhood-headline-title {
+  font-family: "Oswald", system-ui, sans-serif; /* SAME as your global .section-heading */
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--treg-charcoal);
+  font-size: clamp(1.35rem, 1.05rem + 1.1vw, 1.75rem);
+  line-height: 1.12;
+}
+
+.neighborhood-headline-lede {
+  margin: 0.5rem 0 0;
+  color: var(--treg-slate);
+  max-width: 80ch;
+}
+
+/* A slightly tighter variant (use for Snapshot if you want) */
+.neighborhood-headline--tight {
+  margin-top: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ========================= */
+/* CARDS (shared)            */
+/* ========================= */
+
+.neighborhood-card {
   width: 100%;
   max-width: 1040px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* TOP INTRO CARD */
-.neighborhood-overview-stack .neighborhood-intro-card {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+.neighborhood-intro-card {
   padding: 1.4rem 1.6rem 1.5rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.25rem; /* tighter + more consistent rhythm */
+  margin: 0 auto 1.25rem;
 }
 
-/* LIFE CARD */
+/* LIFE CARD (now aligned + full width like everything else) */
 .neighborhood-intro-card--life {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
   padding: 1.4rem 1.6rem 1.6rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.6rem;
+  margin: 0 auto 1.6rem;
 }
 
-/* Keep body text readable even on wide cards */
+/* Keep body text readable on wide cards */
 .neighborhood-intro-card--life p,
 .neighborhood-intro-card--life .section-lede {
   max-width: 78ch;
 }
 
-/* ========================= */
-/* SECTION TITLES (SYSTEM)   */
-/* Make Life/Highlights match */
-/* ========================= */
-
-/* Big section headers (Life in..., Neighborhood highlights) */
-.neighborhood-overview-stack h2.section-heading,
-.neighborhood-highlights h2.section-heading {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--treg-charcoal);
-
-  /* The “consistency” knob */
-  font-size: clamp(1.45rem, 1.15rem + 1vw, 1.75rem);
-  line-height: 1.15;
-  margin: 0 0 0.65rem;
-}
-
-/* Ledes consistent */
-.neighborhood-overview-stack .section-lede,
-.neighborhood-highlights .section-lede {
-  color: var(--treg-slate);
-  max-width: 80ch;
+/* If you still have <h2 class="section-heading"> inside cards,
+   this prevents it from fighting the new headline system. */
+.neighborhood-intro-card--life .section-heading,
+.neighborhood-highlights .section-heading {
+  font-size: 1rem;
+  margin: 0 0 0.35rem;
+  opacity: 0.9;
 }
 
 /* ========================= */
-/* SNAPSHOT HEADER            */
-/* ========================= */
-
-.neighborhood-snapshot-header {
-  margin: 1.9rem 0 0.9rem; /* container controls width/padding */
-  padding: 0;
-}
-
-.neighborhood-snapshot-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  margin: 0;
-  color: var(--treg-charcoal);
-
-  /* bring it down so it doesn’t “billboard” */
-  font-size: clamp(1.35rem, 1.05rem + 1.1vw, 1.7rem);
-  line-height: 1.1;
-}
-
-@media (max-width: 800px) {
-  .neighborhood-snapshot-title {
-    font-size: 1.45rem;
-  }
-}
-
-/* ========================= */
-/* OVERVIEW GRID              */
-/* (MAP LEFT | RIGHT STACK)   */
+/* OVERVIEW GRID             */
+/* (MAP LEFT | RIGHT STACK)  */
 /* ========================= */
 
 .neighborhood-overview-grid {
@@ -161,7 +146,7 @@
 }
 
 /* ========================= */
-/* MAP CARD                   */
+/* MAP CARD                  */
 /* ========================= */
 
 .neighborhood-map-card {
@@ -193,7 +178,7 @@
 }
 
 /* ========================= */
-/* BY THE NUMBERS CARD        */
+/* BY THE NUMBERS CARD       */
 /* ========================= */
 
 .neighborhood-numbers-card {
@@ -247,7 +232,7 @@
   opacity: 0.85;
 }
 
-/* Keep the tiny “card headers” understated (override the big system headers) */
+/* Keep small “card headers” understated */
 .neighborhood-map-header .section-heading,
 .neighborhood-numbers-card .section-heading {
   font-size: 0.95rem;
@@ -257,7 +242,7 @@
 }
 
 /* ========================= */
-/* SNAPSHOT CARD              */
+/* SNAPSHOT CARD             */
 /* ========================= */
 
 .snapshot {
@@ -287,7 +272,7 @@
 }
 
 /* ========================= */
-/* HIGHLIGHTS / CAROUSEL      */
+/* HIGHLIGHTS / CAROUSEL     */
 /* ========================= */
 
 .neighborhood-highlights {
@@ -296,9 +281,11 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
+/* If you keep the intro wrapper, make it full-width consistent */
 .neighborhood-highlights-intro {
   max-width: 1040px;
   margin: 0 auto 1.25rem;
+  padding: 0 1.25rem;
 }
 
 .highlights-carousel {
@@ -449,30 +436,6 @@
   right: -2.75rem;
 }
 
-/* dots */
-.highlights-dots {
-  margin-top: 1rem;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.highlights-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-}
-
-.highlights-dot.is-active {
-  background: var(--treg-charcoal);
-  border-color: var(--treg-charcoal);
-}
-
-/* mobile */
 @media (max-width: 740px) {
   .highlights-nav {
     display: none;
@@ -487,7 +450,7 @@
 }
 
 /* ========================= */
-/* CTA spacing fix            */
+/* CTA spacing fix           */
 /* ========================= */
 
 .section-cta-text {
@@ -502,8 +465,8 @@
 }
 
 /* ========================= */
-/* Neighborhood nav row       */
-/* (Prev | Back | Next)       */
+/* Neighborhood nav row      */
+/* (Prev | Back | Next)      */
 /* ========================= */
 
 .neighborhood-nav {
@@ -581,29 +544,4 @@
   .neighborhood-nav-link.center {
     justify-content: center;
   }
-
-/* ======================================= */
-/* NEIGHBORHOOD HEADLINE SYSTEM            */
-/* (outside-the-card section headlines)    */
-/* ======================================= */
-
-.neighborhood-headline {
-  margin: 2.1rem 0 1rem; /* space above + below headline */
-}
-
-/* Use SAME font as your current .section-heading (Oswald) */
-.neighborhood-headline-title {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin: 0;
-  color: var(--treg-charcoal);
-}
-
-/* Optional: small helper line under the headline */
-.neighborhood-headline-lede {
-  margin: 0.45rem 0 0;
-  color: var(--treg-slate);
-  max-width: 80ch;
 }
