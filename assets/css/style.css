@@ -516,3 +516,22 @@ li + li {
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
+
+/* Make the whole card clickable (overlay on top) */
+.team-card{
+  position: relative;
+}
+
+.team-card-overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 10;              /* MUST be above the text */
+  display: block;
+  border-radius: 0.9rem;    /* match card radius */
+}
+
+/* Keep the button clickable ABOVE the overlay */
+.team-card-link{
+  position: relative;
+  z-index: 11;
+}
