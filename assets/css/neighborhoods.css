@@ -455,7 +455,7 @@
 /* ========================= */
 
 .neighborhood-back-link {
-  margin-top: 2rem;
+  margin-top: 2rem auto 0;
   display: flex;
   justify-content: center;
 }
