@@ -352,3 +352,20 @@
     grid-template-columns: 1fr;
   }
 }
+/* FINAL CTA LAYOUT */
+.section-inner-cta {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .section-inner-cta {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
