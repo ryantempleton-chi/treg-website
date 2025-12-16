@@ -312,3 +312,6 @@
     justify-self: center;
   }
 }
+/* --- FIX: center dots correctly --- */
+.highlights-carousel { width: 100%; }
+.highlights-dots { width: 100%; }
