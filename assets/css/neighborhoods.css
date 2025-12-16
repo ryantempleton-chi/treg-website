@@ -394,3 +394,35 @@
     max-width: 85%;
   }
 }
+/* ========================= */
+/* FIX: Uniform carousel card heights */
+/* ========================= */
+
+.highlights-track {
+  align-items: stretch; /* make all cards same height */
+}
+
+.highlight-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-body {
+  flex: 1; /* body grows to fill */
+  display: flex;
+  flex-direction: column;
+}
+
+/* keep title/meta/text consistent */
+.highlight-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;  /* adjust 3–5 to taste */
+  overflow: hidden;
+}
+
+/* optional: keep the address/meta pinned toward the bottom */
+.highlight-body .highlight-meta:last-child {
+  margin-top: auto;
+}
