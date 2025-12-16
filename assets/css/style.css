@@ -178,7 +178,7 @@ body {
 }
 
 /* ========================= */
-/* HERO (GLOBAL + HOME)      */
+/* HERO (GLOBAL)             */
 /* ========================= */
 
 .hero {
@@ -307,7 +307,7 @@ li + li {
   padding-bottom: 2.2rem;
 }
 
-/* Optional: slightly tighten the intro section right above */
+/* slightly tighten the intro section right above */
 .section:not(.section-muted):not(.section-cta) {
   padding-top: 2.4rem;
   padding-bottom: 2.4rem;
@@ -336,7 +336,14 @@ li + li {
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-/* thumbnail */
+/* Hover lift */
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Thumbnail */
 .team-thumb {
   width: 100%;
   height: 190px;
@@ -357,23 +364,19 @@ li + li {
   transition: transform 0.22s ease;
 }
 
-/* hover lift */
-.team-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
 .team-card:hover .team-thumb img {
   transform: scale(1.06);
 }
 
+/* Title hover detail */
 .team-card:hover .team-card-title {
   text-decoration: underline;
   text-underline-offset: 0.22em;
 }
 
-/* overlay = whole card clickable */
+/* Full-card clickable overlay
+   IMPORTANT: overlay is UNDER content so the button works,
+   but OVER the card background so clicking blank areas works. */
 .team-card-overlay {
   position: absolute;
   inset: 0;
@@ -383,13 +386,13 @@ li + li {
   text-decoration: none;
 }
 
-/* Keep real links (the gold button) above the overlay */
-.team-card a:not(.team-card-overlay) {
+/* Keep all actual card content above the overlay */
+.team-card > *:not(.team-card-overlay) {
   position: relative;
   z-index: 2;
 }
 
-/* text */
+/* Text */
 .team-card-title {
   font-family: "League Spartan", system-ui, sans-serif;
   font-size: 1.1rem;
@@ -412,7 +415,7 @@ li + li {
   margin: 0 0 1.1rem;
 }
 
-/* gold button pinned bottom + centered */
+/* Gold button pinned bottom + centered */
 .team-card-link {
   display: inline-flex;
   align-items: center;
@@ -515,23 +518,4 @@ li + li {
 .footer-links a:hover {
   text-decoration: underline;
   text-underline-offset: 0.15em;
-}
-
-/* Make the whole card clickable (overlay on top) */
-.team-card{
-  position: relative;
-}
-
-.team-card-overlay{
-  position: absolute;
-  inset: 0;
-  z-index: 10;              /* MUST be above the text */
-  display: block;
-  border-radius: 0.9rem;    /* match card radius */
-}
-
-/* Keep the button clickable ABOVE the overlay */
-.team-card-link{
-  position: relative;
-  z-index: 11;
 }
