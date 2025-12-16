@@ -535,3 +535,74 @@
     justify-content: center;
   }
 }
+/* ======================================= */
+/* NEIGHBORHOOD POLISH LAYER (Overrides)   */
+/* paste at bottom of neighborhoods.css     */
+/* ======================================= */
+
+/* 1) Make the “Life in…” card align with the same width as everything else */
+.neighborhood-intro-card--life {
+  max-width: 1040px;     /* was 820px */
+  margin: 0 auto 1.6rem; /* keep it centered + spacing */
+}
+
+/* Optional: keep paragraphs readable even when the card is wider */
+.neighborhood-intro-card--life p,
+.neighborhood-intro-card--life .section-lede {
+  max-width: 78ch;
+}
+
+/* 2) Normalize heading sizes across the page */
+.neighborhood-overview-stack .section-heading {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  /* consistent scale for H2s like “Life in…” and “Neighborhood highlights” */
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.7rem);
+  margin: 0 0 0.65rem;
+  color: var(--treg-charcoal);
+}
+
+/* 3) Make “Neighborhood snapshot” feel like the same system (not a billboard) */
+.neighborhood-snapshot-header {
+  margin: 2rem 0 0.9rem;
+}
+
+.neighborhood-snapshot-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  /* smaller than before, but still a clear section break */
+  font-size: clamp(1.45rem, 1.15rem + 1.2vw, 1.85rem);
+  margin: 0;
+  color: var(--treg-charcoal);
+}
+
+/* 4) Make section ledes consistent */
+.neighborhood-overview-stack .section-lede,
+.neighborhood-highlights .section-lede {
+  color: var(--treg-slate);
+  max-width: 80ch;
+}
+
+/* 5) Tighten vertical rhythm so sections feel cohesive */
+.neighborhood-overview-stack .neighborhood-intro-card {
+  margin-bottom: 1.25rem; /* slightly tighter */
+}
+
+.neighborhood-highlights-intro {
+  margin-bottom: 1.25rem;
+}
+
+/* 6) Remove “random small” inline heading sizes inside cards by overpowering them */
+.neighborhood-map-header .section-heading,
+.neighborhood-numbers-card .section-heading {
+  font-size: 1rem; /* keeps card headers understated */
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
