@@ -374,22 +374,19 @@ li + li {
   text-underline-offset: 0.22em;
 }
 
-/* Full-card clickable overlay
-   IMPORTANT: overlay is UNDER content so the button works,
-   but OVER the card background so clicking blank areas works. */
+/* ✅ FIX: overlay is ON TOP so the card is clickable */
 .team-card-overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 10;
   display: block;
   border-radius: 0.9rem;
   text-decoration: none;
 }
 
-/* Keep all actual card content above the overlay */
+/* ✅ FIX: let overlay receive clicks (content does NOT intercept) */
 .team-card > *:not(.team-card-overlay) {
-  position: relative;
-  z-index: 2;
+  pointer-events: none;
 }
 
 /* Text */
@@ -437,6 +434,11 @@ li + li {
 
   margin-top: auto;     /* pins to bottom */
   align-self: center;   /* centers */
+
+  /* ✅ FIX: button remains clickable above overlay */
+  pointer-events: auto;
+  position: relative;
+  z-index: 11;
 }
 
 .team-card-link:hover,
