@@ -660,4 +660,163 @@ li + li {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-@media (max-width: 900px)
+@media (max-width: 900px) {
+  .cards-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.25rem 1.35rem 1.35rem;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.25rem;
+  text-transform: lowercase;
+  margin: 0 0 0.5rem;
+}
+
+.card-body {
+  color: var(--treg-slate);
+  margin: 0 0 0.9rem;
+}
+
+.card-list {
+  margin: 0 0 1.1rem;
+  padding-left: 1.1rem;
+  color: var(--treg-charcoal);
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+/* Button variants used on home */
+.btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(0,0,0,0.18);
+  color: var(--treg-charcoal);
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  border-color: rgba(0,0,0,0.35);
+  text-decoration: none;
+}
+
+.btn-white {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.10);
+  color: var(--treg-charcoal);
+}
+
+.btn-white:hover,
+.btn-white:focus {
+  border-color: rgba(0,0,0,0.25);
+  text-decoration: none;
+}
+
+.btn-card {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Reviews section */
+.reviews-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .reviews-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reviews-stat-card {
+  background: #fff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1rem 1.1rem;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+
+.reviews-stat-value {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.reviews-stat-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
+}
+
+.reviews-preview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .reviews-preview {
+    grid-template-columns: 1fr;
+  }
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+
+.review-body {
+  margin: 0 0 0.75rem;
+  color: var(--treg-charcoal);
+}
+
+.review-name {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
+}
+
+/* Centered CTA row */
+.section-cta-row {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
