@@ -521,3 +521,92 @@ li + li {
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
+/* ========================= */
+/* BUTTONS (RESTORED)        */
+/* ========================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+  padding: 0.7rem 1.6rem;
+  text-decoration: none;
+  cursor: pointer;
+  gap: 0.35rem;
+}
+
+.btn-primary {
+  background-color: var(--treg-charcoal);
+  border-color: var(--treg-charcoal);
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #000;
+  border-color: #000;
+  text-decoration: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--treg-charcoal);
+  border: 1px solid var(--treg-bronze);
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus {
+  background: rgba(207, 177, 142, 0.12);
+  border-color: var(--treg-bronze);
+  text-decoration: none;
+}
+
+.page-actions {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ========================= */
+/* TEAM CONTACT ICON BUTTONS */
+/* ========================= */
+
+.team-contact-icons {
+  display: flex;
+  gap: 10px;
+  margin: 14px 0 10px;
+  flex-wrap: wrap;
+}
+
+.team-contact-icons a {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--treg-charcoal);
+  text-decoration: none;
+
+  border: 1px solid rgba(207, 177, 142, 0.6);
+  background: rgba(207, 177, 142, 0.08);
+
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.team-contact-icons a:hover,
+.team-contact-icons a:focus {
+  transform: translateY(-1px);
+  background: rgba(207, 177, 142, 0.14);
+  border-color: var(--treg-bronze);
+  outline: none;
+}
