@@ -582,3 +582,5 @@
     justify-content: center;
   }
 }
+/* DEBUG (remove later) */
+.neighborhood-intro-card--life { outline: 6px solid lime !important; }
