@@ -628,3 +628,24 @@
     max-width: 85%;
   }
 }
+.highlights-dots {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.highlights-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.25);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.highlights-dot.is-active {
+  background: var(--treg-charcoal);
+  border-color: var(--treg-charcoal);
+}
