@@ -345,5 +345,286 @@
   border-radius: 0.9rem;
   padding: 1rem 1.1rem;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 3
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
 
+.snapshot-item + .snapshot-item {
+  margin-top: 0.75rem;
+}
+
+.snapshot-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+}
+
+.snapshot-value {
+  font-size: 0.9rem;
+  margin-top: 0.12rem;
+  color: var(--treg-charcoal);
+}
+
+/* ========================= */
+/* BY THE NUMBERS CARD        */
+/* ========================= */
+
+.neighborhood-numbers-card {
+  background: #ffffff;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  padding: 1rem 1.25rem 1.4rem;
+}
+
+.neighborhood-numbers-header {
+  margin-bottom: 0.75rem;
+}
+
+.neighborhood-numbers-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.numbers-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.numbers-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
+}
+
+.numbers-value {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--treg-charcoal);
+  white-space: nowrap;
+}
+
+.numbers-disclaimer {
+  margin-top: 1rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--treg-slate);
+  opacity: 0.85;
+}
+
+/* ========================= */
+/* MAP CARD                  */
+/* ========================= */
+
+.neighborhood-map-card {
+  background: #ffffff;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.neighborhood-map-header {
+  padding: 0.85rem 1rem 0.5rem;
+}
+
+.neighborhood-map-embed iframe {
+  width: 100%;
+  height: 260px;
+  border: 0;
+  display: block;
+}
+
+.neighborhood-map-meta {
+  padding: 0.6rem 1rem 0.85rem;
+  font-size: 0.8rem;
+  color: var(--treg-slate);
+}
+
+/* ========================= */
+/* NEIGHBORHOOD HIGHLIGHTS   */
+/* ========================= */
+
+.neighborhood-highlights {
+  background: #faf7f1;
+  padding: 2.25rem 0 2.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.neighborhood-highlights-intro {
+  max-width: 720px;
+  margin-bottom: 1.5rem;
+}
+
+/* Carousel wrapper */
+.highlights-carousel {
+  position: relative;
+  margin: 1.75rem auto 0;
+}
+
+/* Visible window */
+.highlights-window {
+  position: relative;
+  overflow: hidden;
+  padding: 0 3.25rem; /* space so arrows sit off the card edges */
+}
+
+/* Track holds all slides horizontally (moved via JS translateX) */
+.highlights-track {
+  display: flex;
+  gap: 1.4rem;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+/* Each slide fixed width so ~3 fit on desktop */
+.highlights-track .highlight-card {
+  flex: 0 0 320px;
+  max-width: 320px;
+}
+
+/* Card */
+.highlight-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Image */
+.highlight-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.05) contrast(1.04) saturate(1.06);
+  transform: scale(1.02);
+  transition: transform 0.22s ease;
+}
+
+.highlight-card:hover .highlight-image img {
+  transform: scale(1.06);
+}
+
+/* Text body */
+.highlight-body {
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+.highlight-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.35rem;
+  color: var(--treg-charcoal);
+}
+
+.highlight-text {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--treg-slate);
+  margin: 0.4rem 0 0.6rem;
+}
+
+.highlight-meta {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+}
+
+.highlight-meta a {
+  color: var(--treg-charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--treg-bronze);
+  padding-bottom: 1px;
+}
+
+.highlight-meta a:hover {
+  border-bottom-color: var(--treg-charcoal);
+}
+
+/* Prev/next buttons */
+.highlights-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+
+  background: rgba(30, 24, 13, 0.92);
+  color: #ffffff;
+
+  width: 46px;
+  height: 46px;
+  font-size: 1.35rem;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  z-index: 20;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.highlights-nav:hover {
+  background: rgba(30, 24, 13, 1);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.highlights-nav--prev {
+  left: -2.75rem;
+}
+
+.highlights-nav--next {
+  right: -2.75rem;
+}
+
+/* On small screens, hide arrows */
+@media (max-width: 740px) {
+  .highlights-nav {
+    display: none;
+  }
+
+  .highlights-window {
+    padding: 0;
+  }
+
+  .highlights-track .highlight-card {
+    flex: 0 0 85%;
+    max-width: 85%;
+  }
+}
