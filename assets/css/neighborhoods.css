@@ -1,5 +1,6 @@
 /* ======================================= */
 /* NEIGHBORHOOD PAGES ONLY (TREG)          */
+/* neighborhoods.css                        */
 /* ======================================= */
 
 /* ========================= */
@@ -62,13 +63,13 @@
 }
 
 /* ========================= */
-/* SNAPSHOT HEADER (NEW)     */
+/* SNAPSHOT HEADER            */
+/* (container-controlled)     */
 /* ========================= */
 
 .neighborhood-snapshot-header {
-  max-width: 1040px;
-  margin: 2.2rem auto 1rem;
-  padding: 0 1.25rem;
+  margin: 2.2rem 0 1rem; /* container controls width/padding */
+  padding: 0;
 }
 
 .neighborhood-snapshot-title {
@@ -91,13 +92,6 @@
   gap: 1.5rem;
   align-items: flex-start;
   margin-top: 0.75rem;
-}
-
-/* LEFT: map column */
-.neighborhood-overview-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
 }
 
 /* RIGHT: numbers + snapshot stack */
@@ -265,9 +259,7 @@
   gap: 1.4rem;
   transition: transform 0.4s ease;
   will-change: transform;
-
-  /* uniform heights */
-  align-items: stretch;
+  align-items: stretch; /* uniform heights */
 }
 
 .highlights-track .highlight-card {
