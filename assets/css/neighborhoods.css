@@ -426,3 +426,17 @@
 .highlight-body .highlight-meta:last-child {
   margin-top: auto;
 }
+/* ========================= */
+/* FIX: CTA spacing          */
+/* ========================= */
+
+.section-cta-text {
+  margin: 0.75rem auto 0;
+  max-width: 760px;
+  color: var(--treg-slate);
+}
+
+.section-cta .btn-row {
+  margin-top: 1.25rem;
+  justify-content: center;
+}
