@@ -1,1 +1,258 @@
+/* ======================================= */
+/* NEIGHBORHOOD PAGES ONLY                 */
+/* ======================================= */
+
+/* --------------------------------------- */
+/* HERO PHOTO                              */
+/* --------------------------------------- */
+
+.neighborhood-photo-hero {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.neighborhood-photo-hero-inner {
+  width: 100%;
+  height: 70vh;
+  min-height: 420px;
+  max-height: 640px;
+}
+
+.neighborhood-photo-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --------------------------------------- */
+/* INTRO / OVERVIEW STACK                  */
+/* --------------------------------------- */
+
+.neighborhood-overview-stack {
+  background: var(--treg-cream);
+}
+
+.neighborhood-intro-card {
+  max-width: 720px;
+  margin-bottom: 2.2rem;
+}
+
+.neighborhood-intro-card--life {
+  max-width: 820px;
+}
+
+/* --------------------------------------- */
+/* OVERVIEW GRID                           */
+/* --------------------------------------- */
+
+.neighborhood-overview-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  margin-top: 2.2rem;
+}
+
+@media (max-width: 900px) {
+  .neighborhood-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.neighborhood-overview-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* --------------------------------------- */
+/* SNAPSHOT CARD                           */
+/* --------------------------------------- */
+
+.snapshot {
+  background: #fff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+
+.snapshot-item + .snapshot-item {
+  margin-top: 0.75rem;
+}
+
+.snapshot-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+  margin-bottom: 0.15rem;
+}
+
+.snapshot-value {
+  font-size: 0.95rem;
+  color: var(--treg-charcoal);
+}
+
+/* --------------------------------------- */
+/* BY THE NUMBERS                          */
+/* --------------------------------------- */
+
+.neighborhood-numbers-card {
+  background: #fff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+
+.neighborhood-numbers-body {
+  margin-top: 0.75rem;
+}
+
+.numbers-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+}
+
+.numbers-label {
+  font-size: 0.85rem;
+  color: var(--treg-slate);
+}
+
+.numbers-value {
+  font-weight: 600;
+  color: var(--treg-charcoal);
+}
+
+.numbers-disclaimer {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--treg-slate);
+}
+
+/* --------------------------------------- */
+/* MAP CARD                                */
+/* --------------------------------------- */
+
+.neighborhood-map-card {
+  background: #fff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 1.25rem;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+
+.neighborhood-map-embed {
+  margin: 0.75rem 0;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+
+.neighborhood-map-embed iframe {
+  width: 100%;
+  height: 260px;
+  border: 0;
+}
+
+.neighborhood-map-meta {
+  font-size: 0.8rem;
+  color: var(--treg-slate);
+  line-height: 1.45;
+}
+
+/* --------------------------------------- */
+/* HIGHLIGHTS / CAROUSEL                   */
+/* --------------------------------------- */
+
+.neighborhood-highlights {
+  background: #fff;
+}
+
+.highlights-carousel {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.highlights-window {
+  overflow: hidden;
+}
+
+.highlights-track {
+  display: flex;
+  gap: 1.25rem;
+  transition: transform 0.35s ease;
+}
+
+.highlight-card {
+  min-width: 300px;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.highlight-body {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.highlight-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.05rem;
+  text-transform: lowercase;
+  margin: 0 0 0.25rem;
+}
+
+.highlight-meta {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
+  margin-bottom: 0.4rem;
+}
+
+.highlight-text {
+  font-size: 0.85rem;
+  color: var(--treg-charcoal);
+  margin-bottom: 0.5rem;
+}
+
+/* --------------------------------------- */
+/* CAROUSEL NAV                            */
+/* --------------------------------------- */
+
+.highlights-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.highlights-nav--prev {
+  left: -18px;
+}
+
+.highlights-nav--next {
+  right: -18px;
+}
 
