@@ -1,48 +1,53 @@
-// =============================
-// Load header / footer partials
-// =============================
+/* =========================================================
+   layout.js — TREG
+   - Loads header/footer partials
+   - Updates footer year
+   - Neighborhood highlights carousel (robust, multi-card, infinite loop)
+   ========================================================= */
+
+/* =============================
+   Load header / footer partials
+   ============================= */
 function loadFragment(targetId, url, callback) {
   fetch(url)
-    .then(function (response) {
-      return response.text();
-    })
-    .then(function (html) {
-      var el = document.getElementById(targetId);
-      if (el) {
-        el.innerHTML = html;
-      }
+    .then((response) => response.text())
+    .then((html) => {
+      const el = document.getElementById(targetId);
+      if (el) el.innerHTML = html;
       if (callback) callback();
     })
-    .catch(function (err) {
+    .catch((err) => {
       console.error("Error loading fragment:", url, err);
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Load header
+function initPartials() {
+  // Header
   loadFragment("site-header", "/partials/header.html");
 
-  // Load footer, then update the year AFTER it's ready
-  loadFragment("site-footer", "/partials/footer.html", function () {
-    var yearSpan = document.getElementById("year");
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    }
+  // Footer + year
+  loadFragment("site-footer", "/partials/footer.html", () => {
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
   });
-});
+}
 
-// =============================
-// Neighborhood highlights carousel
-// - shows multiple cards at once
-// - arrows move ONE CARD at a time
-// - works with 3 slides (Avondale) or 5+ (Bucktown)
-// - infinite loop (wraps around)
-// =============================
-document.addEventListener("DOMContentLoaded", () => {
+/* ============================================
+   Neighborhood highlights carousel (robust)
+   - shows multiple cards at once
+   - arrows move ONE CARD at a time
+   - infinite loop (wraps around)
+   - safe against double-init
+   ============================================ */
+function initHighlightsCarousels() {
   const carousels = document.querySelectorAll(".highlights-carousel");
   if (!carousels.length) return;
 
-  carousels.forEach(setupCarousel);
+  carousels.forEach((carousel) => {
+    if (carousel.dataset.carouselInit === "1") return;
+    carousel.dataset.carouselInit = "1";
+    setupCarousel(carousel);
+  });
 
   function setupCarousel(carousel) {
     const windowEl = carousel.querySelector(".highlights-window");
@@ -52,11 +57,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!windowEl || !track || !prevBtn || !nextBtn) return;
 
+    // Prevent cloning twice
+    if (track.dataset.cloned === "1") return;
+    track.dataset.cloned = "1";
+
     const originalSlides = Array.from(track.children);
     const realCount = originalSlides.length;
-    if (realCount <= 1) return; // nothing to slide
+    if (realCount <= 1) return;
 
-    // ---- 1. Clone first & last slide for infinite loop ----
+    // ---- 1) Clone first & last for infinite loop ----
     const firstClone = originalSlides[0].cloneNode(true);
     const lastClone = originalSlides[realCount - 1].cloneNode(true);
     firstClone.classList.add("clone");
@@ -65,24 +74,30 @@ document.addEventListener("DOMContentLoaded", () => {
     track.insertBefore(lastClone, originalSlides[0]);
     track.appendChild(firstClone);
 
-    const allSlides = Array.from(track.children);
+    const getSlides = () => Array.from(track.children);
 
-    // ---- 2. Measure "stride" (distance from one card to the next) ----
+    // ---- 2) Measure stride (card width + CSS gap) ----
+    function getGapPx() {
+      const styles = getComputedStyle(track);
+      const gap = styles.gap || styles.columnGap || "0px";
+      return parseFloat(gap) || 0;
+    }
+
     function getStride() {
-      if (allSlides.length < 2) {
-        return windowEl.getBoundingClientRect().width;
-      }
-      const rect1 = allSlides[0].getBoundingClientRect();
-      const rect2 = allSlides[1].getBoundingClientRect();
-      return rect2.left - rect1.left; // includes the gap between cards
+      const slides = getSlides();
+      const firstReal = slides[1] || slides[0];
+      const cardWidth = firstReal
+        ? firstReal.getBoundingClientRect().width
+        : windowEl.getBoundingClientRect().width;
+
+      return cardWidth + getGapPx();
     }
 
     let stride = getStride();
-
-    let index = 1;          // start on first REAL slide (after lastClone)
+    let index = 1; // start on first REAL slide
     let isAnimating = false;
 
-    // ---- 3. Dots / indicators ----
+    // ---- 3) Dots ----
     let dotsWrapper = carousel.querySelector(".highlights-dots");
     if (!dotsWrapper) {
       dotsWrapper = document.createElement("div");
@@ -101,32 +116,31 @@ document.addEventListener("DOMContentLoaded", () => {
       dotsWrapper.appendChild(dot);
       dots.push(dot);
 
-      dot.addEventListener("click", () => {
-        goTo(i + 1); // +1 because index 0 is the cloned last slide
-      });
+      dot.addEventListener("click", () => goTo(i + 1)); // +1 offset (because of leading clone)
     }
 
     function updateDots() {
-      const realIndex = (index - 1 + realCount) % realCount; // 0-based
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("is-active", i === realIndex);
-      });
+      const realIndex = (index - 1 + realCount) % realCount;
+      dots.forEach((d, i) => d.classList.toggle("is-active", i === realIndex));
     }
 
-    // ---- 4. Movement helpers ----
-    function jumpWithoutAnimation(newIndex) {
-      track.style.transition = "none";
+    // ---- 4) Move helpers ----
+    function setTransform(newIndex, withAnimation = true) {
+      track.style.transition = withAnimation ? "transform 0.35s ease" : "none";
       track.style.transform = `translateX(${-stride * newIndex}px)`;
-      // force a reflow so the browser applies it immediately
-      track.getBoundingClientRect();
-      track.style.transition = "transform 0.35s ease";
+
+      if (!withAnimation) {
+        track.getBoundingClientRect(); // force reflow
+        track.style.transition = "transform 0.35s ease";
+      }
     }
 
     function goTo(newIndex) {
       if (isAnimating) return;
       isAnimating = true;
+
       index = newIndex;
-      track.style.transform = `translateX(${-stride * index}px)`;
+      setTransform(index, true);
       updateDots();
     }
 
@@ -138,36 +152,60 @@ document.addEventListener("DOMContentLoaded", () => {
       goTo(index - 1);
     }
 
-    // Start positioned on the first real slide
-    jumpWithoutAnimation(index);
+    // Initial position
+    setTransform(index, false);
     updateDots();
 
-    // ---- 5. Handle infinite loop snapping ----
+    // ---- 5) Infinite loop snap ----
     track.addEventListener("transitionend", () => {
-      if (allSlides[index].classList.contains("clone")) {
-        if (index === 0) {
-          // we slid onto the cloned last slide -> snap to real last
-          index = realCount;
-        } else if (index === allSlides.length - 1) {
-          // we slid onto the cloned first slide -> snap to real first
-          index = 1;
-        }
-        jumpWithoutAnimation(index);
+      const slides = getSlides();
+      const current = slides[index];
+
+      if (current && current.classList.contains("clone")) {
+        // if we're on a clone, snap to real slide without animation
+        if (index === 0) index = realCount; // real last
+        if (index === slides.length - 1) index = 1; // real first
+        setTransform(index, false);
+        updateDots();
       }
-      // allow the next animation
-      setTimeout(() => {
-        isAnimating = false;
-      }, 20);
+
+      isAnimating = false;
     });
 
-    // ---- 6. Buttons ----
+    // ---- 6) Buttons ----
     nextBtn.addEventListener("click", goNext);
     prevBtn.addEventListener("click", goPrev);
 
-    // ---- 7. Resize: recompute stride so cards stay aligned ----
-    window.addEventListener("resize", () => {
+    // ---- 7) Re-measure on resize + after images load ----
+    function recalc() {
       stride = getStride();
-      jumpWithoutAnimation(index);
+      setTransform(index, false);
+    }
+
+    window.addEventListener("resize", recalc);
+
+    // Recalc after images load (image heights can affect layout/widths)
+    const imgs = carousel.querySelectorAll("img");
+    let pending = 0;
+
+    imgs.forEach((img) => {
+      if (img.complete) return;
+      pending++;
+      img.addEventListener("load", () => {
+        pending--;
+        if (pending === 0) recalc();
+      });
     });
+
+    // Extra settle tick (fonts/layout)
+    requestAnimationFrame(() => requestAnimationFrame(recalc));
   }
+}
+
+/* =============================
+   Boot
+   ============================= */
+document.addEventListener("DOMContentLoaded", () => {
+  initPartials();
+  initHighlightsCarousels();
 });
