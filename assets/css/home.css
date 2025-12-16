@@ -307,3 +307,48 @@
     flex-wrap: wrap;
   }
 }
+/* ======================================= */
+/* FINAL CTA LAYOUT (HOMEPAGE)             */
+/* ======================================= */
+
+.section.section-cta {
+  background: var(--treg-cream);
+}
+
+.section-inner-cta {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 2.5rem;
+  align-items: center;
+  text-align: left;
+}
+
+.section-cta-actions {
+  text-align: left;
+}
+
+.section-cta-main {
+  font-family: "Oswald", system-ui, sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--treg-charcoal);
+  margin-bottom: 0.25rem;
+}
+
+.section-cta-meta {
+  font-family: "PT Serif", Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--treg-slate);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .section-inner-cta {
+    grid-template-columns: 1fr;
+  }
+}
