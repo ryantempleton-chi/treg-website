@@ -610,3 +610,6 @@ li + li {
   border-color: var(--treg-bronze);
   outline: none;
 }
+.site-footer-inner {
+  padding: 1.5rem 1.25rem;
+}
