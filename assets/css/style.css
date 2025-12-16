@@ -610,3 +610,54 @@ li + li {
   border-color: var(--treg-bronze);
   outline: none;
 }
+/* ======================================= */
+/* HOME PAGE (SECTION + CARDS + REVIEWS)   */
+/* ======================================= */
+
+.section-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+  max-width: 860px;
+}
+
+.eyebrow {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--treg-slate);
+  margin: 0 0 0.5rem;
+}
+
+.section-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: lowercase;
+  margin: 0 0 0.6rem;
+  color: var(--treg-charcoal);
+}
+
+.section-intro {
+  margin: 0;
+  color: var(--treg-slate);
+  max-width: 780px;
+}
+
+/* Services cards grid */
+.cards-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.cards-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px)
