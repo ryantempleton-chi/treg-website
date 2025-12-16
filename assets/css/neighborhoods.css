@@ -581,6 +581,29 @@
   .neighborhood-nav-link.center {
     justify-content: center;
   }
+
+/* ======================================= */
+/* NEIGHBORHOOD HEADLINE SYSTEM            */
+/* (outside-the-card section headlines)    */
+/* ======================================= */
+
+.neighborhood-headline {
+  margin: 2.1rem 0 1rem; /* space above + below headline */
 }
-/* DEBUG (remove later) */
-.neighborhood-intro-card--life { outline: 6px solid lime !important; }
+
+/* Use SAME font as your current .section-heading (Oswald) */
+.neighborhood-headline-title {
+  font-family: "Oswald", system-ui, sans-serif;
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--treg-charcoal);
+}
+
+/* Optional: small helper line under the headline */
+.neighborhood-headline-lede {
+  margin: 0.45rem 0 0;
+  color: var(--treg-slate);
+  max-width: 80ch;
+}
