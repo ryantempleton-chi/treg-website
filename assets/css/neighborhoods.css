@@ -440,3 +440,13 @@
   margin-top: 1.25rem;
   justify-content: center;
 }
+/* ========================= */
+/* Back to Neighborhoods     */
+/* ========================= */
+
+.neighborhood-back-link {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
