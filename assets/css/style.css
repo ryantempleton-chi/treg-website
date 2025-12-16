@@ -613,3 +613,6 @@ li + li {
 .site-footer-inner {
   padding: 1.5rem 1.25rem;
 }
+.home-hero {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
