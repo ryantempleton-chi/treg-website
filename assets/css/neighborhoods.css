@@ -8,7 +8,7 @@
 
 .neighborhood-photo-hero {
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  background: #111; /* mostly covered by photo */
+  background: #111;
 }
 
 .neighborhood-photo-hero-inner {
@@ -44,21 +44,21 @@
 }
 
 .neighborhood-overview-stack .neighborhood-intro-card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 1.4rem 1.6rem 1.5rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
   margin-bottom: 1.6rem;
 }
 
 .neighborhood-intro-card--life {
   max-width: 820px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 1.4rem 1.6rem 1.6rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
 /* ========================= */
@@ -67,7 +67,7 @@
 
 .neighborhood-overview-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr);
+  grid-template-columns: minmax(0,1.05fr) minmax(0,1.35fr);
   gap: 1.5rem;
   align-items: flex-start;
   margin-top: 2rem;
@@ -81,7 +81,7 @@
 
 @media (max-width: 800px) {
   .neighborhood-overview-grid {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -90,11 +90,11 @@
 /* ========================= */
 
 .snapshot {
-  background: #ffffff;
+  background: #fff;
   border-radius: 0.9rem;
   padding: 1rem 1.1rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
 .snapshot-item + .snapshot-item {
@@ -120,16 +120,11 @@
 /* ========================= */
 
 .neighborhood-numbers-card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 0.95rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
   padding: 1rem 1.25rem 1.4rem;
-}
-
-.neighborhood-numbers-header {
-  margin-bottom: 0.75rem;
 }
 
 .neighborhood-numbers-body {
@@ -141,12 +136,10 @@
 .numbers-row {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
   gap: 1rem;
 }
 
 .numbers-label {
-  font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -156,18 +149,7 @@
 .numbers-value {
   font-family: "League Spartan", system-ui, sans-serif;
   font-size: 1.05rem;
-  letter-spacing: 0.02em;
   color: var(--treg-charcoal);
-  white-space: nowrap;
-}
-
-.numbers-disclaimer {
-  margin-top: 1rem;
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.45;
-  color: var(--treg-slate);
-  opacity: 0.85;
 }
 
 /* ========================= */
@@ -175,13 +157,11 @@
 /* ========================= */
 
 .neighborhood-map-card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 0.95rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 .neighborhood-map-header {
@@ -192,334 +172,143 @@
   width: 100%;
   height: 260px;
   border: 0;
-  display: block;
 }
 
 .neighborhood-map-meta {
   padding: 0.6rem 1rem 0.85rem;
   font-size: 0.8rem;
   color: var(--treg-slate);
-  line-height: 1.45;
 }
 
 /* ========================= */
-/* HIGHLIGHTS / CAROUSEL      */
+/* HIGHLIGHTS / CAROUSEL     */
 /* ========================= */
 
 .neighborhood-highlights {
   background: #faf7f1;
   padding: 2.25rem 0 2.75rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.neighborhood-highlights-intro {
-  max-width: 720px;
-  margin-bottom: 1.5rem;
 }
 
 .highlights-carousel {
   position: relative;
-  margin: 1.75rem auto 0;
+  margin-top: 1.75rem;
 }
 
 .highlights-window {
-  position: relative;
   overflow: hidden;
-  padding: 0 3.25rem; /* space so arrows sit off the card edges */
+  padding: 0 3.25rem;
 }
 
 .highlights-track {
   display: flex;
   gap: 1.4rem;
   transition: transform 0.4s ease;
-  will-change: transform;
-}
-
-.highlights-track .highlight-card {
-  flex: 0 0 320px;
-  max-width: 320px;
+  align-items: stretch;
 }
 
 .highlight-card {
-  background: #ffffff;
+  flex: 0 0 320px;
+  background: #fff;
   border-radius: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  height: 100%;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-}
-
-.highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-.highlight-image {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.highlight-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(1.05) contrast(1.04) saturate(1.06);
-  transform: scale(1.02);
-  transition: transform 0.22s ease;
-}
-
-.highlight-card:hover .highlight-image img {
-  transform: scale(1.06);
 }
 
 .highlight-body {
   padding: 1rem 1.15rem 1.2rem;
-}
-
-.highlight-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.1rem;
-  text-transform: lowercase;
-  letter-spacing: 0.03em;
-  margin: 0 0 0.35rem;
-  color: var(--treg-charcoal);
-}
-
-.highlight-meta {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .highlight-text {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: var(--treg-slate);
-  margin: 0.4rem 0 0.6rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.highlight-meta a {
-  color: var(--treg-charcoal);
-  text-decoration: none;
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 1px;
-}
+/* ========================= */
+/* CAROUSEL NAV BUTTONS      */
+/* ========================= */
 
-.highlight-meta a:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-
-/* Prev/next buttons */
 .highlights-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  border: none;
-
-  background: rgba(30, 24, 13, 0.92);
-  color: #ffffff;
-
+  background: rgba(30,24,13,0.92);
+  color: #fff;
   width: 46px;
   height: 46px;
-  font-size: 1.35rem;
   border-radius: 999px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   cursor: pointer;
-  z-index: 20;
-
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  transition: background 0.15s ease, transform 0.15s ease;
 }
 
-.highlights-nav:hover {
-  background: rgba(30, 24, 13, 1);
-  transform: translateY(-50%) scale(1.05);
-}
+.highlights-nav--prev { left: -2.75rem; }
+.highlights-nav--next { right: -2.75rem; }
 
-.highlights-nav--prev {
-  left: -2.75rem;
-}
-
-.highlights-nav--next {
-  right: -2.75rem;
-}
-
-/* Dots */
-.highlights-dots {
-  margin-top: 1rem;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.highlights-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-}
-
-.highlights-dot.is-active {
-  background: var(--treg-charcoal);
-  border-color: var(--treg-charcoal);
-}
-
-/* Mobile */
-@media (max-width: 740px) {
-  .highlights-nav {
-    display: none;
-  }
-
-  .highlights-window {
-    padding: 0;
-  }
-
-  .highlights-track .highlight-card {
-    flex: 0 0 85%;
-    max-width: 85%;
-  }
-}
 /* ========================= */
-/* FIX: Uniform carousel card heights */
-/* ========================= */
-
-.highlights-track {
-  align-items: stretch; /* make all cards same height */
-}
-
-.highlight-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.highlight-body {
-  flex: 1; /* body grows to fill */
-  display: flex;
-  flex-direction: column;
-}
-
-/* keep title/meta/text consistent */
-.highlight-text {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;  /* adjust 3–5 to taste */
-  overflow: hidden;
-}
-
-/* optional: keep the address/meta pinned toward the bottom */
-.highlight-body .highlight-meta:last-child {
-  margin-top: auto;
-}
-/* ========================= */
-/* FIX: CTA spacing          */
+/* CTA SPACING FIX           */
 /* ========================= */
 
 .section-cta-text {
-  margin: 0.75rem auto 0;
-  max-width: 760px;
-  color: var(--treg-slate);
+  margin-top: 0.75rem;
 }
 
 .section-cta .btn-row {
   margin-top: 1.25rem;
-  justify-content: center;
-}
-/* ========================= */
-/* Back to Neighborhoods     */
-/* ========================= */
-
-.neighborhood-back-link {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  display: flex;
-  justify-content: center;
-}
-/* ========================= */
-/* Back to Neighborhoods     */
-/* ========================= */
-
-.neighborhood-back-link {
-  margin-top: 2rem auto 0;
-  display: flex;
-  justify-content: center;
-}
-/* ========================= */
-/* Prev / Next Neighborhood  */
-/* ========================= */
-
-.neighborhood-prev-next {
-  margin: 2rem auto 3rem;
-  max-width: 1040px;
-  padding: 0 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
 }
 
-.neighborhood-prev-next a {
-  flex: 1;
-  background: #ffffff;
+/* ========================= */
+/* NEIGHBORHOOD NAV ROW      */
+/* ========================= */
+
+.neighborhood-nav {
+  margin: 2.25rem 0 2.75rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.25rem;
+}
+
+.neighborhood-nav-link {
+  background: #fff;
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 14px;
-  padding: 1.25rem 1.4rem;
+  padding: 1.1rem 1.25rem;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  gap: 0.2rem;
 }
 
-.neighborhood-prev-next a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+.neighborhood-nav-link.center {
+  border-radius: 999px;
+  padding: 0.85rem 1.1rem;
+  text-align: center;
+  align-items: center;
 }
 
-.neighborhood-prev {
-  text-align: left;
-}
-
-.neighborhood-next {
-  text-align: right;
-}
-
-.nav-eyebrow {
-  font-family: "Roboto", system-ui, sans-serif;
+.nav-label {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--treg-slate);
 }
 
-.nav-title {
+.nav-name {
   font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.1rem;
-  text-transform: lowercase;
-  color: var(--treg-charcoal);
+  font-size: 1.15rem;
 }
 
-/* Mobile stack */
-@media (max-width: 700px) {
-  .neighborhood-prev-next {
-    flex-direction: column;
+@media (max-width: 760px) {
+  .neighborhood-nav {
+    grid-template-columns: 1fr;
   }
-
-  .neighborhood-next {
-    text-align: left;
+  .neighborhood-nav-link.center {
+    order: -1;
+    width: fit-content;
+    justify-self: center;
   }
 }
