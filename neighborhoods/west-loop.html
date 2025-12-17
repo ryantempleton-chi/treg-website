@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>West Loop | Chicago Neighborhood Guide | Templeton Real Estate Group</title>
+    <meta
+      name="description"
+      content="West Loop neighborhood guide: lifestyle, housing, and market snapshot, plus a map and key highlights. Explore West Loop with Templeton Real Estate Group."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Fonts -->
@@ -28,7 +32,7 @@
           <div class="neighborhood-photo-hero-inner">
             <img
               src="/assets/img/neighborhoods/heroes/west-loop-hero.jpg"
-              alt="West Loop Chicago"
+              alt="West Loop Chicago street scene"
               class="neighborhood-photo-hero-img"
             />
           </div>
@@ -37,65 +41,91 @@
         <!-- OVERVIEW STACK -->
         <section class="section neighborhood-overview-stack">
           <div class="container">
-            <!-- HERO (matches home page structure: kicker + big headline + supporting line) -->
-            <header class="neighborhood-hero">
-              <div class="neighborhood-kicker">Chicago neighborhood guide</div>
-              <h1 class="neighborhood-title">west loop.</h1>
-              <p class="neighborhood-subtitle">
+            <!-- TOP INTRO CARD -->
+            <div class="neighborhood-card neighborhood-intro-card">
+              <div class="hero-label">Chicago neighborhood guide</div>
+              <h1 class="hero-title">west loop.</h1>
+              <p class="hero-subtitle">
                 A dining-forward, design-led neighborhood just west of downtown — known for loft living,
                 luxury rentals, and modern condos.
               </p>
-            </header>
+            </div>
 
-            <!-- LIFE -->
+            <!-- LIFE IN WEST LOOP -->
             <div class="neighborhood-headline">
               <h2 class="neighborhood-headline-title">Life in the West Loop</h2>
             </div>
 
-            <div class="neighborhood-intro-card--life" style="margin-bottom: 1.6rem;">
-              <!-- FIX: give this its own block so CSS can make it full-width -->
-              <div class="neighborhood-life-intro">
-                <p class="section-lede" style="margin-bottom: 0;">
-                  Life in the West Loop balances historic character with a polished, modern edge. What was once
-                  an industrial warehouse district is now one of Chicago’s most sought-after places to live —
-                  known for its restaurant scene, thoughtfully designed housing, and an active, social atmosphere.
-                </p>
-              </div>
+            <div class="neighborhood-card neighborhood-intro-card--life" style="margin-bottom: 1.6rem;">
+              <p class="section-lede">
+                Life in the West Loop balances historic character with a polished, modern edge.
+              </p>
 
+              <p style="margin: 0; color: var(--treg-slate); max-width: 78ch; line-height: 1.6;">
+                What was once an industrial warehouse district is now one of Chicago’s most sought-after places to live —
+                known for its restaurant scene, thoughtfully designed housing, and an active, social atmosphere that stays
+                busy well beyond the workday.
+              </p>
+
+              <!-- Scannable mini-sections -->
               <div class="neighborhood-life-grid">
-                <div class="neighborhood-life-item" style="margin-top: 1rem;">
-                  <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.35rem;">
-                    Food &amp; nightlife
+                <div class="neighborhood-life-item">
+                  <div class="icon-label">
+                    <!-- fork/knife icon -->
+                    <svg class="treg-ico" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 3v8" />
+                      <path d="M7 3v8" />
+                      <path d="M4 7h3" />
+                      <path d="M10 3v7a2 2 0 0 1-2 2H7" />
+                      <path d="M14 3v6" />
+                      <path d="M18 3v6" />
+                      <path d="M16 9v12" />
+                      <path d="M16 9a3 3 0 0 0 3-3V3" />
+                    </svg>
+                    <div class="section-heading section-heading--sm">Food &amp; nightlife</div>
                   </div>
-                  <p style="margin: 0;">
-                    Randolph “Restaurant Row” and Fulton Market bring award-winning restaurants,
-                    cocktail bars, rooftops, and late-night energy — day and night.
+                  <p>
+                    Randolph “Restaurant Row” and Fulton Market bring award-winning restaurants, cocktail bars,
+                    rooftops, and late-night energy — day and night.
                   </p>
                 </div>
 
-                <div class="neighborhood-life-item" style="margin-top: 1rem;">
-                  <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.35rem;">
-                    Homes &amp; feel
+                <div class="neighborhood-life-item">
+                  <div class="icon-label">
+                    <!-- home icon -->
+                    <svg class="treg-ico" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M3 10.5 12 3l9 7.5" />
+                      <path d="M5.5 10.5V21h13V10.5" />
+                      <path d="M9.5 21v-6h5v6" />
+                    </svg>
+                    <div class="section-heading section-heading--sm">Homes &amp; feel</div>
                   </div>
-                  <p style="margin: 0;">
-                    A mix of exposed-brick lofts, luxury rentals, townhomes, and newer condo buildings —
-                    ideal for buyers and renters who want walkable, modern city living.
+                  <p>
+                    A mix of exposed-brick lofts, luxury rentals, townhomes, and newer condo buildings — ideal for buyers
+                    and renters who want walkable, modern city living.
                   </p>
                 </div>
 
-                <div class="neighborhood-life-item" style="margin-top: 1rem;">
-                  <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.35rem;">
-                    Commute &amp; access
+                <div class="neighborhood-life-item">
+                  <div class="icon-label">
+                    <!-- map-pin icon -->
+                    <svg class="treg-ico" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11z" />
+                      <circle cx="12" cy="10" r="2" />
+                      <path d="M3 20h6" />
+                      <path d="M15 20h6" />
+                    </svg>
+                    <div class="section-heading section-heading--sm">Commute &amp; access</div>
                   </div>
-                  <p style="margin: 0;">
-                    Quick access to the Loop, major expressways, and multiple train lines makes West Loop
-                    a top choice for downtown commuters.
+                  <p>
+                    Quick access to the Loop, major expressways, and multiple train lines makes West Loop a top choice
+                    for downtown commuters.
                   </p>
                 </div>
               </div>
             </div>
 
-            <!-- SNAPSHOT (no colon) -->
+            <!-- NEIGHBORHOOD SNAPSHOT (no colon) -->
             <div class="neighborhood-snapshot-header">
               <h2 class="neighborhood-snapshot-title">Neighborhood snapshot</h2>
             </div>
@@ -104,10 +134,8 @@
               <!-- LEFT: MAP -->
               <aside class="neighborhood-map-card">
                 <div class="neighborhood-map-header">
-                  <div class="section-heading" style="font-size: 1rem; margin-bottom: 0.35rem;">
-                    Where you’ll find the West Loop
-                  </div>
-                  <div style="font-size: 0.9rem; color: #6a6966;">
+                  <div class="section-heading section-heading--sm">Where you’ll find the West Loop</div>
+                  <div class="section-subtle">
                     Just west of the Loop · along Randolph, Madison, and Fulton Market
                   </div>
                 </div>
@@ -119,41 +147,35 @@
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
+                    title="Map of West Loop, Chicago"
                   ></iframe>
                 </div>
 
-                <!-- LOCAL ORIENTATION (NO transit line here to avoid duplication) -->
+                <!-- LOCAL ORIENTATION (value, not repetitive transit) -->
                 <div class="neighborhood-map-orientation">
-                  <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.55rem;">
-                    Local orientation
-                  </div>
-
-                  <div style="font-size: 0.92rem; color: #3a3a3a; line-height: 1.5;">
-                    <div style="margin-bottom: 0.45rem;">
-                      <strong>Nearby:</strong> Fulton Market · River West · Near West Side · The Loop
-                    </div>
-
-                    <div style="margin-bottom: 0.45rem;">
-                      <strong>Boundaries:</strong> West of downtown, roughly between the river and I-90/94
-                    </div>
-
-                    <div>
+                  <div class="orientation-title">Local orientation</div>
+                  <ul class="orientation-list">
+                    <li><strong>Nearby:</strong> Fulton Market · River West · Near West Side · The Loop</li>
+                    <li><strong>Boundaries:</strong> West of downtown, roughly between the river and I-90/94</li>
+                    <li>
                       <strong>Good to know:</strong> West Loop and Fulton Market are often grouped together, though
                       Fulton Market tends to skew slightly more commercial.
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
                 </div>
 
-                <!-- REMOVED: duplicate Transit line (was the orange highlight) -->
+                <div class="neighborhood-map-meta">
+                  <strong>Tip:</strong> If you’re comparing neighborhoods, West Loop is often cross-shopped with River West,
+                  Fulton Market, and the Near West Side.
+                </div>
               </aside>
 
-              <!-- RIGHT: NUMBERS + AT A GLANCE -->
+              <!-- RIGHT -->
               <div class="neighborhood-overview-right">
+                <!-- BY THE NUMBERS -->
                 <aside class="neighborhood-numbers-card">
                   <div class="neighborhood-numbers-header">
-                    <div class="section-heading" style="font-size: 1rem; margin-bottom: 0.35rem;">
-                      By the numbers
-                    </div>
+                    <div class="section-heading section-heading--sm">By the numbers</div>
                   </div>
 
                   <div class="neighborhood-numbers-body">
@@ -173,16 +195,15 @@
                     </div>
 
                     <div class="numbers-disclaimer">
-                      These are high-level neighborhood estimates and can change over time. For a detailed,
-                      up-to-date analysis, reach out to the Templeton Real Estate Group.
+                      These are high-level neighborhood estimates and can change over time. For a detailed, up-to-date
+                      analysis, reach out to the Templeton Real Estate Group.
                     </div>
                   </div>
                 </aside>
 
+                <!-- AT A GLANCE -->
                 <aside class="snapshot">
-                  <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.6rem;">
-                    At a glance
-                  </div>
+                  <div class="section-heading section-heading--sm" style="margin-bottom: 0.75rem;">At a glance</div>
 
                   <div class="snapshot-item">
                     <div class="snapshot-label">Area vibe</div>
@@ -191,9 +212,7 @@
 
                   <div class="snapshot-item">
                     <div class="snapshot-label">Housing mix</div>
-                    <div class="snapshot-value">
-                      Loft conversions · luxury rentals · condo mid-rises · townhomes
-                    </div>
+                    <div class="snapshot-value">Loft conversions · luxury rentals · condo mid-rises · townhomes</div>
                   </div>
 
                   <div class="snapshot-item">
@@ -317,8 +336,7 @@
                       <h3 class="highlight-title">gin alley.</h3>
                       <div class="highlight-meta">alleyway · bars · nightlife</div>
                       <p class="highlight-text">
-                        A tucked-away alley off Randolph with bars and restaurants clustered around a shared
-                        courtyard-style space.
+                        A tucked-away alley off Randolph with bars and restaurants clustered around a shared courtyard-style space.
                       </p>
                       <div class="highlight-meta">Off W Randolph St near N Green St, Chicago, IL 60607</div>
                     </div>
@@ -335,8 +353,7 @@
                       <h3 class="highlight-title">united center.</h3>
                       <div class="highlight-meta">arena · sports · concerts</div>
                       <p class="highlight-text">
-                        Home of the Chicago Bulls and Blackhawks, plus major concerts and events, just a quick trip from
-                        the heart of the West Loop.
+                        Home of the Chicago Bulls and Blackhawks, plus major concerts and events, just a quick trip from the heart of the West Loop.
                       </p>
                       <div class="highlight-meta">
                         1901 W Madison St, Chicago, IL 60612<br />
@@ -392,6 +409,7 @@
       <div id="site-footer"></div>
     </div>
 
+    <!-- Header/footer + Carousel JS -->
     <script src="/assets/js/layout.js"></script>
   </body>
 </html>
