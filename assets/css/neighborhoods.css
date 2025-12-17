@@ -719,3 +719,33 @@
   border-radius: 999px;
   background: rgba(207, 177, 142, 0.55);
 }
+/* ======================================= */
+/* TYPOGRAPHY ALIGNMENT (match home page)  */
+/* ======================================= */
+
+/* Make neighborhood page hero title feel like the homepage hero (but bigger) */
+.neighborhood-intro-card .hero-title {
+  font-size: clamp(2.6rem, 2.1rem + 1.6vw, 3.2rem);
+  line-height: 1.06;
+  margin-bottom: 0.35rem;
+}
+
+/* Use the HOME “section-title” look for neighborhood section headers */
+.neighborhood-headline-title,
+.neighborhood-snapshot-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  font-size: clamp(1.55rem, 1.2rem + 1.2vw, 2.05rem);
+  line-height: 1.1;
+}
+
+/* Tighten spacing so headers feel like the homepage sections */
+.neighborhood-headline {
+  margin: 2rem auto 0.85rem;
+}
+
+.neighborhood-snapshot-header {
+  margin: 1.75rem auto 0.85rem;
+}
