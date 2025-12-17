@@ -655,3 +655,72 @@
 .neighborhood-map-meta {
   padding-top: 0.75rem;
 }
+/* ======================================= */
+/* ICON SYSTEM (TREG Neighborhood Pages)   */
+/* ======================================= */
+
+:root {
+  /* uses your palette; assuming these already exist */
+  /* --treg-bronze: #cfb18e; */
+}
+
+/* Small inline icon */
+.treg-ico {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: inline-block;
+  vertical-align: -3px;
+}
+
+.treg-ico path,
+.treg-ico circle,
+.treg-ico rect,
+.treg-ico line,
+.treg-ico polyline {
+  stroke: var(--treg-bronze);
+  opacity: 0.9;
+  stroke-width: 1.75;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Icon + label row */
+.icon-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+/* Soft gold chip (optional for tiny tags like “Dining”, “Lofts”, etc.) */
+.treg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(207, 177, 142, 0.45);
+  background: rgba(207, 177, 142, 0.10);
+  color: var(--treg-charcoal);
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Make Life cards feel more designed (still minimal) */
+.neighborhood-life-item {
+  position: relative;
+}
+
+.neighborhood-life-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 999px;
+  background: rgba(207, 177, 142, 0.55);
+}
