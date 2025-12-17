@@ -706,3 +706,10 @@
   justify-content: center;
   align-items: center;
 }
+/* ======================================= */
+/* HEADLINE LEDE WRAP FIX                  */
+/* ======================================= */
+
+.neighborhood-highlights .neighborhood-headline-lede {
+  max-width: 100%;
+}
