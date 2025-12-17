@@ -545,3 +545,113 @@
     justify-content: center;
   }
 }
+/* ======================================= */
+/* TEMPLATE POLISH ADD-ONS (West Loop v1)  */
+/* ======================================= */
+
+/* Small heading + subtle text helpers (replaces inline styles) */
+.section-heading--sm {
+  font-size: 0.95rem;
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+}
+
+.section-subtle {
+  font-size: 0.9rem;
+  color: #6a6966;
+}
+
+/* ========================= */
+/* LIFE SECTION (scannable)  */
+/* ========================= */
+
+.neighborhood-life-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin-top: 1.1rem;
+}
+
+.neighborhood-life-item {
+  background: rgba(250, 250, 250, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 0.95rem 1rem;
+}
+
+.neighborhood-life-item p {
+  margin: 0;
+  color: var(--treg-slate);
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .neighborhood-life-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================= */
+/* SNAPSHOT HEADER TIGHTEN   */
+/* ========================= */
+
+/* If you’re using the "Neighborhood snapshot:" outside header,
+   this makes it feel attached to the grid below */
+.neighborhood-snapshot-header {
+  max-width: 1040px;
+  margin: 1.9rem auto 0.85rem;
+  padding: 0 1.25rem;
+}
+
+.neighborhood-snapshot-title {
+  font-family: "Oswald", system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--treg-charcoal);
+  font-size: clamp(1.35rem, 1.05rem + 1.1vw, 1.75rem);
+  line-height: 1.12;
+}
+
+/* ========================= */
+/* MAP ORIENTATION BLOCK     */
+/* ========================= */
+
+.neighborhood-map-orientation {
+  padding: 0.85rem 1rem 0.95rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(250, 250, 250, 0.65);
+}
+
+.neighborhood-map-orientation .orientation-title {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+  margin-bottom: 0.55rem;
+}
+
+.neighborhood-map-orientation .orientation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--treg-charcoal);
+}
+
+.neighborhood-map-orientation .orientation-list strong {
+  color: var(--treg-slate);
+  font-weight: 600;
+}
+
+/* Optional: give map meta a little more breathing room now that orientation exists */
+.neighborhood-map-meta {
+  padding-top: 0.75rem;
+}
