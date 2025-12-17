@@ -814,3 +814,106 @@
   line-height: 1.55;
   color: var(--treg-slate);
 }
+/* ======================================= */
+/* NEIGHBORHOODS LANDING PAGE (INDEX)      */
+/* /neighborhoods.html                     */
+/* ======================================= */
+
+.neighborhoods-hero {
+  background: var(--treg-cream);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.neighborhoods-intro .hero-label {
+  margin-top: 0.25rem;
+}
+
+.neighborhoods-intro h1 {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 1.8rem + 1.6vw, 3rem);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.6rem;
+  color: var(--treg-charcoal);
+}
+
+.neighborhoods-intro p {
+  color: var(--treg-slate);
+  max-width: 80ch;
+}
+
+.neighborhoods-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+@media (max-width: 980px) {
+  .neighborhoods-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .neighborhoods-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.neighborhood-tile {
+  display: block;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--treg-charcoal);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.neighborhood-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.14);
+  border-color: rgba(0,0,0,0.12);
+}
+
+.neighborhood-tile-header {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  padding: 0.95rem 1.05rem 0.6rem;
+}
+
+.neighborhood-tile-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+  background: #111;
+}
+
+.neighborhood-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+  transition: transform 0.22s ease, filter 0.22s ease;
+  filter: brightness(1.02) contrast(1.03) saturate(1.04);
+}
+
+.neighborhood-tile:hover .neighborhood-thumb {
+  transform: scale(1.06);
+}
+
+.neighborhood-tile-body {
+  padding: 0.95rem 1.05rem 1.15rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--treg-slate);
+}
