@@ -1,3 +1,16 @@
+Perfect — now that your HTML is updated, here’s the **FULL updated `neighborhoods.css`** with the new additions integrated cleanly.
+
+What I changed (only what’s needed):
+
+* Added the **icon system** (`.treg-ico`, `.icon-label`, `.treg-chip`)
+* Added the **Life grid** layout + card styling (3-up desktop, stacks mobile)
+* Added the **Map “Local orientation”** styling (so it looks intentional)
+* Added the **helper classes** (`.section-heading--sm`, `.section-subtle`)
+* Kept **everything else exactly as-is** (carousel untouched)
+
+Copy/paste this whole file:
+
+```css
 /* ======================================= */
 /* NEIGHBORHOOD PAGES ONLY (TREG)          */
 /* neighborhoods.css                       */
@@ -545,6 +558,7 @@
     justify-content: center;
   }
 }
+
 /* ======================================= */
 /* TEMPLATE POLISH ADD-ONS (West Loop v1)  */
 /* ======================================= */
@@ -597,8 +611,6 @@
 /* SNAPSHOT HEADER TIGHTEN   */
 /* ========================= */
 
-/* If you’re using the "Neighborhood snapshot:" outside header,
-   this makes it feel attached to the grid below */
 .neighborhood-snapshot-header {
   max-width: 1040px;
   margin: 1.9rem auto 0.85rem;
@@ -655,14 +667,10 @@
 .neighborhood-map-meta {
   padding-top: 0.75rem;
 }
+
 /* ======================================= */
 /* ICON SYSTEM (TREG Neighborhood Pages)   */
 /* ======================================= */
-
-:root {
-  /* uses your palette; assuming these already exist */
-  /* --treg-bronze: #cfb18e; */
-}
 
 /* Small inline icon */
 .treg-ico {
@@ -693,7 +701,7 @@
   gap: 0.55rem;
 }
 
-/* Soft gold chip (optional for tiny tags like “Dining”, “Lofts”, etc.) */
+/* Soft gold chip (optional) */
 .treg-chip {
   display: inline-flex;
   align-items: center;
@@ -724,3 +732,4 @@
   border-radius: 999px;
   background: rgba(207, 177, 142, 0.55);
 }
+```
