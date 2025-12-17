@@ -1,5 +1,6 @@
 /* ======================================= */
 /* HOME PAGE (SECTION + CARDS + REVIEWS)   */
+/* home.css                                */
 /* ======================================= */
 
 .section-inner {
@@ -208,6 +209,7 @@
   display: flex;
   justify-content: center;
 }
+
 /* ======================================= */
 /* HOME HERO (BACKGROUND IMAGE)            */
 /* ======================================= */
@@ -307,6 +309,7 @@
     flex-wrap: wrap;
   }
 }
+
 /* ======================================= */
 /* FINAL CTA LAYOUT (HOMEPAGE)             */
 /* ======================================= */
@@ -321,7 +324,7 @@
   padding: 3rem 1.25rem;
 
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   gap: 2.5rem;
   align-items: center;
   text-align: left;
@@ -345,22 +348,6 @@
   font-size: 0.95rem;
   color: var(--treg-slate);
   margin-bottom: 1rem;
-}
-
-@media (max-width: 900px) {
-  .section-inner-cta {
-    grid-template-columns: 1fr;
-  }
-}
-/* FINAL CTA LAYOUT */
-.section-inner-cta {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 3rem 1.25rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: 2.5rem;
-  align-items: center;
 }
 
 @media (max-width: 900px) {
