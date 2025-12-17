@@ -1,5 +1,6 @@
 /* ======================================= */
 /* BASE STYLES – TREG BRAND                */
+/* style.css                               */
 /* ======================================= */
 
 /* Brand colors */
@@ -93,7 +94,7 @@ body {
   align-items: center;
 }
 
-/* top-level nav links, including BUY | SELL | RENT */
+/* top-level nav links */
 .nav-link,
 .nav-link-dropdown {
   font-family: "Oswald", system-ui, sans-serif;
@@ -115,7 +116,7 @@ body {
   top: -1px;
 }
 
-/* keep HOME (first item) at original baseline */
+/* keep HOME at original baseline */
 .nav-item:first-child .nav-link {
   top: 0;
 }
@@ -252,7 +253,6 @@ body {
   }
 }
 
-/* Lists */
 ul {
   padding-left: 1.1rem;
 }
@@ -301,13 +301,11 @@ li + li {
 /* TEAM INDEX                */
 /* ========================= */
 
-/* tighter vertical whitespace around the team section */
 .section.section-muted {
   padding-top: 2.2rem;
   padding-bottom: 2.2rem;
 }
 
-/* slightly tighten the intro section right above */
 .section:not(.section-muted):not(.section-cta) {
   padding-top: 2.4rem;
   padding-bottom: 2.4rem;
@@ -320,7 +318,6 @@ li + li {
   margin-top: 1.5rem;
 }
 
-/* Card */
 .team-card {
   position: relative;
   background: #ffffff;
@@ -336,14 +333,12 @@ li + li {
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-/* Hover lift */
 .team-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-/* Thumbnail */
 .team-thumb {
   width: 100%;
   height: 190px;
@@ -368,13 +363,11 @@ li + li {
   transform: scale(1.06);
 }
 
-/* Title hover detail */
 .team-card:hover .team-card-title {
   text-decoration: underline;
   text-underline-offset: 0.22em;
 }
 
-/* ✅ FIX: overlay is ON TOP so the card is clickable */
 .team-card-overlay {
   position: absolute;
   inset: 0;
@@ -384,12 +377,10 @@ li + li {
   text-decoration: none;
 }
 
-/* ✅ FIX: let overlay receive clicks (content does NOT intercept) */
 .team-card > *:not(.team-card-overlay) {
   pointer-events: none;
 }
 
-/* Text */
 .team-card-title {
   font-family: "League Spartan", system-ui, sans-serif;
   font-size: 1.1rem;
@@ -412,7 +403,6 @@ li + li {
   margin: 0 0 1.1rem;
 }
 
-/* Gold button pinned bottom + centered */
 .team-card-link {
   display: inline-flex;
   align-items: center;
@@ -432,10 +422,9 @@ li + li {
 
   text-decoration: none;
 
-  margin-top: auto;     /* pins to bottom */
-  align-self: center;   /* centers */
+  margin-top: auto;
+  align-self: center;
 
-  /* ✅ FIX: button remains clickable above overlay */
   pointer-events: auto;
   position: relative;
   z-index: 11;
@@ -455,13 +444,7 @@ li + li {
   }
 }
 
-/* ========================= */
-/* FORCE “ABOUT PAGE” LINK   */
-/* stays text-style only     */
-/* ========================= */
-
-/* ONLY targets inline links in section paragraphs/lede,
-   does not affect the gold team buttons (not inside a <p>) */
+/* Inline text links in sections */
 .section p a,
 .section-lede a {
   background: none !important;
@@ -498,7 +481,7 @@ li + li {
 .site-footer-inner {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 1rem 1.25rem;
+  padding: 1.5rem 1.25rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -521,8 +504,9 @@ li + li {
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
+
 /* ========================= */
-/* BUTTONS (RESTORED)        */
+/* BUTTONS (GLOBAL)          */
 /* ========================= */
 
 .btn {
@@ -610,9 +594,8 @@ li + li {
   border-color: var(--treg-bronze);
   outline: none;
 }
-.site-footer-inner {
-  padding: 1.5rem 1.25rem;
-}
+
+/* Light home hero separator (safe even if home-hero is defined elsewhere) */
 .home-hero {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
