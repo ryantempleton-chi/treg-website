@@ -1,16 +1,3 @@
-Perfect — now that your HTML is updated, here’s the **FULL updated `neighborhoods.css`** with the new additions integrated cleanly.
-
-What I changed (only what’s needed):
-
-* Added the **icon system** (`.treg-ico`, `.icon-label`, `.treg-chip`)
-* Added the **Life grid** layout + card styling (3-up desktop, stacks mobile)
-* Added the **Map “Local orientation”** styling (so it looks intentional)
-* Added the **helper classes** (`.section-heading--sm`, `.section-subtle`)
-* Kept **everything else exactly as-is** (carousel untouched)
-
-Copy/paste this whole file:
-
-```css
 /* ======================================= */
 /* NEIGHBORHOOD PAGES ONLY (TREG)          */
 /* neighborhoods.css                       */
@@ -732,4 +719,3 @@ Copy/paste this whole file:
   border-radius: 999px;
   background: rgba(207, 177, 142, 0.55);
 }
-```
