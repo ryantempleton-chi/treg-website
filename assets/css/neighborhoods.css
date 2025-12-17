@@ -1,6 +1,6 @@
 /* ======================================= */
 /* NEIGHBORHOOD PAGES ONLY (TREG)          */
-/* neighborhoods.css                       */
+/* neighborhoods.css — CLEAN + FINAL      */
 /* ======================================= */
 
 /* ========================= */
@@ -37,7 +37,7 @@
 }
 
 /* ========================= */
-/* OVERVIEW STACK (SECTION)  */
+/* OVERVIEW STACK            */
 /* ========================= */
 
 .neighborhood-overview-stack {
@@ -46,36 +46,29 @@
 
 /* ========================= */
 /* HEADLINE SYSTEM           */
-/* (outside-the-card titles) */
 /* ========================= */
 
 .neighborhood-headline {
   max-width: 1040px;
-  margin: 2.1rem auto 0.95rem;
-  padding: 0 1.25rem; /* match .container padding */
+  margin: 2rem auto 0.85rem;
+  padding: 0 1.25rem;
 }
 
 .neighborhood-headline-title {
-  font-family: "Oswald", system-ui, sans-serif; /* SAME as your global .section-heading */
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  font-size: clamp(1.55rem, 1.2rem + 1.2vw, 2.05rem);
+  line-height: 1.1;
   margin: 0;
   color: var(--treg-charcoal);
-  font-size: clamp(1.35rem, 1.05rem + 1.1vw, 1.75rem);
-  line-height: 1.12;
 }
 
 .neighborhood-headline-lede {
   margin: 0.5rem 0 0;
   color: var(--treg-slate);
   max-width: 80ch;
-}
-
-/* A slightly tighter variant (use for Snapshot if you want) */
-.neighborhood-headline--tight {
-  margin-top: 1.6rem;
-  margin-bottom: 0.75rem;
 }
 
 /* ========================= */
@@ -92,36 +85,18 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* TOP INTRO CARD */
 .neighborhood-intro-card {
   padding: 1.4rem 1.6rem 1.5rem;
   margin: 0 auto 1.25rem;
 }
 
-/* LIFE CARD (now aligned + full width like everything else) */
 .neighborhood-intro-card--life {
   padding: 1.4rem 1.6rem 1.6rem;
   margin: 0 auto 1.6rem;
 }
 
-/* Keep body text readable on wide cards */
-.neighborhood-intro-card--life p,
-.neighborhood-intro-card--life .section-lede {
-  max-width: 78ch;
-}
-
-/* If you still have <h2 class="section-heading"> inside cards,
-   this prevents it from fighting the new headline system. */
-.neighborhood-intro-card--life .section-heading,
-.neighborhood-highlights .section-heading {
-  font-size: 1rem;
-  margin: 0 0 0.35rem;
-  opacity: 0.9;
-}
-
 /* ========================= */
 /* OVERVIEW GRID             */
-/* (MAP LEFT | RIGHT STACK)  */
 /* ========================= */
 
 .neighborhood-overview-grid {
@@ -140,7 +115,7 @@
 
 @media (max-width: 900px) {
   .neighborhood-overview-grid {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr;
     margin-top: 1.1rem;
   }
 }
@@ -171,14 +146,40 @@
 }
 
 .neighborhood-map-meta {
-  padding: 0.6rem 1rem 0.85rem;
+  padding: 0.75rem 1rem 0.85rem;
   font-size: 0.8rem;
   color: var(--treg-slate);
   line-height: 1.45;
 }
 
+.neighborhood-map-orientation {
+  padding: 0.85rem 1rem 0.95rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(250, 250, 250, 0.65);
+}
+
+.neighborhood-map-orientation .orientation-title {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: var(--treg-charcoal);
+  text-transform: uppercase;
+  margin-bottom: 0.55rem;
+}
+
+.neighborhood-map-orientation .orientation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--treg-charcoal);
+}
+
 /* ========================= */
-/* BY THE NUMBERS CARD       */
+/* BY THE NUMBERS             */
 /* ========================= */
 
 .neighborhood-numbers-card {
@@ -190,21 +191,10 @@
   padding: 1rem 1.25rem 1.4rem;
 }
 
-.neighborhood-numbers-header {
-  margin-bottom: 0.75rem;
-}
-
-.neighborhood-numbers-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
 .numbers-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 1rem;
 }
 
 .numbers-label {
@@ -220,54 +210,26 @@
   font-size: 1.05rem;
   letter-spacing: 0.02em;
   color: var(--treg-charcoal);
-  white-space: nowrap;
-}
-
-.numbers-disclaimer {
-  margin-top: 1rem;
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.75rem;
-  line-height: 1.45;
-  color: var(--treg-slate);
-  opacity: 0.85;
-}
-
-/* Keep small “card headers” understated */
-.neighborhood-map-header .section-heading,
-.neighborhood-numbers-card .section-heading {
-  font-size: 0.95rem;
-  margin: 0 0 0.35rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
 }
 
 /* ========================= */
-/* SNAPSHOT CARD             */
+/* SNAPSHOT HEADER            */
 /* ========================= */
 
-.snapshot {
-  background: #ffffff;
-  border-radius: 0.9rem;
-  padding: 1rem 1.1rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+.neighborhood-snapshot-header {
+  max-width: 1040px;
+  margin: 1.75rem auto 0.85rem;
+  padding: 0 1.25rem;
 }
 
-.snapshot-item + .snapshot-item {
-  margin-top: 0.75rem;
-}
-
-.snapshot-label {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-}
-
-.snapshot-value {
-  font-size: 0.9rem;
-  margin-top: 0.12rem;
+.neighborhood-snapshot-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  font-size: clamp(1.55rem, 1.2rem + 1.2vw, 2.05rem);
+  line-height: 1.1;
+  margin: 0;
   color: var(--treg-charcoal);
 }
 
@@ -278,14 +240,6 @@
 .neighborhood-highlights {
   background: #faf7f1;
   padding: 2.25rem 0 2.75rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-/* If you keep the intro wrapper, make it full-width consistent */
-.neighborhood-highlights-intro {
-  max-width: 1040px;
-  margin: 0 auto 1.25rem;
-  padding: 0 1.25rem;
 }
 
 .highlights-carousel {
@@ -295,178 +249,47 @@
 }
 
 .highlights-window {
-  position: relative;
   overflow: hidden;
-  padding: 0 3.25rem; /* room for arrows */
+  padding: 0 3.25rem;
 }
 
 .highlights-track {
   display: flex;
   gap: 1.4rem;
   transition: transform 0.4s ease;
-  will-change: transform;
-  align-items: stretch;
-}
-
-.highlights-track .highlight-card {
-  flex: 0 0 320px;
-  max-width: 320px;
 }
 
 .highlight-card {
-  background: #ffffff;
+  flex: 0 0 320px;
+  background: #fff;
   border-radius: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-.highlight-image {
+.highlights-dots {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.highlight-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(1.05) contrast(1.04) saturate(1.06);
-  transform: scale(1.02);
-  transition: transform 0.22s ease;
-  display: block;
-}
-
-.highlight-card:hover .highlight-image img {
-  transform: scale(1.06);
-}
-
-.highlight-body {
-  padding: 1rem 1.15rem 1.2rem;
-  flex: 1;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1rem;
 }
 
-.highlight-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.1rem;
-  text-transform: lowercase;
-  letter-spacing: 0.03em;
-  margin: 0 0 0.35rem;
-  color: var(--treg-charcoal);
-}
-
-.highlight-meta {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-}
-
-.highlight-text {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: var(--treg-slate);
-  margin: 0.4rem 0 0.6rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
-}
-
-.highlight-body .highlight-meta:last-child {
-  margin-top: auto;
-}
-
-.highlight-meta a {
-  color: var(--treg-charcoal);
-  text-decoration: none;
-  border-bottom: 1px solid var(--treg-bronze);
-  padding-bottom: 1px;
-}
-
-.highlight-meta a:hover {
-  border-bottom-color: var(--treg-charcoal);
-}
-
-/* carousel arrows */
-.highlights-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: rgba(30, 24, 13, 0.92);
-  color: #ffffff;
-  width: 46px;
-  height: 46px;
-  font-size: 1.35rem;
+.highlights-dot {
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 20;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  transition: background 0.15s ease, transform 0.15s ease;
+  border: 1px solid rgba(30, 24, 13, 0.28);
+  background: rgba(30, 24, 13, 0.10);
 }
 
-.highlights-nav:hover {
-  background: rgba(30, 24, 13, 1);
-  transform: translateY(-50%) scale(1.05);
-}
-
-.highlights-nav--prev {
-  left: -2.75rem;
-}
-
-.highlights-nav--next {
-  right: -2.75rem;
-}
-
-@media (max-width: 740px) {
-  .highlights-nav {
-    display: none;
-  }
-  .highlights-window {
-    padding: 0;
-  }
-  .highlights-track .highlight-card {
-    flex: 0 0 85%;
-    max-width: 85%;
-  }
+.highlights-dot.is-active {
+  background: rgba(30, 24, 13, 0.8);
+  border-color: rgba(30, 24, 13, 0.8);
 }
 
 /* ========================= */
-/* CTA spacing fix           */
-/* ========================= */
-
-.section-cta-text {
-  margin: 0.75rem auto 0;
-  max-width: 760px;
-  color: var(--treg-slate);
-}
-
-.section-cta .btn-row {
-  margin-top: 1.25rem;
-  justify-content: center;
-}
-
-/* ========================= */
-/* Neighborhood nav row      */
-/* (Prev | Back | Next)      */
+/* NEIGHBORHOOD NAV           */
 /* ========================= */
 
 .neighborhood-nav {
@@ -476,7 +299,6 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   gap: 1.25rem;
-  align-items: center;
 }
 
 .neighborhood-nav-link {
@@ -487,265 +309,25 @@
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
   color: var(--treg-charcoal);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.neighborhood-nav-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.10);
-}
-
-.neighborhood-nav-link.prev {
-  text-align: left;
-  align-items: flex-start;
-}
-
-.neighborhood-nav-link.next {
-  text-align: right;
-  align-items: flex-end;
 }
 
 .neighborhood-nav-link.center {
-  padding: 0.85rem 1.1rem;
-  border-radius: 999px;
-  flex-direction: row;
+  min-height: 74px;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
-}
-
-.neighborhood-nav .nav-label {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-}
-
-.neighborhood-nav .nav-name {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.1rem;
-  text-transform: lowercase;
-  color: var(--treg-charcoal);
-}
-
-@media (max-width: 760px) {
-  .neighborhood-nav {
-    grid-template-columns: 1fr;
-  }
-  .neighborhood-nav-link.next,
-  .neighborhood-nav-link.prev {
-    align-items: flex-start;
-    text-align: left;
-  }
-  .neighborhood-nav-link.center {
-    justify-content: center;
-  }
-}
-
-/* ======================================= */
-/* TEMPLATE POLISH ADD-ONS (West Loop v1)  */
-/* ======================================= */
-
-/* Small heading + subtle text helpers (replaces inline styles) */
-.section-heading--sm {
-  font-size: 0.95rem;
-  margin: 0 0 0.35rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  opacity: 0.9;
-}
-
-.section-subtle {
-  font-size: 0.9rem;
-  color: #6a6966;
 }
 
 /* ========================= */
-/* LIFE SECTION (scannable)  */
+/* FINAL WEST LOOP FIXES     */
 /* ========================= */
 
-.neighborhood-life-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.1rem;
-  margin-top: 1.1rem;
+.neighborhood-intro-card--life p,
+.neighborhood-intro-card--life .section-lede {
+  max-width: 100%;
 }
 
-.neighborhood-life-item {
-  background: rgba(250, 250, 250, 0.55);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
-  padding: 0.95rem 1rem;
-}
-
-.neighborhood-life-item p {
-  margin: 0;
-  color: var(--treg-slate);
-  line-height: 1.55;
-}
-
-@media (max-width: 900px) {
-  .neighborhood-life-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ========================= */
-/* SNAPSHOT HEADER TIGHTEN   */
-/* ========================= */
-
-.neighborhood-snapshot-header {
-  max-width: 1040px;
-  margin: 1.9rem auto 0.85rem;
-  padding: 0 1.25rem;
-}
-
-.neighborhood-snapshot-title {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin: 0;
-  color: var(--treg-charcoal);
-  font-size: clamp(1.35rem, 1.05rem + 1.1vw, 1.75rem);
-  line-height: 1.12;
-}
-
-/* ========================= */
-/* MAP ORIENTATION BLOCK     */
-/* ========================= */
-
-.neighborhood-map-orientation {
-  padding: 0.85rem 1rem 0.95rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-  background: rgba(250, 250, 250, 0.65);
-}
-
-.neighborhood-map-orientation .orientation-title {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-  margin-bottom: 0.55rem;
-}
-
-.neighborhood-map-orientation .orientation-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--treg-charcoal);
-}
-
-.neighborhood-map-orientation .orientation-list strong {
-  color: var(--treg-slate);
-  font-weight: 600;
-}
-
-/* Optional: give map meta a little more breathing room now that orientation exists */
-.neighborhood-map-meta {
-  padding-top: 0.75rem;
-}
-
-/* ======================================= */
-/* ICON SYSTEM (TREG Neighborhood Pages)   */
-/* ======================================= */
-
-/* Small inline icon */
-.treg-ico {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  display: inline-block;
-  vertical-align: -3px;
-}
-
-.treg-ico path,
-.treg-ico circle,
-.treg-ico rect,
-.treg-ico line,
-.treg-ico polyline {
-  stroke: var(--treg-bronze);
-  opacity: 0.9;
-  stroke-width: 1.75;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* Icon + label row */
-.icon-label {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-/* Soft gold chip (optional) */
-.treg-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  border: 1px solid rgba(207, 177, 142, 0.45);
-  background: rgba(207, 177, 142, 0.10);
-  color: var(--treg-charcoal);
-  border-radius: 999px;
-  padding: 0.35rem 0.6rem;
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-/* Make Life cards feel more designed (still minimal) */
-.neighborhood-life-item {
-  position: relative;
-}
-
-.neighborhood-life-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 12px;
-  bottom: 12px;
-  width: 3px;
-  border-radius: 999px;
-  background: rgba(207, 177, 142, 0.55);
-}
-/* ======================================= */
-/* TYPOGRAPHY ALIGNMENT (match home page)  */
-/* ======================================= */
-
-/* Make neighborhood page hero title feel like the homepage hero (but bigger) */
-.neighborhood-intro-card .hero-title {
-  font-size: clamp(2.6rem, 2.1rem + 1.6vw, 3.2rem);
-  line-height: 1.06;
-  margin-bottom: 0.35rem;
-}
-
-/* Use the HOME “section-title” look for neighborhood section headers */
-.neighborhood-headline-title,
-.neighborhood-snapshot-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-weight: 700;
-  text-transform: lowercase;
-  letter-spacing: 0.02em;
-  font-size: clamp(1.55rem, 1.2rem + 1.2vw, 2.05rem);
-  line-height: 1.1;
-}
-
-/* Tighten spacing so headers feel like the homepage sections */
-.neighborhood-headline {
-  margin: 2rem auto 0.85rem;
-}
-
-.neighborhood-snapshot-header {
-  margin: 1.75rem auto 0.85rem;
+.section-cta-text {
+  max-width: 62ch;
+  text-wrap: balance;
 }
