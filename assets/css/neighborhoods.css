@@ -696,3 +696,13 @@
 .neighborhood-intro-card--life .section-lede {
   max-width: 100%;
 }
+/* ======================================= */
+/* FORCE CENTER CAROUSEL DOTS               */
+/* ======================================= */
+
+.highlights-carousel .highlights-dots {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
