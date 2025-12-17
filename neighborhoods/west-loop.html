@@ -37,30 +37,31 @@
         <!-- OVERVIEW STACK -->
         <section class="section neighborhood-overview-stack">
           <div class="container">
-            <!-- TOP INTRO CARD -->
-            <div class="neighborhood-intro-card">
-              <div class="hero-label">Chicago neighborhood guide</div>
-              <h1 class="hero-title">west loop.</h1>
-              <p class="hero-subtitle">
+            <!-- HERO (matches home page structure: kicker + big headline + supporting line) -->
+            <header class="neighborhood-hero">
+              <div class="neighborhood-kicker">Chicago neighborhood guide</div>
+              <h1 class="neighborhood-title">west loop.</h1>
+              <p class="neighborhood-subtitle">
                 A dining-forward, design-led neighborhood just west of downtown — known for loft living,
                 luxury rentals, and modern condos.
               </p>
-            </div>
+            </header>
 
-            <!-- HEADLINE (outside card): LIFE IN WEST LOOP -->
+            <!-- LIFE -->
             <div class="neighborhood-headline">
               <h2 class="neighborhood-headline-title">Life in the West Loop</h2>
             </div>
 
-            <!-- LIFE IN WEST LOOP (card content only) -->
             <div class="neighborhood-intro-card--life" style="margin-bottom: 1.6rem;">
-              <p class="section-lede">
-                Life in the West Loop balances historic character with a polished, modern edge. What was once
-                an industrial warehouse district is now one of Chicago’s most sought-after places to live —
-                known for its restaurant scene, thoughtfully designed housing, and an active, social atmosphere.
-              </p>
+              <!-- FIX: give this its own block so CSS can make it full-width -->
+              <div class="neighborhood-life-intro">
+                <p class="section-lede" style="margin-bottom: 0;">
+                  Life in the West Loop balances historic character with a polished, modern edge. What was once
+                  an industrial warehouse district is now one of Chicago’s most sought-after places to live —
+                  known for its restaurant scene, thoughtfully designed housing, and an active, social atmosphere.
+                </p>
+              </div>
 
-              <!-- Scannable mini-sections -->
               <div class="neighborhood-life-grid">
                 <div class="neighborhood-life-item" style="margin-top: 1rem;">
                   <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.35rem;">
@@ -94,12 +95,11 @@
               </div>
             </div>
 
-            <!-- NEIGHBORHOOD SNAPSHOT (NO COLON) -->
+            <!-- SNAPSHOT (no colon) -->
             <div class="neighborhood-snapshot-header">
               <h2 class="neighborhood-snapshot-title">Neighborhood snapshot</h2>
             </div>
 
-            <!-- SNAPSHOT GRID: MAP LEFT, NUMBERS + SNAPSHOT RIGHT -->
             <div class="neighborhood-overview-grid neighborhood-overview-grid--snapshot">
               <!-- LEFT: MAP -->
               <aside class="neighborhood-map-card">
@@ -122,7 +122,7 @@
                   ></iframe>
                 </div>
 
-                <!-- LOCAL ORIENTATION (header now matches the others) -->
+                <!-- LOCAL ORIENTATION (NO transit line here to avoid duplication) -->
                 <div class="neighborhood-map-orientation">
                   <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.55rem;">
                     Local orientation
@@ -144,15 +144,11 @@
                   </div>
                 </div>
 
-                <!-- MAP META (removed duplicate “Nearby” to avoid repeats) -->
-                <div class="neighborhood-map-meta">
-                  <strong>Transit:</strong> Green &amp; Pink Lines · Blue Line nearby · I-90/94 &amp; I-290 · CTA buses
-                </div>
+                <!-- REMOVED: duplicate Transit line (was the orange highlight) -->
               </aside>
 
-              <!-- RIGHT: NUMBERS + SNAPSHOT STACK -->
+              <!-- RIGHT: NUMBERS + AT A GLANCE -->
               <div class="neighborhood-overview-right">
-                <!-- BY THE NUMBERS -->
                 <aside class="neighborhood-numbers-card">
                   <div class="neighborhood-numbers-header">
                     <div class="section-heading" style="font-size: 1rem; margin-bottom: 0.35rem;">
@@ -183,7 +179,6 @@
                   </div>
                 </aside>
 
-                <!-- SNAPSHOT CARD (now has its own header like the others) -->
                 <aside class="snapshot">
                   <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.6rem;">
                     At a glance
@@ -359,7 +354,7 @@
           </div>
         </section>
 
-        <!-- NEIGHBORHOOD NAV (Prev / Back / Next) -->
+        <!-- NEIGHBORHOOD NAV -->
         <section class="section">
           <div class="container">
             <nav class="neighborhood-nav" aria-label="Neighborhood navigation">
@@ -397,7 +392,6 @@
       <div id="site-footer"></div>
     </div>
 
-    <!-- Header/footer + Carousel JS -->
     <script src="/assets/js/layout.js"></script>
   </body>
 </html>
