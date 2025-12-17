@@ -1,6 +1,6 @@
 /* ======================================= */
 /* NEIGHBORHOOD PAGES ONLY (TREG)          */
-/* neighborhoods.css — CLEAN               */
+/* neighborhoods.css                       */
 /* ======================================= */
 
 /* ========================= */
@@ -37,7 +37,7 @@
 }
 
 /* ========================= */
-/* OVERVIEW STACK            */
+/* OVERVIEW STACK (SECTION)  */
 /* ========================= */
 
 .neighborhood-overview-stack {
@@ -85,62 +85,23 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
+/* TOP INTRO CARD */
 .neighborhood-intro-card {
   padding: 1.4rem 1.6rem 1.5rem;
   margin: 0 auto 1.25rem;
 }
 
+/* LIFE CARD */
 .neighborhood-intro-card--life {
   padding: 1.4rem 1.6rem 1.6rem;
   margin: 0 auto 1.6rem;
 }
 
-/* ✅ Fix: remove “smushed left + empty right” look */
-.neighborhood-intro-card--life p,
-.neighborhood-intro-card--life .section-lede {
-  max-width: 100%;
-}
-
-/* ========================= */
-/* LIFE GRID                 */
-/* ========================= */
-
-.neighborhood-life-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.1rem;
-  margin-top: 1.1rem;
-}
-
-.neighborhood-life-item {
-  position: relative;
-  background: rgba(250, 250, 250, 0.55);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
-  padding: 0.95rem 1rem;
-}
-
-.neighborhood-life-item p {
-  margin: 0;
-  color: var(--treg-slate);
-  line-height: 1.55;
-}
-
-.neighborhood-life-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 12px;
-  bottom: 12px;
-  width: 3px;
-  border-radius: 999px;
-  background: rgba(207, 177, 142, 0.55);
-}
-
-@media (max-width: 900px) {
-  .neighborhood-life-grid {
-    grid-template-columns: 1fr;
-  }
+/* Make neighborhood hero title feel like homepage hero (bigger) */
+.neighborhood-intro-card .hero-title {
+  font-size: clamp(2.6rem, 2.1rem + 1.6vw, 3.2rem);
+  line-height: 1.06;
+  margin-bottom: 0.35rem;
 }
 
 /* ========================= */
@@ -200,20 +161,20 @@
   line-height: 1.45;
 }
 
+/* Local orientation block (under map) */
 .neighborhood-map-orientation {
   padding: 0.85rem 1rem 0.95rem;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   background: rgba(250, 250, 250, 0.65);
 }
 
-/* ✅ Fix: “LOCAL ORIENTATION” matches other headers */
 .neighborhood-map-orientation .orientation-title {
   font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.78rem;
+  text-transform: uppercase;
   letter-spacing: 0.16em;
   font-weight: 600;
   color: var(--treg-charcoal);
-  text-transform: uppercase;
   margin-bottom: 0.55rem;
 }
 
@@ -228,8 +189,13 @@
   color: var(--treg-charcoal);
 }
 
+.neighborhood-map-orientation .orientation-list strong {
+  color: var(--treg-slate);
+  font-weight: 600;
+}
+
 /* ========================= */
-/* BY THE NUMBERS            */
+/* BY THE NUMBERS CARD       */
 /* ========================= */
 
 .neighborhood-numbers-card {
@@ -239,6 +205,12 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   padding: 1rem 1.25rem 1.4rem;
+}
+
+.neighborhood-numbers-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .numbers-row {
@@ -262,6 +234,15 @@
   letter-spacing: 0.02em;
   color: var(--treg-charcoal);
   white-space: nowrap;
+}
+
+.numbers-disclaimer {
+  margin-top: 1rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--treg-slate);
+  opacity: 0.85;
 }
 
 /* ========================= */
@@ -295,6 +276,27 @@
 }
 
 /* ========================= */
+/* SNAPSHOT HEADER           */
+/* ========================= */
+
+.neighborhood-snapshot-header {
+  max-width: 1040px;
+  margin: 1.75rem auto 0.85rem;
+  padding: 0 1.25rem;
+}
+
+.neighborhood-snapshot-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  font-size: clamp(1.55rem, 1.2rem + 1.2vw, 2.05rem);
+  line-height: 1.1;
+  margin: 0;
+  color: var(--treg-charcoal);
+}
+
+/* ========================= */
 /* HIGHLIGHTS / CAROUSEL     */
 /* ========================= */
 
@@ -313,7 +315,7 @@
 .highlights-window {
   position: relative;
   overflow: hidden;
-  padding: 0 3.25rem;
+  padding: 0 3.25rem; /* room for arrows */
 }
 
 .highlights-track {
@@ -338,8 +340,87 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.highlight-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.highlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.05) contrast(1.04) saturate(1.06);
+  transform: scale(1.02);
+  transition: transform 0.22s ease;
+  display: block;
+}
+
+.highlight-card:hover .highlight-image img {
+  transform: scale(1.06);
+}
+
+.highlight-body {
+  padding: 1rem 1.15rem 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.35rem;
+  color: var(--treg-charcoal);
+}
+
+.highlight-meta {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+}
+
+.highlight-text {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--treg-slate);
+  margin: 0.4rem 0 0.6rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.highlight-body .highlight-meta:last-child {
+  margin-top: auto;
+}
+
+.highlight-meta a {
+  color: var(--treg-charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--treg-bronze);
+  padding-bottom: 1px;
+}
+
+.highlight-meta a:hover {
+  border-bottom-color: var(--treg-charcoal);
+}
+
+/* carousel arrows */
 .highlights-nav {
   position: absolute;
   top: 50%;
@@ -357,28 +438,44 @@
   cursor: pointer;
   z-index: 20;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 
-.highlights-nav--prev { left: -2.75rem; }
-.highlights-nav--next { right: -2.75rem; }
+.highlights-nav:hover {
+  background: rgba(30, 24, 13, 1);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.highlights-nav--prev {
+  left: -2.75rem;
+}
+
+.highlights-nav--next {
+  right: -2.75rem;
+}
 
 @media (max-width: 740px) {
-  .highlights-nav { display: none; }
-  .highlights-window { padding: 0; }
+  .highlights-nav {
+    display: none;
+  }
+  .highlights-window {
+    padding: 0;
+  }
   .highlights-track .highlight-card {
     flex: 0 0 85%;
     max-width: 85%;
   }
 }
 
-/* ✅ Fix: dots centered */
+/* CAROUSEL DOTS (created by JS) */
 .highlights-dots {
-  width: 100%;
+  max-width: 1040px;
+  margin: 1rem auto 0;
+  padding: 0 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.55rem;
-  margin-top: 1rem;
 }
 
 .highlights-dot {
@@ -397,7 +494,23 @@
 }
 
 /* ========================= */
-/* NEIGHBORHOOD NAV           */
+/* CTA spacing fix           */
+/* ========================= */
+
+.section-cta-text {
+  margin: 0.75rem auto 0;
+  max-width: 62ch;
+  color: var(--treg-slate);
+  text-wrap: balance;
+}
+
+.section-cta .btn-row {
+  margin-top: 1.25rem;
+  justify-content: center;
+}
+
+/* ========================= */
+/* Neighborhood nav row      */
 /* ========================= */
 
 .neighborhood-nav {
@@ -421,19 +534,48 @@
   gap: 0.25rem;
   color: var(--treg-charcoal);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.neighborhood-nav-link.prev { align-items: flex-start; text-align: left; }
-.neighborhood-nav-link.next { align-items: flex-end; text-align: right; }
+.neighborhood-nav-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.10);
+}
 
-/* ✅ Fix: center matches size/shape of the others */
+.neighborhood-nav-link.prev {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.neighborhood-nav-link.next {
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* Center button matches others */
 .neighborhood-nav-link.center {
-  min-height: 74px;
   padding: 1.1rem 1.25rem;
   border-radius: 14px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  white-space: normal;
+  min-height: 74px;
+}
+
+.neighborhood-nav .nav-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+}
+
+.neighborhood-nav .nav-name {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  color: var(--treg-charcoal);
 }
 
 @media (max-width: 760px) {
@@ -445,13 +587,112 @@
     align-items: flex-start;
     text-align: left;
   }
+  .neighborhood-nav-link.center {
+    justify-content: center;
+  }
 }
 
 /* ========================= */
-/* CTA WRAP BALANCE          */
+/* TEMPLATE POLISH ADD-ONS   */
 /* ========================= */
 
-.section-cta-text {
-  max-width: 62ch;
-  text-wrap: balance;
+.section-heading--sm {
+  font-size: 0.95rem;
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+}
+
+.section-subtle {
+  font-size: 0.9rem;
+  color: #6a6966;
+}
+
+/* LIFE SECTION (scannable) */
+.neighborhood-life-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin-top: 1.1rem;
+}
+
+.neighborhood-life-item {
+  background: rgba(250, 250, 250, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 0.95rem 1rem;
+  position: relative;
+}
+
+.neighborhood-life-item p {
+  margin: 0;
+  color: var(--treg-slate);
+  line-height: 1.55;
+}
+
+.neighborhood-life-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 999px;
+  background: rgba(207, 177, 142, 0.55);
+}
+
+@media (max-width: 900px) {
+  .neighborhood-life-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ICON SYSTEM */
+.treg-ico {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: inline-block;
+  vertical-align: -3px;
+}
+
+.treg-ico path,
+.treg-ico circle,
+.treg-ico rect,
+.treg-ico line,
+.treg-ico polyline {
+  stroke: var(--treg-bronze);
+  opacity: 0.9;
+  stroke-width: 1.75;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.treg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(207, 177, 142, 0.45);
+  background: rgba(207, 177, 142, 0.10);
+  color: var(--treg-charcoal);
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* West Loop fix: remove “smushed left + empty right” max-width */
+.neighborhood-intro-card--life p,
+.neighborhood-intro-card--life .section-lede {
+  max-width: 100%;
 }
