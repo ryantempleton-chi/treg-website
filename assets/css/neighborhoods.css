@@ -917,3 +917,14 @@
   line-height: 1.55;
   color: var(--treg-slate);
 }
+/* Neighborhoods landing hero polish */
+.neighborhoods-hero {
+  background: var(--treg-cream);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.neighborhoods-intro {
+  padding-top: 2.75rem;
+  padding-bottom: 2.25rem;
+}
+
