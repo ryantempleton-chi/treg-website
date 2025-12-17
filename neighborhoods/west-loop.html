@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="en">
   <head>
@@ -41,10 +40,10 @@
             <!-- TOP INTRO CARD -->
             <div class="neighborhood-intro-card">
               <div class="hero-label">Chicago neighborhood guide</div>
-              <h1 class="hero-title">west loop.</h1>
+              <h1 class="hero-title">West Loop</h1>
               <p class="hero-subtitle">
-                West Loop is a former warehouse and industrial district turned dining, tech, and
-                nightlife hub — with lofts, luxury mid-rises, and townhomes just west of the Loop.
+                Former warehouse district turned dining, tech, and nightlife hub — with lofts, luxury
+                mid-rises, and townhomes just west of the Loop.
               </p>
             </div>
 
@@ -56,26 +55,45 @@
             <!-- LIFE IN WEST LOOP (card content only) -->
             <div class="neighborhood-intro-card--life" style="margin-bottom: 1.6rem;">
               <p class="section-lede">
-                West Loop blends converted lofts and sleek new buildings with some of the best
-                restaurants in the city, all within walking distance of the Loop and the river.
+                West Loop blends converted lofts and sleek new buildings with some of the city’s best
+                dining — all just steps from downtown and the river.
               </p>
 
-              <p>
-                Randolph’s “Restaurant Row” and Fulton Market are the neighborhood’s calling cards,
-                filled with award-winning restaurants, cocktail bars, and rooftop spots. Former
-                warehouses now house offices for major tech companies, boutique hotels, and creative
-                firms, bringing steady foot traffic day and night.
-              </p>
+              <!-- Scannable mini-sections (will stack nicely even without new CSS) -->
+              <div class="neighborhood-life-grid">
+                <div class="neighborhood-life-item" style="margin-top: 1rem;">
+                  <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.35rem;">
+                    Food &amp; nightlife
+                  </div>
+                  <p style="margin: 0;">
+                    Randolph “Restaurant Row” and Fulton Market bring award-winning restaurants,
+                    cocktail bars, rooftops, and late-night energy — day and night.
+                  </p>
+                </div>
 
-              <p>
-                Housing ranges from exposed-brick lofts and luxury rentals to townhomes and newer
-                condo buildings. With close proximity to the expressways, multiple train lines, and
-                the central business district, West Loop is a top choice for buyers and renters who
-                want a buzzy, walkable neighborhood with an easy downtown commute.
-              </p>
+                <div class="neighborhood-life-item" style="margin-top: 1rem;">
+                  <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.35rem;">
+                    Homes &amp; feel
+                  </div>
+                  <p style="margin: 0;">
+                    A mix of exposed-brick lofts, luxury rentals, townhomes, and newer condo buildings —
+                    ideal for buyers and renters who want walkable, modern city living.
+                  </p>
+                </div>
+
+                <div class="neighborhood-life-item" style="margin-top: 1rem;">
+                  <div class="section-heading" style="font-size: 0.95rem; margin-bottom: 0.35rem;">
+                    Commute &amp; access
+                  </div>
+                  <p style="margin: 0;">
+                    Quick access to the Loop, major expressways, and multiple train lines makes West Loop
+                    a top choice for downtown commuters.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <!-- NEIGHBORHOOD SNAPSHOT (kept as your existing outside-the-card headline) -->
+            <!-- NEIGHBORHOOD SNAPSHOT -->
             <div class="neighborhood-snapshot-header">
               <h2 class="neighborhood-snapshot-title">Neighborhood snapshot:</h2>
             </div>
@@ -103,9 +121,27 @@
                   ></iframe>
                 </div>
 
-                <div class="neighborhood-map-meta">
-                  <strong>Transit:</strong> Green &amp; Pink Lines · Blue Line nearby · I-90/94 &amp; I-290 · CTA
-                  buses<br />
+                <!-- NEW: Local Orientation block (fixes the “empty red area” feeling) -->
+                <div class="neighborhood-map-orientation" style="margin-top: 0.9rem;">
+                  <div class="section-heading" style="font-size: 1rem; margin-bottom: 0.35rem;">
+                    Local orientation
+                  </div>
+                  <div style="font-size: 0.92rem; color: #3a3a3a; line-height: 1.5;">
+                    <div style="margin-bottom: 0.35rem;">
+                      <strong>Nearby:</strong> Fulton Market · River West · The Loop · Near West Side
+                    </div>
+                    <div style="margin-bottom: 0.35rem;">
+                      <strong>Good for:</strong> Food lovers · Busy professionals · Walkability + short commutes
+                    </div>
+                    <div>
+                      <strong>Quick note:</strong> West Loop is often searched alongside Fulton Market —
+                      both share the same dining-and-tech energy, with slightly different pockets and price points.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="neighborhood-map-meta" style="margin-top: 0.9rem;">
+                  <strong>Transit:</strong> Green &amp; Pink Lines · Blue Line nearby · I-90/94 &amp; I-290 · CTA buses<br />
                   <strong>Nearby:</strong> The Loop · Fulton Market · Little Italy · Near West Side
                 </div>
               </aside>
@@ -179,7 +215,6 @@
         <!-- HIGHLIGHTS – CAROUSEL -->
         <section class="section neighborhood-highlights">
           <div class="container">
-            <!-- HEADLINE (outside cards): NEIGHBORHOOD HIGHLIGHTS -->
             <div class="neighborhood-headline">
               <h2 class="neighborhood-headline-title">Neighborhood highlights</h2>
               <p class="neighborhood-headline-lede">
@@ -363,4 +398,3 @@
     <script src="/assets/js/layout.js"></script>
   </body>
 </html>
-```
