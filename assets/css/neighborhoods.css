@@ -753,7 +753,7 @@
   color: var(--treg-slate);
   line-height: 1.6;
   text-align: left;
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 /* Second paragraph: keep same width; just soften + spacing */
