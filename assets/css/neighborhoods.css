@@ -748,12 +748,12 @@
 
 /* Base paragraph style (both paragraphs share this class in your HTML) */
 .neighborhoods-hero .section-intro {
-  max-width: 78ch;
+  max-width: 92ch;
   margin: 0.4rem 0 0;
   color: var(--treg-slate);
   line-height: 1.6;
   text-align: left;
-  text-wrap: balance;
+  text-wrap: normal;
 }
 
 /* Second paragraph: keep same width; just soften + spacing */
