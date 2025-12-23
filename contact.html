@@ -1,203 +1,229 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Contact | Templeton Real Estate Group | Chicago Real Estate</title>
-  <meta
-  name="description"
-  content="Contact Templeton Real Estate Group to talk about your next move in Chicago. Schedule a consultation to buy, sell, or rent with a boutique real estate team focused on clear guidance and personal service."
-/>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+/* ======================================= */
+/* CONTACT PAGE (TREG)                     */
+/* /contact.html                           */
+/* ======================================= */
 
-  <!-- Fonts + CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
-</head>
+.contact-hero {
+  background: var(--treg-cream);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
 
-<body>
-  <div class="page">
-    <div id="site-header"></div>
+.contact-hero-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 2.25rem;
+  text-align: left;
+}
 
-    <main class="main">
+.contact-hero .eyebrow {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--treg-slate);
+  margin: 0 0 0.4rem;
+}
 
-      <!-- HERO / INTRO -->
-      <section class="section">
-        <div class="container">
-          <div class="hero-label">Get in touch</div>
-          <h1 class="hero-title">contact our team.</h1>
-          <p class="hero-subtitle">
-            Whether you’re planning a move now or just starting to explore options,
-            we’d love to hear what you’re working toward. Share a few details below
-            and someone from the Templeton Real Estate Group will follow up shortly.
-          </p>
-        </div>
-      </section>
+.contact-hero .section-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  text-transform: lowercase;
+  margin: 0 0 0.4rem;
+  color: var(--treg-charcoal);
+  line-height: 1.12;
+}
 
-      <!-- CONTACT LAYOUT -->
-      <section class="section">
-        <div class="container">
-          <div class="contact-layout section-grid two">
+.contact-hero .section-intro {
+  max-width: 92ch;
+  margin: 0.4rem 0 0;
+  color: var(--treg-slate);
+  line-height: 1.6;
+  text-align: left;
+}
 
-            <!-- LEFT: FORM -->
-            <div>
-              <h2 class="section-heading">Tell us how we can help</h2>
-              <p class="section-lede">
-                A few quick questions so we can point you in the right direction —
-                buying, selling, or renting in Chicago.
-              </p>
+.contact-body {
+  padding: 2.1rem 0 3rem;
+}
 
-              <!-- Simple mailto form for now -->
-              <form
-                class="contact-form"
-                method="post"
-                action="mailto:ryan@ryantempleton.com"
-                enctype="text/plain"
-              >
-                <div class="form-row">
-                  <div class="form-field">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="Name" required />
-                  </div>
-                </div>
+.contact-grid {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
+  gap: 1.5rem;
+  align-items: start;
+}
 
-                <div class="form-row">
-                  <div class="form-field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="Email" required />
-                  </div>
-                  <div class="form-field">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="Phone" />
-                  </div>
-                </div>
+@media (max-width: 960px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-                <div class="form-row">
-                  <div class="form-field">
-                    <label for="looking-for">What are you looking for?</label>
-                    <select id="looking-for" name="Looking for">
-                      <option value="" disabled selected>Select an option</option>
-                      <option>Buying</option>
-                      <option>Selling</option>
-                      <option>Renting</option>
-                      <option>Buying &amp; selling</option>
-                      <option>Just exploring options</option>
-                    </select>
-                  </div>
-                </div>
+/* Cards */
+.contact-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  padding: 1.35rem 1.4rem 1.4rem;
+}
 
-                <div class="form-row">
-                  <div class="form-field">
-                    <label for="neighborhoods">Preferred neighborhoods</label>
-                    <input
-                      type="text"
-                      id="neighborhoods"
-                      name="Preferred neighborhoods"
-                      placeholder="e.g., West Loop, Lake View, Logan Square"
-                    />
-                  </div>
-                </div>
+.contact-card-title {
+  font-family: "Oswald", system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  margin: 0 0 0.35rem;
+  color: var(--treg-charcoal);
+}
 
-                <div class="form-row">
-                  <div class="form-field">
-                    <label for="message">How can we help?</label>
-                    <textarea
-                      id="message"
-                      name="Message"
-                      rows="5"
-                      placeholder="Share a bit about your timeline, budget, or what you’re hoping to find."
-                    ></textarea>
-                  </div>
-                </div>
+.contact-card-subtitle {
+  margin: 0 0 1.1rem;
+  color: var(--treg-slate);
+  line-height: 1.55;
+}
 
-                <div class="form-row">
-                  <div class="form-field">
-                    <label for="heard-from">How did you hear about us? (optional)</label>
-                    <input
-                      type="text"
-                      id="heard-from"
-                      name="How did you hear about us?"
-                      placeholder="Friend, review, social media, building referral, etc."
-                    />
-                  </div>
-                </div>
+/* Form layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.95rem 0.95rem;
+}
 
-                <div class="form-actions">
-                  <button type="submit" class="btn btn-primary">
-                    Submit
-                  </button>
-                  <div class="form-note">
-                    Prefer email or a quick call? You can always reach out directly
-                    using the info on this page.
-                  </div>
-                </div>
-              </form>
-            </div>
+.field-full {
+  grid-column: 1 / -1;
+}
 
-            <!-- RIGHT: DIRECT CONTACT + REVIEWS CALLOUT -->
-            <aside class="contact-aside">
-              <div class="contact-card">
-                <h2 class="section-heading" style="margin-bottom:0.4rem;">Reach us directly</h2>
-                <p class="contact-lede">
-                  We’re based in Chicago and work across the city and surrounding suburbs.
-                </p>
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
-                <div class="contact-list">
-                  <div class="contact-list-item">
-                    <div class="contact-label">Phone</div>
-                    <div class="contact-value">
-                      <a href="tel:+13126759379">(312) 675-9379</a>
-                    </div>
-                  </div>
+.field label {
+  display: block;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+  margin: 0 0 0.35rem;
+}
 
-                  <div class="contact-list-item">
-                    <div class="contact-label">Email</div>
-                    <div class="contact-value">
-                      <a href="mailto:ryan@ryantempleton.com">ryan@ryantempleton.com</a>
-                    </div>
-                  </div>
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: rgba(250, 250, 250, 0.75);
+  padding: 0.85rem 0.9rem;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--treg-charcoal);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
 
-                  <div class="contact-list-item">
-                    <div class="contact-label">Brokerage</div>
-                    <div class="contact-value">
-                      Templeton Real Estate Group, LLC<br />
-                      Keller Williams ONEChicago
-                    </div>
-                  </div>
-                </div>
-              </div>
+.field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
 
-              <div class="contact-card">
-                <div class="reviews-mini">
-                  <div class="reviews-mini-stars" aria-hidden="true">
-                    ★★★★★
-                  </div>
-                  <div class="reviews-mini-text">
-                    <strong>5.0 average on Google</strong><br />
-                    Based on 100+ reviews from Chicago buyers, sellers, and renters.
-                  </div>
-                </div>
-                <p class="contact-lede">
-                  Want to see what it’s like to work with us before you reach out?
-                  Take a look at what our clients have shared about their experience.
-                </p>
-                <a href="/reviews.html" class="btn btn-ghost">
-                  Read client reviews
-                </a>
-              </div>
-            </aside>
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(55, 58, 58, 0.65);
+}
 
-          </div>
-        </div>
-      </section>
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  background: #ffffff;
+  border-color: rgba(207, 177, 142, 0.8);
+  box-shadow: 0 0 0 4px rgba(207, 177, 142, 0.18);
+}
 
-    </main>
+/* Actions */
+.form-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1.1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
-    <div id="site-footer"></div>
-  </div>
+.form-note {
+  margin: 0.85rem 0 0;
+  color: var(--treg-slate);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
 
-  <!-- Layout / shared JS -->
-  <script src="/assets/js/layout.js"></script>
-</body>
-</html>
+/* Right column info */
+.contact-info {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.contact-info-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0.85rem;
+  align-items: start;
+}
+
+.contact-info-label {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--treg-slate);
+}
+
+.contact-info-value {
+  color: var(--treg-charcoal);
+  line-height: 1.55;
+}
+
+.contact-info-value a {
+  color: var(--treg-charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--treg-bronze);
+  padding-bottom: 1px;
+}
+
+.contact-info-value a:hover {
+  border-bottom-color: var(--treg-charcoal);
+}
+
+.contact-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0.3rem 0;
+}
+
+.contact-proof-stars {
+  letter-spacing: 0.12em;
+  color: var(--treg-charcoal);
+  font-size: 0.95rem;
+}
+
+.contact-proof-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  color: var(--treg-charcoal);
+  margin-top: 0.1rem;
+}
+
+.contact-proof-subtitle {
+  color: var(--treg-slate);
+  line-height: 1.55;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.contact-cta {
+  margin-top: 0.35rem;
+}
