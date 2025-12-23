@@ -4,7 +4,7 @@
 /* ======================================= */
 
 /* ========================= */
-/* HERO PHOTO                */
+/* HERO PHOTO (detail pages) */
 /* ========================= */
 
 .neighborhood-photo-hero {
@@ -37,7 +37,7 @@
 }
 
 /* ========================= */
-/* OVERVIEW STACK (SECTION)  */
+/* OVERVIEW STACK (section)  */
 /* ========================= */
 
 .neighborhood-overview-stack {
@@ -500,14 +500,6 @@
   border-color: rgba(30, 24, 13, 0.8);
 }
 
-/* FORCE CENTER CAROUSEL DOTS */
-.highlights-carousel .highlights-dots {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* HEADLINE LEDE WRAP FIX */
 .neighborhood-highlights .neighborhood-headline-lede {
   max-width: 100%;
@@ -715,7 +707,6 @@
 /* NEIGHBORHOODS LANDING PAGE (INDEX)      */
 /* /neighborhoods.html                     */
 /* Goal: match About/Team/Contact hero     */
-/* (same left alignment + spacing rhythm)  */
 /* ======================================= */
 
 /* Hero wrapper */
@@ -724,29 +715,18 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-/*
-  IMPORTANT:
-  Your HTML is:
-  <section class="neighborhoods-hero">
-    <div class="container neighborhoods-intro">
-      <div class="section-header">...
-  The global .container adds padding and the hero system also has padding.
-  We normalize it here to match .hero-inner (style.css).
-*/
+/* Normalize hero spacing: make it behave like your global hero-inner */
 .neighborhoods-hero .container.neighborhoods-intro {
-  /* keep global container max-width, but control spacing like hero-inner */
-  padding: 0;
+  padding: 0; /* prevent doubled padding */
 }
 
-/* This block becomes the "hero-inner" equivalent */
 .neighborhoods-hero .section-header {
-  max-width: 1040px;                 /* same as .hero-inner */
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 2.75rem;   /* same as .hero-inner */
-  text-align: left;                 /* match About/Team/Contact */
+  padding: 2.5rem 1.25rem 2.75rem;
+  text-align: left;
 }
 
-/* Typography: mirror .hero-label / .hero-title / .hero-subtitle */
 .neighborhoods-hero .eyebrow {
   font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.7rem;
@@ -759,15 +739,16 @@
 .neighborhoods-hero .section-title {
   font-family: "League Spartan", system-ui, sans-serif;
   font-weight: 700;
-  font-size: 2.4rem;                /* match .hero-title */
+  font-size: 2.4rem;
   text-transform: lowercase;
   margin: 0 0 0.4rem;
   color: var(--treg-charcoal);
   line-height: 1.12;
 }
 
+/* Base paragraph style (both paragraphs share this class in your HTML) */
 .neighborhoods-hero .section-intro {
-  max-width: 1080px;                /* match .hero-subtitle feel */
+  max-width: 78ch;
   margin: 0.4rem 0 0;
   color: var(--treg-slate);
   line-height: 1.6;
@@ -775,10 +756,12 @@
   text-wrap: pretty;
 }
 
-/* Second paragraph spacing — override any inline “off” feel */
-.neighborhoods-hero .section-intro + .section-intro {
+/* Second paragraph: keep same width; just soften + spacing */
+.neighborhoods-hero .section-intro-secondary {
   margin-top: 0.85rem;
-  max-width: 60ch;                  /* your intent */
+  font-size: 0.98rem;
+  line-height: 1.6;
+  opacity: 0.92;
 }
 
 /* Links in hero: on-brand */
@@ -881,10 +864,4 @@
   font-size: 0.95rem;
   line-height: 1.55;
   color: var(--treg-slate);
-}
-/* Neighborhood hero – second paragraph tuning */
-.neighborhoods-hero .section-intro-secondary {
-  margin-top: 0.9rem;
-  max-width: 78ch;   /* same width as paragraph 1 */
-  line-height: 1.7;
 }
