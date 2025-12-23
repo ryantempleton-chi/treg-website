@@ -4,21 +4,73 @@
 /* ======================================= */
 
 /* ========================= */
-/* LAYOUT POLISH             */
+/* HERO                     */
 /* ========================= */
 
-.contact-layout {
+.contact-hero {
+  background: var(--treg-cream);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.contact-hero-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 2.4rem;
+  text-align: left;
+}
+
+.contact-hero .eyebrow {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--treg-slate);
+  margin: 0 0 0.4rem;
+}
+
+.contact-hero .section-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  text-transform: lowercase;
+  margin: 0 0 0.4rem;
+  color: var(--treg-charcoal);
+  line-height: 1.12;
+}
+
+.contact-hero .section-intro {
+  max-width: 92ch;
+  margin: 0.4rem 0 0;
+  color: var(--treg-slate);
+  line-height: 1.6;
+}
+
+/* ========================= */
+/* BODY LAYOUT               */
+/* ========================= */
+
+.contact-body {
+  padding: 2.4rem 0 3rem;
+}
+
+.contact-grid {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
+  gap: 1.6rem;
   align-items: start;
 }
 
-.contact-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ========================= */
-/* CARDS (RIGHT COLUMN)      */
+/* CARDS                    */
 /* ========================= */
 
 .contact-card {
@@ -26,50 +78,49 @@
   border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  padding: 1.35rem 1.4rem 1.4rem;
+  padding: 1.4rem 1.5rem 1.5rem;
 }
 
-.contact-lede {
-  margin: 0.35rem 0 0.9rem;
+.contact-card-title {
+  font-family: "Oswald", system-ui, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+  color: var(--treg-charcoal);
+}
+
+.contact-card-lede {
+  margin: 0 0 1.2rem;
   color: var(--treg-slate);
   line-height: 1.55;
 }
 
 /* ========================= */
-/* FORM BASE STYLES          */
+/* FORM GRID                 */
 /* ========================= */
 
-.contact-form {
-  margin-top: 0.5rem;
-}
-
-.contact-form .form-row {
+.form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.95rem;
-  margin-bottom: 0.95rem;
 }
 
-/* Rows that should be single-column */
-.contact-form .form-row:first-child,
-.contact-form .form-row:nth-child(3),
-.contact-form .form-row:nth-child(4),
-.contact-form .form-row:nth-child(5),
-.contact-form .form-row:nth-child(6) {
-  grid-template-columns: 1fr;
+.field-full {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 640px) {
-  .contact-form .form-row {
+  .form-grid {
     grid-template-columns: 1fr;
   }
 }
 
 /* ========================= */
-/* LABELS                    */
+/* FORM FIELDS               */
 /* ========================= */
 
-.contact-form label {
+.field label {
   display: block;
   font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.75rem;
@@ -79,16 +130,12 @@
   margin: 0 0 0.35rem;
 }
 
-/* ========================= */
-/* INPUTS / SELECT / TEXTAREA */
-/* ========================= */
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
+.field input,
+.field select,
+.field textarea {
   width: 100%;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.10);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background: rgba(250, 250, 250, 0.8);
   padding: 0.85rem 0.9rem;
   font-family: "Roboto", system-ui, sans-serif;
@@ -101,20 +148,19 @@
     background 0.15s ease;
 }
 
-.contact-form textarea {
+.field textarea {
   resize: vertical;
   min-height: 140px;
 }
 
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: rgba(55, 58, 58, 0.55);
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(55, 58, 58, 0.6);
 }
 
-/* Focus state = brand polish */
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
   background: #ffffff;
   border-color: rgba(207, 177, 142, 0.85);
   box-shadow: 0 0 0 4px rgba(207, 177, 142, 0.18);
@@ -125,36 +171,36 @@
 /* ========================= */
 
 .form-actions {
-  margin-top: 1.1rem;
+  margin-top: 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
 .form-note {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--treg-slate);
-  max-width: 52ch;
+  max-width: 54ch;
+  line-height: 1.5;
 }
 
 /* ========================= */
-/* CONTACT LIST (RIGHT)      */
+/* RIGHT COLUMN INFO         */
 /* ========================= */
 
-.contact-list {
+.contact-info {
   display: grid;
-  gap: 0.85rem;
-  margin-top: 0.75rem;
+  gap: 0.9rem;
 }
 
-.contact-list-item {
+.contact-info-row {
   display: grid;
   grid-template-columns: 120px 1fr;
-  gap: 0.85rem;
+  gap: 0.9rem;
   align-items: start;
 }
 
-.contact-label {
+.contact-info-label {
   font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -162,39 +208,51 @@
   color: var(--treg-slate);
 }
 
-.contact-value {
+.contact-info-value {
   color: var(--treg-charcoal);
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
-.contact-value a {
+.contact-info-value a {
   color: var(--treg-charcoal);
   text-decoration: none;
   border-bottom: 1px solid var(--treg-bronze);
   padding-bottom: 1px;
 }
 
-.contact-value a:hover {
+.contact-info-value a:hover {
   border-bottom-color: var(--treg-charcoal);
 }
 
-/* ========================= */
-/* REVIEWS MINI              */
-/* ========================= */
-
-.reviews-mini {
-  display: grid;
-  gap: 0.35rem;
-  margin-bottom: 0.85rem;
+.contact-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0.4rem 0;
 }
 
-.reviews-mini-stars {
+/* ========================= */
+/* SOCIAL PROOF              */
+/* ========================= */
+
+.contact-proof-stars {
+  font-size: 1rem;
   letter-spacing: 0.12em;
   color: var(--treg-charcoal);
-  font-size: 1rem;
 }
 
-.reviews-mini-text {
+.contact-proof-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+
+.contact-proof-subtitle {
   color: var(--treg-slate);
   line-height: 1.55;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.contact-cta {
+  margin-top: 0.5rem;
 }
