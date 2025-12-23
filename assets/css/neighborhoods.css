@@ -882,3 +882,9 @@
   line-height: 1.55;
   color: var(--treg-slate);
 }
+/* Neighborhood hero – second paragraph tuning */
+.neighborhoods-hero .section-intro-secondary {
+  margin-top: 0.9rem;
+  max-width: 78ch;   /* same width as paragraph 1 */
+  line-height: 1.7;
+}
