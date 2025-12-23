@@ -713,48 +713,77 @@
 /* ======================================= */
 /* NEIGHBORHOODS LANDING PAGE (INDEX)      */
 /* /neighborhoods.html                     */
-/* Matches actual HTML classes on landing  */
 /* ======================================= */
 
+/* HERO */
 .neighborhoods-hero {
   background: var(--treg-cream);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.neighborhoods-intro {
-  padding-top: 2.75rem;
-  padding-bottom: 2.25rem;
+/* Your HTML is: .container.neighborhoods-intro > .section-header
+   Container already controls width/padding, so we let section-header
+   control the “home page rhythm” without double-padding. */
+.neighborhoods-hero .neighborhoods-intro {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-/* Hero text uses .section-title / .section-intro in your HTML */
+.neighborhoods-hero .section-header {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 3.25rem 1.25rem 2.25rem;
+}
+
 .neighborhoods-hero .eyebrow {
   font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   font-weight: 600;
   color: var(--treg-slate);
   opacity: 0.9;
-  margin-bottom: 0.6rem;
+  margin: 0 0 0.75rem;
 }
 
 .neighborhoods-hero .section-title {
   font-family: "League Spartan", system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(2.2rem, 1.8rem + 1.6vw, 3rem);
-  text-transform: lowercase;
-  letter-spacing: 0.02em;
-  margin: 0 0 0.75rem;
-  color: var(--treg-charcoal);
+  font-size: clamp(2.15rem, 1.7rem + 1.9vw, 3.05rem);
   line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  color: var(--treg-charcoal);
+  margin: 0 0 0.9rem;
 }
 
 .neighborhoods-hero .section-intro {
+  max-width: 78ch;
   color: var(--treg-slate);
-  max-width: 80ch;
-  line-height: 1.6;
+  line-height: 1.7;
+  margin: 0.9rem 0 0;
+  text-wrap: balance;
 }
 
+/* On-brand links in the hero */
+.neighborhoods-hero .section-intro a {
+  color: var(--treg-charcoal);
+  text-decoration: none;
+  border-bottom: 1px solid var(--treg-bronze);
+  padding-bottom: 1px;
+}
+
+.neighborhoods-hero .section-intro a:hover {
+  border-bottom-color: var(--treg-charcoal);
+}
+
+@media (max-width: 640px) {
+  .neighborhoods-hero .section-header {
+    padding: 2.5rem 1.1rem 1.75rem;
+  }
+}
+
+/* GRID */
 .neighborhoods-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -775,6 +804,7 @@
   }
 }
 
+/* TILE */
 .neighborhood-tile {
   display: flex;
   flex-direction: column;
@@ -828,46 +858,4 @@
   font-size: 0.95rem;
   line-height: 1.55;
   color: var(--treg-slate);
-}
-/* Hero wrapper spacing */
-.neighborhoods-hero {
-  background: var(--treg-cream);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-/* Make this match the “home page section header” geometry */
-.neighborhoods-hero .section-header {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 2.75rem 1.25rem 2.25rem;
-}
-
-.neighborhoods-hero .eyebrow {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-weight: 600;
-  color: var(--treg-slate);
-  opacity: 0.9;
-  margin: 0 0 0.75rem;
-}
-
-.neighborhoods-hero .section-title {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.15rem, 1.7rem + 1.9vw, 3.05rem);
-  line-height: 1.02;
-  letter-spacing: 0.01em;
-  text-transform: lowercase;
-  color: var(--treg-charcoal);
-  margin: 0 0 0.9rem;
-}
-
-.neighborhoods-hero .section-intro {
-  max-width: 78ch;
-  color: var(--treg-slate);
-  line-height: 1.7;
-  margin: 0.9rem 0 0;
-  text-wrap: balance;
 }
