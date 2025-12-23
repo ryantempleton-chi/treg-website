@@ -863,3 +863,34 @@
   line-height: 1.55;
   color: var(--treg-slate);
 }
+/* ======================================= */
+/* HARD FIX: neighborhoods hero feels "off" */
+/* Make hero align with tile grid + remove extra gap */
+/* ======================================= */
+
+/* Make hero text align to SAME width as tiles (1040px) */
+.neighborhoods-hero .section-header {
+  max-width: 1040px !important;     /* was 860 from style.css */
+  margin: 0 auto !important;
+  padding: 3.25rem 1.25rem 2.25rem !important; /* “home rhythm” but aligned */
+}
+
+/* Kill the extra bottom drop coming from base .section-header */
+.neighborhoods-hero .section-header {
+  margin-bottom: 0 !important;
+}
+
+/* If you kept .container.neighborhoods-intro, ensure no double padding */
+.neighborhoods-hero .container.neighborhoods-intro {
+  padding: 0 !important;
+}
+
+/* Remove the “big gap” between hero and grid */
+.neighborhoods-hero + section .container {
+  padding-top: 1.25rem !important; /* was 1.75rem from .container */
+}
+
+/* Grid already has its own padding-top; don’t stack it */
+.neighborhoods-grid {
+  padding-top: 0 !important;        /* was 1.25rem */
+}
