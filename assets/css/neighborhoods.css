@@ -859,3 +859,25 @@
   line-height: 1.55;
   color: var(--treg-slate);
 }
+/* ======================================= */
+/* FIX: NEIGHBORHOODS HERO SPACING         */
+/* Root cause: .container adds padding     */
+/* ======================================= */
+
+.neighborhoods-hero .container.neighborhoods-intro {
+  padding: 0;              /* kill global container padding here */
+}
+
+/* Match homepage hero-inner rhythm */
+.neighborhoods-hero .section-header {
+  margin-bottom: 0;        /* home hero doesn’t “drop” a section gap */
+  max-width: 860px;        /* matches home.css .section-header */
+  padding: 2.5rem 1.25rem 2.75rem; /* matches .hero-inner */
+}
+
+/* Mobile match */
+@media (max-width: 640px) {
+  .neighborhoods-hero .section-header {
+    padding: 2.1rem 1.1rem 2.1rem;
+  }
+}
