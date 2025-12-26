@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/intake.css" />
   </head>
 
   <body>
@@ -138,11 +139,43 @@
             </div>
           </div>
         </section>
+
+        <!-- INTAKE FORM EMBED -->
+        <section class="intake-form">
+          <div class="container">
+            <div class="hero-label">get started</div>
+            <h2 class="section-heading">rental intake form</h2>
+            <p class="section-lede" style="max-width: 780px;">
+              Answer a few quick questions and we’ll take it from there.
+            </p>
+
+            <iframe
+              id="JotFormIFrame-253567612349060"
+              title="New Client Intake Form"
+              onload="window.parent.scrollTo(0,0)"
+              allowtransparency="true"
+              allow="geolocation; microphone; camera; fullscreen; payment"
+              src="https://form.jotform.com/253567612349060"
+              frameborder="0"
+              style="min-width: 100%; max-width: 100%; height: 700px; border: none;"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </section>
       </main>
 
       <!-- Shared footer -->
       <div id="site-footer"></div>
     </div>
+
+    <!-- Jotform embed handler -->
+    <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+    <script>
+      window.jotformEmbedHandler(
+        "iframe[id='JotFormIFrame-253567612349060']",
+        "https://form.jotform.com/"
+      );
+    </script>
 
     <script src="/assets/js/layout.js"></script>
   </body>
