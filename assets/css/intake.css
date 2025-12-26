@@ -1,0 +1,15 @@
+/* ======================================= */
+/* INTAKE FORM EMBED (TREG)                */
+/* intake.css                              */
+/* ======================================= */
+
+.intake-form {
+  padding: 2.75rem 0 3.25rem;
+  background: #ffffff;
+}
+
+.intake-form iframe {
+  width: 100%;
+  min-height: 700px;
+  border: none;
+}
