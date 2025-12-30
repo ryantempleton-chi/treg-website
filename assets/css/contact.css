@@ -4,7 +4,7 @@
 /* ======================================= */
 
 /* ========================= */
-/* HERO                     */
+/* HERO                      */
 /* ========================= */
 
 .contact-hero {
@@ -70,7 +70,7 @@
 }
 
 /* ========================= */
-/* CARDS                    */
+/* CARDS                     */
 /* ========================= */
 
 .contact-card {
@@ -97,91 +97,37 @@
 }
 
 /* ========================= */
-/* FORM GRID                 */
+/* JOTFORM EMBED             */
 /* ========================= */
 
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.95rem;
+.intake-embed {
+  margin-top: 0.75rem;
 }
 
-.field-full {
-  grid-column: 1 / -1;
+.intake-embed iframe {
+  width: 100%;
+  min-height: 900px; /* safe default; Jotform script will resize */
+  border: none;
+  display: block;
 }
 
+/* Small screens: give it more breathing room */
 @media (max-width: 640px) {
-  .form-grid {
-    grid-template-columns: 1fr;
+  .intake-embed iframe {
+    min-height: 1000px;
   }
 }
 
 /* ========================= */
-/* FORM FIELDS               */
+/* FORM NOTE (under embed)   */
 /* ========================= */
-
-.field label {
-  display: block;
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--treg-slate);
-  margin: 0 0 0.35rem;
-}
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(250, 250, 250, 0.8);
-  padding: 0.85rem 0.9rem;
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.95rem;
-  color: var(--treg-charcoal);
-  outline: none;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease,
-    background 0.15s ease;
-}
-
-.field textarea {
-  resize: vertical;
-  min-height: 140px;
-}
-
-.field input::placeholder,
-.field textarea::placeholder {
-  color: rgba(55, 58, 58, 0.6);
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  background: #ffffff;
-  border-color: rgba(207, 177, 142, 0.85);
-  box-shadow: 0 0 0 4px rgba(207, 177, 142, 0.18);
-}
-
-/* ========================= */
-/* FORM ACTIONS              */
-/* ========================= */
-
-.form-actions {
-  margin-top: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
 
 .form-note {
   font-size: 0.9rem;
   color: var(--treg-slate);
   max-width: 54ch;
   line-height: 1.5;
+  margin: 0;
 }
 
 /* ========================= */
@@ -197,7 +143,7 @@
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 0.9rem;
-  align-items: start;
+  align-items: baseline;
 }
 
 .contact-info-label {
@@ -208,9 +154,11 @@
   color: var(--treg-slate);
 }
 
+/* Keep values on ONE line (as requested) */
 .contact-info-value {
   color: var(--treg-charcoal);
-  line-height: 1.55;
+  line-height: 1.3;
+  white-space: nowrap;
 }
 
 .contact-info-value a {
@@ -218,6 +166,7 @@
   text-decoration: none;
   border-bottom: 1px solid var(--treg-bronze);
   padding-bottom: 1px;
+  white-space: nowrap;
 }
 
 .contact-info-value a:hover {
@@ -228,6 +177,15 @@
   height: 1px;
   background: rgba(0, 0, 0, 0.06);
   margin: 0.4rem 0;
+}
+
+/* If screens get too narrow, allow wrapping so it doesn't overflow */
+@media (max-width: 420px) {
+  .contact-info-value,
+  .contact-info-value a {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }
 
 /* ========================= */
