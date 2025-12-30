@@ -44,88 +44,40 @@
         <!-- BODY -->
         <section class="contact-body">
           <div class="contact-grid">
-            <!-- LEFT: FORM CARD -->
+            <!-- LEFT: INTAKE FORM CARD -->
             <div class="contact-card">
               <h2 class="contact-card-title">Tell us how we can help</h2>
               <p class="contact-card-lede">
                 A few quick questions so we can point you in the right direction — buying,
-                selling, or renting in Chicago.
+                selling, renting, or landlord support.
               </p>
 
-              <form
-                class="contact-form"
-                method="post"
-                action="mailto:ryan@ryantempleton.com"
-                enctype="text/plain"
-              >
-                <div class="form-grid">
-                  <div class="field field-full">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="Name" required />
-                  </div>
+              <!-- JOTFORM EMBED -->
+              <div class="intake-embed">
+                <iframe
+                  id="JotFormIFrame-253567612349060"
+                  title="New Client Intake Form"
+                  onload="window.parent.scrollTo(0,0)"
+                  allowtransparency="true"
+                  allow="geolocation; microphone; camera; fullscreen; payment"
+                  src="https://form.jotform.com/253567612349060"
+                  frameborder="0"
+                  style="min-width:100%;max-width:100%;height:900px;border:none;"
+                  scrolling="no"
+                ></iframe>
 
-                  <div class="field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="Email" required />
-                  </div>
+                <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+                <script>
+                  window.jotformEmbedHandler(
+                    "iframe[id='JotFormIFrame-253567612349060']",
+                    "https://form.jotform.com/"
+                  );
+                </script>
+              </div>
 
-                  <div class="field">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="Phone" />
-                  </div>
-
-                  <div class="field field-full">
-                    <label for="looking-for">What are you looking for?</label>
-                    <select id="looking-for" name="Looking for">
-                      <option value="" disabled selected>Select an option</option>
-                      <option>Buying</option>
-                      <option>Selling</option>
-                      <option>Renting</option>
-                      <option>Buying &amp; selling</option>
-                      <option>Just exploring options</option>
-                    </select>
-                  </div>
-
-                  <div class="field field-full">
-                    <label for="neighborhoods">Preferred neighborhoods</label>
-                    <input
-                      type="text"
-                      id="neighborhoods"
-                      name="Preferred neighborhoods"
-                      placeholder="e.g., West Loop, Lake View, Logan Square"
-                    />
-                  </div>
-
-                  <div class="field field-full">
-                    <label for="message">How can we help?</label>
-                    <textarea
-                      id="message"
-                      name="Message"
-                      rows="6"
-                      placeholder="Share a bit about your timeline, budget, or what you’re hoping to find."
-                    ></textarea>
-                  </div>
-
-                  <div class="field field-full">
-                    <label for="heard-from">How did you hear about us? (optional)</label>
-                    <input
-                      type="text"
-                      id="heard-from"
-                      name="How did you hear about us?"
-                      placeholder="Friend, review, social media, building referral, etc."
-                    />
-                  </div>
-                </div>
-
-                <div class="form-actions">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-
-                <p class="form-note">
-                  Prefer email or a quick call? You can always reach out directly using the
-                  info on this page.
-                </p>
-              </form>
+              <p class="form-note" style="margin-top: 0.9rem;">
+                Prefer email or a quick call? You can always reach out directly using the info on this page.
+              </p>
             </div>
 
             <!-- RIGHT: ASIDE -->
