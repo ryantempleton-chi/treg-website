@@ -53,18 +53,26 @@
   padding: 2.4rem 0 3rem;
 }
 
-.contact-grid {
+/* Page wrap */
+.contact-wrap {
   max-width: 1040px;
   margin: 0 auto;
   padding: 0 1.25rem;
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
+  gap: 1.6rem;
+  align-items: start;
+}
+
+/* Top row: two cards side-by-side */
+.contact-top-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1.6rem;
   align-items: start;
 }
 
 @media (max-width: 900px) {
-  .contact-grid {
+  .contact-top-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -131,13 +139,8 @@
 }
 
 /* ========================= */
-/* RIGHT COLUMN INFO         */
+/* "REACH US DIRECTLY" ROWS  */
 /* ========================= */
-
-.contact-info {
-  display: grid;
-  gap: 0.9rem;
-}
 
 .contact-info-row {
   display: grid;
