@@ -38,7 +38,7 @@
 
     <!-- Site styles -->
     <link rel="stylesheet" href="/assets/css/style.css?v=20251215" />
-<link rel="stylesheet" href="/assets/css/home.css?v=20251215" />
+    <link rel="stylesheet" href="/assets/css/home.css?v=20251215" />
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/icons/apple-touch-icon.png" />
@@ -53,12 +53,11 @@
       <div id="site-header"></div>
 
       <main class="main">
-                <!-- HERO -->
+        <!-- HERO -->
         <section class="hero home-hero">
           <div class="home-hero-overlay">
             <div class="hero-inner home-hero-inner">
               <div class="home-hero-grid">
-                <!-- empty spacer on left so text feels right-aligned on desktop -->
                 <div class="home-hero-spacer"></div>
 
                 <div class="home-hero-text">
@@ -70,17 +69,14 @@
                   </h1>
 
                   <p class="home-hero-subtitle">
-                    The Templeton Real Estate Group is a Chicago-based team helping clients buy, sell, and rent
-                    across the city and beyond — with modern marketing, clear expectations, and service that feels
-                    personal from start to finish, every step of the way.
+                    The Templeton Real Estate Group is a Chicago-based team helping clients buy, sell, and rent across
+                    the city and beyond — with modern marketing, clear expectations, and service that feels personal
+                    from start to finish, every step of the way.
                   </p>
 
                   <div class="home-hero-cta-row btn-row">
                     <a href="/contact.html" class="btn btn-primary">schedule a consultation</a>
-
-                    <a href="/neighborhoods.html" class="btn btn-white">
-                      browse neighborhoods
-                    </a>
+                    <a href="/neighborhoods.html" class="btn btn-white">browse neighborhoods</a>
                   </div>
                 </div>
               </div>
@@ -155,7 +151,90 @@
           </div>
         </section>
 
-                                 <!-- REVIEWS / SOCIAL PROOF PREVIEW -->
+        <!-- VISUAL BREAK: FEATURE PHOTO -->
+        <section class="home-photo-break" aria-label="Chicago cityscape">
+          <!--
+            Swap this image path to any of your favorites.
+            Suggested options you uploaded:
+            - /assets/img/home/skyline-north.jpg
+            - /assets/img/home/cloudy-skyline.jpg
+            - /assets/img/home/horizon.jpg
+          -->
+          <img
+            class="home-photo-break-img"
+            src="/assets/img/home/skyline-north.jpg"
+            alt="Chicago skyline overlooking Lake Michigan"
+            loading="lazy"
+          />
+
+          <div class="home-photo-break-overlay" aria-hidden="true"></div>
+
+          <div class="home-photo-break-inner">
+            <div class="home-photo-break-kicker">Chicago, always moving</div>
+            <div class="home-photo-break-title">Local insight. Clear strategy. Calm execution.</div>
+          </div>
+        </section>
+
+        <!-- VISUAL STRIP: EXPLORE CHICAGO -->
+        <section class="section home-explore">
+          <div class="section-inner">
+            <header class="section-header">
+              <p class="eyebrow">explore chicago</p>
+              <h2 class="section-title">a few places we love — and know well.</h2>
+              <p class="section-intro">
+                Neighborhoods aren’t just boundaries on a map — they’re lifestyle. Start with a few favorites, or browse
+                the full guide.
+              </p>
+            </header>
+
+            <div class="home-explore-grid">
+              <a class="home-explore-tile" href="/neighborhoods.html" aria-label="Browse Chicago neighborhoods">
+                <img
+                  src="/assets/img/home/bridge.jpg"
+                  alt="A Chicago bridge and downtown view"
+                  loading="lazy"
+                />
+                <div class="home-explore-tile-overlay" aria-hidden="true"></div>
+                <div class="home-explore-tile-text">
+                  <div class="home-explore-tile-kicker">Neighborhood guides</div>
+                  <div class="home-explore-tile-title">Browse neighborhoods</div>
+                </div>
+              </a>
+
+              <a class="home-explore-tile" href="/buy.html" aria-label="Buying in Chicago">
+                <img
+                  src="/assets/img/home/bean.jpg"
+                  alt="Cloud Gate in Millennium Park"
+                  loading="lazy"
+                />
+                <div class="home-explore-tile-overlay" aria-hidden="true"></div>
+                <div class="home-explore-tile-text">
+                  <div class="home-explore-tile-kicker">Buy with confidence</div>
+                  <div class="home-explore-tile-title">Buying in Chicago</div>
+                </div>
+              </a>
+
+              <a class="home-explore-tile" href="/sell.html" aria-label="Selling with Templeton Real Estate Group">
+                <img
+                  src="/assets/img/home/chicago-theater.jpg"
+                  alt="The Chicago Theatre sign at night"
+                  loading="lazy"
+                />
+                <div class="home-explore-tile-overlay" aria-hidden="true"></div>
+                <div class="home-explore-tile-text">
+                  <div class="home-explore-tile-kicker">Sell with strategy</div>
+                  <div class="home-explore-tile-title">Selling with TREG</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="home-explore-cta">
+              <a href="/neighborhoods.html" class="btn btn-ghost">browse the full neighborhood list</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- REVIEWS / SOCIAL PROOF PREVIEW -->
         <section class="section section-reviews">
           <div class="section-inner">
             <div class="section-header">
@@ -167,7 +246,6 @@
               </p>
             </div>
 
-            <!-- Rating / stats strip -->
             <div class="reviews-stats">
               <div class="reviews-stat-card">
                 <div class="reviews-stat-value">
@@ -187,7 +265,6 @@
               </div>
             </div>
 
-            <!-- 4 review cards in a 2x2 grid -->
             <div class="reviews-preview">
               <article class="review-card">
                 <p class="review-body">
@@ -230,11 +307,8 @@
               </article>
             </div>
 
-            <!-- Big centered CTA button -->
             <div class="section-cta-row">
-              <a href="/reviews.html" class="btn btn-primary reviews-cta-btn">
-                read more client reviews
-              </a>
+              <a href="/reviews.html" class="btn btn-primary reviews-cta-btn">read more client reviews</a>
             </div>
           </div>
         </section>
@@ -255,13 +329,8 @@
             </div>
 
             <div class="section-cta-actions">
-              <div class="section-cta-main">
-                BUY, SELL, or RENT with a clear plan.
-              </div>
-
-              <div class="section-cta-meta">
-                connect with us today!
-              </div>
+              <div class="section-cta-main">BUY, SELL, or RENT with a clear plan.</div>
+              <div class="section-cta-meta">connect with us today!</div>
 
               <div class="btn-row">
                 <a href="mailto:ryan@ryantempleton.com" class="btn btn-primary">Email our team</a>
