@@ -76,28 +76,30 @@
 }
 
 /* ======================================= */
-/* Visual divider image (between hero/grid) */
+/* Full-width visual divider (match home)  */
 /* ======================================= */
 
 .neighborhoods-visual {
-  max-width: 1040px;
-  margin: 1.75rem auto 2.25rem; /* breathing room from hero + grid */
-  padding: 0 1.25rem;
+  width: 100vw;
+  margin: 1.75rem 0 2.75rem;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .neighborhoods-visual img {
   width: 100%;
-  height: clamp(180px, 26vw, 300px);
+  height: clamp(220px, 30vw, 420px);
   object-fit: cover;
-  border-radius: 16px;
   display: block;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+  filter: brightness(0.95) contrast(1.05);
 }
 
 @media (max-width: 640px) {
   .neighborhoods-visual img {
-    height: 200px;
-    border-radius: 14px;
+    height: 220px;
   }
 }
 
