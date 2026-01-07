@@ -1,6 +1,147 @@
 /* ======================================= */
+/* HOME (TREG)                             */
+/* home.css                                */
+/* ======================================= */
+
+/* HERO */
+.home-hero {
+  position: relative;
+  min-height: clamp(520px, 78vh, 820px);
+  display: flex;
+  align-items: stretch;
+
+  /* uses your existing hero image you already have */
+  background-image: url("/assets/img/team/hero-chicago.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-hero-overlay {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  /* subtle darkening so white text stays readable */
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.40) 35%,
+    rgba(0, 0, 0, 0.18) 70%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+.home-hero-inner {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2.25rem 1.25rem;
+}
+
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 520px);
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.home-hero-spacer {
+  display: block;
+}
+
+.home-hero-text {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  padding: 1.35rem 1.35rem 1.25rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+}
+
+.home-hero .hero-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.home-hero-title {
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 3.5vw, 3.1rem);
+  line-height: 1.05;
+  text-transform: lowercase;
+  color: #fff;
+  margin: 0.25rem 0 0.65rem;
+}
+
+.home-hero-subtitle {
+  color: rgba(255, 255, 255, 0.90);
+  margin: 0 0 1rem;
+  line-height: 1.6;
+  font-size: 0.98rem;
+  max-width: 54ch;
+}
+
+.home-hero-cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Make the white button readable on hero */
+.btn.btn-white {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--treg-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.btn.btn-white:hover {
+  background: #fff;
+}
+
+/* Reviews CTA centering (home page) */
+.section-reviews .section-cta-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+/* Responsive HERO */
+@media (max-width: 900px) {
+  .home-hero {
+    min-height: 640px;
+  }
+
+  .home-hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+    align-items: flex-end;
+  }
+
+  .home-hero-inner {
+    padding: 1.5rem 1.1rem;
+  }
+
+  .home-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-hero-spacer {
+    display: none;
+  }
+
+  .home-hero-text {
+    width: 100%;
+  }
+}
+
+/* ======================================= */
 /* HOME – VISUAL BREAKS + EXPLORE STRIP     */
-/* (append to home.css)                    */
 /* ======================================= */
 
 /* Full-width photo break */
