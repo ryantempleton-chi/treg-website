@@ -126,3 +126,8 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+/* CTA button centering + spacing */
+.section-cta .btn-row {
+  justify-content: center;
+  margin-top: 1.25rem;
+}
