@@ -1,18 +1,16 @@
 /* ======================================= */
 /* NEIGHBORHOODS LANDING PAGE (INDEX)      */
-/* /neighborhoods.html                     */
-/* Goal: match About/Team/Contact hero     */
+/* neighborhoods-landing.css               */
+/* For: /neighborhoods.html                */
 /* ======================================= */
 
-/* Hero wrapper */
+/* ======================================= */
+/* Hero (match About/Team/Contact)         */
+/* ======================================= */
+
 .neighborhoods-hero {
   background: var(--treg-cream);
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-/* Normalize hero spacing: make it behave like your global hero-inner */
-.neighborhoods-hero .container.neighborhoods-intro {
-  padding: 0; /* prevent doubled padding */
 }
 
 .neighborhoods-hero .section-header {
@@ -41,7 +39,6 @@
   line-height: 1.12;
 }
 
-/* Base paragraph style (both paragraphs share this class in your HTML) */
 .neighborhoods-hero .section-intro {
   max-width: 100%;
   margin: 0.4rem 0 0;
@@ -51,7 +48,6 @@
   text-wrap: normal;
 }
 
-/* Second paragraph: keep same width; just soften + spacing */
 .neighborhoods-hero .section-intro-secondary {
   margin-top: 0.85rem;
   font-size: 0.98rem;
@@ -59,7 +55,6 @@
   opacity: 0.92;
 }
 
-/* Links in hero: on-brand */
 .neighborhoods-hero .section-intro a {
   color: var(--treg-charcoal);
   text-decoration: none;
@@ -71,7 +66,6 @@
   border-bottom-color: var(--treg-charcoal);
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   .neighborhoods-hero .section-header {
     padding: 2.1rem 1.1rem 2.1rem;
@@ -82,7 +76,7 @@
 }
 
 /* ======================================= */
-/* NEIGHBOR GRID (INDEX)                   */
+/* Grid + tiles                            */
 /* ======================================= */
 
 .neighborhoods-grid {
@@ -105,7 +99,6 @@
   }
 }
 
-/* TILE */
 .neighborhood-tile {
   display: flex;
   flex-direction: column;
