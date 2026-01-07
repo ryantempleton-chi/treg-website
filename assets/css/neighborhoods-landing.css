@@ -79,14 +79,13 @@
 /* Full-width visual divider (match home)  */
 /* ======================================= */
 
-.neighborhoods-visual {
-  width: 100vw;
-  margin: 1.75rem 0 2.75rem;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+.neighborhoods-visual img {
+  width: 100%;
+  height: clamp(220px, 30vw, 420px);
+  object-fit: cover;
+  object-position: center 65%; /* 👈 pans the crop downward */
+  display: block;
+  filter: brightness(0.95) contrast(1.05);
 }
 
 .neighborhoods-visual img {
