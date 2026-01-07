@@ -76,6 +76,32 @@
 }
 
 /* ======================================= */
+/* Visual divider image (between hero/grid) */
+/* ======================================= */
+
+.neighborhoods-visual {
+  max-width: 1040px;
+  margin: 1.75rem auto 2.25rem; /* breathing room from hero + grid */
+  padding: 0 1.25rem;
+}
+
+.neighborhoods-visual img {
+  width: 100%;
+  height: clamp(180px, 26vw, 300px);
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+@media (max-width: 640px) {
+  .neighborhoods-visual img {
+    height: 200px;
+    border-radius: 14px;
+  }
+}
+
+/* ======================================= */
 /* Grid + tiles                            */
 /* ======================================= */
 
@@ -153,11 +179,15 @@
   line-height: 1.55;
   color: var(--treg-slate);
 }
-/* CTA spacing polish (neighborhoods landing) */
-.section-cta-text {
-  margin-bottom: 1.4rem; /* creates breathing room above buttons */
+
+/* ======================================= */
+/* CTA spacing polish (landing page only)  */
+/* ======================================= */
+
+.main .section-cta-text {
+  margin-bottom: 1.4rem; /* breathing room above buttons */
 }
 
-.section-cta .btn-row {
+.main .section-cta .btn-row {
   margin-top: 0; /* keep buttons visually grouped */
 }
