@@ -83,7 +83,7 @@
   width: 100%;
   height: clamp(220px, 30vw, 420px);
   object-fit: cover;
-  object-position: center 65%; /* 👈 pans the crop downward */
+  object-position: center 58%; /* 👈 pans the crop downward */
   display: block;
   filter: brightness(0.95) contrast(1.05);
 }
