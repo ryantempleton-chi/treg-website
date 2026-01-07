@@ -79,34 +79,44 @@
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-.testimonial-type {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.75rem;
+/* ========================= */
+/* TESTIMONIAL TYPOGRAPHY    */
+/* (matches new HTML classes)*/
+/* ========================= */
+
+/* BIGGEST: RENTER · LAKE VIEW */
+.testimonial-kicker {
+  font-family: "Oswald", system-ui, sans-serif;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--treg-slate);
+  color: var(--treg-charcoal);
   margin-bottom: 0.55rem;
 }
 
-.testimonial-name {
+/* Smaller: quote title */
+.testimonial-title {
   font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   text-transform: lowercase;
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.6rem;
   color: var(--treg-charcoal);
 }
 
+/* Smaller still: body */
 .testimonial-text {
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.95rem;
   color: var(--treg-slate);
   line-height: 1.65;
   font-size: 0.98rem;
 }
 
-.testimonial-meta {
+/* Smallest: initials */
+.testimonial-initials {
   font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: rgba(55, 58, 58, 0.9);
 }
 
@@ -117,6 +127,12 @@
   align-items: center;
 }
 
+/* CTA button centering + spacing */
+.section-cta .btn-row {
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
 @media (max-width: 900px) {
   .reviews-proof-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -125,9 +141,4 @@
   .testimonials-grid {
     grid-template-columns: minmax(0, 1fr);
   }
-}
-/* CTA button centering + spacing */
-.section-cta .btn-row {
-  justify-content: center;
-  margin-top: 1.25rem;
 }
