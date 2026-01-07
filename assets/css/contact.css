@@ -217,3 +217,12 @@
 .contact-cta {
   margin-top: 0.5rem;
 }
+.no-wrap {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .no-wrap {
+    white-space: normal;
+  }
+}
