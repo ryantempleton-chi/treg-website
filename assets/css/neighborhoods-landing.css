@@ -153,3 +153,11 @@
   line-height: 1.55;
   color: var(--treg-slate);
 }
+/* CTA spacing polish (neighborhoods landing) */
+.section-cta-text {
+  margin-bottom: 1.4rem; /* creates breathing room above buttons */
+}
+
+.section-cta .btn-row {
+  margin-top: 0; /* keep buttons visually grouped */
+}
