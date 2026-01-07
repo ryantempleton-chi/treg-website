@@ -58,6 +58,7 @@
           <div class="home-hero-overlay">
             <div class="hero-inner home-hero-inner">
               <div class="home-hero-grid">
+                <!-- spacer so text feels right-aligned on desktop -->
                 <div class="home-hero-spacer"></div>
 
                 <div class="home-hero-text">
@@ -84,6 +85,23 @@
           </div>
         </section>
 
+        <!-- PHOTO BREAK (full-width) -->
+        <section class="home-photo-break" aria-label="Chicago skyline photo">
+          <!-- Update src to the image you choose + confirm the file exists at this path -->
+          <img
+            class="home-photo-break-img"
+            src="/assets/img/home/hero-chicago.jpg"
+            alt="Chicago skyline along the lakefront"
+            loading="lazy"
+          />
+          <div class="home-photo-break-overlay" aria-hidden="true"></div>
+
+          <div class="home-photo-break-inner">
+            <div class="home-photo-break-kicker">Templeton Real Estate Group</div>
+            <div class="home-photo-break-title">modern guidance. chicago expertise.</div>
+          </div>
+        </section>
+
         <!-- SERVICES: BUY / SELL / RENT -->
         <section class="section section-services">
           <div class="section-inner">
@@ -91,8 +109,8 @@
               <p class="eyebrow">how we help</p>
               <h2 class="section-title">buy, sell, and rent with confidence.</h2>
               <p class="section-intro">
-                Whether you’re moving across the street or across the city, we’re here to guide you through every step —
-                with honest advice, realistic timelines, and a strategy that fits your life.
+                Whether you’re moving across the street or across the city, we’re here to guide you through every step
+                — with honest advice, realistic timelines, and a strategy that fits your life.
               </p>
             </header>
 
@@ -151,30 +169,6 @@
           </div>
         </section>
 
-        <!-- VISUAL BREAK: FEATURE PHOTO -->
-        <section class="home-photo-break" aria-label="Chicago cityscape">
-          <!--
-            Swap this image path to any of your favorites.
-            Suggested options you uploaded:
-            - /assets/img/home/skyline-north.jpg
-            - /assets/img/home/cloudy-skyline.jpg
-            - /assets/img/home/horizon.jpg
-          -->
-          <img
-            class="home-photo-break-img"
-            src="/assets/img/home/skyline-north.jpg"
-            alt="Chicago skyline overlooking Lake Michigan"
-            loading="lazy"
-          />
-
-          <div class="home-photo-break-overlay" aria-hidden="true"></div>
-
-          <div class="home-photo-break-inner">
-            <div class="home-photo-break-kicker">Chicago, always moving</div>
-            <div class="home-photo-break-title">Local insight. Clear strategy. Calm execution.</div>
-          </div>
-        </section>
-
         <!-- VISUAL STRIP: EXPLORE CHICAGO -->
         <section class="section home-explore">
           <div class="section-inner">
@@ -189,11 +183,7 @@
 
             <div class="home-explore-grid">
               <a class="home-explore-tile" href="/neighborhoods.html" aria-label="Browse Chicago neighborhoods">
-                <img
-                  src="/assets/img/home/bridge.jpg"
-                  alt="A Chicago bridge and downtown view"
-                  loading="lazy"
-                />
+                <img src="/assets/img/home/bridge.jpg" alt="A Chicago bridge and downtown view" loading="lazy" />
                 <div class="home-explore-tile-overlay" aria-hidden="true"></div>
                 <div class="home-explore-tile-text">
                   <div class="home-explore-tile-kicker">Neighborhood guides</div>
@@ -202,11 +192,7 @@
               </a>
 
               <a class="home-explore-tile" href="/buy.html" aria-label="Buying in Chicago">
-                <img
-                  src="/assets/img/home/bean.jpg"
-                  alt="Cloud Gate in Millennium Park"
-                  loading="lazy"
-                />
+                <img src="/assets/img/home/bean.jpg" alt="Cloud Gate in Millennium Park" loading="lazy" />
                 <div class="home-explore-tile-overlay" aria-hidden="true"></div>
                 <div class="home-explore-tile-text">
                   <div class="home-explore-tile-kicker">Buy with confidence</div>
@@ -246,6 +232,7 @@
               </p>
             </div>
 
+            <!-- Rating / stats strip -->
             <div class="reviews-stats">
               <div class="reviews-stat-card">
                 <div class="reviews-stat-value">
@@ -265,6 +252,7 @@
               </div>
             </div>
 
+            <!-- 4 review cards in a 2x2 grid -->
             <div class="reviews-preview">
               <article class="review-card">
                 <p class="review-body">
@@ -307,6 +295,7 @@
               </article>
             </div>
 
+            <!-- Big centered CTA button -->
             <div class="section-cta-row">
               <a href="/reviews.html" class="btn btn-primary reviews-cta-btn">read more client reviews</a>
             </div>
