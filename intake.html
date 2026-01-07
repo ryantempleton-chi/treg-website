@@ -29,10 +29,9 @@
         <section class="hero">
           <div class="hero-inner">
             <div class="hero-label">get started</div>
-            <h1 class="hero-title">client intake form.</h1>
+            <h1 class="hero-title">let’s get a few details.</h1>
             <p class="hero-subtitle" style="max-width: 880px;">
-              Just a few quick questions to get started. The more we know upfront, the quicker we can help you move
-              forward with confidence.
+              Answer a few quick questions so we can tailor next steps and move your search forward with clarity.
             </p>
           </div>
         </section>
@@ -73,5 +72,94 @@
     </div>
 
     <script src="/assets/js/layout.js"></script>
+
+    <!-- Service-based HERO personalization (supports aliases) -->
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+
+        // Accept service from common params (service preferred, but supports a few fallbacks)
+        const raw =
+          (params.get("service") ||
+            params.get("type") ||
+            params.get("intent") ||
+            params.get("for") ||
+            "") + "";
+
+        const value = raw.trim().toLowerCase();
+
+        const labelEl = document.querySelector(".hero-label");
+        const titleEl = document.querySelector(".hero-title");
+        const subEl = document.querySelector(".hero-subtitle");
+
+        if (!labelEl || !titleEl || !subEl) return;
+
+        // Normalize common aliases -> canonical keys
+        const normalizeService = (v) => {
+          if (!v) return "";
+
+          // strip spaces/underscores for safer matching
+          const s = v.replace(/\s+/g, "-").replace(/_/g, "-");
+
+          const buy = new Set(["buy", "buyer", "purchase", "purchasing", "buying", "homebuyer"]);
+          const sell = new Set(["sell", "seller", "sale", "selling", "list", "listing", "listings"]);
+          const rent = new Set(["rent", "renter", "rental", "leasing", "lease", "tenant", "tenant-rep"]);
+          const landlord = new Set([
+            "landlord",
+            "ll",
+            "owner",
+            "investor",
+            "property",
+            "property-owner",
+            "leasing-owner",
+            "landlord-rep"
+          ]);
+
+          if (buy.has(s)) return "buy";
+          if (sell.has(s)) return "sell";
+          if (rent.has(s)) return "rent";
+          if (landlord.has(s)) return "landlord";
+
+          // handle compound-ish values like "renting" or "seller-intake"
+          if (s.includes("buy")) return "buy";
+          if (s.includes("sell") || s.includes("list")) return "sell";
+          if (s.includes("rent") || s.includes("lease")) return "rent";
+          if (s.includes("landlord") || s.includes("owner") || s.includes("investor")) return "landlord";
+
+          return "";
+        };
+
+        const key = normalizeService(value);
+
+        const copy = {
+          buy: {
+            label: "get started",
+            title: "let’s talk about your purchase.",
+            sub: "Answer a few quick questions so we can recommend next steps, timing, and a smart game plan."
+          },
+          sell: {
+            label: "get started",
+            title: "let’s talk about your sale.",
+            sub: "A quick intake so we can prep pricing thoughts, timelines, and a clear plan before we connect."
+          },
+          rent: {
+            label: "get started",
+            title: "let’s plan your rental search.",
+            sub: "Share your timing, budget, and must-haves—then we’ll build a clean, organized showing plan."
+          },
+          landlord: {
+            label: "get started",
+            title: "let’s talk about your rental property.",
+            sub: "A short intake so we can advise on pricing, timing, and the smoothest path to leasing."
+          }
+        };
+
+        if (key && copy[key]) {
+          labelEl.textContent = copy[key].label;
+          titleEl.textContent = copy[key].title;
+          subEl.textContent = copy[key].sub;
+        }
+      })();
+    </script>
   </body>
 </html>
