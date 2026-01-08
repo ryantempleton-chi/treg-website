@@ -200,7 +200,7 @@ body {
 
 /* ========================= */
 /* HEADER MEGA MENU (Site-wide) */
-/* SERHANT-style Menu button + BIG panel */
+/* SERHANT-style Menu button + panel */
 /* ========================= */
 
 /* Menu button */
@@ -276,13 +276,18 @@ body {
   z-index: 9990;
 }
 
-/* BIG panel */
+/* Panel (15% narrower + ~33% shorter) */
 .menu-panel {
   position: fixed;
   top: calc(var(--header-h) + 10px);
-  left: 24px;
-  right: 24px;
-  height: calc(100vh - (var(--header-h) + 34px));
+
+  /* narrower */
+  left: 7.5vw;
+  right: 7.5vw;
+
+  /* shorter */
+  height: calc(67vh - (var(--header-h) + 20px));
+  max-height: 560px;
 
   border-radius: 26px;
   background: #fff;
@@ -300,7 +305,7 @@ body {
 
 .menu-panel-inner {
   height: 100%;
-  padding: 1.25rem 1.4rem 1.35rem;
+  padding: 1.1rem 1.35rem 1.2rem;
   display: flex;
   flex-direction: column;
 }
@@ -310,7 +315,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
 }
 
 .menu-panel-title {
@@ -327,10 +332,11 @@ body {
   gap: 0.75rem;
 }
 
+/* Bigger logo/mark in menu (top-right) */
 .menu-panel-mark {
-  height: 28px;
+  height: 42px;
   width: auto;
-  opacity: 0.95;
+  opacity: 0.98;
 }
 
 .menu-close {
@@ -353,16 +359,17 @@ body {
 .menu-layout {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
-  gap: 2.25rem;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.55fr);
+  gap: 2rem;
   align-items: start;
-  padding-top: 0.25rem;
-  overflow: auto;
+  overflow: hidden;
 }
 
-/* LEFT: big primary links */
+/* LEFT: big primary links (flush-right to divider) */
 .menu-primary {
   padding: 0.25rem 0 0.5rem;
+  text-align: right;
+  padding-right: 1.25rem;
 }
 
 .menu-primary-link {
@@ -371,9 +378,9 @@ body {
   color: var(--treg-charcoal);
   font-family: "League Spartan", system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(1.65rem, 2.2vw, 2.25rem);
+  font-size: clamp(1.75rem, 2.4vw, 2.4rem);
   line-height: 1.05;
-  padding: 0.55rem 0;
+  padding: 0.45rem 0;
   text-transform: lowercase;
 }
 
@@ -385,12 +392,15 @@ body {
 
 /* RIGHT: grouped subtle links */
 .menu-secondary {
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 1px solid rgba(0, 0, 0, 0.10);
   padding-left: 1.5rem;
+
+  height: 100%;
+  overflow: auto;
 
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
+  gap: 1.1rem;
   align-content: start;
 }
 
@@ -398,7 +408,7 @@ body {
   background: rgba(250, 250, 250, 0.75);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 16px;
-  padding: 1rem 1rem 0.9rem;
+  padding: 0.95rem 0.95rem 0.85rem;
 }
 
 .menu-col-title {
@@ -414,7 +424,7 @@ body {
   display: block;
   text-decoration: none;
   color: var(--treg-charcoal);
-  padding: 0.55rem 0.6rem;
+  padding: 0.52rem 0.6rem;
   border-radius: 12px;
   border: 1px solid transparent;
   transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
@@ -453,12 +463,19 @@ body.menu-open .menu-panel {
   .menu-panel {
     left: 16px;
     right: 16px;
-    height: calc(100vh - (var(--header-h) + 28px));
+
+    height: calc(74vh - (var(--header-h) + 18px));
+    max-height: none;
   }
 
   .menu-layout {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.1rem;
+  }
+
+  .menu-primary {
+    text-align: left;
+    padding-right: 0;
   }
 
   .menu-secondary {
