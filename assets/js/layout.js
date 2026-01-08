@@ -3,6 +3,7 @@
    - Loads header/footer partials
    - Updates footer year
    - Neighborhood highlights carousel (robust, multi-card, infinite loop)
+   - Header mega menu (toggle) — initializes AFTER header loads
    ========================================================= */
 
 /* =============================
@@ -14,16 +15,62 @@ function loadFragment(targetId, url, callback) {
     .then((html) => {
       const el = document.getElementById(targetId);
       if (el) el.innerHTML = html;
-      if (callback) callback();
+      if (typeof callback === "function") callback();
     })
     .catch((err) => {
       console.error("Error loading fragment:", url, err);
     });
 }
 
+/* =======================================
+   Header Mega Menu (toggle) — init AFTER
+   ======================================= */
+function initMegaMenu() {
+  const btn = document.querySelector(".menu-btn");
+  const panel = document.querySelector(".menu-panel");
+  const backdrop = document.querySelector(".menu-backdrop");
+  const closeEls = document.querySelectorAll("[data-menu-close]");
+
+  if (!btn || !panel || !backdrop) return;
+
+  const setOpen = (open) => {
+    document.body.classList.toggle("menu-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+    if (open) {
+      const closeBtn = panel.querySelector(".menu-close");
+      if (closeBtn) closeBtn.focus({ preventScroll: true });
+    } else {
+      btn.focus({ preventScroll: true });
+    }
+  };
+
+  btn.addEventListener("click", () => {
+    const isOpen = document.body.classList.contains("menu-open");
+    setOpen(!isOpen);
+  });
+
+  closeEls.forEach((el) => el.addEventListener("click", () => setOpen(false)));
+
+  // ESC closes
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("menu-open")) {
+      setOpen(false);
+    }
+  });
+
+  // Clicking any menu link closes
+  panel.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (link) setOpen(false);
+  });
+}
+
 function initPartials() {
-  // Header
-  loadFragment("site-header", "/partials/header.html");
+  // Header (init mega menu AFTER header is injected)
+  loadFragment("site-header", "/partials/header.html", () => {
+    initMegaMenu();
+  });
 
   // Footer + year
   loadFragment("site-footer", "/partials/footer.html", () => {
@@ -209,45 +256,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initPartials();
   initHighlightsCarousels();
 });
-// =======================================
-// Header Mega Menu (toggle)
-// =======================================
-(() => {
-  const btn = document.querySelector(".menu-btn");
-  const panel = document.querySelector(".menu-panel");
-  const backdrop = document.querySelector(".menu-backdrop");
-  const closeEls = document.querySelectorAll("[data-menu-close]");
-
-  if (!btn || !panel || !backdrop) return;
-
-  const setOpen = (open) => {
-    document.body.classList.toggle("menu-open", open);
-    btn.setAttribute("aria-expanded", open ? "true" : "false");
-
-    if (open) {
-      // focus close button for accessibility
-      const closeBtn = panel.querySelector(".menu-close");
-      closeBtn && closeBtn.focus();
-    } else {
-      btn.focus();
-    }
-  };
-
-  btn.addEventListener("click", () => {
-    const isOpen = document.body.classList.contains("menu-open");
-    setOpen(!isOpen);
-  });
-
-  closeEls.forEach((el) => el.addEventListener("click", () => setOpen(false)));
-
-  // ESC closes
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && document.body.classList.contains("menu-open")) setOpen(false);
-  });
-
-  // Clicking any menu link closes
-  panel.addEventListener("click", (e) => {
-    const link = e.target.closest("a");
-    if (link) setOpen(false);
-  });
-})();
