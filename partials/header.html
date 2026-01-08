@@ -1,6 +1,5 @@
 <header class="site-header">
   <div class="container header-inner">
-
     <!-- Logo -->
     <a href="/" class="logo-link">
       <img
@@ -11,44 +10,31 @@
     </a>
 
     <!-- Primary navigation -->
-    <nav class="nav">
+    <nav class="nav" aria-label="Primary">
       <ul class="nav-list">
-
         <li class="nav-item">
           <a href="/" class="nav-link">home</a>
         </li>
 
         <!-- About dropdown -->
         <li class="nav-item has-dropdown">
-          <button class="nav-link-dropdown" type="button">
+          <button class="nav-link-dropdown" type="button" aria-haspopup="true" aria-expanded="false">
             about
           </button>
           <ul class="nav-dropdown">
-            <li>
-              <a class="nav-dropdown-link" href="/about.html">our story</a>
-            </li>
-            <li>
-              <a class="nav-dropdown-link" href="/team/">meet the team</a>
-            </li>
-            <li>
-              <a class="nav-dropdown-link" href="/reviews.html">client reviews</a>
-            </li>
+            <li><a class="nav-dropdown-link" href="/about.html">our story</a></li>
+            <li><a class="nav-dropdown-link" href="/team/">meet the team</a></li>
+            <li><a class="nav-dropdown-link" href="/reviews.html">client reviews</a></li>
           </ul>
         </li>
 
         <!-- Buy / Sell / Rent dropdown -->
         <li class="nav-item has-dropdown">
-          <a href="#" class="nav-link nav-link-dropdown">buy | sell | rent</a>
+          <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">buy | sell | rent</a>
           <ul class="nav-dropdown">
-            <li>
-              <a href="/buy.html" class="nav-dropdown-link">buy</a>
-            </li>
-            <li>
-              <a href="/sell.html" class="nav-dropdown-link">sell</a>
-            </li>
-            <li>
-              <a href="/rent.html" class="nav-dropdown-link">rent</a>
-            </li>
+            <li><a href="/buy.html" class="nav-dropdown-link">buy</a></li>
+            <li><a href="/sell.html" class="nav-dropdown-link">sell</a></li>
+            <li><a href="/rent.html" class="nav-dropdown-link">rent</a></li>
           </ul>
         </li>
 
@@ -61,9 +47,58 @@
         <li class="nav-item">
           <a href="/contact.html" class="nav-link">contact</a>
         </li>
-
       </ul>
     </nav>
 
+    <!-- Mega menu button (top-right) -->
+    <button
+      class="menu-btn"
+      type="button"
+      aria-label="Open menu"
+      aria-controls="site-menu"
+      aria-expanded="false"
+    >
+      menu
+      <span class="menu-btn-icon" aria-hidden="true"></span>
+    </button>
   </div>
 </header>
+
+<!-- Mega menu panel -->
+<div class="menu-panel" id="site-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+  <div class="menu-panel-inner">
+    <div class="menu-panel-top">
+      <div class="menu-panel-title">Explore</div>
+
+      <button class="menu-close" type="button" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-col">
+        <div class="menu-col-title">Start here</div>
+        <a class="menu-link" href="/buy.html">Buy</a>
+        <a class="menu-link" href="/sell.html">Sell</a>
+        <a class="menu-link" href="/rent.html">Rent</a>
+        <a class="menu-link" href="/neighborhoods.html">Neighborhoods</a>
+      </div>
+
+      <div class="menu-col">
+        <div class="menu-col-title">Templeton</div>
+        <a class="menu-link" href="/about.html">Our story</a>
+        <a class="menu-link" href="/team/">Meet the team</a>
+        <a class="menu-link" href="/reviews.html">Client reviews</a>
+        <a class="menu-link" href="/contact.html">Contact</a>
+      </div>
+
+      <div class="menu-col">
+        <div class="menu-col-title">Quick actions</div>
+        <a class="menu-link" href="mailto:ryan@ryantempleton.com">Email Ryan</a>
+        <a class="menu-link" href="tel:+13126759379">Call</a>
+        <a class="menu-link" href="/contact.html#intake">Client intake form</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Backdrop -->
+<div class="menu-backdrop" data-menu-close aria-hidden="true"></div>
