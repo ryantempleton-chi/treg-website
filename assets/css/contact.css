@@ -339,3 +339,51 @@
     white-space: normal;
   }
 }
+/* ========================= */
+/* ICON BUTTON ROW (Contact) */
+/* ========================= */
+
+.contact-icon-row {
+  display: flex;
+  gap: 0.9rem;
+  margin: 0.85rem 0 1.1rem;
+}
+
+.contact-icon-btn {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 44px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.contact-icon-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-icon path,
+.contact-icon rect,
+.contact-icon line,
+.contact-icon polyline,
+.contact-icon circle {
+  stroke: var(--treg-bronze);
+  stroke-width: 1.8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.95;
+}
