@@ -51,81 +51,171 @@
               <h2 class="section-heading">the home buying process</h2>
               <p class="section-lede">Click a step to learn what happens, what to expect, and how we keep things moving.</p>
             </div>
-
-            <div class="timeline-tabs" role="tablist" aria-label="Buying process steps">
-              <button
-                class="timeline-tab is-active"
-                role="tab"
-                aria-selected="true"
-                aria-controls="step-panel"
-                data-step="preapproval"
-                type="button"
-              >
-                <span class="timeline-icon" aria-hidden="true">🏦</span>
-                <span class="timeline-label">pre-approval</span>
-              </button>
-
-              <button
-                class="timeline-tab"
-                role="tab"
-                aria-selected="false"
-                aria-controls="step-panel"
-                data-step="shopping"
-                type="button"
-              >
-                <span class="timeline-icon" aria-hidden="true">🏙️</span>
-                <span class="timeline-label">home search</span>
-              </button>
-
-              <button
-                class="timeline-tab"
-                role="tab"
-                aria-selected="false"
-                aria-controls="step-panel"
-                data-step="offer"
-                type="button"
-              >
-                <span class="timeline-icon" aria-hidden="true">✍️</span>
-                <span class="timeline-label">offer</span>
-              </button>
-
-              <button
-                class="timeline-tab"
-                role="tab"
-                aria-selected="false"
-                aria-controls="step-panel"
-                data-step="diligence"
-                type="button"
-              >
-                <span class="timeline-icon" aria-hidden="true">🔎</span>
-                <span class="timeline-label">due diligence</span>
-              </button>
-
-              <button
-                class="timeline-tab"
-                role="tab"
-                aria-selected="false"
-                aria-controls="step-panel"
-                data-step="preclosing"
-                type="button"
-              >
-                <span class="timeline-icon" aria-hidden="true">📋</span>
-                <span class="timeline-label">pre-closing</span>
-              </button>
-
-              <button
-                class="timeline-tab"
-                role="tab"
-                aria-selected="false"
-                aria-controls="step-panel"
-                data-step="closing"
-                type="button"
-              >
-                <span class="timeline-icon" aria-hidden="true">🔑</span>
-                <span class="timeline-label">closing</span>
-              </button>
+        
+            <!-- NEW: timeline graphic -->
+            <div class="process-timeline" role="tablist" aria-label="Buying process steps">
+              <div class="process-line" aria-hidden="true"></div>
+        
+              <!-- 1 -->
+              <div class="process-step">
+                <div class="process-step-title">pre-approval</div>
+        
+                <button
+                  class="process-step-btn is-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="step-panel"
+                  data-step="preapproval"
+                  style="--step-color: #cfeee8"
+                >
+                  <!-- simple inline icon (consistent style) -->
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
+                    <path d="M4 10.5L12 6l8 4.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9.5Z" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M9 21v-7h6v7" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </button>
+        
+                <ul class="process-bullets">
+                  <li>budget + monthly comfort</li>
+                  <li>lender strategy</li>
+                  <li>real numbers to shop</li>
+                </ul>
+              </div>
+        
+              <!-- 2 -->
+              <div class="process-step">
+                <div class="process-step-title">home shopping</div>
+        
+                <button
+                  class="process-step-btn"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="step-panel"
+                  data-step="shopping"
+                  style="--step-color: #aee8df"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
+                    <path d="M7 7h14l-2 8H8L7 7Z" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M7 7 6 4H3" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm9 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="currentColor" />
+                  </svg>
+                </button>
+        
+                <ul class="process-bullets">
+                  <li>shortlist neighborhoods</li>
+                  <li>tour efficiently</li>
+                  <li>stay ahead of new listings</li>
+                </ul>
+              </div>
+        
+              <!-- 3 -->
+              <div class="process-step">
+                <div class="process-step-title">offer + negotiation</div>
+        
+                <button
+                  class="process-step-btn"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="step-panel"
+                  data-step="offer"
+                  style="--step-color: #86d7e6"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
+                    <path d="M8 12l2 2 6-6" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M6 4h12a1 1 0 0 1 1 1v14H5V5a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </button>
+        
+                <ul class="process-bullets">
+                  <li>pricing + terms strategy</li>
+                  <li>submit + negotiate</li>
+                  <li>get to contract</li>
+                </ul>
+              </div>
+        
+              <!-- 4 -->
+              <div class="process-step">
+                <div class="process-step-title">due diligence</div>
+        
+                <button
+                  class="process-step-btn"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="step-panel"
+                  data-step="diligence"
+                  style="--step-color: #5cc2e3"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
+                    <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M20 20l-3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </button>
+        
+                <ul class="process-bullets">
+                  <li>inspection + attorney review</li>
+                  <li>repair requests / credits</li>
+                  <li>keep deadlines tight</li>
+                </ul>
+              </div>
+        
+              <!-- 5 -->
+              <div class="process-step">
+                <div class="process-step-title">pre-closing + title</div>
+        
+                <button
+                  class="process-step-btn"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="step-panel"
+                  data-step="preclosing"
+                  style="--step-color: #2f98d2"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
+                    <path d="M7 4h10v16H7V4Z" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </button>
+        
+                <ul class="process-bullets">
+                  <li>loan conditions + CD</li>
+                  <li>title + paperwork</li>
+                  <li>final walkthrough</li>
+                </ul>
+              </div>
+        
+              <!-- 6 -->
+              <div class="process-step">
+                <div class="process-step-title">closing</div>
+        
+                <button
+                  class="process-step-btn"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="step-panel"
+                  data-step="closing"
+                  style="--step-color: #1f6aa8"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
+                    <path d="M7 14a4 4 0 1 1 0-8h6a4 4 0 0 1 0 8H7Z" fill="none" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M13 10h8v4h-2v2h-3v-2h-3v-4Z" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </button>
+        
+                <ul class="process-bullets">
+                  <li>sign + fund</li>
+                  <li>keys in hand</li>
+                  <li>celebrate</li>
+                </ul>
+              </div>
             </div>
-
+        
+            <!-- Locked-height description panel -->
             <div class="timeline-panel" id="step-panel" role="tabpanel" aria-live="polite">
               <h3 class="timeline-title" data-title></h3>
               <div class="timeline-body" data-body></div>
