@@ -236,3 +236,40 @@
     font-size: 0.88rem;
   }
 }
+/* The line behind circles (stronger, clearly visible gradient) */
+.process-line {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+
+  /* Center it through the circles:
+     If your circle is 86px tall, half is 43px.
+     Add the title spacing above; tweak if needed. */
+  top: 64px;
+
+  height: 4px;
+  border-radius: 999px;
+
+  background-image: linear-gradient(
+    90deg,
+    #f4eee6 0%,
+    #e7ddcf 20%,
+    #d8c7b3 40%,
+    #cfb18e 60%,
+    #c9b8a4 80%,
+    #1e180d 100%
+  );
+
+  opacity: 1;
+  z-index: 1;
+  pointer-events: none;
+}
+.process-step-btn {
+  color: var(--treg-charcoal);
+}
+
+.process-icon {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
