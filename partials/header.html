@@ -24,9 +24,7 @@
     <!-- Primary navigation -->
     <nav class="nav" aria-label="Primary navigation">
       <ul class="nav-list">
-        <li class="nav-item">
-          <a href="/" class="nav-link">home</a>
-        </li>
+        <li class="nav-item"><a href="/" class="nav-link">home</a></li>
 
         <li class="nav-item has-dropdown">
           <button class="nav-link-dropdown" type="button">about</button>
@@ -46,77 +44,72 @@
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a href="/neighborhoods.html" class="nav-link">neighborhoods</a>
-        </li>
-
-        <li class="nav-item">
-          <a href="/contact.html" class="nav-link">contact</a>
-        </li>
+        <li class="nav-item"><a href="/neighborhoods.html" class="nav-link">neighborhoods</a></li>
+        <li class="nav-item"><a href="/contact.html" class="nav-link">contact</a></li>
       </ul>
     </nav>
   </div>
 
-  <!-- Backdrop + panel (outside header-inner is best) -->
+  <!-- Backdrop + panel -->
   <div class="menu-backdrop" data-menu-close aria-hidden="true"></div>
 
   <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
-  <div class="menu-panel-inner">
-    <div class="menu-panel-top">
-      <div class="menu-panel-title">menu</div>
+    <div class="menu-panel-inner">
+      <div class="menu-panel-top">
+        <div class="menu-panel-title">menu</div>
 
-      <div class="menu-panel-top-right">
-        <!-- optional brand mark on the far right -->
-        <img
-          class="menu-panel-mark"
-          src="/assets/img/logo-transparent-lg.png"
-          alt="Templeton Real Estate Group"
-        />
-
-        <button class="menu-close" type="button" data-menu-close aria-label="Close menu">✕</button>
-      </div>
-    </div>
-
-    <div class="menu-layout">
-      <!-- LEFT: big primary links -->
-      <div class="menu-primary" aria-label="Primary menu links">
-        <a class="menu-primary-link" href="/buy.html">Buy.</a>
-        <a class="menu-primary-link" href="/rent.html">Rent.</a>
-        <a class="menu-primary-link" href="/sell.html">Sell.</a>
-        <a class="menu-primary-link" href="/neighborhoods.html">Neighborhoods.</a>
-        <a class="menu-primary-link" href="/team/">Meet the Team.</a>
-        <a class="menu-primary-link" href="/contact.html">Contact Us.</a>
+        <div class="menu-panel-top-right">
+          <img
+            class="menu-panel-mark"
+            src="/assets/img/logo-transparent-lg.png"
+            alt="Templeton Real Estate Group"
+          />
+          <button class="menu-close" type="button" data-menu-close aria-label="Close menu">✕</button>
+        </div>
       </div>
 
-      <!-- RIGHT: grouped subtle links -->
-      <div class="menu-secondary" aria-label="Secondary menu links">
-        <div class="menu-col">
-          <div class="menu-col-title">Work with us</div>
-          <a class="menu-link" href="/buy-process.html">Buy Process</a>
-          <a class="menu-link" href="/sell-process.html">Sell Process</a>
-          <a class="menu-link" href="/rent-process.html">Rent Process</a>
-          <a class="menu-link" href="/intake.html">New Client Intake</a>
+      <div class="menu-layout">
+        <!-- LEFT: big primary links -->
+        <div class="menu-primary" aria-label="Primary menu links">
+          <a class="menu-primary-link" href="/buy.html">buy.</a>
+          <a class="menu-primary-link" href="/sell.html">sell.</a>
+          <a class="menu-primary-link" href="/rent.html">rent.</a>
+          <a class="menu-primary-link" href="/neighborhoods.html">neighborhoods.</a>
+          <a class="menu-primary-link" href="/team/">meet the team.</a>
+          <a class="menu-primary-link" href="/contact.html">contact us.</a>
+
+          <!-- CTA row moved to LEFT column (this is the key fix) -->
+          <div class="menu-cta-row">
+            <a class="btn btn-primary" href="/intake.html">start intake</a>
+            <a class="btn btn-ghost" href="/contact.html">email our team</a>
+          </div>
         </div>
 
-        <div class="menu-col">
-          <div class="menu-col-title">Company</div>
-          <a class="menu-link" href="/about.html">Our Story</a>
-          <a class="menu-link" href="/reviews.html">Client Reviews</a>
-          <a class="menu-link" href="/contact.html">Contact</a>
-        </div>
+        <!-- RIGHT: grouped subtle links -->
+        <div class="menu-secondary" aria-label="Secondary menu links">
+          <div class="menu-col">
+            <div class="menu-col-title">Work with us</div>
+            <a class="menu-link" href="/buy-process.html">Buy Process</a>
+            <a class="menu-link" href="/sell-process.html">Sell Process</a>
+            <a class="menu-link" href="/rent-process.html">Rent Process</a>
+            <a class="menu-link" href="/intake.html">New Client Intake</a>
+          </div>
 
-        <div class="menu-col">
-          <div class="menu-col-title">Explore</div>
-          <a class="menu-link" href="/">Home</a>
-          <a class="menu-link" href="/neighborhoods.html">Neighborhood Guides</a>
-          <a class="menu-link" href="/reviews.html">Testimonials</a>
-        </div>
+          <div class="menu-col">
+            <div class="menu-col-title">Company</div>
+            <a class="menu-link" href="/about.html">Our Story</a>
+            <a class="menu-link" href="/reviews.html">Client Reviews</a>
+            <a class="menu-link" href="/contact.html">Contact</a>
+          </div>
 
-        <div class="menu-cta-row">
-          <a class="btn btn-primary" href="/intake.html">Start intake</a>
-          <a class="btn btn-ghost" href="/contact.html">Email our team</a>
+          <div class="menu-col">
+            <div class="menu-col-title">Explore</div>
+            <a class="menu-link" href="/">Home</a>
+            <a class="menu-link" href="/neighborhoods.html">Neighborhood Guides</a>
+            <a class="menu-link" href="/reviews.html">Testimonials</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</header>
