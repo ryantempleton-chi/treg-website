@@ -49,14 +49,14 @@
           <div class="container buy-timeline" aria-label="Home buying timeline">
             <div class="timeline-head">
               <h2 class="section-heading">the home buying process</h2>
-              <p class="section-lede">Click a step to learn what happens, what to expect, and how we keep things moving.</p>
+              <p class="section-lede">Select a step to see what happens next — and how we keep the process clear, calm, and moving.</p>
             </div>
         
-            <!-- NEW: timeline graphic -->
+            <!-- Timeline graphic -->
             <div class="process-timeline" role="tablist" aria-label="Buying process steps">
               <div class="process-line" aria-hidden="true"></div>
         
-              <!-- 1 -->
+              <!-- 1: PRE-APPROVAL -->
               <div class="process-step">
                 <div class="process-step-title">pre-approval</div>
         
@@ -67,12 +67,18 @@
                   aria-selected="true"
                   aria-controls="step-panel"
                   data-step="preapproval"
-                  style="--step-color: #cfeee8"
+                  style="--step-color: #efe6da"
                 >
-                  <!-- simple inline icon (consistent style) -->
-                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
-                    <path d="M4 10.5L12 6l8 4.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9.5Z" fill="none" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M9 21v-7h6v7" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  <!-- $ / budget -->
+                  <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
+                    <path
+                      d="M12 3v18M8 7.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5-1.8 3.5-4 3.5-4 1.6-4 3.5 1.8 3.5 4 3.5 4-1.6 4-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                 </button>
         
@@ -83,7 +89,7 @@
                 </ul>
               </div>
         
-              <!-- 2 -->
+              <!-- 2: HOME SHOPPING -->
               <div class="process-step">
                 <div class="process-step-title">home shopping</div>
         
@@ -94,12 +100,31 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="shopping"
-                  style="--step-color: #aee8df"
+                  style="--step-color: #e7ecec"
                 >
-                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
-                    <path d="M7 7h14l-2 8H8L7 7Z" fill="none" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M7 7 6 4H3" fill="none" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm9 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="currentColor" />
+                  <!-- storefront / search -->
+                  <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
+                    <path
+                      d="M4 10h16l-1.2-5H5.2L4 10Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M6 10v10h12V10"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M9 20v-6h6v6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                 </button>
         
@@ -110,7 +135,7 @@
                 </ul>
               </div>
         
-              <!-- 3 -->
+              <!-- 3: OFFER + NEGOTIATION -->
               <div class="process-step">
                 <div class="process-step-title">offer + negotiation</div>
         
@@ -121,11 +146,32 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="offer"
-                  style="--step-color: #86d7e6"
+                  style="--step-color: #dccbb8"
                 >
-                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
-                    <path d="M8 12l2 2 6-6" fill="none" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M6 4h12a1 1 0 0 1 1 1v14H5V5a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  <!-- document + check -->
+                  <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
+                    <path
+                      d="M7 3h7l3 3v15H7V3Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14 3v4h4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M9 14l2 2 4-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                 </button>
         
@@ -136,7 +182,7 @@
                 </ul>
               </div>
         
-              <!-- 4 -->
+              <!-- 4: DUE DILIGENCE -->
               <div class="process-step">
                 <div class="process-step-title">due diligence</div>
         
@@ -147,11 +193,30 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="diligence"
-                  style="--step-color: #5cc2e3"
+                  style="--step-color: #e9dfd1"
                 >
-                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
-                    <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M20 20l-3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  <!-- gavel / attorney review -->
+                  <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
+                    <path
+                      d="M14 2l8 8-3 3-8-8 3-3Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M7 7 2 12l3 3 5-5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2 20h12"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
                   </svg>
                 </button>
         
@@ -162,7 +227,7 @@
                 </ul>
               </div>
         
-              <!-- 5 -->
+              <!-- 5: PRE-CLOSING + TITLE -->
               <div class="process-step">
                 <div class="process-step-title">pre-closing + title</div>
         
@@ -173,11 +238,18 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="preclosing"
-                  style="--step-color: #2f98d2"
+                  style="--step-color: #d7c7b3"
                 >
-                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
-                    <path d="M7 4h10v16H7V4Z" fill="none" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  <!-- clipboard / paperwork -->
+                  <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
+                    <path
+                      d="M9 3h6l1 2h3v16H5V5h3l1-2Z"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                    <path d="M9 11h6M9 15h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                   </svg>
                 </button>
         
@@ -188,7 +260,7 @@
                 </ul>
               </div>
         
-              <!-- 6 -->
+              <!-- 6: CLOSING -->
               <div class="process-step">
                 <div class="process-step-title">closing</div>
         
@@ -199,11 +271,32 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="closing"
-                  style="--step-color: #1f6aa8"
+                  style="--step-color: #cbb49a"
                 >
-                  <svg viewBox="0 0 24 24" aria-hidden="true" class="process-icon">
-                    <path d="M7 14a4 4 0 1 1 0-8h6a4 4 0 0 1 0 8H7Z" fill="none" stroke="currentColor" stroke-width="1.8" />
-                    <path d="M13 10h8v4h-2v2h-3v-2h-3v-4Z" fill="none" stroke="currentColor" stroke-width="1.8" />
+                  <!-- home / keys moment -->
+                  <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
+                    <path
+                      d="M3 10.5L12 4l9 6.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5 10v10h14V10"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M9 20v-6h6v6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                 </button>
         
