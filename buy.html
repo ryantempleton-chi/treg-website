@@ -49,7 +49,9 @@
           <div class="container buy-timeline" aria-label="Home buying timeline">
             <div class="timeline-head">
               <h2 class="section-heading">the home buying process</h2>
-              <p class="section-lede">Select a step to see what happens next — and how we keep the process clear, calm, and moving.</p>
+              <p class="section-lede">
+                Select a step to see what happens next — and how we keep the process clear, calm, and moving.
+              </p>
             </div>
         
             <!-- Timeline graphic -->
@@ -67,17 +69,16 @@
                   aria-selected="true"
                   aria-controls="step-panel"
                   data-step="preapproval"
-                  style="--step-color: #efe6da"
+                  style="--step-color: #f4eee6"
                 >
                   <!-- $ / budget -->
                   <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
                     <path
-                      d="M12 3v18M8 7.5c0-1.9 1.8-3.5 4-3.5s4 1.6 4 3.5-1.8 3.5-4 3.5-4 1.6-4 3.5 1.8 3.5 4 3.5 4-1.6 4-3.5"
+                      d="M12 3v18M8.5 7.2c0-1.8 1.6-3.2 3.5-3.2s3.5 1.4 3.5 3.2-1.2 2.6-3.5 3.2c-2.3.6-3.5 1.6-3.5 3.2 0 1.8 1.6 3.2 3.5 3.2s3.5-1.4 3.5-3.2"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.8"
                       stroke-linecap="round"
-                      stroke-linejoin="round"
                     />
                   </svg>
                 </button>
@@ -100,31 +101,18 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="shopping"
-                  style="--step-color: #e7ecec"
+                  style="--step-color: #eee7de"
                 >
-                  <!-- storefront / search -->
+                  <!-- map pin / neighborhoods -->
                   <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
                     <path
-                      d="M4 10h16l-1.2-5H5.2L4 10Z"
+                      d="M12 21s6-5.2 6-10.2A6 6 0 0 0 6 10.8C6 15.8 12 21 12 21Z"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.8"
                       stroke-linejoin="round"
                     />
-                    <path
-                      d="M6 10v10h12V10"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M9 20v-6h6v6"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linejoin="round"
-                    />
+                    <circle cx="12" cy="10.8" r="2.1" fill="none" stroke="currentColor" stroke-width="1.8" />
                   </svg>
                 </button>
         
@@ -146,26 +134,20 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="offer"
-                  style="--step-color: #dccbb8"
+                  style="--step-color: #e7ddcf"
                 >
-                  <!-- document + check -->
+                  <!-- handshake / agreement -->
                   <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
                     <path
-                      d="M7 3h7l3 3v15H7V3Z"
+                      d="M8 12l3 3c.8.8 2.2.8 3 0l4-4"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.8"
+                      stroke-linecap="round"
                       stroke-linejoin="round"
                     />
                     <path
-                      d="M14 3v4h4"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M9 14l2 2 4-4"
+                      d="M3.5 12.5l4-4.5h3.5l2 2M20.5 11.5l-3.5-3.5H14l-2 2"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.8"
@@ -193,30 +175,25 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="diligence"
-                  style="--step-color: #e9dfd1"
+                  style="--step-color: #dcc7b3"
                 >
                   <!-- gavel / attorney review -->
                   <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
                     <path
-                      d="M14 2l8 8-3 3-8-8 3-3Z"
+                      d="M14 3l7 7-2.5 2.5-7-7L14 3Z"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.8"
                       stroke-linejoin="round"
                     />
                     <path
-                      d="M7 7 2 12l3 3 5-5"
+                      d="M4 14l6.5-6.5 2.5 2.5L6.5 16.5 4 14Z"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.8"
                       stroke-linejoin="round"
                     />
-                    <path
-                      d="M2 20h12"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                    />
+                    <path d="M3 21h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                   </svg>
                 </button>
         
@@ -238,18 +215,19 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="preclosing"
-                  style="--step-color: #d7c7b3"
+                  style="--step-color: #d6c4af"
                 >
-                  <!-- clipboard / paperwork -->
+                  <!-- document / paperwork -->
                   <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
                     <path
-                      d="M9 3h6l1 2h3v16H5V5h3l1-2Z"
+                      d="M7 3h7l3 3v15H7V3Z"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.8"
                       stroke-linejoin="round"
                     />
-                    <path d="M9 11h6M9 15h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                    <path d="M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    <path d="M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                   </svg>
                 </button>
         
@@ -271,27 +249,13 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="closing"
-                  style="--step-color: #cbb49a"
+                  style="--step-color: #cfb18e"
                 >
-                  <!-- home / keys moment -->
+                  <!-- key -->
                   <svg viewBox="0 0 24 24" class="process-icon" aria-hidden="true">
+                    <circle cx="8" cy="14" r="3" fill="none" stroke="currentColor" stroke-width="1.8" />
                     <path
-                      d="M3 10.5L12 4l9 6.5"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M5 10v10h14V10"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M9 20v-6h6v6"
+                      d="M11 14h10v3h-2v2h-2v-2h-3v-3"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.8"
