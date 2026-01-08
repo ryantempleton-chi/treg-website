@@ -9,18 +9,60 @@
       />
     </a>
 
+    <!-- SERHANT-style Menu button -->
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-haspopup="dialog">
+      <span class="menu-btn-icon" aria-hidden="true"><span></span></span>
+      menu
+    </button>
+
+    <!-- Backdrop + panel -->
+    <div class="menu-backdrop" aria-hidden="true"></div>
+
+    <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+      <div class="menu-panel-inner">
+        <div class="menu-panel-top">
+          <div class="menu-panel-title">Site menu</div>
+          <button class="menu-close" type="button" aria-label="Close menu">✕</button>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-col">
+            <div class="menu-col-title">Explore</div>
+            <a class="menu-link" href="/">Home</a>
+            <a class="menu-link" href="/neighborhoods.html">Neighborhoods</a>
+            <a class="menu-link" href="/reviews.html">Client Reviews</a>
+            <a class="menu-link" href="/contact.html">Contact</a>
+          </div>
+
+          <div class="menu-col">
+            <div class="menu-col-title">Work with us</div>
+            <a class="menu-link" href="/buy.html">Buy</a>
+            <a class="menu-link" href="/sell.html">Sell</a>
+            <a class="menu-link" href="/rent.html">Rent</a>
+            <a class="menu-link" href="/buy-process.html">Buy Process</a>
+            <a class="menu-link" href="/sell-process.html">Sell Process</a>
+            <a class="menu-link" href="/rent-process.html">Rent Process</a>
+          </div>
+
+          <div class="menu-col">
+            <div class="menu-col-title">About</div>
+            <a class="menu-link" href="/about.html">Our Story</a>
+            <a class="menu-link" href="/team/">Meet the Team</a>
+            <a class="menu-link" href="/intake.html">New Client Intake</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Primary navigation -->
-    <nav class="nav" aria-label="Primary">
+    <nav class="nav" aria-label="Primary navigation">
       <ul class="nav-list">
         <li class="nav-item">
           <a href="/" class="nav-link">home</a>
         </li>
 
-        <!-- About dropdown -->
         <li class="nav-item has-dropdown">
-          <button class="nav-link-dropdown" type="button" aria-haspopup="true" aria-expanded="false">
-            about
-          </button>
+          <button class="nav-link-dropdown" type="button">about</button>
           <ul class="nav-dropdown">
             <li><a class="nav-dropdown-link" href="/about.html">our story</a></li>
             <li><a class="nav-dropdown-link" href="/team/">meet the team</a></li>
@@ -28,9 +70,8 @@
           </ul>
         </li>
 
-        <!-- Buy / Sell / Rent dropdown -->
         <li class="nav-item has-dropdown">
-          <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">buy | sell | rent</a>
+          <a href="#" class="nav-link nav-link-dropdown">buy | sell | rent</a>
           <ul class="nav-dropdown">
             <li><a href="/buy.html" class="nav-dropdown-link">buy</a></li>
             <li><a href="/sell.html" class="nav-dropdown-link">sell</a></li>
@@ -38,76 +79,14 @@
           </ul>
         </li>
 
-        <!-- Neighborhoods -->
         <li class="nav-item">
           <a href="/neighborhoods.html" class="nav-link">neighborhoods</a>
         </li>
 
-        <!-- Contact -->
         <li class="nav-item">
           <a href="/contact.html" class="nav-link">contact</a>
         </li>
       </ul>
     </nav>
-
-    <!-- Mega menu button (top-right) -->
-    <button
-      class="menu-btn"
-      type="button"
-      aria-label="Open menu"
-      aria-controls="site-menu"
-      aria-expanded="false"
-    >
-      menu
-      <span class="menu-btn-icon" aria-hidden="true"></span>
-    </button>
   </div>
 </header>
-
-<!-- Mega menu panel -->
-<div class="menu-panel" id="site-menu" role="dialog" aria-modal="true" aria-label="Site menu">
-  <div class="menu-panel-inner">
-    <div class="menu-panel-top">
-      <div class="menu-panel-title">Explore</div>
-
-      <button class="menu-close" type="button" aria-label="Close menu">✕</button>
-    </div>
-
-    <div class="menu-grid">
-      <div class="menu-col">
-        <div class="menu-col-title">Start here</div>
-        <a class="menu-link" href="/buy.html">Buy</a>
-        <a class="menu-link" href="/sell.html">Sell</a>
-        <a class="menu-link" href="/rent.html">Rent</a>
-        <a class="menu-link" href="/neighborhoods.html">Neighborhoods</a>
-      </div>
-
-      <div class="menu-col">
-        <div class="menu-col-title">Templeton</div>
-        <a class="menu-link" href="/about.html">Our story</a>
-        <a class="menu-link" href="/team/">Meet the team</a>
-        <a class="menu-link" href="/reviews.html">Client reviews</a>
-        <a class="menu-link" href="/contact.html">Contact</a>
-      </div>
-
-      <div class="menu-col">
-        <div class="menu-col-title">Quick actions</div>
-        <a class="menu-link" href="mailto:ryan@ryantempleton.com">Email Ryan</a>
-        <a class="menu-link" href="tel:+13126759379">Call</a>
-        <a class="menu-link" href="/contact.html#intake">Client intake form</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Backdrop -->
-<div class="menu-backdrop" data-menu-close aria-hidden="true"></div>
-
-<div class="container header-inner">
-  <!-- logo -->
-  ...
-  <!-- MENU button + panel goes here -->
-  ...
-  <!-- your existing nav -->
-  <nav class="nav">...</nav>
-</div>
