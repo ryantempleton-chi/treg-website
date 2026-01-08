@@ -1,7 +1,7 @@
 /* =======================================
    BUY PAGE ONLY
    buy.css
-   - Asheville-style timeline (circles + line + gradient)
+   - Asheville-style timeline (circles + centered line + brand gradient)
    - Clickable steps update the description panel
    - Locked panel height prevents layout jumping
    ======================================= */
@@ -24,10 +24,16 @@
 }
 
 /* =======================================
-   TIMELINE GRAPHIC (Asheville-inspired)
+   TIMELINE GRAPHIC (TREG-inspired)
    ======================================= */
 
 .process-timeline {
+  /* knobs */
+  --circle: 86px;          /* circle size */
+  --title-h: 32px;         /* reserved title height (keeps alignment) */
+  --title-gap: 12px;       /* gap between title and circle */
+  --line-thickness: 3px;
+
   position: relative;
   margin-top: 1.25rem;
   padding: 1.1rem 0 0.6rem;
@@ -38,23 +44,24 @@
   align-items: start;
 }
 
-/* The line behind circles */
+/* The line behind circles — centered through the circles */
 .process-line {
   position: absolute;
   left: 4%;
   right: 4%;
-  top: 66px; /* adjust slightly if needed */
-  height: 3px;
+  height: var(--line-thickness);
   border-radius: 999px;
 
+  /* ✅ center of circle = title height + gap + (circle / 2) */
+  top: calc(var(--title-h) + var(--title-gap) + (var(--circle) / 2));
+
+  /* ✅ TREG-ish gradient (no blues) */
   background: linear-gradient(
     90deg,
-    rgba(207, 238, 232, 1) 0%,
-    rgba(174, 232, 223, 1) 20%,
-    rgba(134, 215, 230, 1) 40%,
-    rgba(92, 194, 227, 1) 60%,
-    rgba(47, 152, 210, 1) 80%,
-    rgba(31, 106, 168, 1) 100%
+    rgba(250, 250, 250, 1) 0%,
+    rgba(201, 184, 164, 0.65) 22%,
+    rgba(207, 177, 142, 0.85) 55%,
+    rgba(55, 58, 58, 0.90) 100%
   );
 
   opacity: 0.95;
@@ -63,26 +70,30 @@
 
 .process-step {
   text-align: center;
+  position: relative;
+  z-index: 1; /* keep step above line */
 }
 
 /* Titles above each icon */
 .process-step-title {
+  height: var(--title-h);
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--title-gap);
+
   font-family: "Oswald", system-ui, sans-serif;
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--treg-slate);
-  margin-bottom: 0.75rem;
-
-  /* keeps everything aligned even if a title wraps */
-  min-height: 2.2em;
+  line-height: 1.15;
 }
 
 /* Circular icon buttons */
 .process-step-btn {
   appearance: none;
-  width: 86px;
-  height: 86px;
+  width: var(--circle);
+  height: var(--circle);
   border-radius: 999px;
 
   border: 1px solid rgba(0, 0, 0, 0.10);
@@ -107,8 +118,8 @@
 }
 
 .process-step-btn.is-active {
-  border-color: rgba(0, 0, 0, 0.22);
-  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.14);
+  border-color: rgba(207, 177, 142, 0.85);
+  box-shadow: 0 22px 46px rgba(207, 177, 142, 0.22);
   transform: translateY(-1px);
 }
 
@@ -117,6 +128,13 @@
   width: 34px;
   height: 34px;
   display: block;
+}
+
+/* If your last circle is dark, keep the icon legible (optional) */
+.process-step-btn[style*="#373a3a"],
+.process-step-btn[style*="#1e180d"] {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 /* Bullet points below each step */
@@ -135,15 +153,20 @@
 }
 
 /* =======================================
-   DESCRIPTION PANEL (LOCKED)
-   Prevents the next section from jumping
+   DESCRIPTION PANEL (BOXED + LOCKED)
+   Makes it feel connected to the timeline
    ======================================= */
 
 .timeline-panel {
-  margin-top: 1.6rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-  padding-top: 1.2rem;
-  max-width: 900px;
+  margin-top: 1.25rem;
+  max-width: 980px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  padding: 1.25rem 1.35rem;
+
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
 
   /* ✅ lock footprint */
   min-height: 260px;
@@ -151,6 +174,15 @@
   /* if a step is longer, it scrolls instead of pushing page down */
   overflow: auto;
   overscroll-behavior: contain;
+}
+
+/* subtle divider to echo the timeline line */
+.timeline-panel::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: rgba(207, 177, 142, 0.35);
+  margin-bottom: 1rem;
 }
 
 .timeline-title {
@@ -179,23 +211,28 @@
   .process-timeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.4rem 1rem;
+
+    --circle: 78px;
+    --title-h: 28px;
+    --title-gap: 10px;
   }
 
-  /* the horizontal line doesn't translate well to 2-col */
+  /* horizontal line doesn't translate well to 2-col */
   .process-line {
     display: none;
   }
 
-  .process-step-title {
-    min-height: 0;
-  }
-
-  .process-step-btn {
-    width: 78px;
-    height: 78px;
-  }
-
   .timeline-panel {
     min-height: 320px;
+    padding: 1.1rem 1.1rem;
+  }
+
+  .process-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .process-bullets {
+    font-size: 0.88rem;
   }
 }
