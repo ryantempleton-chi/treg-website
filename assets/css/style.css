@@ -1,12 +1,15 @@
-/* ======================================= */
-/* BASE STYLES – TREG BRAND                */
-/* style.css (final)                       */
-/* ======================================= */
+/* =======================================
+   BASE STYLES – TREG BRAND
+   style.css (final, cleaned)
+   - Global tokens + layout
+   - Header + dropdown nav
+   - SERHANT-style mega menu (big left / subtle right)
+   - Global hero/sections/buttons/footer/team
+   ======================================= */
 
-/* ========================= */
-/* TOKENS / GLOBALS          */
-/* ========================= */
-
+/* =========================
+   TOKENS / GLOBALS
+   ========================= */
 :root {
   --treg-charcoal: #1e180d;
   --treg-slate: #373a3a;
@@ -61,10 +64,9 @@ body {
   border-radius: 10px;
 }
 
-/* ========================= */
-/* HEADER / NAV              */
-/* ========================= */
-
+/* =========================
+   HEADER / NAV
+   ========================= */
 .site-header {
   background: var(--treg-cream);
   border-bottom: 1px solid #e5e1d8;
@@ -198,29 +200,32 @@ body {
   background: #faf7f1;
 }
 
-/* ========================= */
-/* HEADER MEGA MENU (Site-wide) */
-/* SERHANT-style Menu button + panel */
-/* ========================= */
+/* =========================
+   HEADER MEGA MENU
+   SERHANT-style: big left / subtle right
+   (requires header.html markup with:
+    .menu-btn, .menu-backdrop, .menu-panel,
+    .menu-panel-inner, .menu-panel-top, .menu-panel-top-right,
+    .menu-panel-mark, .menu-close,
+    .menu-layout, .menu-primary, .menu-primary-link,
+    .menu-secondary, .menu-col, .menu-col-title, .menu-link,
+    .menu-cta-row)
+   ========================= */
 
 /* Menu button */
 .menu-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-
   padding: 0.6rem 0.85rem;
   border-radius: 999px;
-
   border: 1px solid rgba(0, 0, 0, 0.12);
   background: #fff;
-
   color: var(--treg-charcoal);
   font-family: "Roboto", system-ui, sans-serif;
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
   flex: 0 0 auto;
@@ -276,18 +281,18 @@ body {
   z-index: 9990;
 }
 
-/* Panel (15% narrower + ~33% shorter) */
+/* Panel (narrower + slightly taller) */
 .menu-panel {
   position: fixed;
   top: calc(var(--header-h) + 10px);
 
-  /* narrower */
+  /* ~15% narrower feel vs full-bleed */
   left: 7.5vw;
   right: 7.5vw;
 
-  /* shorter */
-  height: calc(67vh - (var(--header-h) + 20px));
-  max-height: 560px;
+  /* slightly taller to avoid clipping */
+  height: calc(72vh - (var(--header-h) + 20px));
+  max-height: 620px;
 
   border-radius: 26px;
   background: #fff;
@@ -320,8 +325,8 @@ body {
 
 .menu-panel-title {
   font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.12em;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--treg-slate);
 }
@@ -332,11 +337,10 @@ body {
   gap: 0.75rem;
 }
 
-/* Bigger logo/mark in menu (top-right) */
 .menu-panel-mark {
-  height: 42px;
+  height: 38px; /* bigger logo */
   width: auto;
-  opacity: 0.98;
+  opacity: 0.95;
 }
 
 .menu-close {
@@ -355,14 +359,14 @@ body {
   box-shadow: 0 14px 26px rgba(0, 0, 0, 0.10);
 }
 
-/* SERHANT-style layout: big left / subtle right */
+/* Two-column layout */
 .menu-layout {
   flex: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.55fr);
   gap: 2rem;
   align-items: start;
-  overflow: hidden;
+  overflow: hidden; /* prevents whole-panel scroll */
 }
 
 /* LEFT: big primary links (flush-right to divider) */
@@ -370,6 +374,10 @@ body {
   padding: 0.25rem 0 0.5rem;
   text-align: right;
   padding-right: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .menu-primary-link {
@@ -396,7 +404,8 @@ body {
   padding-left: 1.5rem;
 
   height: 100%;
-  overflow: auto;
+  overflow: auto; /* only the right side scrolls if needed */
+  overscroll-behavior: contain;
 
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -408,7 +417,7 @@ body {
   background: rgba(250, 250, 250, 0.75);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 16px;
-  padding: 0.95rem 0.95rem 0.85rem;
+  padding: 1rem 1rem 0.9rem;
 }
 
 .menu-col-title {
@@ -424,7 +433,7 @@ body {
   display: block;
   text-decoration: none;
   color: var(--treg-charcoal);
-  padding: 0.52rem 0.6rem;
+  padding: 0.55rem 0.6rem;
   border-radius: 12px;
   border: 1px solid transparent;
   transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
@@ -437,16 +446,17 @@ body {
   transform: translateY(-1px);
 }
 
-/* CTA row inside menu (optional) */
+/* CTA row — LEFT side of divider, flush-right to it */
 .menu-cta-row {
-  grid-column: 1 / -1;
+  margin-top: auto;
   display: flex;
   gap: 0.75rem;
-  justify-content: flex-start;
-  padding-top: 0.25rem;
+  justify-content: flex-end;
+  padding-top: 0.75rem;
+  padding-right: 1.25rem;
 }
 
-/* Open state (toggle with body.menu-open) */
+/* Open state */
 body.menu-open .menu-backdrop {
   opacity: 1;
   pointer-events: auto;
@@ -463,14 +473,18 @@ body.menu-open .menu-panel {
   .menu-panel {
     left: 16px;
     right: 16px;
-
-    height: calc(74vh - (var(--header-h) + 18px));
+    height: calc(78vh - (var(--header-h) + 18px));
     max-height: none;
+  }
+
+  .menu-panel-mark {
+    height: 32px;
   }
 
   .menu-layout {
     grid-template-columns: 1fr;
     gap: 1.1rem;
+    overflow: auto;
   }
 
   .menu-primary {
@@ -482,13 +496,18 @@ body.menu-open .menu-panel {
     border-left: none;
     padding-left: 0;
     grid-template-columns: 1fr;
+    overflow: visible;
+  }
+
+  .menu-cta-row {
+    justify-content: flex-start;
+    padding-right: 0;
   }
 }
 
-/* ========================= */
-/* HERO (GLOBAL)             */
-/* ========================= */
-
+/* =========================
+   HERO (GLOBAL)
+   ========================= */
 .hero {
   background: var(--treg-cream);
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -526,10 +545,9 @@ body.menu-open .menu-panel {
   line-height: 1.6;
 }
 
-/* ========================= */
-/* SECTIONS / GRID / LISTS   */
-/* ========================= */
-
+/* =========================
+   SECTIONS / GRID / LISTS
+   ========================= */
 .section {
   padding: 3rem 0;
 }
@@ -571,10 +589,9 @@ li + li {
   margin-top: 0.35rem;
 }
 
-/* ========================= */
-/* CTA SECTIONS              */
-/* ========================= */
-
+/* =========================
+   CTA SECTIONS
+   ========================= */
 .section-cta {
   text-align: center;
 }
@@ -596,10 +613,9 @@ li + li {
   margin-bottom: 1rem;
 }
 
-/* ========================= */
-/* ABOUT PHOTO               */
-/* ========================= */
-
+/* =========================
+   ABOUT PHOTO
+   ========================= */
 .about-photo {
   width: 100%;
   border-radius: 12px;
@@ -607,10 +623,9 @@ li + li {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
 }
 
-/* ========================= */
-/* TEAM INDEX                */
-/* ========================= */
-
+/* =========================
+   TEAM INDEX
+   ========================= */
 .section.section-muted {
   padding-top: 2.2rem;
   padding-bottom: 2.2rem;
@@ -770,10 +785,9 @@ li + li {
   color: var(--treg-charcoal);
 }
 
-/* ========================= */
-/* FOOTER                    */
-/* ========================= */
-
+/* =========================
+   FOOTER
+   ========================= */
 .site-footer {
   flex-shrink: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
@@ -807,10 +821,9 @@ li + li {
   text-underline-offset: 0.15em;
 }
 
-/* ========================= */
-/* BUTTONS (GLOBAL)          */
-/* ========================= */
-
+/* =========================
+   BUTTONS (GLOBAL)
+   ========================= */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -861,10 +874,9 @@ li + li {
   align-items: center;
 }
 
-/* ========================= */
-/* TEAM CONTACT ICON BUTTONS */
-/* ========================= */
-
+/* =========================
+   TEAM CONTACT ICON BUTTONS
+   ========================= */
 .team-contact-icons {
   display: flex;
   gap: 10px;
