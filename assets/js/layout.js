@@ -209,3 +209,45 @@ document.addEventListener("DOMContentLoaded", () => {
   initPartials();
   initHighlightsCarousels();
 });
+// =======================================
+// Header Mega Menu (toggle)
+// =======================================
+(() => {
+  const btn = document.querySelector(".menu-btn");
+  const panel = document.querySelector(".menu-panel");
+  const backdrop = document.querySelector(".menu-backdrop");
+  const closeEls = document.querySelectorAll("[data-menu-close]");
+
+  if (!btn || !panel || !backdrop) return;
+
+  const setOpen = (open) => {
+    document.body.classList.toggle("menu-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+
+    if (open) {
+      // focus close button for accessibility
+      const closeBtn = panel.querySelector(".menu-close");
+      closeBtn && closeBtn.focus();
+    } else {
+      btn.focus();
+    }
+  };
+
+  btn.addEventListener("click", () => {
+    const isOpen = document.body.classList.contains("menu-open");
+    setOpen(!isOpen);
+  });
+
+  closeEls.forEach((el) => el.addEventListener("click", () => setOpen(false)));
+
+  // ESC closes
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("menu-open")) setOpen(false);
+  });
+
+  // Clicking any menu link closes
+  panel.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (link) setOpen(false);
+  });
+})();
