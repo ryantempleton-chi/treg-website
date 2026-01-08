@@ -3,10 +3,13 @@
    buy.css
    - Asheville-style timeline (circles + centered line + brand gradient)
    - Clickable steps update the description panel
-   - Locked panel height prevents layout jumping
+   - Boxed, locked panel prevents layout jumping
    ======================================= */
 
-/* Shared helper */
+/* =======================================
+   Shared helpers
+   ======================================= */
+
 .btn-row {
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +17,6 @@
   align-items: center;
 }
 
-/* Section wrapper */
 .buy-timeline {
   padding: 2.4rem 0 1.6rem;
 }
@@ -24,15 +26,15 @@
 }
 
 /* =======================================
-   TIMELINE GRAPHIC (TREG-inspired)
+   TIMELINE GRAPHIC
    ======================================= */
 
 .process-timeline {
-  /* knobs */
+  /* ===== knobs ===== */
   --circle: 86px;          /* circle size */
-  --title-h: 32px;         /* reserved title height (keeps alignment) */
+  --title-h: 32px;         /* reserved title height */
   --title-gap: 12px;       /* gap between title and circle */
-  --line-thickness: 3px;
+  --line-thickness: 4px;   /* timeline thickness */
 
   position: relative;
   margin-top: 1.25rem;
@@ -44,37 +46,41 @@
   align-items: start;
 }
 
-/* The line behind circles — centered through the circles */
+/* Timeline line — centered through the middle of circles */
 .process-line {
   position: absolute;
-  left: 4%;
-  right: 4%;
+  left: 6%;
+  right: 6%;
   height: var(--line-thickness);
   border-radius: 999px;
 
-  /* ✅ center of circle = title height + gap + (circle / 2) */
+  /* circle midpoint = title block + title gap + half circle */
   top: calc(var(--title-h) + var(--title-gap) + (var(--circle) / 2));
+  transform: translateY(-50%);
 
-  /* ✅ TREG-ish gradient (no blues) */
-  background: linear-gradient(
+  /* TREG-ish gradient (no blue) */
+  background-image: linear-gradient(
     90deg,
-    rgba(250, 250, 250, 1) 0%,
-    rgba(201, 184, 164, 0.65) 22%,
-    rgba(207, 177, 142, 0.85) 55%,
-    rgba(55, 58, 58, 0.90) 100%
+    #f4eee6 0%,
+    #e7ddcf 20%,
+    #d8c7b3 40%,
+    #cfb18e 60%,
+    #c9b8a4 80%,
+    #373a3a 100%
   );
 
-  opacity: 0.95;
+  opacity: 1;
   z-index: 0;
+  pointer-events: none;
 }
 
 .process-step {
   text-align: center;
   position: relative;
-  z-index: 1; /* keep step above line */
+  z-index: 1; /* above the line */
 }
 
-/* Titles above each icon */
+/* Titles above each icon (fixed height keeps everything aligned) */
 .process-step-title {
   height: var(--title-h);
   display: grid;
@@ -89,7 +95,7 @@
   line-height: 1.15;
 }
 
-/* Circular icon buttons */
+/* Circular buttons */
 .process-step-btn {
   appearance: none;
   width: var(--circle);
@@ -108,7 +114,19 @@
   z-index: 2;
 
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-  color: var(--treg-charcoal);
+}
+
+/* ✅ FORCE ICON COLOR (prevents inherited blue) */
+.process-timeline .process-step-btn {
+  color: var(--treg-charcoal) !important; /* Lucide uses currentColor */
+}
+
+.process-timeline .process-step-btn svg {
+  stroke: currentColor !important;
+}
+
+.process-timeline .process-step-btn svg [fill="currentColor"] {
+  fill: currentColor !important;
 }
 
 .process-step-btn:hover {
@@ -118,26 +136,27 @@
 }
 
 .process-step-btn.is-active {
-  border-color: rgba(207, 177, 142, 0.85);
+  border-color: rgba(207, 177, 142, 0.95);
   box-shadow: 0 22px 46px rgba(207, 177, 142, 0.22);
   transform: translateY(-1px);
 }
 
-/* SVG icons inside circles */
+/* SVG icon sizing */
 .process-icon {
   width: 34px;
   height: 34px;
   display: block;
 }
 
-/* If your last circle is dark, keep the icon legible (optional) */
+/* If you ever set a very dark step color, flip icon to white automatically (optional) */
+/* (Remove this if you don't plan to use dark circles) */
 .process-step-btn[style*="#373a3a"],
 .process-step-btn[style*="#1e180d"] {
-  color: #ffffff;
+  color: #ffffff !important;
   border-color: rgba(255, 255, 255, 0.22);
 }
 
-/* Bullet points below each step */
+/* Bullets */
 .process-bullets {
   list-style: none;
   padding: 0;
@@ -154,7 +173,6 @@
 
 /* =======================================
    DESCRIPTION PANEL (BOXED + LOCKED)
-   Makes it feel connected to the timeline
    ======================================= */
 
 .timeline-panel {
@@ -168,15 +186,15 @@
 
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
 
-  /* ✅ lock footprint */
+  /* lock footprint */
   min-height: 260px;
 
-  /* if a step is longer, it scrolls instead of pushing page down */
+  /* long steps scroll instead of pushing page */
   overflow: auto;
   overscroll-behavior: contain;
 }
 
-/* subtle divider to echo the timeline line */
+/* subtle divider to visually “connect” to the timeline */
 .timeline-panel::before {
   content: "";
   display: block;
@@ -215,9 +233,10 @@
     --circle: 78px;
     --title-h: 28px;
     --title-gap: 10px;
+    --line-thickness: 4px;
   }
 
-  /* horizontal line doesn't translate well to 2-col */
+  /* horizontal line doesn’t translate well to 2-col */
   .process-line {
     display: none;
   }
@@ -235,41 +254,4 @@
   .process-bullets {
     font-size: 0.88rem;
   }
-}
-/* The line behind circles (stronger, clearly visible gradient) */
-.process-line {
-  position: absolute;
-  left: 6%;
-  right: 6%;
-
-  /* Center it through the circles:
-     If your circle is 86px tall, half is 43px.
-     Add the title spacing above; tweak if needed. */
-  top: 64px;
-
-  height: 4px;
-  border-radius: 999px;
-
-  background-image: linear-gradient(
-    90deg,
-    #f4eee6 0%,
-    #e7ddcf 20%,
-    #d8c7b3 40%,
-    #cfb18e 60%,
-    #c9b8a4 80%,
-    #1e180d 100%
-  );
-
-  opacity: 1;
-  z-index: 1;
-  pointer-events: none;
-}
-.process-step-btn {
-  color: var(--treg-charcoal);
-}
-
-.process-icon {
-  width: 34px;
-  height: 34px;
-  display: block;
 }
