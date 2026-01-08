@@ -44,55 +44,38 @@
         <!-- BODY -->
         <section class="contact-body">
           <div class="contact-wrap">
-
-            <!-- TOP ROW -->
+            <!-- TOP ROW: DIRECT + REVIEWS -->
             <div class="contact-top-grid">
-
-              <!-- REACH US DIRECTLY -->
+              <!-- DIRECT CONTACT CARD -->
               <div class="contact-card">
                 <h2 class="contact-card-title">Reach us directly</h2>
                 <p class="contact-card-lede">
                   We’re based in Chicago and work across the city and surrounding suburbs.
                 </p>
 
-                <!-- ICON CTA ROW -->
-                <div class="btn-row" style="margin: 0.75rem 0 1.1rem;">
-                  <a
-                    href="tel:+13126759379"
-                    class="btn btn-outline"
-                    aria-label="Call Templeton Real Estate Group"
-                    title="Call us"
-                  >
-                    📞
+                <!-- ICON BUTTONS (no text) -->
+                <div class="contact-icon-row" aria-label="Quick contact actions">
+                  <a href="tel:+13126759379" class="contact-icon-btn" aria-label="Call us">
+                    <!-- Phone icon -->
+                    <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M22 16.9v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8 9.4a16 16 0 0 0 6.6 6.6l1.07-1.19a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.9z"
+                      />
+                    </svg>
                   </a>
 
-                  <a
-                    href="mailto:ryan@ryantempleton.com"
-                    class="btn btn-outline"
-                    aria-label="Email Templeton Real Estate Group"
-                    title="Email us"
-                  >
-                    ✉️
+                  <a href="mailto:ryan@ryantempleton.com" class="contact-icon-btn" aria-label="Email us">
+                    <!-- Mail icon -->
+                    <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+                      <path d="m22 6-10 7L2 6" />
+                    </svg>
                   </a>
                 </div>
 
                 <div class="contact-divider" aria-hidden="true"></div>
 
-                <!-- INFO LIST -->
-                <div class="contact-info-row">
-                  <div class="contact-info-label">Phone</div>
-                  <div class="contact-info-value">
-                    <a href="tel:+13126759379">(312) 675-9379</a>
-                  </div>
-                </div>
-
-                <div class="contact-info-row">
-                  <div class="contact-info-label">Email</div>
-                  <div class="contact-info-value">
-                    <a href="mailto:ryan@ryantempleton.com">ryan@ryantempleton.com</a>
-                  </div>
-                </div>
-
+                <!-- INFO LIST (ordered as requested) -->
                 <div class="contact-info-row">
                   <div class="contact-info-label">Brokerage</div>
                   <div class="contact-info-value">Keller Williams ONEChicago</div>
@@ -110,38 +93,53 @@
                   <div class="contact-info-label">Team</div>
                   <div class="contact-info-value">Templeton Real Estate Group</div>
                 </div>
+
+                <div class="contact-info-row">
+                  <div class="contact-info-label">Phone</div>
+                  <div class="contact-info-value">
+                    <a href="tel:+13126759379">(312) 675-9379</a>
+                  </div>
+                </div>
+
+                <div class="contact-info-row">
+                  <div class="contact-info-label">Email</div>
+                  <div class="contact-info-value">
+                    <a href="mailto:ryan@ryantempleton.com">ryan@ryantempleton.com</a>
+                  </div>
+                </div>
               </div>
 
-              <!-- RIGHT CARD (kept intentionally minimal) -->
+              <!-- SOCIAL PROOF / REVIEWS CARD -->
               <div class="contact-card">
                 <div class="contact-proof-stars" aria-hidden="true">★★★★★</div>
                 <div class="contact-proof-title">5.0 average on Google</div>
                 <div class="contact-proof-subtitle">
-                  Trusted by 130+ Chicago buyers, sellers, and renters.
+                  Based on 130+ reviews from Chicago buyers, sellers, and renters.
                 </div>
 
                 <div class="contact-divider" aria-hidden="true"></div>
 
-                <p class="contact-card-lede">
-                  Prefer to explore first? Client reviews are available anytime.
+                <p class="contact-card-lede" style="margin-bottom: 0.9rem;">
+                  Want to see what it’s like to work with us before you reach out?
                 </p>
 
                 <div class="contact-cta">
                   <a href="/reviews.html" class="btn btn-ghost">Read client reviews</a>
                 </div>
               </div>
-
             </div>
 
-            <!-- INTAKE FORM -->
+            <!-- FULL-WIDTH INTAKE -->
             <div class="contact-card contact-intake-card">
               <h2 class="contact-card-title">Tell us how we can help</h2>
 
               <p class="contact-card-lede">
                 A few quick questions so we can point you in the right direction — buying, selling, renting, or landlord
                 support.
+                <span class="no-wrap"> • Prefer email or a quick call? Reach out via the details above.</span>
               </p>
 
+              <!-- JOTFORM EMBED -->
               <div class="intake-embed">
                 <iframe
                   id="JotFormIFrame-253567612349060"
@@ -163,7 +161,6 @@
                 </script>
               </div>
             </div>
-
           </div>
         </section>
       </main>
