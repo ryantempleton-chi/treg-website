@@ -504,7 +504,67 @@ body.menu-open .menu-panel {
     padding-right: 0;
   }
 }
+/* =========================================
+   MENU: Big corner favicon / mark + layout
+   ========================================= */
 
+/* Make panel-inner a positioning context */
+.menu-panel-inner {
+  position: relative;
+}
+
+/* Reserve space on the RIGHT for the big mark */
+.menu-layout {
+  padding-right: clamp(180px, 22vw, 320px);
+}
+
+/* Tighten the right side + shift slightly left (more breathing room) */
+.menu-secondary {
+  padding-left: 1.25rem; /* a touch tighter than before */
+  gap: 1rem;
+}
+
+/* Shorten the "boxes" a bit so they don't feel too wide */
+.menu-col {
+  max-width: 380px;
+}
+
+/* If you want the boxes to sit a bit more left overall */
+.menu-secondary {
+  justify-items: start;
+}
+
+/* Big corner mark (favicon / rt.) */
+.menu-corner-mark {
+  position: absolute;
+  right: 26px;
+  bottom: 22px;
+
+  width: clamp(140px, 18vw, 260px);
+  height: auto;
+
+  opacity: 0.95;
+  pointer-events: none;
+  user-select: none;
+
+  /* optional: make it feel like a “brand stamp” */
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.10));
+}
+
+/* On smaller screens: remove reserved space and hide the big mark */
+@media (max-width: 900px) {
+  .menu-layout {
+    padding-right: 0;
+  }
+
+  .menu-col {
+    max-width: none;
+  }
+
+  .menu-corner-mark {
+    display: none;
+  }
+}
 /* =========================
    HERO (GLOBAL)
    ========================= */
