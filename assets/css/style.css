@@ -1,13 +1,12 @@
 /* ======================================= */
 /* BASE STYLES – TREG BRAND                */
-/* style.css                               */
+/* style.css (final)                       */
 /* ======================================= */
 
 /* ========================= */
 /* TOKENS / GLOBALS          */
 /* ========================= */
 
-/* Brand colors + layout tokens */
 :root {
   --treg-charcoal: #1e180d;
   --treg-slate: #373a3a;
@@ -17,7 +16,7 @@
 
   --container-max: 1040px;
   --container-pad: 1.25rem;
-  --header-h: 78px; /* used by mega menu panel positioning */
+  --header-h: 78px; /* used by mega menu positioning */
 }
 
 *,
@@ -71,12 +70,11 @@ body {
   border-bottom: 1px solid #e5e1d8;
 }
 
-/* header layout */
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem; /* tightened */
+  gap: 1rem;
   padding: 1.1rem 0;
 }
 
@@ -202,10 +200,10 @@ body {
 
 /* ========================= */
 /* HEADER MEGA MENU (Site-wide) */
-/* SERHANT-style Menu button + panel */
+/* SERHANT-style Menu button + BIG panel */
 /* ========================= */
 
-/* Menu button (you’ll add markup in header.html) */
+/* Menu button */
 .menu-btn {
   display: inline-flex;
   align-items: center;
@@ -225,6 +223,7 @@ body {
 
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  flex: 0 0 auto;
 }
 
 .menu-btn:hover {
@@ -266,7 +265,7 @@ body {
   transform: translateY(-50%);
 }
 
-/* Panel + backdrop */
+/* Backdrop */
 .menu-backdrop {
   position: fixed;
   inset: 0;
@@ -277,26 +276,33 @@ body {
   z-index: 9990;
 }
 
+/* BIG panel */
 .menu-panel {
   position: fixed;
-  top: calc(var(--header-h) + 10px); /* avoids “magic number” */
+  top: calc(var(--header-h) + 10px);
+  left: 24px;
   right: 24px;
-  width: min(860px, calc(100vw - 48px));
+  height: calc(100vh - (var(--header-h) + 34px));
 
-  border-radius: 22px;
+  border-radius: 26px;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.10);
-  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.20);
 
-  transform: translateY(-8px) scale(0.985);
+  transform: translateY(-10px) scale(0.99);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.18s ease, transform 0.18s ease;
   z-index: 9999;
+
+  overflow: hidden;
 }
 
 .menu-panel-inner {
-  padding: 1.25rem 1.25rem 1.15rem;
+  height: 100%;
+  padding: 1.25rem 1.4rem 1.35rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .menu-panel-top {
@@ -309,18 +315,30 @@ body {
 
 .menu-panel-title {
   font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.95rem;
-  letter-spacing: 0.10em;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--treg-charcoal);
+  color: var(--treg-slate);
+}
+
+.menu-panel-top-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.menu-panel-mark {
+  height: 28px;
+  width: auto;
+  opacity: 0.95;
 }
 
 .menu-close {
   border: 1px solid rgba(0, 0, 0, 0.10);
   background: #fff;
   border-radius: 999px;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
@@ -331,17 +349,56 @@ body {
   box-shadow: 0 14px 26px rgba(0, 0, 0, 0.10);
 }
 
-.menu-grid {
+/* SERHANT-style layout: big left / subtle right */
+.menu-layout {
+  flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 2.25rem;
+  align-items: start;
+  padding-top: 0.25rem;
+  overflow: auto;
+}
+
+/* LEFT: big primary links */
+.menu-primary {
+  padding: 0.25rem 0 0.5rem;
+}
+
+.menu-primary-link {
+  display: block;
+  text-decoration: none;
+  color: var(--treg-charcoal);
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.65rem, 2.2vw, 2.25rem);
+  line-height: 1.05;
+  padding: 0.55rem 0;
+  text-transform: lowercase;
+}
+
+.menu-primary-link:hover,
+.menu-primary-link:focus {
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+/* RIGHT: grouped subtle links */
+.menu-secondary {
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  padding-left: 1.5rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
+  align-content: start;
 }
 
 .menu-col {
   background: rgba(250, 250, 250, 0.75);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 16px;
-  padding: 1rem 1rem 0.95rem;
+  padding: 1rem 1rem 0.9rem;
 }
 
 .menu-col-title {
@@ -350,7 +407,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--treg-slate);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.6rem;
 }
 
 .menu-link {
@@ -363,13 +420,23 @@ body {
   transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
 
-.menu-link:hover {
+.menu-link:hover,
+.menu-link:focus {
   background: #fff;
   border-color: rgba(0, 0, 0, 0.08);
   transform: translateY(-1px);
 }
 
-/* Open state (toggle with body class: menu-open) */
+/* CTA row inside menu (optional) */
+.menu-cta-row {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  padding-top: 0.25rem;
+}
+
+/* Open state (toggle with body.menu-open) */
 body.menu-open .menu-backdrop {
   opacity: 1;
   pointer-events: auto;
@@ -383,12 +450,21 @@ body.menu-open .menu-panel {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .menu-grid {
-    grid-template-columns: 1fr;
-  }
   .menu-panel {
+    left: 16px;
     right: 16px;
-    width: calc(100vw - 32px);
+    height: calc(100vh - (var(--header-h) + 28px));
+  }
+
+  .menu-layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .menu-secondary {
+    border-left: none;
+    padding-left: 0;
+    grid-template-columns: 1fr;
   }
 }
 
