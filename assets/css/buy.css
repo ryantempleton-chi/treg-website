@@ -1,138 +1,12 @@
 /* =======================================
    BUY PAGE ONLY
    buy.css
+   - Asheville-style timeline (circles + line + gradient)
+   - Clickable steps update the description panel
+   - Locked panel height prevents layout jumping
    ======================================= */
 
-/* =========================
-   BUY PROCESS WRAPPER
-   ========================= */
-
-.buy-process {
-  margin-top: 2.5rem;
-}
-
-/* Title + helper text */
-.buy-process-heading {
-  margin-bottom: 1.25rem;
-}
-
-.buy-process-heading h2 {
-  font-family: "Oswald", system-ui, sans-serif;
-  font-size: 1.1rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
-}
-
-.buy-process-heading p {
-  color: var(--treg-slate);
-  font-size: 0.9rem;
-}
-
-/* =========================
-   PROCESS STEP BUTTONS
-   ========================= */
-
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin: 1.25rem 0 2rem;
-}
-
-.process-step {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 14px;
-  padding: 0.9rem 0.5rem 0.75rem;
-  text-align: center;
-  cursor: pointer;
-
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.process-step:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0, 0, 0, 0.12);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-}
-
-.process-step.active {
-  border-color: var(--treg-bronze);
-  box-shadow: 0 12px 28px rgba(207, 177, 142, 0.25);
-}
-
-/* icon */
-.process-step-icon {
-  width: 36px;
-  height: 36px;
-  margin: 0 auto 0.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* label */
-.process-step-label {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--treg-charcoal);
-}
-
-/* =========================
-   PROCESS DETAIL (LOCKED)
-   ========================= */
-
-/*
-  This is the IMPORTANT PART:
-  It prevents the next section from jumping
-  when the content changes.
-*/
-.process-detail {
-  min-height: 240px; /* adjust if needed */
-  max-width: 780px;
-}
-
-/* Title inside detail */
-.process-detail h3 {
-  font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.35rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Paragraphs */
-.process-detail p {
-  line-height: 1.65;
-  color: var(--treg-slate);
-  margin-bottom: 0.75rem;
-}
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-
-@media (max-width: 900px) {
-  .process-steps {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .process-detail {
-    min-height: 280px;
-  }
-}
-
-@media (max-width: 540px) {
-  .process-steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-/* =======================================
-   BUY PAGE — TIMELINE TABS (TREG)
-   buy.css
-   ======================================= */
-
+/* Shared helper */
 .btn-row {
   display: flex;
   flex-wrap: wrap;
@@ -149,76 +23,132 @@
   max-width: 880px;
 }
 
-/* Tabs grid */
-.timeline-tabs {
+/* =======================================
+   TIMELINE GRAPHIC (Asheville-inspired)
+   ======================================= */
+
+.process-timeline {
+  position: relative;
+  margin-top: 1.25rem;
+  padding: 1.1rem 0 0.6rem;
+
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin-top: 1.1rem;
+  gap: 1.25rem;
+  align-items: start;
 }
 
-.timeline-tab {
-  appearance: none;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: rgba(250, 250, 250, 0.65);
-  border-radius: 14px;
-  padding: 0.9rem 0.75rem;
-
-  display: grid;
-  place-items: center;
-  gap: 0.45rem;
-
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease,
-    background 0.15s ease;
-}
-
-.timeline-tab:hover {
-  transform: translateY(-1px);
-  border-color: rgba(0, 0, 0, 0.14);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.06);
-  background: #fff;
-}
-
-.timeline-tab.is-active {
-  background: #fff;
-  border-color: rgba(0, 0, 0, 0.18);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
-}
-
-/* Icon pill */
-.timeline-icon {
-  width: 44px;
-  height: 44px;
+/* The line behind circles */
+.process-line {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 66px; /* adjust slightly if needed */
+  height: 3px;
   border-radius: 999px;
-  display: grid;
-  place-items: center;
-  font-size: 1.2rem;
-  background: rgba(207, 177, 142, 0.14);
+
+  background: linear-gradient(
+    90deg,
+    rgba(207, 238, 232, 1) 0%,
+    rgba(174, 232, 223, 1) 20%,
+    rgba(134, 215, 230, 1) 40%,
+    rgba(92, 194, 227, 1) 60%,
+    rgba(47, 152, 210, 1) 80%,
+    rgba(31, 106, 168, 1) 100%
+  );
+
+  opacity: 0.95;
+  z-index: 0;
 }
 
-/* Tab label */
-.timeline-label {
+.process-step {
+  text-align: center;
+}
+
+/* Titles above each icon */
+.process-step-title {
   font-family: "Oswald", system-ui, sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--treg-slate);
-  text-align: center;
-  line-height: 1.15;
+  margin-bottom: 0.75rem;
+
+  /* keeps everything aligned even if a title wraps */
+  min-height: 2.2em;
 }
 
-/* ✅ LOCKED PANEL HEIGHT (prevents next section from moving) */
+/* Circular icon buttons */
+.process-step-btn {
+  appearance: none;
+  width: 86px;
+  height: 86px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: var(--step-color, rgba(207, 177, 142, 0.12));
+
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  color: var(--treg-charcoal);
+}
+
+.process-step-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 0, 0, 0.16);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.10);
+}
+
+.process-step-btn.is-active {
+  border-color: rgba(0, 0, 0, 0.22);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.14);
+  transform: translateY(-1px);
+}
+
+/* SVG icons inside circles */
+.process-icon {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+/* Bullet points below each step */
+.process-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+
+  color: var(--treg-slate);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.process-bullets li {
+  margin: 0.28rem 0;
+}
+
+/* =======================================
+   DESCRIPTION PANEL (LOCKED)
+   Prevents the next section from jumping
+   ======================================= */
+
 .timeline-panel {
-  margin-top: 1.25rem;
+  margin-top: 1.6rem;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding-top: 1.2rem;
   max-width: 900px;
 
-  /* This is the key: keep the footprint consistent */
+  /* ✅ lock footprint */
   min-height: 260px;
 
-  /* If a step is longer, it scrolls inside instead of pushing the page down */
+  /* if a step is longer, it scrolls instead of pushing page down */
   overflow: auto;
   overscroll-behavior: contain;
 }
@@ -241,13 +171,30 @@
   text-underline-offset: 0.18em;
 }
 
-/* Mobile */
-@media (max-width: 900px) {
-  .timeline-tabs {
+/* =======================================
+   Responsive
+   ======================================= */
+
+@media (max-width: 980px) {
+  .process-timeline {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem 1rem;
   }
 
-  /* Give a bit more room on mobile since text wraps more */
+  /* the horizontal line doesn't translate well to 2-col */
+  .process-line {
+    display: none;
+  }
+
+  .process-step-title {
+    min-height: 0;
+  }
+
+  .process-step-btn {
+    width: 78px;
+    height: 78px;
+  }
+
   .timeline-panel {
     min-height: 320px;
   }
