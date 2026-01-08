@@ -4,6 +4,7 @@
    - Global tokens + layout
    - Header + dropdown nav
    - SERHANT-style mega menu (big left / subtle right)
+   - Menu big corner mark (rt.)
    - Global hero/sections/buttons/footer/team
    ======================================= */
 
@@ -203,13 +204,6 @@ body {
 /* =========================
    HEADER MEGA MENU
    SERHANT-style: big left / subtle right
-   (requires header.html markup with:
-    .menu-btn, .menu-backdrop, .menu-panel,
-    .menu-panel-inner, .menu-panel-top, .menu-panel-top-right,
-    .menu-panel-mark, .menu-close,
-    .menu-layout, .menu-primary, .menu-primary-link,
-    .menu-secondary, .menu-col, .menu-col-title, .menu-link,
-    .menu-cta-row)
    ========================= */
 
 /* Menu button */
@@ -286,11 +280,9 @@ body {
   position: fixed;
   top: calc(var(--header-h) + 10px);
 
-  /* ~15% narrower feel vs full-bleed */
   left: 7.5vw;
   right: 7.5vw;
 
-  /* slightly taller to avoid clipping */
   height: calc(72vh - (var(--header-h) + 20px));
   max-height: 620px;
 
@@ -308,7 +300,9 @@ body {
   overflow: hidden;
 }
 
+/* Make panel-inner a positioning context (needed for corner mark) */
 .menu-panel-inner {
+  position: relative;
   height: 100%;
   padding: 1.1rem 1.35rem 1.2rem;
   display: flex;
@@ -338,7 +332,7 @@ body {
 }
 
 .menu-panel-mark {
-  height: 38px; /* bigger logo */
+  height: 38px;
   width: auto;
   opacity: 0.95;
 }
@@ -366,10 +360,13 @@ body {
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.55fr);
   gap: 2rem;
   align-items: start;
-  overflow: hidden; /* prevents whole-panel scroll */
+  overflow: hidden;
+
+  /* reserve space for the big corner mark */
+  padding-right: clamp(180px, 22vw, 320px);
 }
 
-/* LEFT: big primary links (flush-right to divider) */
+/* LEFT: big primary links */
 .menu-primary {
   padding: 0.25rem 0 0.5rem;
   text-align: right;
@@ -398,26 +395,62 @@ body {
   text-underline-offset: 0.22em;
 }
 
-/* RIGHT: grouped subtle links */
+/* CTA row — LEFT side of divider, flush-right to it */
+.menu-cta-row {
+  margin-top: auto;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  padding-top: 0.75rem;
+  padding-right: 1.25rem;
+}
+
+/* RIGHT: grouped subtle links (EQUAL box sizes + centered vertically) */
 .menu-secondary {
   border-left: 1px solid rgba(0, 0, 0, 0.10);
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
 
   height: 100%;
-  overflow: auto; /* only the right side scrolls if needed */
+  overflow: auto;
   overscroll-behavior: contain;
 
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.1rem;
-  align-content: start;
+
+  /* key: equal-sized grid cells */
+  grid-auto-rows: minmax(180px, 1fr);
+
+  /* key: center the whole grid vertically */
+  align-content: center;
+
+  gap: 1rem;
+  justify-items: start;
 }
 
+/* Boxes */
 .menu-col {
+  width: 100%;
+  height: 100%;
+  max-width: 380px;
+
+  display: flex;
+  flex-direction: column;
+
   background: rgba(250, 250, 250, 0.75);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 16px;
   padding: 1rem 1rem 0.9rem;
+}
+
+/* Spacer occupies grid slot but is invisible (no “4th box”) */
+.menu-col--spacer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  visibility: hidden; /* keeps slot, hides it */
+  pointer-events: none;
 }
 
 .menu-col-title {
@@ -446,14 +479,20 @@ body {
   transform: translateY(-1px);
 }
 
-/* CTA row — LEFT side of divider, flush-right to it */
-.menu-cta-row {
-  margin-top: auto;
-  display: flex;
-  gap: 0.75rem;
-  justify-content: flex-end;
-  padding-top: 0.75rem;
-  padding-right: 1.25rem;
+/* Big corner mark (rt.) */
+.menu-corner-mark {
+  position: absolute;
+  right: 26px;
+  bottom: 22px;
+
+  width: clamp(140px, 18vw, 260px);
+  height: auto;
+
+  opacity: 0.95;
+  pointer-events: none;
+  user-select: none;
+
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.10));
 }
 
 /* Open state */
@@ -485,6 +524,7 @@ body.menu-open .menu-panel {
     grid-template-columns: 1fr;
     gap: 1.1rem;
     overflow: auto;
+    padding-right: 0; /* no reserved space on mobile */
   }
 
   .menu-primary {
@@ -496,75 +536,26 @@ body.menu-open .menu-panel {
     border-left: none;
     padding-left: 0;
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
     overflow: visible;
-  }
-
-  .menu-cta-row {
-    justify-content: flex-start;
-    padding-right: 0;
-  }
-}
-/* =========================================
-   MENU: Big corner favicon / mark + layout
-   ========================================= */
-
-/* Make panel-inner a positioning context */
-.menu-panel-inner {
-  position: relative;
-}
-
-/* Reserve space on the RIGHT for the big mark */
-.menu-layout {
-  padding-right: clamp(180px, 22vw, 320px);
-}
-
-/* Tighten the right side + shift slightly left (more breathing room) */
-.menu-secondary {
-  padding-left: 1.25rem; /* a touch tighter than before */
-  gap: 1rem;
-}
-
-/* Shorten the "boxes" a bit so they don't feel too wide */
-.menu-col {
-  max-width: 380px;
-}
-
-/* If you want the boxes to sit a bit more left overall */
-.menu-secondary {
-  justify-items: start;
-}
-
-/* Big corner mark (favicon / rt.) */
-.menu-corner-mark {
-  position: absolute;
-  right: 26px;
-  bottom: 22px;
-
-  width: clamp(140px, 18vw, 260px);
-  height: auto;
-
-  opacity: 0.95;
-  pointer-events: none;
-  user-select: none;
-
-  /* optional: make it feel like a “brand stamp” */
-  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.10));
-}
-
-/* On smaller screens: remove reserved space and hide the big mark */
-@media (max-width: 900px) {
-  .menu-layout {
-    padding-right: 0;
+    align-content: start;
+    justify-items: stretch;
   }
 
   .menu-col {
     max-width: none;
   }
 
+  .menu-cta-row {
+    justify-content: flex-start;
+    padding-right: 0;
+  }
+
   .menu-corner-mark {
     display: none;
   }
 }
+
 /* =========================
    HERO (GLOBAL)
    ========================= */
