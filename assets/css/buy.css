@@ -264,28 +264,46 @@
     font-size: 0.88rem;
   }
 }
-/* === HARD OVERRIDES for ALL timeline SVG icons (fixes random inherited blue) === */
-.process-timeline .process-step-btn {
-  color: var(--treg-charcoal) !important; /* currentColor source */
+/* =========================================================
+   ABSOLUTE OVERRIDES — force ALL timeline icons to charcoal
+   (fixes any global svg/path rules that paint them blue)
+   Put this at the VERY BOTTOM of buy.css
+   ========================================================= */
+
+.process-timeline .process-step-btn,
+.process-timeline .process-step-btn:visited,
+.process-timeline .process-step-btn:hover,
+.process-timeline .process-step-btn:active {
+  color: var(--treg-charcoal) !important;
 }
 
-.process-timeline .process-step-btn .process-icon {
-  color: inherit !important;              /* svg inherits button color */
-}
-
-/* Force every stroke to use currentColor, regardless of other CSS */
-.process-timeline .process-step-btn .process-icon *,
-.process-timeline .process-step-btn .process-icon *::before,
-.process-timeline .process-step-btn .process-icon *::after {
-  stroke: currentColor !important;
-}
-
-/* Keep fills neutral unless explicitly set to currentColor */
-.process-timeline .process-step-btn .process-icon [fill="currentColor"] {
-  fill: currentColor !important;
-}
-
-/* Ensure nothing auto-fills (some browsers/stylesheets do weird things) */
-.process-timeline .process-step-btn .process-icon:not([fill]) {
+/* Force the svg itself */
+.process-timeline svg.process-icon {
+  color: var(--treg-charcoal) !important;
+  stroke: var(--treg-charcoal) !important; /* fallback if someone set stroke directly */
   fill: none !important;
+}
+
+/* Force EVERY drawable element inside the svg */
+.process-timeline svg.process-icon * {
+  stroke: var(--treg-charcoal) !important;
+  fill: none !important;
+}
+
+/* Allow intentional filled dots (like the key icon) */
+.process-timeline svg.process-icon [fill="currentColor"] {
+  fill: var(--treg-charcoal) !important;
+  stroke: var(--treg-charcoal) !important;
+}
+
+/* If any element has a stroke attribute, override it too */
+.process-timeline svg.process-icon [stroke] {
+  stroke: var(--treg-charcoal) !important;
+}
+
+/* If any element has an inline style trying to color it, override it */
+.process-timeline svg.process-icon [style*="stroke"],
+.process-timeline svg.process-icon [style*="color"] {
+  stroke: var(--treg-charcoal) !important;
+  color: var(--treg-charcoal) !important;
 }
