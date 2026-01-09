@@ -95,7 +95,10 @@
   line-height: 1.15;
 }
 
-/* Circular buttons */
+/* =======================================
+   STEP BUTTONS
+   ======================================= */
+
 .process-step-btn {
   appearance: none;
   width: var(--circle);
@@ -116,7 +119,7 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-/* Force Lucide icons to inherit from the button (currentColor) */
+/* Force SVG icons to inherit from the button (currentColor) */
 .process-timeline .process-step-btn {
   color: var(--treg-charcoal) !important;
 }
@@ -140,10 +143,23 @@
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.10);
 }
 
+/* Active state */
 .process-step-btn.is-active {
-  border-color: rgba(207, 177, 142, 0.95);
-  box-shadow: 0 22px 46px rgba(207, 177, 142, 0.22);
+  border-color: rgba(207, 177, 142, 0.95) !important;
+  box-shadow: 0 22px 46px rgba(207, 177, 142, 0.22) !important;
   transform: translateY(-1px);
+}
+
+/* Keyboard focus (only shows when tabbing) */
+.process-step-btn:focus-visible {
+  outline: 3px solid rgba(207, 177, 142, 0.75);
+  outline-offset: 4px;
+  box-shadow: 0 22px 46px rgba(207, 177, 142, 0.22);
+}
+
+/* Avoid default focus ring for mouse clicks */
+.process-step-btn:focus {
+  outline: none;
 }
 
 /* SVG icon sizing */
@@ -153,7 +169,7 @@
   display: block;
 }
 
-/* If a step ever goes very dark, flip icon to white automatically (optional) */
+/* If a step ever goes very dark, flip icon to white automatically */
 .process-step-btn[style*="#373a3a"],
 .process-step-btn[style*="#1e180d"] {
   color: #ffffff !important;
@@ -219,6 +235,16 @@
   color: var(--treg-charcoal);
   text-decoration: underline;
   text-underline-offset: 0.18em;
+}
+
+/* =======================================
+   Reduced motion
+   ======================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .process-step-btn {
+    transition: none;
+  }
 }
 
 /* =======================================
