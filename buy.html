@@ -1,5 +1,8 @@
 <!-- =========================
-     buy.html (FULL)
+     buy.html (FULL - updated)
+     Fixes:
+     - First tab is active by default
+     - Waits for process-timeline.js to define window.TREG.initProcessTimeline
      ========================= -->
 <!doctype html>
 <html lang="en">
@@ -67,10 +70,10 @@
 
                 <button
                   id="tab-preapproval"
-                  class="process-step-btn"
+                  class="process-step-btn is-active"
                   type="button"
                   role="tab"
-                  aria-selected="false"
+                  aria-selected="true"
                   aria-controls="step-panel"
                   data-step="preapproval"
                   style="--step-color: #f4eee6"
@@ -292,7 +295,7 @@
                     aria-hidden="true"
                   >
                     <path
-                      d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6 0 1 0-4-4z"
+                      d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
                     ></path>
                     <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
                   </svg>
@@ -401,53 +404,59 @@
 
     <!-- Page-specific content for the shared timeline component -->
     <script>
-      window.TREG.initProcessTimeline(
-        {
-          preapproval: {
-            title: "Getting Pre-Approved",
-            body: `
-              <p>Before we tour homes, we want real numbers—so you can shop with confidence. A lender will help you understand what you can borrow based on income, debts, and underwriting guidelines, which may be different from what you’d feel comfortable paying month-to-month.</p>
-              <p>We’ll help you connect with a trusted lender (or work with yours) to get pre-approved or pre-qualified and build a clear target budget. Once that’s in place, every showing, comp, and offer strategy is grounded in reality—not guesswork.</p>
-            `,
+      (function initBuyTimelineWhenReady() {
+        if (!window.TREG || typeof window.TREG.initProcessTimeline !== "function") {
+          return setTimeout(initBuyTimelineWhenReady, 25);
+        }
+
+        window.TREG.initProcessTimeline(
+          {
+            preapproval: {
+              title: "Getting Pre-Approved",
+              body: `
+                <p>Before we tour homes, we want real numbers—so you can shop with confidence. A lender will help you understand what you can borrow based on income, debts, and underwriting guidelines, which may be different from what you’d feel comfortable paying month-to-month.</p>
+                <p>We’ll help you connect with a trusted lender (or work with yours) to get pre-approved or pre-qualified and build a clear target budget. Once that’s in place, every showing, comp, and offer strategy is grounded in reality—not guesswork.</p>
+              `,
+            },
+            shopping: {
+              title: "Home Search",
+              body: `
+                <p>This is where the search really begins. Once we’ve clarified your budget, timeline, and priorities, we’ll identify homes that genuinely fit—not just what’s available. We’ll talk through neighborhoods, building types, and trade-offs so you understand why a home works (or doesn’t), not just how it looks online.</p>
+                <p>We’ll also make sure you’re seeing the full market and staying ahead of new listings as they hit. When the right opportunity comes up, we’ll coordinate showings quickly—or preview properties for you if you’re out of town or short on time. The goal: move decisively without feeling rushed.</p>
+              `,
+            },
+            offer: {
+              title: "Offer & Negotiation",
+              body: `
+                <p>When you’re ready to pursue a home, we’ll structure a thoughtful, competitive offer based on comps, the property’s situation, and current market conditions—not a one-size-fits-all template. That includes price, timing, contingencies, and the terms that matter most.</p>
+                <p>After submission, the seller may accept, counter, or reject. If negotiations start, we’ll guide you through each move—where you have leverage, when it makes sense to push, and when holding firm protects your long-term position. Once everything is agreed to and signed, the contract is in place and we move into the next phase.</p>
+              `,
+            },
+            diligence: {
+              title: "Due Diligence",
+              body: `
+                <p>Due diligence is your chance to confirm the home is the right decision—emotionally and practically. This is typically when inspections happen, disclosures are reviewed, financing is finalized, and we evaluate any concerns before moving forward.</p>
+                <p>If issues come up, we’ll help you prioritize what matters and negotiate repairs, credits, or other solutions when appropriate. We coordinate closely with your lender and attorney to keep timelines on track and make sure there are no surprises as you move toward closing.</p>
+              `,
+            },
+            preclosing: {
+              title: "Pre-Closing & Title",
+              body: `
+                <p>As closing approaches, it’s all about preparation and paperwork. Your attorney will review title, coordinate required documents, and ensure the property can transfer cleanly. Your lender will finalize the loan and issue the closing disclosure so you can review every dollar before signing.</p>
+                <p>We’ll also schedule a final walk-through to confirm the home is in the agreed-upon condition and any negotiated repairs are complete. If you’re out of town, we can handle the walk-through for you and keep you fully informed.</p>
+              `,
+            },
+            closing: {
+              title: "Closing Day",
+              body: `
+                <p>Closing is the finish line—and the moment you officially become a homeowner. You’ll sign final documents, funds are distributed, and ownership transfers. In most cases, this is when you receive the keys.</p>
+                <p>After settlement, your attorney records the deed and final documents with the county to complete the transaction. Your part is straightforward—and we’ll make sure it feels calm, clear, and predictable from start to finish.</p>
+              `,
+            },
           },
-          shopping: {
-            title: "Home Search",
-            body: `
-              <p>This is where the search really begins. Once we’ve clarified your budget, timeline, and priorities, we’ll identify homes that genuinely fit—not just what’s available. We’ll talk through neighborhoods, building types, and trade-offs so you understand why a home works (or doesn’t), not just how it looks online.</p>
-              <p>We’ll also make sure you’re seeing the full market and staying ahead of new listings as they hit. When the right opportunity comes up, we’ll coordinate showings quickly—or preview properties for you if you’re out of town or short on time. The goal: move decisively without feeling rushed.</p>
-            `,
-          },
-          offer: {
-            title: "Offer & Negotiation",
-            body: `
-              <p>When you’re ready to pursue a home, we’ll structure a thoughtful, competitive offer based on comps, the property’s situation, and current market conditions—not a one-size-fits-all template. That includes price, timing, contingencies, and the terms that matter most.</p>
-              <p>After submission, the seller may accept, counter, or reject. If negotiations start, we’ll guide you through each move—where you have leverage, when it makes sense to push, and when holding firm protects your long-term position. Once everything is agreed to and signed, the contract is in place and we move into the next phase.</p>
-            `,
-          },
-          diligence: {
-            title: "Due Diligence",
-            body: `
-              <p>Due diligence is your chance to confirm the home is the right decision—emotionally and practically. This is typically when inspections happen, disclosures are reviewed, financing is finalized, and we evaluate any concerns before moving forward.</p>
-              <p>If issues come up, we’ll help you prioritize what matters and negotiate repairs, credits, or other solutions when appropriate. We coordinate closely with your lender and attorney to keep timelines on track and make sure there are no surprises as you move toward closing.</p>
-            `,
-          },
-          preclosing: {
-            title: "Pre-Closing & Title",
-            body: `
-              <p>As closing approaches, it’s all about preparation and paperwork. Your attorney will review title, coordinate required documents, and ensure the property can transfer cleanly. Your lender will finalize the loan and issue the closing disclosure so you can review every dollar before signing.</p>
-              <p>We’ll also schedule a final walk-through to confirm the home is in the agreed-upon condition and any negotiated repairs are complete. If you’re out of town, we can handle the walk-through for you and keep you fully informed.</p>
-            `,
-          },
-          closing: {
-            title: "Closing Day",
-            body: `
-              <p>Closing is the finish line—and the moment you officially become a homeowner. You’ll sign final documents, funds are distributed, and ownership transfers. In most cases, this is when you receive the keys.</p>
-              <p>After settlement, your attorney records the deed and final documents with the county to complete the transaction. Your part is straightforward—and we’ll make sure it feels calm, clear, and predictable from start to finish.</p>
-            `,
-          },
-        },
-        "preapproval"
-      );
+          "preapproval"
+        );
+      })();
     </script>
   </body>
 </html>
