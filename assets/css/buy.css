@@ -264,21 +264,28 @@
     font-size: 0.88rem;
   }
 }
-/* === HARD OVERRIDES for Lucide SVGs inside the timeline === */
-/* (fixes any global `.lucide { color: blue }` rules) */
-.process-timeline .process-step-btn svg.lucide,
-.process-timeline .process-step-btn svg[class*="lucide"] {
-  color: var(--treg-charcoal) !important;
+/* === HARD OVERRIDES for ALL timeline SVG icons (fixes random inherited blue) === */
+.process-timeline .process-step-btn {
+  color: var(--treg-charcoal) !important; /* currentColor source */
 }
 
-/* Force strokes/fills to obey the button color */
-.process-timeline .process-step-btn svg.lucide *,
-.process-timeline .process-step-btn svg[class*="lucide"] * {
+.process-timeline .process-step-btn .process-icon {
+  color: inherit !important;              /* svg inherits button color */
+}
+
+/* Force every stroke to use currentColor, regardless of other CSS */
+.process-timeline .process-step-btn .process-icon *,
+.process-timeline .process-step-btn .process-icon *::before,
+.process-timeline .process-step-btn .process-icon *::after {
   stroke: currentColor !important;
 }
 
-/* If any paths are filled with currentColor, force them too */
-.process-timeline .process-step-btn svg.lucide [fill],
-.process-timeline .process-step-btn svg[class*="lucide"] [fill] {
+/* Keep fills neutral unless explicitly set to currentColor */
+.process-timeline .process-step-btn .process-icon [fill="currentColor"] {
   fill: currentColor !important;
+}
+
+/* Ensure nothing auto-fills (some browsers/stylesheets do weird things) */
+.process-timeline .process-step-btn .process-icon:not([fill]) {
+  fill: none !important;
 }
