@@ -46,7 +46,8 @@
 
         <!-- TIMELINE (interactive) -->
         <section class="section">
-          <div class="container service-timeline" aria-label="Home buying timeline">
+          <!-- Keep BOTH classes so you don’t break any existing CSS while you rename things -->
+          <div class="container service-timeline buy-timeline" aria-label="Home buying timeline">
             <div class="timeline-head">
               <h2 class="section-heading">the home buying process</h2>
               <p class="section-lede">
@@ -123,9 +124,7 @@
                   >
                     <circle cx="8" cy="21" r="1"></circle>
                     <circle cx="19" cy="21" r="1"></circle>
-                    <path
-                      d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
-                    ></path>
+                    <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
                   </svg>
                 </button>
 
@@ -388,10 +387,12 @@
     </div>
 
     <script src="/assets/js/layout.js"></script>
+    <script src="/assets/js/process-timeline.js"></script>
 
+    <!-- Page-specific content for the shared timeline component -->
     <script>
-      (function () {
-        const steps = {
+      TREG.initProcessTimeline(
+        {
           preapproval: {
             title: "Getting Pre-Approved",
             body: `
@@ -434,32 +435,9 @@
               <p>After settlement, your attorney records the deed and final documents with the county to complete the transaction. Your part is straightforward—and we’ll make sure it feels calm, clear, and predictable from start to finish.</p>
             `,
           },
-        };
-
-        const tabs = Array.from(document.querySelectorAll(".process-step-btn"));
-        const titleEl = document.querySelector("[data-title]");
-        const bodyEl = document.querySelector("[data-body]");
-
-        function setActive(stepKey) {
-          const step = steps[stepKey];
-          if (!step) return;
-
-          tabs.forEach((btn) => {
-            const isActive = btn.dataset.step === stepKey;
-            btn.classList.toggle("is-active", isActive);
-            btn.setAttribute("aria-selected", isActive ? "true" : "false");
-          });
-
-          titleEl.textContent = step.title;
-          bodyEl.innerHTML = step.body;
-        }
-
-        tabs.forEach((btn) => {
-          btn.addEventListener("click", () => setActive(btn.dataset.step));
-        });
-
-        setActive("preapproval");
-      })();
+        },
+        "preapproval"
+      );
     </script>
   </body>
 </html>
