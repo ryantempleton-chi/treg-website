@@ -264,3 +264,21 @@
     font-size: 0.88rem;
   }
 }
+/* === HARD OVERRIDES for Lucide SVGs inside the timeline === */
+/* (fixes any global `.lucide { color: blue }` rules) */
+.process-timeline .process-step-btn svg.lucide,
+.process-timeline .process-step-btn svg[class*="lucide"] {
+  color: var(--treg-charcoal) !important;
+}
+
+/* Force strokes/fills to obey the button color */
+.process-timeline .process-step-btn svg.lucide *,
+.process-timeline .process-step-btn svg[class*="lucide"] * {
+  stroke: currentColor !important;
+}
+
+/* If any paths are filled with currentColor, force them too */
+.process-timeline .process-step-btn svg.lucide [fill],
+.process-timeline .process-step-btn svg[class*="lucide"] [fill] {
+  fill: currentColor !important;
+}
