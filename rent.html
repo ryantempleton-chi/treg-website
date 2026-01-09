@@ -1,5 +1,8 @@
 <!-- =========================
-     rent.html (FULL)
+     rent.html (FULL - updated)
+     Fixes:
+     - Ensures first tab is active by default (class + aria-selected)
+     - Waits for process-timeline.js to load before calling initProcessTimeline
      ========================= -->
 <!doctype html>
 <html lang="en">
@@ -67,10 +70,10 @@
 
                 <button
                   id="tab-consult"
-                  class="process-step-btn"
+                  class="process-step-btn is-active"
                   type="button"
                   role="tab"
-                  aria-selected="false"
+                  aria-selected="true"
                   aria-controls="step-panel"
                   data-step="consult"
                   style="--step-color: #f4eee6"
@@ -397,53 +400,60 @@
 
     <!-- Page-specific content for the shared timeline component -->
     <script>
-      window.TREG.initProcessTimeline(
-        {
-          consult: {
-            title: "Initial Consult",
-            body: `
-              <p>We start with a quick conversation to clarify timing, budget, and must-haves. This is where we align on neighborhoods, building style, pets, parking, amenities, and any non-negotiables.</p>
-              <p>We’ll also set expectations on fees, typical approval timelines, and what moves quickly — so you’re not surprised mid-search.</p>
-            `,
+      (function initRentTimelineWhenReady() {
+        // Wait until process-timeline.js has defined the initializer.
+        if (!window.TREG || typeof window.TREG.initProcessTimeline !== "function") {
+          return setTimeout(initRentTimelineWhenReady, 25);
+        }
+
+        window.TREG.initProcessTimeline(
+          {
+            consult: {
+              title: "Initial Consult",
+              body: `
+                <p>We start with a quick conversation to clarify timing, budget, and must-haves. This is where we align on neighborhoods, building style, pets, parking, amenities, and any non-negotiables.</p>
+                <p>We’ll also set expectations on fees, typical approval timelines, and what moves quickly — so you’re not surprised mid-search.</p>
+              `,
+            },
+            setup: {
+              title: "Search Setup & Strategy",
+              body: `
+                <p>Next, we tighten your search into something realistic and actionable. We’ll talk through what your budget typically gets in different areas and identify smart trade-offs if needed.</p>
+                <p>Then we’ll monitor new listings and changes so you’re seeing the right options as they hit the market — not days later.</p>
+              `,
+            },
+            touring: {
+              title: "Touring & Comparing Options",
+              body: `
+                <p>We coordinate showings and stack appointments into efficient windows of time. Chicago rentals can move fast — but touring doesn’t have to feel chaotic.</p>
+                <p>As you tour, we’ll help you compare units clearly: value, layout, building rules, commute, and any red flags that aren’t obvious in photos.</p>
+              `,
+            },
+            apply: {
+              title: "Applying for the Right Unit",
+              body: `
+                <p>When you’re ready to move, we’ll walk you through requirements and fees so your application is clean, complete, and submitted quickly.</p>
+                <p>We’ll help you understand what matters most to landlords and buildings — and how to position your application clearly to avoid delays.</p>
+              `,
+            },
+            lease: {
+              title: "Approval, Deposits & Lease Review",
+              body: `
+                <p>After approval, we confirm timelines, deposits or move-in fees, and key lease terms. We’ll make sure you understand what you’re signing — and what to expect before move-in day.</p>
+                <p>If anything feels unclear or inconsistent, we’ll flag it early so you’re not solving problems last-minute.</p>
+              `,
+            },
+            movein: {
+              title: "Move-In & Logistics",
+              body: `
+                <p>We’ll help you stay on top of move-in logistics: building rules, elevator reservations (if needed), utilities setup, and key pickup.</p>
+                <p>The goal is simple: a smooth move and a clear handoff, so day one feels easy.</p>
+              `,
+            },
           },
-          setup: {
-            title: "Search Setup & Strategy",
-            body: `
-              <p>Next, we tighten your search into something realistic and actionable. We’ll talk through what your budget typically gets in different areas and identify smart trade-offs if needed.</p>
-              <p>Then we’ll monitor new listings and changes so you’re seeing the right options as they hit the market — not days later.</p>
-            `,
-          },
-          touring: {
-            title: "Touring & Comparing Options",
-            body: `
-              <p>We coordinate showings and stack appointments into efficient windows of time. Chicago rentals can move fast — but touring doesn’t have to feel chaotic.</p>
-              <p>As you tour, we’ll help you compare units clearly: value, layout, building rules, commute, and any red flags that aren’t obvious in photos.</p>
-            `,
-          },
-          apply: {
-            title: "Applying for the Right Unit",
-            body: `
-              <p>When you’re ready to move, we’ll walk you through requirements and fees so your application is clean, complete, and submitted quickly.</p>
-              <p>We’ll help you understand what matters most to landlords and buildings — and how to position your application clearly to avoid delays.</p>
-            `,
-          },
-          lease: {
-            title: "Approval, Deposits & Lease Review",
-            body: `
-              <p>After approval, we confirm timelines, deposits or move-in fees, and key lease terms. We’ll make sure you understand what you’re signing — and what to expect before move-in day.</p>
-              <p>If anything feels unclear or inconsistent, we’ll flag it early so you’re not solving problems last-minute.</p>
-            `,
-          },
-          movein: {
-            title: "Move-In & Logistics",
-            body: `
-              <p>We’ll help you stay on top of move-in logistics: building rules, elevator reservations (if needed), utilities setup, and key pickup.</p>
-              <p>The goal is simple: a smooth move and a clear handoff, so day one feels easy.</p>
-            `,
-          },
-        },
-        "consult"
-      );
+          "consult"
+        );
+      })();
     </script>
   </body>
 </html>
