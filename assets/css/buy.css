@@ -307,16 +307,3 @@
   stroke: var(--treg-charcoal) !important;
   color: var(--treg-charcoal) !important;
 }
-/* === ABSOLUTE FINAL OVERRIDE (put at very bottom of buy.css) === */
-.process-timeline .process-step-btn .process-icon {
-  color: var(--treg-charcoal) !important;
-}
-
-.process-timeline .process-step-btn .process-icon * {
-  stroke: var(--treg-charcoal) !important;
-}
-
-/* Handle any filled circles (like key icon dot) */
-.process-timeline .process-step-btn .process-icon [fill] {
-  fill: var(--treg-charcoal) !important;
-}
