@@ -46,20 +46,21 @@
 
         <!-- TIMELINE (interactive) -->
         <section class="section">
-          <div class="container service-timeline" aria-label="Home selling timeline">
+          <div class="container service-timeline sell-timeline" aria-label="Home selling timeline">
             <div class="timeline-head">
               <h2 class="section-heading">the selling process</h2>
               <p class="section-lede">
-                Select a step to see what happens next — and how we keep the sale organized, proactive, and predictable.
+                Select a step to see what happens next — and how we keep the sale organized, strategic, and calm.
               </p>
             </div>
 
+            <!-- Timeline graphic -->
             <div class="process-timeline" role="tablist" aria-label="Selling process steps">
               <div class="process-line" aria-hidden="true"></div>
 
-              <!-- 1: PRICING + PREP -->
+              <!-- 1: CONSULT + PLAN -->
               <div class="process-step">
-                <div class="process-step-title">pricing + prep</div>
+                <div class="process-step-title">consult + plan</div>
 
                 <button
                   class="process-step-btn is-active"
@@ -67,27 +68,30 @@
                   role="tab"
                   aria-selected="true"
                   aria-controls="step-panel"
-                  data-step="pricing"
+                  data-step="consult"
                   style="--step-color: #f4eee6"
                 >
-                  <!-- Lucide: chart-line -->
+                  <!-- Lucide-ish: clipboard -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="M3 3v18h18"></path>
-                    <path d="m19 9-5 5-4-4-3 3"></path>
+                    <path d="M9 2h6v4H9z"></path>
+                    <path d="M4 6h16v16H4z"></path>
+                    <path d="M8 10h8"></path>
+                    <path d="M8 14h8"></path>
+                    <path d="M8 18h6"></path>
                   </svg>
                 </button>
 
                 <ul class="process-bullets">
-                  <li>comps + market read</li>
-                  <li>pricing strategy</li>
-                  <li>prep priorities</li>
+                  <li>goals + timing</li>
+                  <li>property walkthrough</li>
+                  <li>game plan</li>
                 </ul>
               </div>
 
-              <!-- 2: STAGING + PHOTOS -->
+              <!-- 2: PRICING -->
               <div class="process-step">
-                <div class="process-step-title">staging + photos</div>
+                <div class="process-step-title">pricing</div>
 
                 <button
                   class="process-step-btn"
@@ -95,27 +99,57 @@
                   role="tab"
                   aria-selected="false"
                   aria-controls="step-panel"
-                  data-step="media"
-                  style="--step-color: #eee3d6"
+                  data-step="pricing"
+                  style="--step-color: #e7ddcf"
                 >
-                  <!-- Lucide: camera -->
+                  <!-- Lucide-ish: line-chart -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"></path>
-                    <circle cx="12" cy="13" r="3"></circle>
+                    <path d="M3 3v18h18"></path>
+                    <path d="m19 9-5 5-4-4-4 4"></path>
                   </svg>
                 </button>
 
                 <ul class="process-bullets">
-                  <li>visual strategy</li>
-                  <li>professional photography</li>
-                  <li>listing presentation</li>
+                  <li>comps + competition</li>
+                  <li>positioning</li>
+                  <li>pricing strategy</li>
                 </ul>
               </div>
 
-              <!-- 3: LAUNCH + MARKETING -->
+              <!-- 3: PREP -->
               <div class="process-step">
-                <div class="process-step-title">launch + marketing</div>
+                <div class="process-step-title">prep</div>
+
+                <button
+                  class="process-step-btn"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="step-panel"
+                  data-step="prep"
+                  style="--step-color: #dccbb8"
+                >
+                  <!-- Lucide-ish: paintbrush -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
+                    <path d="M18 3 7 14"></path>
+                    <path d="M9 15l-6 6"></path>
+                    <path d="M14 6l4 4"></path>
+                    <path d="M6 18c1.5 0 3 .5 4 1.5S12 22 12 22H6s-2-2-2-4 1-4 2-4z"></path>
+                  </svg>
+                </button>
+
+                <ul class="process-bullets">
+                  <li>repairs + touch-ups</li>
+                  <li>staging guidance</li>
+                  <li>photo-ready</li>
+                </ul>
+              </div>
+
+              <!-- 4: LAUNCH -->
+              <div class="process-step">
+                <div class="process-step-title">launch</div>
 
                 <button
                   class="process-step-btn"
@@ -124,28 +158,26 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="launch"
-                  style="--step-color: #e7ddcf"
+                  style="--step-color: #d8c7b3"
                 >
-                  <!-- Lucide: rocket -->
+                  <!-- Lucide-ish: camera -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="M4.5 16.5c-1.5 1.5-2 5-2 5s3.5-.5 5-2c1.5-1.5 1.5-4 0-5s-3.5-1.5-5 0Z"></path>
-                    <path d="M12 15l-3-3a22 22 0 0 1 3-7 22 22 0 0 1 7-3l3 3a22 22 0 0 1-3 7 22 22 0 0 1-7 3Z"></path>
-                    <path d="M9 12l-2 2"></path>
-                    <path d="M14 17l2-2"></path>
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
                   </svg>
                 </button>
 
                 <ul class="process-bullets">
-                  <li>MLS + syndication</li>
-                  <li>targeted marketing</li>
+                  <li>photos + listing copy</li>
+                  <li>MLS + marketing</li>
                   <li>strong first impression</li>
                 </ul>
               </div>
 
-              <!-- 4: SHOWINGS + FEEDBACK -->
+              <!-- 5: SHOWINGS + OFFERS -->
               <div class="process-step">
-                <div class="process-step-title">showings + feedback</div>
+                <div class="process-step-title">showings + offers</div>
 
                 <button
                   class="process-step-btn"
@@ -153,10 +185,10 @@
                   role="tab"
                   aria-selected="false"
                   aria-controls="step-panel"
-                  data-step="showings"
-                  style="--step-color: #dccbb8"
+                  data-step="offers"
+                  style="--step-color: #c9b8a4"
                 >
-                  <!-- Lucide: users -->
+                  <!-- Lucide-ish: users -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -167,46 +199,15 @@
                 </button>
 
                 <ul class="process-bullets">
-                  <li>showing plan</li>
-                  <li>feedback patterns</li>
-                  <li>smart adjustments</li>
+                  <li>feedback + adjustments</li>
+                  <li>negotiation strategy</li>
+                  <li>choose the best offer</li>
                 </ul>
               </div>
 
-              <!-- 5: OFFERS + NEGOTIATION -->
+              <!-- 6: CONTRACT TO CLOSE -->
               <div class="process-step">
-                <div class="process-step-title">offers + negotiation</div>
-
-                <button
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="offers"
-                  style="--step-color: #d7c7b3"
-                >
-                  <!-- Lucide: handshake -->
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="m11 17 2 2a1 1 0 1 0 3-3"></path>
-                    <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"></path>
-                    <path d="m21 3 1 11h-2"></path>
-                    <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"></path>
-                    <path d="M3 4h8"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>evaluate terms</li>
-                  <li>counter strategy</li>
-                  <li>get to contract</li>
-                </ul>
-              </div>
-
-              <!-- 6: ATTORNEY + CLOSING -->
-              <div class="process-step">
-                <div class="process-step-title">attorney + closing</div>
+                <div class="process-step-title">contract to close</div>
 
                 <button
                   class="process-step-btn"
@@ -215,25 +216,26 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="closing"
-                  style="--step-color: #cbb49a"
+                  style="--step-color: #bfa889"
                 >
-                  <!-- Lucide: file-check -->
+                  <!-- Lucide-ish: key -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <path d="M14 2v6h6"></path>
-                    <path d="m9 15 2 2 4-4"></path>
+                    <path d="M21 2l-2 2"></path>
+                    <path d="M7.5 13.5 9 12l2 2-1.5 1.5"></path>
+                    <path d="M14 7a5 5 0 1 0 3.9 8.1L22 11v-3h-3l-1 1-1-1z"></path>
                   </svg>
                 </button>
 
                 <ul class="process-bullets">
-                  <li>inspection + credits</li>
-                  <li>timeline management</li>
-                  <li>close smoothly</li>
+                  <li>inspection + appraisal</li>
+                  <li>attorney coordination</li>
+                  <li>final walkthrough + closing</li>
                 </ul>
               </div>
             </div>
 
+            <!-- Locked-height description panel -->
             <div class="timeline-panel" id="step-panel" role="tabpanel" aria-live="polite">
               <h3 class="timeline-title" data-title></h3>
               <div class="timeline-body" data-body></div>
@@ -241,81 +243,60 @@
           </div>
         </section>
 
-        <!-- SECTION 1: APPROACH TO SELLERS -->
+        <!-- SECTION: WHAT TO EXPECT -->
         <section class="section section-muted">
           <div class="container">
             <h2 class="section-heading">selling with a plan, not guesswork</h2>
 
-            <p class="section-lede" style="max-width: 780px;">
-              A great sale doesn’t start with a sign in the yard or a listing going live — it starts with a clear
-              strategy. We’ll look at your goals, your timing, and the story of your home, then build a plan that feels
-              realistic and intentional.
+            <p class="section-lede" style="max-width: 820px;">
+              A great sale starts with strategy and preparation — then strong marketing and clear communication.
             </p>
 
-            <p>
-              Together, we’ll review recent comparable sales, local trends, and your home’s condition to arrive at a
-              pricing and prep strategy that makes sense. From there, we’ll talk through what to fix, what to feature,
-              and what can stay as-is — so you’re investing your time and money in the right places.
-            </p>
+            <div class="section-grid two">
+              <div>
+                <ul>
+                  <li><strong>Honest pricing guidance</strong> based on data, condition, and timing.</li>
+                  <li><strong>Prep and staging recommendations</strong> that fit your budget and bandwidth.</li>
+                  <li><strong>Modern marketing</strong> with professional photos and thoughtful listing copy.</li>
+                  <li><strong>Structured showings</strong> with clear updates and feedback.</li>
+                  <li><strong>Offer strategy</strong> tailored to your priorities and risk tolerance.</li>
+                </ul>
 
-            <p>
-              Once we go live, you’ll know what to expect: how showings will work, how feedback will be handled, and
-              how we’ll adjust if the market speaks differently than the data did.
-            </p>
-          </div>
-        </section>
+                <div class="btn-row" style="justify-content: flex-start; margin-top: 1.2rem;">
+                  <a href="/intake.html?service=sell" class="btn btn-primary">start seller intake</a>
+                  <a href="mailto:ryan@ryantempleton.com" class="btn btn-ghost">email our team</a>
+                </div>
+              </div>
 
-        <!-- SECTION 2: WHAT TO EXPECT -->
-        <section class="section">
-          <div class="container section-grid two">
-            <div>
-              <h2 class="section-heading">what you can expect as a seller</h2>
-
-              <ul>
-                <li><strong>Honest pricing guidance</strong> based on data, condition, and timing.</li>
-                <li><strong>Prep and staging recommendations</strong> that fit your budget and bandwidth.</li>
-                <li><strong>Modern marketing</strong> with professional photos and thoughtful listing copy.</li>
-                <li><strong>Structured showings</strong> with clear communication and feedback.</li>
-                <li><strong>Offer and negotiation strategy</strong> tailored to your priorities.</li>
-              </ul>
-
-              <div class="btn-row" style="justify-content: flex-start; margin-top: 1.4rem;">
-                <a href="/sell-process.html" class="btn btn-primary">learn the selling process</a>
+              <div>
+                <h3 class="section-heading" style="font-size: 1rem;">a great fit for</h3>
+                <ul>
+                  <li>Owners selling a condo, townhome, or single-family home in Chicago.</li>
+                  <li>Sellers balancing a buy-and-sell at the same time.</li>
+                  <li>Clients moving city ↔ suburbs and needing a coordinated plan.</li>
+                </ul>
               </div>
             </div>
-
-            <div>
-              <h3 class="section-heading" style="font-size: 1rem;">who we work especially well with</h3>
-
-              <ul>
-                <li>Owners selling a condo, townhome, or single-family home in Chicago.</li>
-                <li>Sellers balancing a buy-and-sell at the same time.</li>
-                <li>Clients moving from the city to the suburbs (or vice versa).</li>
-              </ul>
-            </div>
           </div>
         </section>
 
-        <!-- SECTION 3: CHICAGO + SUBURBS -->
-        <section class="section section-muted">
+        <!-- SECTION: CHICAGO + SUBURBS -->
+        <section class="section">
           <div class="container">
             <h2 class="section-heading">chicago, neighborhoods, and beyond</h2>
 
             <p class="section-lede" style="max-width: 780px;">
-              Whether your property is in a classic Chicago neighborhood or just outside the city, we’ll help you
-              position it thoughtfully within the broader market.
+              Whether your property is in the city or outside it, we’ll help you position it thoughtfully within the broader market.
             </p>
 
-            <p>
-              We’ll talk through how your home compares to nearby listings and recent sales — and how buyers are
-              currently behaving in your price bracket. From there, we’ll decide together how to show up competitively
-              while still honoring your goals for timeline and bottom line.
+            <p style="max-width: 880px;">
+              We’ll talk through how your home compares to nearby listings and recent sales — and how buyers are behaving in your price
+              bracket — so we can choose a strategy that protects your timeline and bottom line.
             </p>
 
-            <p>
-              If you’re also buying a new home, we’ll help you coordinate both sides of the move so the process feels
-              as smooth as possible.
-            </p>
+            <div class="btn-row">
+              <a href="/neighborhoods.html" class="btn btn-ghost">browse neighborhood guides</a>
+            </div>
           </div>
         </section>
 
@@ -325,15 +306,12 @@
             <div class="section-cta-title">thinking about selling?</div>
 
             <div class="section-cta-text">
-              Answer a few quick questions and we’ll help you evaluate pricing, timing, and next steps with clarity and
-              confidence.
+              Answer a few quick questions and we’ll help you evaluate pricing, timing, and next steps with clarity and confidence.
             </div>
 
-            <div class="section-cta-meta">
-              the templeton real estate group · chicago &amp; surrounding suburbs
-            </div>
+            <div class="section-cta-meta">the templeton real estate group · chicago &amp; surrounding suburbs</div>
 
-            <div class="btn-row">
+            <div class="btn-row" style="justify-content: center;">
               <a href="/intake.html?service=sell" class="btn btn-primary">start seller intake</a>
               <a href="mailto:ryan@ryantempleton.com" class="btn btn-ghost">email our team</a>
             </div>
@@ -345,79 +323,60 @@
       <div id="site-footer"></div>
     </div>
 
-    <script src="/assets/js/layout.js"></script>
+    <script src="/assets/js/layout.js" defer></script>
+    <script src="/assets/js/process-timeline.js" defer></script>
 
+    <!-- Page-specific content for the shared timeline component -->
     <script>
-      (function () {
-        const steps = {
-          pricing: {
-            title: "Pricing + Prep",
-            body: `
-              <p>We start with strategy — not guesswork. That means reviewing comps, trends, and your home’s condition to set a price plan that makes sense for your timing and goals.</p>
-              <p>We’ll also prioritize prep: what actually moves the needle, what’s optional, and what you can confidently skip.</p>
-            `,
+      window.addEventListener("DOMContentLoaded", function () {
+        window.TREG.initProcessTimeline(
+          {
+            consult: {
+              title: "Consultation & Plan",
+              body: `
+                <p>We start with your goals, timing, and what a successful sale looks like. Then we do a walkthrough (virtual or in-person) to understand condition, layout, and your home’s best selling points.</p>
+                <p>From there, we map the plan: prep priorities, marketing timeline, and how we’ll communicate through each phase.</p>
+              `,
+            },
+            pricing: {
+              title: "Pricing & Positioning",
+              body: `
+                <p>Pricing isn’t just a number — it’s positioning. We’ll review comps, current competition, and buyer behavior to recommend a strategy that makes sense for your goals and the market.</p>
+                <p>You’ll understand the “why” behind the number, and how we’re planning to win attention (and strong offers) when your listing goes live.</p>
+              `,
+            },
+            prep: {
+              title: "Prep, Repairs & Presentation",
+              body: `
+                <p>We’ll identify what’s worth doing — and what isn’t. That may include minor repairs, paint, decluttering, light staging, or simply better furniture placement and styling.</p>
+                <p>The goal is the same every time: maximize first impressions without overspending.</p>
+              `,
+            },
+            launch: {
+              title: "Photos, Marketing & Launch",
+              body: `
+                <p>Once the home is ready, we coordinate professional photography and craft listing copy that tells the right story. Then we launch thoughtfully on MLS and major platforms with a clean, modern presentation.</p>
+                <p>Strong marketing isn’t louder — it’s clearer. We focus on what buyers care about and how your home compares.</p>
+              `,
+            },
+            offers: {
+              title: "Showings, Feedback & Offers",
+              body: `
+                <p>We manage showings and keep you updated on activity and feedback. If the market speaks differently than the data did, we’ll talk through adjustments and act quickly.</p>
+                <p>When offers arrive, we evaluate the full picture — price, terms, timing, and buyer strength — and negotiate with a strategy that protects you.</p>
+              `,
+            },
+            closing: {
+              title: "Contract to Closing",
+              body: `
+                <p>After you’re under contract, we stay on top of the moving parts: attorney coordination, inspection, appraisal (if needed), timelines, and final logistics.</p>
+                <p>We aim for fewer surprises, clearer communication, and a smooth handoff — all the way to closing day.</p>
+              `,
+            },
           },
-          media: {
-            title: "Staging + Photos",
-            body: `
-              <p>Presentation matters. We’ll guide staging (or light styling) so the home shows its best — then pair it with professional photography and thoughtful positioning.</p>
-              <p>The goal is a listing that feels premium, clean, and confidence-building for buyers from the first click.</p>
-            `,
-          },
-          launch: {
-            title: "Launch + Marketing",
-            body: `
-              <p>When we go live, we want momentum. That means strong listing copy, the right launch timing, and modern marketing that gets eyes on the property immediately.</p>
-              <p>We focus on a clean first week — because that’s where a lot of leverage is created.</p>
-            `,
-          },
-          showings: {
-            title: "Showings + Feedback",
-            body: `
-              <p>We coordinate showings, communicate clearly, and track feedback patterns. If the market speaks differently than expected, we adjust quickly — without panic.</p>
-              <p>You’ll always know what’s happening, what buyers are saying, and what we’re doing about it.</p>
-            `,
-          },
-          offers: {
-            title: "Offers + Negotiation",
-            body: `
-              <p>We evaluate offers based on the full picture — not just price. Terms, financing strength, timelines, and risk all matter.</p>
-              <p>Then we negotiate strategically to protect your bottom line and keep the deal moving cleanly.</p>
-            `,
-          },
-          closing: {
-            title: "Attorney + Closing",
-            body: `
-              <p>Once under contract, we stay tight on timelines: attorney review, inspection, any credits/repairs, and the path to closing.</p>
-              <p>Our job is to keep the process predictable, remove surprises, and get you across the finish line smoothly.</p>
-            `,
-          },
-        };
-
-        const tabs = Array.from(document.querySelectorAll(".process-step-btn"));
-        const titleEl = document.querySelector("[data-title]");
-        const bodyEl = document.querySelector("[data-body]");
-
-        function setActive(stepKey) {
-          const step = steps[stepKey];
-          if (!step) return;
-
-          tabs.forEach((btn) => {
-            const isActive = btn.dataset.step === stepKey;
-            btn.classList.toggle("is-active", isActive);
-            btn.setAttribute("aria-selected", isActive ? "true" : "false");
-          });
-
-          titleEl.textContent = step.title;
-          bodyEl.innerHTML = step.body;
-        }
-
-        tabs.forEach((btn) => {
-          btn.addEventListener("click", () => setActive(btn.dataset.step));
-        });
-
-        setActive("pricing");
-      })();
+          "consult"
+        );
+      });
     </script>
   </body>
 </html>
