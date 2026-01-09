@@ -36,6 +36,9 @@
   --title-gap: 12px;       /* gap between title and circle */
   --line-thickness: 4px;   /* timeline thickness */
 
+  /* ✅ Use this to drop the line lower if it still feels high */
+  --line-nudge: 14px;      /* try 14px–22px */
+
   position: relative;
   margin-top: 1.25rem;
   padding: 1.1rem 0 0.6rem;
@@ -54,8 +57,8 @@
   height: var(--line-thickness);
   border-radius: 999px;
 
-  /* circle midpoint = title block + title gap + half circle */
-  top: calc(var(--title-h) + var(--title-gap) + (var(--circle) / 2));
+  /* circle midpoint = title block + title gap + half circle (+ nudge) */
+  top: calc(var(--title-h) + var(--title-gap) + (var(--circle) / 2) + var(--line-nudge));
   transform: translateY(-50%);
 
   /* TREG-ish gradient (no blue) */
@@ -122,6 +125,10 @@
 }
 
 .process-timeline .process-step-btn svg {
+  color: currentColor !important;
+}
+
+.process-timeline .process-step-btn svg * {
   stroke: currentColor !important;
 }
 
@@ -234,6 +241,8 @@
     --title-h: 28px;
     --title-gap: 10px;
     --line-thickness: 4px;
+
+    --line-nudge: 0px; /* line hidden on mobile anyway */
   }
 
   /* horizontal line doesn’t translate well to 2-col */
