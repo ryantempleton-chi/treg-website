@@ -1,3 +1,9 @@
+<!-- =========================
+     sell.html (FULL - updated)
+     Fixes:
+     - First tab is active by default
+     - Waits for process-timeline.js to define window.TREG.initProcessTimeline
+     ========================= -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -64,10 +70,10 @@
 
                 <button
                   id="tab-consult"
-                  class="process-step-btn"
+                  class="process-step-btn is-active"
                   type="button"
                   role="tab"
-                  aria-selected="false"
+                  aria-selected="true"
                   aria-controls="step-panel"
                   data-step="consult"
                   style="--step-color: #f4eee6"
@@ -162,8 +168,8 @@
                   >
                     <path
                       d="M14 4a2 2 0 0 1 1.8 1.1l.5.9A2 2 0 0 0 18 7h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2a2 2 0 0 0 1.7-1l.5-.9A2 2 0 0 1 10 4z"
-                    />
-                    <circle cx="12" cy="13" r="3" />
+                    ></path>
+                    <circle cx="12" cy="13" r="3"></circle>
                   </svg>
                 </button>
 
@@ -199,13 +205,13 @@
                     class="process-icon"
                     aria-hidden="true"
                   >
-                    <path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9" />
-                    <path d="M7.8 4.7a6.14 6.14 0 0 0-.8 7.5" />
-                    <circle cx="12" cy="9" r="2" />
-                    <path d="M16.2 4.8c2 2 2.26 5.11.8 7.47" />
-                    <path d="M19.1 1.9a9.96 9.96 0 0 1 0 14.1" />
-                    <path d="M9.5 18h5" />
-                    <path d="m8 22 4-11 4 11" />
+                    <path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"></path>
+                    <path d="M7.8 4.7a6.14 6.14 0 0 0-.8 7.5"></path>
+                    <circle cx="12" cy="9" r="2"></circle>
+                    <path d="M16.2 4.8c2 2 2.26 5.11.8 7.47"></path>
+                    <path d="M19.1 1.9a9.96 9.96 0 0 1 0 14.1"></path>
+                    <path d="M9.5 18h5"></path>
+                    <path d="m8 22 4-11 4 11"></path>
                   </svg>
                 </button>
 
@@ -282,10 +288,10 @@
                   >
                     <path
                       d="M12.35 21H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 .71-1.53l7-6a2 2 0 0 1 2.58 0l7 6A2 2 0 0 1 21 10v2.35"
-                    />
-                    <path d="M14.8 12.4A1 1 0 0 0 14 12h-4a1 1 0 0 0-1 1v8" />
-                    <path d="M15 18h6" />
-                    <path d="M18 15v6" />
+                    ></path>
+                    <path d="M14.8 12.4A1 1 0 0 0 14 12h-4a1 1 0 0 0-1 1v8"></path>
+                    <path d="M15 18h6"></path>
+                    <path d="M18 15v6"></path>
                   </svg>
                 </button>
 
@@ -390,53 +396,59 @@
 
     <!-- Page-specific content for the shared timeline component -->
     <script>
-      window.TREG.initProcessTimeline(
-        {
-          consult: {
-            title: "Consultation & Plan",
-            body: `
-              <p>We start with your goals, timing, and what a successful sale looks like. Then we do a walkthrough (virtual or in-person) to understand condition, layout, and your home’s best selling points.</p>
-              <p>From there, we map the plan: prep priorities, marketing timeline, and how we’ll communicate through each phase.</p>
-            `,
+      (function initSellTimelineWhenReady() {
+        if (!window.TREG || typeof window.TREG.initProcessTimeline !== "function") {
+          return setTimeout(initSellTimelineWhenReady, 25);
+        }
+
+        window.TREG.initProcessTimeline(
+          {
+            consult: {
+              title: "Consultation & Plan",
+              body: `
+                <p>We start with your goals, timing, and what a successful sale looks like. Then we do a walkthrough (virtual or in-person) to understand condition, layout, and your home’s best selling points.</p>
+                <p>From there, we map the plan: prep priorities, marketing timeline, and how we’ll communicate through each phase.</p>
+              `,
+            },
+            pricing: {
+              title: "Pricing & Positioning",
+              body: `
+                <p>Pricing isn’t just a number — it’s positioning. We’ll review comps, current competition, and buyer behavior to recommend a strategy that makes sense for your goals and the market.</p>
+                <p>You’ll understand the “why” behind the number, and how we’re planning to win attention (and strong offers) when your listing goes live.</p>
+              `,
+            },
+            prep: {
+              title: "Prep, Repairs & Presentation",
+              body: `
+                <p>We’ll identify what’s worth doing — and what isn’t. That may include minor repairs, paint, decluttering, light staging, or simply better furniture placement and styling.</p>
+                <p>The goal is the same every time: maximize first impressions without overspending.</p>
+              `,
+            },
+            launch: {
+              title: "Photos, Marketing & Launch",
+              body: `
+                <p>Once the home is ready, we coordinate professional photography and craft listing copy that tells the right story. Then we launch thoughtfully on MLS and major platforms with a clean, modern presentation.</p>
+                <p>Strong marketing isn’t louder — it’s clearer. We focus on what buyers care about and how your home compares.</p>
+              `,
+            },
+            offers: {
+              title: "Showings, Feedback & Offers",
+              body: `
+                <p>We manage showings and keep you updated on activity and feedback. If the market speaks differently than the data did, we’ll talk through adjustments and act quickly.</p>
+                <p>When offers arrive, we evaluate the full picture — price, terms, timing, and buyer strength — and negotiate with a strategy that protects you.</p>
+              `,
+            },
+            closing: {
+              title: "Contract to Closing",
+              body: `
+                <p>After you’re under contract, we stay on top of the moving parts: attorney coordination, inspection, appraisal (if needed), timelines, and final logistics.</p>
+                <p>We aim for fewer surprises, clearer communication, and a smooth handoff — all the way to closing day.</p>
+              `,
+            },
           },
-          pricing: {
-            title: "Pricing & Positioning",
-            body: `
-              <p>Pricing isn’t just a number — it’s positioning. We’ll review comps, current competition, and buyer behavior to recommend a strategy that makes sense for your goals and the market.</p>
-              <p>You’ll understand the “why” behind the number, and how we’re planning to win attention (and strong offers) when your listing goes live.</p>
-            `,
-          },
-          prep: {
-            title: "Prep, Repairs & Presentation",
-            body: `
-              <p>We’ll identify what’s worth doing — and what isn’t. That may include minor repairs, paint, decluttering, light staging, or simply better furniture placement and styling.</p>
-              <p>The goal is the same every time: maximize first impressions without overspending.</p>
-            `,
-          },
-          launch: {
-            title: "Photos, Marketing & Launch",
-            body: `
-              <p>Once the home is ready, we coordinate professional photography and craft listing copy that tells the right story. Then we launch thoughtfully on MLS and major platforms with a clean, modern presentation.</p>
-              <p>Strong marketing isn’t louder — it’s clearer. We focus on what buyers care about and how your home compares.</p>
-            `,
-          },
-          offers: {
-            title: "Showings, Feedback & Offers",
-            body: `
-              <p>We manage showings and keep you updated on activity and feedback. If the market speaks differently than the data did, we’ll talk through adjustments and act quickly.</p>
-              <p>When offers arrive, we evaluate the full picture — price, terms, timing, and buyer strength — and negotiate with a strategy that protects you.</p>
-            `,
-          },
-          closing: {
-            title: "Contract to Closing",
-            body: `
-              <p>After you’re under contract, we stay on top of the moving parts: attorney coordination, inspection, appraisal (if needed), timelines, and final logistics.</p>
-              <p>We aim for fewer surprises, clearer communication, and a smooth handoff — all the way to closing day.</p>
-            `,
-          },
-        },
-        "consult"
-      );
+          "consult"
+        );
+      })();
     </script>
   </body>
 </html>
