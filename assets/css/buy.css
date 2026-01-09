@@ -119,23 +119,6 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-/* ✅ FORCE ICON COLOR (prevents inherited blue) */
-.process-timeline .process-step-btn {
-  color: var(--treg-charcoal) !important; /* Lucide uses currentColor */
-}
-
-.process-timeline .process-step-btn svg {
-  color: inherit !important;
-}
-
-.process-timeline .process-step-btn svg * {
-  stroke: currentColor !important;
-}
-
-.process-timeline .process-step-btn svg [fill="currentColor"] {
-  fill: currentColor !important;
-}
-
 .process-step-btn:hover {
   transform: translateY(-1px);
   border-color: rgba(0, 0, 0, 0.16);
@@ -156,7 +139,6 @@
 }
 
 /* If you ever set a very dark step color, flip icon to white automatically (optional) */
-/* (Remove this if you don't plan to use dark circles) */
 .process-step-btn[style*="#373a3a"],
 .process-step-btn[style*="#1e180d"] {
   color: #ffffff !important;
@@ -264,46 +246,29 @@
     font-size: 0.88rem;
   }
 }
+
 /* =========================================================
    ABSOLUTE OVERRIDES — force ALL timeline icons to charcoal
    (fixes any global svg/path rules that paint them blue)
-   Put this at the VERY BOTTOM of buy.css
+   Keep this at the VERY BOTTOM of buy.css
    ========================================================= */
 
 .process-timeline .process-step-btn,
-.process-timeline .process-step-btn:visited,
 .process-timeline .process-step-btn:hover,
-.process-timeline .process-step-btn:active {
-  color: var(--treg-charcoal) !important;
-}
-
-/* Force the svg itself */
-.process-timeline svg.process-icon {
-  color: var(--treg-charcoal) !important;
-  stroke: var(--treg-charcoal) !important; /* fallback if someone set stroke directly */
-  fill: none !important;
+.process-timeline .process-step-btn:active,
+.process-timeline .process-step-btn:focus {
+  color: var(--treg-charcoal) !important; /* Lucide uses currentColor */
 }
 
 /* Force EVERY drawable element inside the svg */
+.process-timeline svg.process-icon,
 .process-timeline svg.process-icon * {
-  stroke: var(--treg-charcoal) !important;
+  stroke: currentColor !important;
   fill: none !important;
 }
 
 /* Allow intentional filled dots (like the key icon) */
 .process-timeline svg.process-icon [fill="currentColor"] {
-  fill: var(--treg-charcoal) !important;
-  stroke: var(--treg-charcoal) !important;
-}
-
-/* If any element has a stroke attribute, override it too */
-.process-timeline svg.process-icon [stroke] {
-  stroke: var(--treg-charcoal) !important;
-}
-
-/* If any element has an inline style trying to color it, override it */
-.process-timeline svg.process-icon [style*="stroke"],
-.process-timeline svg.process-icon [style*="color"] {
-  stroke: var(--treg-charcoal) !important;
-  color: var(--treg-charcoal) !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
 }
