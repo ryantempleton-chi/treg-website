@@ -46,20 +46,21 @@
 
         <!-- TIMELINE (interactive) -->
         <section class="section">
-          <div class="container service-timeline" aria-label="Rental process timeline">
+          <div class="container service-timeline rent-timeline" aria-label="Renting timeline">
             <div class="timeline-head">
               <h2 class="section-heading">the renting process</h2>
               <p class="section-lede">
-                Select a step to see what happens next — and how we keep the rental search organized, efficient, and calm.
+                Select a step to see what happens next — and how we keep your search efficient, organized, and clear.
               </p>
             </div>
 
+            <!-- Timeline graphic -->
             <div class="process-timeline" role="tablist" aria-label="Renting process steps">
               <div class="process-line" aria-hidden="true"></div>
 
-              <!-- 1: INTAKE + PRIORITIES -->
+              <!-- 1: CONSULT -->
               <div class="process-step">
-                <div class="process-step-title">intake + priorities</div>
+                <div class="process-step-title">consult</div>
 
                 <button
                   class="process-step-btn is-active"
@@ -67,29 +68,26 @@
                   role="tab"
                   aria-selected="true"
                   aria-controls="step-panel"
-                  data-step="intake"
+                  data-step="consult"
                   style="--step-color: #f4eee6"
                 >
-                  <!-- Lucide: clipboard-list -->
+                  <!-- Lucide-ish: message-circle -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                    <path d="M9 12h6"></path>
-                    <path d="M9 16h6"></path>
+                    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
                   </svg>
                 </button>
 
                 <ul class="process-bullets">
-                  <li>budget + timing</li>
-                  <li>must-haves vs nice-to-haves</li>
-                  <li>commute + lifestyle fit</li>
+                  <li>timing + budget</li>
+                  <li>must-haves</li>
+                  <li>search plan</li>
                 </ul>
               </div>
 
-              <!-- 2: SHORTLIST + STRATEGY -->
+              <!-- 2: SEARCH SETUP -->
               <div class="process-step">
-                <div class="process-step-title">shortlist + strategy</div>
+                <div class="process-step-title">search setup</div>
 
                 <button
                   class="process-step-btn"
@@ -97,58 +95,64 @@
                   role="tab"
                   aria-selected="false"
                   aria-controls="step-panel"
-                  data-step="shortlist"
-                  style="--step-color: #eee3d6"
-                >
-                  <!-- Lucide: map -->
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="M15 18l-6-3"></path>
-                    <path d="M9 15l-6 3V6l6-3 6 3 6-3v12l-6 3"></path>
-                    <path d="M9 3v12"></path>
-                    <path d="M15 6v12"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>neighborhood targets</li>
-                  <li>building types + trade-offs</li>
-                  <li>daily listing watch</li>
-                </ul>
-              </div>
-
-              <!-- 3: TOUR + COMPARE -->
-              <div class="process-step">
-                <div class="process-step-title">tour + compare</div>
-
-                <button
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="tour"
+                  data-step="setup"
                   style="--step-color: #e7ddcf"
                 >
-                  <!-- Lucide: home -->
+                  <!-- Lucide-ish: sliders -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="M3 9l9-7 9 7"></path>
-                    <path d="M9 22V12h6v10"></path>
-                    <path d="M21 22H3"></path>
+                    <line x1="4" y1="21" x2="4" y2="14"></line>
+                    <line x1="4" y1="10" x2="4" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12" y2="3"></line>
+                    <line x1="20" y1="21" x2="20" y2="16"></line>
+                    <line x1="20" y1="12" x2="20" y2="3"></line>
+                    <line x1="2" y1="14" x2="6" y2="14"></line>
+                    <line x1="10" y1="8" x2="14" y2="8"></line>
+                    <line x1="18" y1="16" x2="22" y2="16"></line>
                   </svg>
                 </button>
 
                 <ul class="process-bullets">
-                  <li>efficient showing blocks</li>
-                  <li>honest feedback on units</li>
-                  <li>compare apples-to-apples</li>
+                  <li>neighborhood shortlist</li>
+                  <li>set expectations</li>
+                  <li>watch the market</li>
                 </ul>
               </div>
 
-              <!-- 4: APPLY + QUALIFY -->
+              <!-- 3: TOURING -->
               <div class="process-step">
-                <div class="process-step-title">apply + qualify</div>
+                <div class="process-step-title">touring</div>
+
+                <button
+                  class="process-step-btn"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="step-panel"
+                  data-step="touring"
+                  style="--step-color: #dccbb8"
+                >
+                  <!-- Lucide-ish: calendar -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </button>
+
+                <ul class="process-bullets">
+                  <li>stack showings</li>
+                  <li>move efficiently</li>
+                  <li>compare clearly</li>
+                </ul>
+              </div>
+
+              <!-- 4: APPLY -->
+              <div class="process-step">
+                <div class="process-step-title">apply</div>
 
                 <button
                   class="process-step-btn"
@@ -157,22 +161,22 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="apply"
-                  style="--step-color: #dccbb8"
+                  style="--step-color: #d8c7b3"
                 >
-                  <!-- Lucide: file-text -->
+                  <!-- Lucide-ish: file-text -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <path d="M14 2v6h6"></path>
-                    <path d="M8 13h8"></path>
-                    <path d="M8 17h8"></path>
+                    <line x1="8" y1="13" x2="16" y2="13"></line>
+                    <line x1="8" y1="17" x2="16" y2="17"></line>
                   </svg>
                 </button>
 
                 <ul class="process-bullets">
-                  <li>docs + expectations</li>
-                  <li>credit/income standards</li>
-                  <li>strong, clean submission</li>
+                  <li>fees + requirements</li>
+                  <li>submit cleanly</li>
+                  <li>move fast</li>
                 </ul>
               </div>
 
@@ -187,26 +191,26 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="lease"
-                  style="--step-color: #d7c7b3"
+                  style="--step-color: #c9b8a4"
                 >
-                  <!-- Lucide: pen-line -->
+                  <!-- Lucide-ish: check-circle -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="M12 20h9"></path>
-                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="m9 12 2 2 4-4"></path>
                   </svg>
                 </button>
 
                 <ul class="process-bullets">
-                  <li>lease review highlights</li>
-                  <li>move-in funds + timing</li>
-                  <li>avoid surprises</li>
+                  <li>deposit / move-in fee</li>
+                  <li>lease terms</li>
+                  <li>confirm dates</li>
                 </ul>
               </div>
 
-              <!-- 6: MOVE-IN + SETUP -->
+              <!-- 6: MOVE-IN -->
               <div class="process-step">
-                <div class="process-step-title">move-in + setup</div>
+                <div class="process-step-title">move-in</div>
 
                 <button
                   class="process-step-btn"
@@ -215,24 +219,24 @@
                   aria-selected="false"
                   aria-controls="step-panel"
                   data-step="movein"
-                  style="--step-color: #cbb49a"
+                  style="--step-color: #bfa889"
                 >
-                  <!-- Lucide: key-round -->
+                  <!-- Lucide-ish: home -->
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="process-icon" aria-hidden="true">
-                    <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
-                    <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                    <path d="M3 9.5 12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"></path>
                   </svg>
                 </button>
 
                 <ul class="process-bullets">
-                  <li>move-in checklist</li>
-                  <li>utilities + logistics</li>
-                  <li>smooth first week</li>
+                  <li>utilities</li>
+                  <li>building logistics</li>
+                  <li>keys + move day</li>
                 </ul>
               </div>
             </div>
 
+            <!-- Locked-height description panel -->
             <div class="timeline-panel" id="step-panel" role="tabpanel" aria-live="polite">
               <h3 class="timeline-title" data-title></h3>
               <div class="timeline-body" data-body></div>
@@ -240,63 +244,45 @@
           </div>
         </section>
 
-        <!-- SECTION 1: APPROACH TO RENTERS -->
+        <!-- SECTION: HOW WE APPROACH RENTING -->
         <section class="section section-muted">
           <div class="container">
             <h2 class="section-heading">renting doesn’t have to feel chaotic</h2>
 
-            <p class="section-lede" style="max-width: 780px;">
-              Chicago’s rental market moves quickly — but that doesn’t mean your search has to feel rushed or random.
-              We’ll help you get clear on budget, timing, and neighborhoods, then build a rental plan that actually
-              makes sense.
+            <p class="section-lede" style="max-width: 820px;">
+              Chicago moves quickly — our job is to keep your search organized, efficient, and grounded in real options.
             </p>
 
-            <p>
-              We’ll talk through what matters most to you: commute, building style, amenities, pet policies, parking,
-              and more. From there, we’ll narrow down options and schedule showings in a way that respects your time and
-              energy.
-            </p>
+            <div class="section-grid two">
+              <div>
+                <ul>
+                  <li><strong>Clear expectations early</strong> — timing, fees, and what your budget realistically gets.</li>
+                  <li><strong>Neighborhood guidance</strong> — commute, lifestyle, and day-to-day fit.</li>
+                  <li><strong>Curated options</strong> — fewer random links, more relevant matches.</li>
+                  <li><strong>Organized showings</strong> — stacked tours that respect your time.</li>
+                  <li><strong>Application support</strong> — clean submissions and fast follow-up.</li>
+                </ul>
 
-            <p>
-              You’ll have someone watching the market, organizing appointments, and helping you compare options — so you
-              can focus on what feels like home.
-            </p>
-          </div>
-        </section>
+                <div class="btn-row" style="justify-content: flex-start; margin-top: 1.2rem;">
+                  <a href="/intake.html?service=rent" class="btn btn-primary">start renter intake</a>
+                  <a href="mailto:ryan@ryantempleton.com" class="btn btn-ghost">email our team</a>
+                </div>
+              </div>
 
-        <!-- SECTION 2: WHAT TO EXPECT -->
-        <section class="section">
-          <div class="container section-grid two">
-            <div>
-              <h2 class="section-heading">what you can expect as a renter</h2>
-
-              <ul>
-                <li><strong>A clear picture of timing and budget</strong> before you start touring.</li>
-                <li><strong>Neighborhood guidance</strong> based on how you actually live day to day.</li>
-                <li><strong>Curated options</strong> instead of an endless list of random links.</li>
-                <li><strong>Organized showings</strong> stacked into efficient windows of time.</li>
-                <li><strong>Help with applications</strong> and setting expectations with landlords and buildings.</li>
-              </ul>
-
-              <div class="btn-row" style="justify-content: flex-start; margin-top: 1.4rem;">
-                <a href="/rent-process.html" class="btn btn-primary">learn the renting process</a>
+              <div>
+                <h3 class="section-heading" style="font-size: 1rem;">a great fit for</h3>
+                <ul>
+                  <li>Renters relocating to Chicago or changing neighborhoods.</li>
+                  <li>Busy schedules that need a more organized touring plan.</li>
+                  <li>Anyone who wants honest feedback without pressure.</li>
+                </ul>
               </div>
             </div>
-
-            <div>
-              <h3 class="section-heading" style="font-size: 1rem;">who this is a great fit for</h3>
-
-              <ul>
-                <li>Renters relocating to Chicago or changing neighborhoods.</li>
-                <li>People balancing busy schedules who want a more organized search.</li>
-                <li>Anyone who values quick communication and honest feedback on units.</li>
-              </ul>
-            </div>
           </div>
         </section>
 
-        <!-- SECTION 3: NEIGHBORHOODS -->
-        <section class="section section-muted">
+        <!-- SECTION: NEIGHBORHOODS -->
+        <section class="section">
           <div class="container">
             <h2 class="section-heading">find the right neighborhood fit</h2>
 
@@ -305,9 +291,9 @@
               compare areas by feel, commute, nightlife, green space, and more.
             </p>
 
-            <p>
-              We’ll talk honestly about what your budget will typically get you in different areas — and when it may
-              make sense to expand your search slightly to hit more of your must-haves.
+            <p style="max-width: 880px;">
+              We’ll talk honestly about what your budget typically gets in different areas — and when it makes sense to
+              expand your search to hit more of your must-haves.
             </p>
 
             <div class="btn-row">
@@ -328,7 +314,7 @@
 
             <div class="section-cta-meta">the templeton real estate group · chicago rentals</div>
 
-            <div class="btn-row">
+            <div class="btn-row" style="justify-content: center;">
               <a href="/intake.html?service=rent" class="btn btn-primary">start renter intake</a>
               <a href="tel:+13126759379" class="btn btn-ghost">call (312) 675-9379</a>
             </div>
@@ -340,79 +326,60 @@
       <div id="site-footer"></div>
     </div>
 
-    <script src="/assets/js/layout.js"></script>
+    <script src="/assets/js/layout.js" defer></script>
+    <script src="/assets/js/process-timeline.js" defer></script>
 
+    <!-- Page-specific content for the shared timeline component -->
     <script>
-      (function () {
-        const steps = {
-          intake: {
-            title: "Intake + Priorities",
-            body: `
-              <p>We start by getting clear on your budget, your timing, and what truly matters in your next place — commute, lifestyle, pets, parking, amenities, and building style. This keeps your search efficient and prevents “random scrolling” fatigue.</p>
-              <p>Once we align on your must-haves and dealbreakers, we can build a focused plan that matches the realities of the Chicago rental market.</p>
-            `,
+      window.addEventListener("DOMContentLoaded", function () {
+        window.TREG.initProcessTimeline(
+          {
+            consult: {
+              title: "Initial Consult",
+              body: `
+                <p>We start with a quick conversation to clarify timing, budget, and must-haves. This is where we align on neighborhoods, building style, pets, parking, amenities, and any non-negotiables.</p>
+                <p>We’ll also set expectations on fees, typical approval timelines, and what moves quickly — so you’re not surprised mid-search.</p>
+              `,
+            },
+            setup: {
+              title: "Search Setup & Strategy",
+              body: `
+                <p>Next, we tighten your search into something realistic and actionable. We’ll talk through what your budget typically gets in different areas and identify smart trade-offs if needed.</p>
+                <p>Then we’ll monitor new listings and changes so you’re seeing the right options as they hit the market — not days later.</p>
+              `,
+            },
+            touring: {
+              title: "Touring & Comparing Options",
+              body: `
+                <p>We coordinate showings and stack appointments into efficient windows of time. Chicago rentals can move fast — but touring doesn’t have to feel chaotic.</p>
+                <p>As you tour, we’ll help you compare units clearly: value, layout, building rules, commute, and any red flags that aren’t obvious in photos.</p>
+              `,
+            },
+            apply: {
+              title: "Applying for the Right Unit",
+              body: `
+                <p>When you’re ready to move, we’ll walk you through requirements and fees so your application is clean, complete, and submitted quickly.</p>
+                <p>We’ll help you understand what matters most to landlords and buildings — and how to position your application clearly to avoid delays.</p>
+              `,
+            },
+            lease: {
+              title: "Approval, Deposits & Lease Review",
+              body: `
+                <p>After approval, we confirm timelines, deposits or move-in fees, and key lease terms. We’ll make sure you understand what you’re signing — and what to expect before move-in day.</p>
+                <p>If anything feels unclear or inconsistent, we’ll flag it early so you’re not solving problems last-minute.</p>
+              `,
+            },
+            movein: {
+              title: "Move-In & Logistics",
+              body: `
+                <p>We’ll help you stay on top of move-in logistics: building rules, elevator reservations (if needed), utilities setup, and key pickup.</p>
+                <p>The goal is simple: a smooth move and a clear handoff, so day one feels easy.</p>
+              `,
+            },
           },
-          shortlist: {
-            title: "Shortlist + Strategy",
-            body: `
-              <p>Next, we narrow neighborhoods and property types so you’re shopping intelligently — not just chasing whatever looks good online. We’ll talk trade-offs (space vs location, amenities vs price, newer vs vintage) and build a realistic target list.</p>
-              <p>From there, we watch listings daily and move fast when the right opportunity appears.</p>
-            `,
-          },
-          tour: {
-            title: "Tour + Compare",
-            body: `
-              <p>We schedule showings in efficient windows so you can see the best options without burning entire weekends. You’ll get honest feedback — what’s great, what’s overpriced, and what to watch for.</p>
-              <p>We’ll also help you compare units apples-to-apples so the decision feels clear, not emotional or rushed.</p>
-            `,
-          },
-          apply: {
-            title: "Apply + Qualify",
-            body: `
-              <p>When you find the right place, we help you submit a clean, complete application quickly — and set expectations around credit, income, and documentation requirements.</p>
-              <p>Speed matters in Chicago. Our goal is to make sure you’re ready to move immediately when the right unit hits.</p>
-            `,
-          },
-          lease: {
-            title: "Approval + Lease",
-            body: `
-              <p>Once approved, we’ll walk through key lease terms, move-in costs, and timing. We make sure you understand deadlines and expectations — so there are no surprises right before move-in.</p>
-              <p>If anything feels unclear, we’ll help you get answers fast.</p>
-            `,
-          },
-          movein: {
-            title: "Move-In + Setup",
-            body: `
-              <p>From move-in logistics to first-week essentials, we help you transition smoothly. That includes timing, keys, and practical next steps like utilities and building procedures.</p>
-              <p>The goal is simple: a rental search that ends with you feeling settled — not exhausted.</p>
-            `,
-          },
-        };
-
-        const tabs = Array.from(document.querySelectorAll(".process-step-btn"));
-        const titleEl = document.querySelector("[data-title]");
-        const bodyEl = document.querySelector("[data-body]");
-
-        function setActive(stepKey) {
-          const step = steps[stepKey];
-          if (!step) return;
-
-          tabs.forEach((btn) => {
-            const isActive = btn.dataset.step === stepKey;
-            btn.classList.toggle("is-active", isActive);
-            btn.setAttribute("aria-selected", isActive ? "true" : "false");
-          });
-
-          titleEl.textContent = step.title;
-          bodyEl.innerHTML = step.body;
-        }
-
-        tabs.forEach((btn) => {
-          btn.addEventListener("click", () => setActive(btn.dataset.step));
-        });
-
-        setActive("intake");
-      })();
+          "consult"
+        );
+      });
     </script>
   </body>
 </html>
