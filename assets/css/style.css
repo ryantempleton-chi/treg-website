@@ -233,16 +233,24 @@ a {
   background: #faf7f1;
 }
 
-/* Mobile safety: allow nav to wrap instead of forcing horizontal scroll */
+/* =========================
+   HEADER: MOBILE SIMPLIFY
+   On mobile, use the MENU button only (hide desktop nav links)
+   ========================= */
 @media (max-width: 720px) {
+  /* Hide the desktop nav links so they don't overflow/stack */
   .nav-list {
-    gap: 1.1rem;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    display: none;
   }
 
-  .nav-dropdown-link {
-    white-space: normal;
+  /* Slightly tighter header spacing */
+  .header-inner {
+    gap: 0.75rem;
+  }
+
+  /* Slightly smaller logo for breathing room */
+  .logo-img {
+    height: 40px;
   }
 }
 
