@@ -946,9 +946,9 @@ li + li {
     display: none;
   }
 
-  /* Center header content */
+  /* Header layout: logo left, menu right */
   .header-inner {
-    justify-content: center;
+    justify-content: space-between;
     gap: 0.75rem;
   }
 
@@ -957,12 +957,10 @@ li + li {
     height: 40px;
   }
 
-  /* Put menu button on the right */
+  /* Reset menu button positioning (no absolute) */
   .menu-btn {
-    position: absolute;
-    right: var(--container-pad);
-    top: 50%;
-    transform: translateY(-50%);
+    position: static;
+    transform: none;
   }
 }
 
