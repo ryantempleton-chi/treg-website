@@ -40,15 +40,40 @@ body {
   color: var(--treg-charcoal);
 }
 
-/* Simple page frame */
+/* =========================
+   MOBILE OVERFLOW GUARD
+   Prevents horizontal scrolling from wide elements, shadows, vw, etc.
+   ========================= */
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: clip; /* nicer than hidden when supported */
 }
 
 .main {
   flex: 1 0 auto;
+}
+
+/* Ensure media never exceeds viewport */
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
+}
+
+/* Long strings/URLs shouldn’t force overflow */
+p,
+li,
+a {
+  overflow-wrap: anywhere;
 }
 
 /* Layout helper */
@@ -56,6 +81,13 @@ body {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 1.75rem var(--container-pad);
+}
+
+/* Slightly tighter padding on small screens */
+@media (max-width: 520px) {
+  :root {
+    --container-pad: 1rem;
+  }
 }
 
 /* Accessible focus ring (subtle, on-brand) */
@@ -199,6 +231,19 @@ body {
 .nav-dropdown-link:hover,
 .nav-dropdown-link:focus {
   background: #faf7f1;
+}
+
+/* Mobile safety: allow nav to wrap instead of forcing horizontal scroll */
+@media (max-width: 720px) {
+  .nav-list {
+    gap: 1.1rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .nav-dropdown-link {
+    white-space: normal;
+  }
 }
 
 /* =========================
@@ -449,7 +494,7 @@ body {
   box-shadow: none !important;
   padding: 0 !important;
   border-radius: 0 !important;
-  visibility: hidden; /* keeps slot, hides it */
+  visibility: hidden;
   pointer-events: none;
 }
 
@@ -484,14 +529,11 @@ body {
   position: absolute;
   right: 26px;
   bottom: 22px;
-
   width: clamp(140px, 18vw, 260px);
   height: auto;
-
   opacity: 0.95;
   pointer-events: none;
   user-select: none;
-
   filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.10));
 }
 
@@ -524,7 +566,7 @@ body.menu-open .menu-panel {
     grid-template-columns: 1fr;
     gap: 1.1rem;
     overflow: auto;
-    padding-right: 0; /* no reserved space on mobile */
+    padding-right: 0;
   }
 
   .menu-primary {
