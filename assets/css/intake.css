@@ -4,12 +4,61 @@
 /* ======================================= */
 
 .intake-form {
-  padding: 2.75rem 0 3.25rem;
+  padding: 2.25rem 0 3.25rem;
   background: #ffffff;
 }
 
+/* Match your site’s container width + safe mobile padding */
+.intake-form .container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Card polish + keep iframe corners clean */
+.intake-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.10);
+  overflow: hidden; /* important for rounded iframe corners */
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Let JotForm handler resize; keep a sane minimum */
 .intake-form iframe {
   width: 100%;
-  min-height: 700px;
+  min-height: 860px;
   border: none;
+  display: block;
+}
+
+/* Note styling */
+.intake-note {
+  max-width: 720px;
+  margin: 1.25rem auto 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #373a3a;
+  text-align: center;
+}
+
+/* Mobile optimization */
+@media (max-width: 640px) {
+  .intake-form {
+    padding: 1.5rem 0 2.5rem;
+  }
+
+  .intake-form .container {
+    padding: 0 1rem;
+  }
+
+  .intake-card {
+    border-radius: 14px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.10);
+  }
+
+  /* If the embed handler fails for any reason, keep it usable */
+  .intake-form iframe {
+    min-height: 980px;
+  }
 }
