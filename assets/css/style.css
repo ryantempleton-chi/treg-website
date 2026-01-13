@@ -1011,3 +1011,124 @@ li + li {
 .home-hero {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
+/* =======================================
+   BIG MENU — MOBILE OPTIMIZATION PATCH
+   Paste at the bottom of style.css
+   ======================================= */
+
+@media (max-width: 900px) {
+  /* Make the panel feel like a true mobile modal */
+  .menu-panel {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    max-height: calc(100svh - 24px);
+    height: auto;
+    border-radius: 22px;
+  }
+
+  /* Allow the inside to scroll (instead of the page behind it) */
+  .menu-panel-inner {
+    max-height: calc(100svh - 24px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Keep the top row (title/logo/close) visible while scrolling */
+  .menu-panel-top {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.45rem 0;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Stack everything into one clean column */
+  .menu-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding-right: 0;
+    overflow: visible;
+  }
+
+  /* CRITICAL FIX:
+     The large "buy. sell. rent..." layer should NOT sit behind the cards on mobile */
+  .menu-primary {
+    display: none;
+  }
+
+  /* Keep CTA row present, but make it mobile-friendly */
+  .menu-cta-row {
+    justify-content: stretch;
+    padding-right: 0;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 0;
+  }
+
+  .menu-cta-row .btn,
+  .menu-cta-row a,
+  .menu-cta-row button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Secondary cards become full-width stack */
+  .menu-secondary {
+    border-left: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    height: auto;
+    overflow: visible;
+    align-content: start;
+    justify-items: stretch;
+  }
+
+  /* Make each card feel like a section on mobile */
+  .menu-col {
+    max-width: none;
+    padding: 0.95rem 0.95rem 0.85rem;
+    border-radius: 16px;
+  }
+
+  /* Remove spacer box entirely on mobile */
+  .menu-col--spacer {
+    display: none !important;
+  }
+
+  /* Bigger tap targets for menu links */
+  .menu-link {
+    padding: 0.75rem 0.75rem;
+    border-radius: 14px;
+  }
+
+  /* Hide the big corner rt. mark on mobile */
+  .menu-corner-mark {
+    display: none;
+  }
+}
+
+/* Extra-small polish */
+@media (max-width: 520px) {
+  .menu-panel {
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    max-height: calc(100svh - 20px);
+    border-radius: 20px;
+  }
+
+  .menu-panel-inner {
+    max-height: calc(100svh - 20px);
+  }
+
+  .menu-panel-mark {
+    height: 28px;
+  }
+}
