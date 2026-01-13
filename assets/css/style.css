@@ -106,13 +106,19 @@ a {
   border-bottom: 1px solid #e5e1d8;
 }
 
+/* RECOMMENDATION:
+   Use the same horizontal gutters as the rest of the site.
+   This prevents the logo (and everything else) from feeling tight to the edges. */
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.1rem 0;
-  position: relative; /* allows mobile positioning without layout hacks */
+
+  /* was: padding: 1.1rem 0; */
+  padding: 1.1rem var(--container-pad);
+
+  position: relative; /* allows future positioning without layout hacks */
 }
 
 /* Logo */
