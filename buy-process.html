@@ -6,6 +6,8 @@
   <meta name="description" content="A step-by-step guide to buying a home in Chicago with Templeton Real Estate Group — from planning and touring to offer, inspection, attorney review, and closing." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <link rel="canonical" href="https://ryantempleton.com/buy-process.html" />
+
   <!-- Fonts + Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,7 +55,13 @@
         </nav>
 
         <!-- Mega Menu Button -->
-        <button class="menu-btn" type="button" aria-label="Open menu">
+        <button
+          class="menu-btn"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="site-menu"
+          aria-expanded="false"
+        >
           <span class="menu-btn-icon"><span></span></span>
           Menu
         </button>
@@ -63,7 +71,7 @@
     <!-- Mega Menu Backdrop + Panel -->
     <div class="menu-backdrop" aria-hidden="true"></div>
 
-    <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div id="site-menu" class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true">
       <div class="menu-panel-inner">
         <div class="menu-panel-top">
           <div class="menu-panel-title">Templeton Real Estate Group</div>
@@ -136,6 +144,15 @@
           <div class="page-actions">
             <a class="btn btn-primary" href="/intake.html">start with a buyer consult</a>
             <a class="btn btn-ghost" href="/buy.html">back to the buy overview</a>
+          </div>
+
+          <!-- Visual anchor -->
+          <div style="margin-top:1.5rem; border-radius:18px; overflow:hidden; border:1px solid rgba(0,0,0,0.06);">
+            <img
+              src="/assets/img/home/train.jpg"
+              alt="CTA train arriving at a Chicago station"
+              style="display:block; width:100%; height:320px; object-fit:cover;"
+            />
           </div>
         </div>
       </section>
@@ -218,112 +235,122 @@
 
   <script>
     // BUY TIMELINE — init (moved from buy.html)
-    function initBuyTimelineWhenReady() {
-      if (typeof window.initProcessTimeline !== "function") {
-        setTimeout(initBuyTimelineWhenReady, 50);
-        return;
+    (function initBuyTimeline() {
+      function run() {
+        if (typeof window.initProcessTimeline !== "function") return false;
+
+        var root = document.querySelector('.timeline-wrap[data-process="buy"]');
+        if (!root) return false;
+
+        window.initProcessTimeline({
+          process: "buy",
+          root: root,
+          steps: [
+            {
+              label: "strategy session",
+              title: "Build the plan",
+              meta: "30–45 minutes",
+              text:
+                "We’ll clarify budget, timing, neighborhoods, and must-haves — then map the path to a smart first offer.",
+              points: [
+                "Confirm goals + timeline",
+                "Neighborhood + building fit",
+                "Budget + monthly comfort",
+                "Search strategy + next steps"
+              ]
+            },
+            {
+              label: "financing",
+              title: "Get pre-approved",
+              meta: "1–3 days",
+              text:
+                "A strong pre-approval is leverage. I’ll connect you with trusted lenders (or work with yours) and make sure we’re ready to move fast.",
+              points: [
+                "Pre-approval letter",
+                "Understand payment options",
+                "Plan for closing costs",
+                "Line up down payment logistics"
+              ]
+            },
+            {
+              label: "touring",
+              title: "Tour the right homes",
+              meta: "1–3 weeks (varies)",
+              text:
+                "Curated showings, efficient routes, and honest feedback — so you don’t waste weekends in places that aren’t a fit.",
+              points: [
+                "Curated shortlist",
+                "Private + open house tours",
+                "Building details + red flags",
+                "Refine search quickly"
+              ]
+            },
+            {
+              label: "offer",
+              title: "Write a winning offer",
+              meta: "Same day (often)",
+              text:
+                "We’ll evaluate comps, terms, and seller priorities — then structure an offer that’s competitive and protects you.",
+              points: [
+                "Pricing + comps review",
+                "Terms strategy",
+                "Negotiation guidance",
+                "Clean, confident submission"
+              ]
+            },
+            {
+              label: "inspection",
+              title: "Inspect + negotiate",
+              meta: "5 business days",
+              text:
+                "We’ll prioritize real issues, align on what matters, and negotiate repairs/credits while keeping momentum.",
+              points: [
+                "Inspector coordination",
+                "Attend inspection together",
+                "Repair/credit strategy",
+                "Keep timeline tight"
+              ]
+            },
+            {
+              label: "attorney review",
+              title: "Attorney review",
+              meta: "5 business days",
+              text:
+                "Your attorney protects you on contract language, disclosures, HOA docs (if condo), and critical deadlines.",
+              points: [
+                "Legal protections + edits",
+                "HOA/condo document review",
+                "Deadlines + contingencies",
+                "Clear path to close"
+              ]
+            },
+            {
+              label: "closing",
+              title: "Final walkthrough + closing",
+              meta: "2–4 weeks after contract",
+              text:
+                "We’ll confirm repairs (if any), do a final walkthrough, and close with confidence — keys in hand.",
+              points: [
+                "Loan + appraisal coordination",
+                "Final walkthrough checklist",
+                "Utilities + logistics",
+                "Closing day support"
+              ]
+            }
+          ]
+        });
+
+        return true;
       }
 
-      window.initProcessTimeline({
-        process: "buy",
-        root: document.querySelector('.timeline-wrap[data-process="buy"]'),
-        steps: [
-          {
-            label: "strategy session",
-            title: "Build the plan",
-            meta: "30–45 minutes",
-            text:
-              "We’ll clarify budget, timing, neighborhoods, and must-haves — then map the path to a smart first offer.",
-            points: [
-              "Confirm goals + timeline",
-              "Neighborhood + building fit",
-              "Budget + monthly comfort",
-              "Search strategy + next steps"
-            ]
-          },
-          {
-            label: "financing",
-            title: "Get pre-approved",
-            meta: "1–3 days",
-            text:
-              "A strong pre-approval is leverage. I’ll connect you with trusted lenders (or work with yours) and make sure we’re ready to move fast.",
-            points: [
-              "Pre-approval letter",
-              "Understand payment options",
-              "Plan for closing costs",
-              "Line up down payment logistics"
-            ]
-          },
-          {
-            label: "touring",
-            title: "Tour the right homes",
-            meta: "1–3 weeks (varies)",
-            text:
-              "Curated showings, efficient routes, and honest feedback — so you don’t waste weekends in places that aren’t a fit.",
-            points: [
-              "Curated shortlist",
-              "Private + open house tours",
-              "Building details + red flags",
-              "Refine search quickly"
-            ]
-          },
-          {
-            label: "offer",
-            title: "Write a winning offer",
-            meta: "Same day (often)",
-            text:
-              "We’ll evaluate comps, terms, and seller priorities — then structure an offer that’s competitive and protects you.",
-            points: [
-              "Pricing + comps review",
-              "Terms strategy",
-              "Negotiation guidance",
-              "Clean, confident submission"
-            ]
-          },
-          {
-            label: "inspection",
-            title: "Inspect + negotiate",
-            meta: "5 business days (typical)",
-            text:
-              "We’ll prioritize real issues, align on what matters, and negotiate repairs/credits while keeping momentum.",
-            points: [
-              "Inspector coordination",
-              "Attend inspection together",
-              "Repair/credit strategy",
-              "Keep timeline tight"
-            ]
-          },
-          {
-            label: "attorney review",
-            title: "Attorney review",
-            meta: "5 business days (typical)",
-            text:
-              "Your attorney protects you on contract language, disclosures, HOA docs (if condo), and critical deadlines.",
-            points: [
-              "Legal protections + edits",
-              "HOA/condo document review",
-              "Deadlines + contingencies",
-              "Clear path to close"
-            ]
-          },
-          {
-            label: "closing",
-            title: "Final walkthrough + closing",
-            meta: "2–4 weeks after contract",
-            text:
-              "We’ll confirm repairs (if any), do a final walkthrough, and close with confidence — keys in hand.",
-            points: [
-              "Loan + appraisal coordination",
-              "Final walkthrough checklist",
-              "Utilities + logistics",
-              "Closing day support"
-            ]
-          }
-        ]
-      });
-    }
+      if (run()) return;
 
-    initBuyTimelineWhenReady();
+      var tries = 0;
+      var t = setInterval(function () {
+        tries += 1;
+        if (run() || tries > 80) clearInterval(t);
+      }, 50);
+    })();
   </script>
 
   <script src="/assets/js/layout.js"></script>
