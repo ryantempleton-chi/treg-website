@@ -1,3 +1,4 @@
+<!-- partners.html -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,129 +22,6 @@
 
     <!-- Canonical (keeps things clean if you stick with /partners.html) -->
     <link rel="canonical" href="https://ryantempleton.com/partners.html" />
-
-    <style>
-      /* ======================================= */
-      /* PARTNERS PAGE ONLY                      */
-      /* partners.html                            */
-      /* ======================================= */
-
-      .partners-jump {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-        justify-content: flex-start;
-        margin-top: 1rem;
-      }
-
-      /* Category spacing */
-      .partner-category {
-        scroll-margin-top: 92px; /* helps when clicking anchors with a sticky header */
-      }
-
-      /* Partner list layout */
-      .partner-list {
-        display: grid;
-        gap: 1rem;
-        margin-top: 1.25rem;
-      }
-
-      /* Card layout: left rail (logo + photo) + right content */
-      .partner-card {
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        background: #fff;
-        border-radius: 16px;
-        padding: 1rem;
-        display: grid;
-        grid-template-columns: 90px 90px 1fr;
-        gap: 0.95rem;
-        align-items: start;
-      }
-
-      .partner-media {
-        width: 90px;
-        height: 90px;
-        border-radius: 12px;
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        overflow: hidden;
-        background: var(--treg-cream);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .partner-media img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .partner-meta-top {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem 0.65rem;
-        align-items: baseline;
-        margin-bottom: 0.35rem;
-      }
-
-      .partner-name {
-        margin: 0;
-      }
-
-      .partner-subtitle {
-        margin: 0.15rem 0 0.65rem;
-        color: var(--treg-slate);
-        line-height: 1.6;
-        max-width: 72ch;
-      }
-
-      .partner-details {
-        display: grid;
-        gap: 0.35rem;
-        margin: 0.2rem 0 0.85rem;
-        color: var(--treg-slate);
-        line-height: 1.6;
-      }
-
-      .partner-details div strong {
-        color: var(--treg-charcoal);
-      }
-
-      .partner-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-        justify-content: flex-start;
-      }
-
-      /* Mobile */
-      @media (max-width: 760px) {
-        .partner-card {
-          grid-template-columns: 72px 72px 1fr;
-        }
-        .partner-media {
-          width: 72px;
-          height: 72px;
-          border-radius: 12px;
-        }
-      }
-
-      @media (max-width: 520px) {
-        .partner-card {
-          grid-template-columns: 1fr;
-        }
-        .partner-card .partner-media {
-          width: 84px;
-          height: 84px;
-        }
-        .partner-card .partner-media:nth-child(1),
-        .partner-card .partner-media:nth-child(2) {
-          display: inline-flex;
-          margin-right: 0.6rem;
-        }
-      }
-    </style>
   </head>
 
   <body>
@@ -192,9 +70,7 @@
         <!-- NOTE / DISCLAIMER -->
         <section class="section">
           <div class="container">
-            <div
-              style="border:1px solid rgba(0,0,0,0.06); background:#fff; border-radius:16px; padding:1.1rem 1.15rem; max-width: 980px;"
-            >
+            <div class="partner-note">
               <h3 style="margin:0 0 0.4rem;">a quick note on referrals</h3>
               <p style="margin:0; color:var(--treg-slate); line-height:1.65;">
                 These referrals are shared as a convenience based on past client experience. You’re always free to choose any provider.
@@ -215,71 +91,77 @@
             </p>
 
             <div class="partner-list">
-              <!-- Mike Scaccia -->
-              <div class="partner-card">
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
-                </div>
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
-                </div>
-
-                <div>
-                  <div class="partner-meta-top">
-                    <div class="hero-label">lender</div>
-                  </div>
-
-                  <h3 class="partner-name">Mike Scaccia</h3>
-                  <p class="partner-subtitle">
-                    VP of Mortgage Lending · LeaderOne Financial Corporation
-                  </p>
-
-                  <div class="partner-details">
-                    <div><strong>NMLS:</strong> 1443090</div>
-                    <div><strong>Office:</strong> <a href="tel:+17088229809">708.822.9809</a></div>
-                    <div><strong>Email:</strong> <a href="mailto:MikeScaccia@leader1.com">MikeScaccia@leader1.com</a></div>
-                    <div><strong>Address:</strong> 1111 W 22nd St, Suite 620 · Oak Brook, IL 60523</div>
-                    <div><strong>Website:</strong> <a href="https://www.leaderonefinancial.com/mlo/mike-scaccia" target="_blank" rel="noopener">leaderonefinancial.com</a></div>
-                  </div>
-
-                  <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:MikeScaccia@leader1.com">email</a>
-                    <a class="btn btn-ghost" href="https://www.leaderonefinancial.com/mlo/mike-scaccia" target="_blank" rel="noopener">website</a>
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
-                  </div>
-                </div>
-              </div>
-
               <!-- Mike Del Preto -->
               <div class="partner-card">
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
-                </div>
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                <div class="partner-media-row" aria-hidden="true">
+                  <div class="partner-media partner-logo">
+                    <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-media partner-headshot">
+                    <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                  </div>
                 </div>
 
-                <div>
+                <div class="partner-content">
                   <div class="partner-meta-top">
                     <div class="hero-label">lender</div>
                   </div>
 
                   <h3 class="partner-name">Mike Del Preto</h3>
-                  <p class="partner-subtitle">
-                    SVP of Mortgage Lending · A and N Mortgage Services
-                  </p>
+                  <p class="partner-subtitle">SVP of Mortgage Lending · A and N Mortgage Services</p>
 
                   <div class="partner-details">
                     <div><strong>NMLS:</strong> 230942</div>
                     <div><strong>Phone:</strong> <a href="tel:+17088229809">708.822.9809</a></div>
                     <div><strong>Email:</strong> <a href="mailto:mike@delpretoteam.com">mike@delpretoteam.com</a></div>
                     <div><strong>Address:</strong> 1945 N Elston Ave · Chicago, IL 60642</div>
-                    <div><strong>Website:</strong> <a href="https://delpretomortgage.com/" target="_blank" rel="noopener">delpretomortgage.com</a></div>
+                    <div>
+                      <strong>Website:</strong>
+                      <a href="https://delpretomortgage.com/" target="_blank" rel="noopener">delpretomortgage.com</a>
+                    </div>
                   </div>
 
                   <div class="partner-actions">
                     <a class="btn btn-ghost" href="mailto:mike@delpretoteam.com">email</a>
                     <a class="btn btn-ghost" href="https://delpretomortgage.com/" target="_blank" rel="noopener">website</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Mike Scaccia -->
+              <div class="partner-card">
+                <div class="partner-media-row" aria-hidden="true">
+                  <div class="partner-media partner-logo">
+                    <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-media partner-headshot">
+                    <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                  </div>
+                </div>
+
+                <div class="partner-content">
+                  <div class="partner-meta-top">
+                    <div class="hero-label">lender</div>
+                  </div>
+
+                  <h3 class="partner-name">Mike Scaccia</h3>
+                  <p class="partner-subtitle">VP of Mortgage Lending · LeaderOne Financial Corporation</p>
+
+                  <div class="partner-details">
+                    <div><strong>NMLS:</strong> 1443090</div>
+                    <div><strong>Office:</strong> <a href="tel:+17088229809">708.822.9809</a></div>
+                    <div><strong>Email:</strong> <a href="mailto:MikeScaccia@leader1.com">MikeScaccia@leader1.com</a></div>
+                    <div><strong>Address:</strong> 1111 W 22nd St, Suite 620 · Oak Brook, IL 60523</div>
+                    <div>
+                      <strong>Website:</strong>
+                      <a href="https://www.leaderonefinancial.com/mlo/mike-scaccia" target="_blank" rel="noopener">leaderonefinancial.com</a>
+                    </div>
+                  </div>
+
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:MikeScaccia@leader1.com">email</a>
+                    <a class="btn btn-ghost" href="https://www.leaderonefinancial.com/mlo/mike-scaccia" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -300,22 +182,22 @@
             <div class="partner-list">
               <!-- Nick Baumgartner -->
               <div class="partner-card">
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
-                </div>
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                <div class="partner-media-row" aria-hidden="true">
+                  <div class="partner-media partner-logo">
+                    <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-media partner-headshot">
+                    <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                  </div>
                 </div>
 
-                <div>
+                <div class="partner-content">
                   <div class="partner-meta-top">
                     <div class="hero-label">attorney</div>
                   </div>
 
                   <h3 class="partner-name">Nick Baumgartner</h3>
-                  <p class="partner-subtitle">
-                    Real Estate Attorney · Law Office of Damon M. Fisch, P.C.
-                  </p>
+                  <p class="partner-subtitle">Real Estate Attorney · Law Office of Damon M. Fisch, P.C.</p>
 
                   <div class="partner-details">
                     <div><strong>Office:</strong> <a href="tel:+16308579511">630.857.9511</a></div>
@@ -334,28 +216,31 @@
 
               <!-- Sarah Sutton -->
               <div class="partner-card">
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
-                </div>
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                <div class="partner-media-row" aria-hidden="true">
+                  <div class="partner-media partner-logo">
+                    <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-media partner-headshot">
+                    <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                  </div>
                 </div>
 
-                <div>
+                <div class="partner-content">
                   <div class="partner-meta-top">
                     <div class="hero-label">attorney</div>
                   </div>
 
                   <h3 class="partner-name">Sarah Sutton</h3>
-                  <p class="partner-subtitle">
-                    Real Estate Attorney · Sutton Legal Group
-                  </p>
+                  <p class="partner-subtitle">Real Estate Attorney · Sutton Legal Group</p>
 
                   <div class="partner-details">
                     <div><strong>Office:</strong> <a href="tel:+17733402678">773.340.2678</a></div>
                     <div><strong>Email:</strong> <a href="mailto:sarah@suttonlegalgroup.com">sarah@suttonlegalgroup.com</a></div>
                     <div><strong>Address:</strong> 333 S Wabash Ave, Suite 2700 · Chicago, IL 60604</div>
-                    <div><strong>Website:</strong> <a href="https://www.suttonlegalgroup.com/" target="_blank" rel="noopener">suttonlegalgroup.com</a></div>
+                    <div>
+                      <strong>Website:</strong>
+                      <a href="https://www.suttonlegalgroup.com/" target="_blank" rel="noopener">suttonlegalgroup.com</a>
+                    </div>
                   </div>
 
                   <div class="partner-actions">
@@ -381,22 +266,22 @@
             <div class="partner-list">
               <!-- Stephen W. Wrought -->
               <div class="partner-card">
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
-                </div>
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                <div class="partner-media-row" aria-hidden="true">
+                  <div class="partner-media partner-logo">
+                    <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-media partner-headshot">
+                    <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                  </div>
                 </div>
 
-                <div>
+                <div class="partner-content">
                   <div class="partner-meta-top">
                     <div class="hero-label">inspector (city)</div>
                   </div>
 
                   <h3 class="partner-name">Stephen W. Wrought</h3>
-                  <p class="partner-subtitle">
-                    Owner / Inspector · HouseCall Inspections LLC
-                  </p>
+                  <p class="partner-subtitle">Owner / Inspector · HouseCall Inspections LLC</p>
 
                   <div class="partner-details">
                     <div><strong>Office:</strong> <a href="tel:+17734260458">773.426.0458</a></div>
@@ -412,22 +297,22 @@
 
               <!-- Kevin Raugstad -->
               <div class="partner-card">
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
-                </div>
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                <div class="partner-media-row" aria-hidden="true">
+                  <div class="partner-media partner-logo">
+                    <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-media partner-headshot">
+                    <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                  </div>
                 </div>
 
-                <div>
+                <div class="partner-content">
                   <div class="partner-meta-top">
                     <div class="hero-label">inspector (suburbs)</div>
                   </div>
 
                   <h3 class="partner-name">Kevin Raugstad</h3>
-                  <p class="partner-subtitle">
-                    Owner / Inspector · Dynamic Home Inspection Services LLC
-                  </p>
+                  <p class="partner-subtitle">Owner / Inspector · Dynamic Home Inspection Services LLC</p>
 
                   <div class="partner-details">
                     <div><strong>Office:</strong> <a href="tel:+18477210630">847.721.0630</a></div>
@@ -458,22 +343,22 @@
             <div class="partner-list">
               <!-- STI Moving & Storage -->
               <div class="partner-card">
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
-                </div>
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                <div class="partner-media-row" aria-hidden="true">
+                  <div class="partner-media partner-logo">
+                    <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-media partner-headshot">
+                    <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                  </div>
                 </div>
 
-                <div>
+                <div class="partner-content">
                   <div class="partner-meta-top">
                     <div class="hero-label">movers</div>
                   </div>
 
                   <h3 class="partner-name">STI Moving &amp; Storage</h3>
-                  <p class="partner-subtitle">
-                    Local Chicago movers · Residential moves, building coordination, and storage options.
-                  </p>
+                  <p class="partner-subtitle">Local Chicago movers · Residential moves, building coordination, and storage options.</p>
 
                   <div class="partner-details">
                     <div><strong>Phone:</strong> <a href="tel:+18476751223">847.675.1223</a></div>
@@ -503,14 +388,16 @@
             <div class="partner-list">
               <!-- Placeholder template card -->
               <div class="partner-card">
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
-                </div>
-                <div class="partner-media" aria-hidden="true">
-                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                <div class="partner-media-row" aria-hidden="true">
+                  <div class="partner-media partner-logo">
+                    <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-media partner-headshot">
+                    <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                  </div>
                 </div>
 
-                <div>
+                <div class="partner-content">
                   <div class="partner-meta-top">
                     <div class="hero-label">trade</div>
                   </div>
@@ -535,7 +422,7 @@
               </div>
             </div>
 
-            <div style="margin-top: 1rem; color: var(--treg-slate); max-width: 900px; line-height: 1.65;">
+            <div class="partner-tip">
               Tip: when you add real logos/headshots later, just replace the image source in each card. For example:
               <br />
               <code>/assets/img/partners/mike-scaccia-logo.png</code> and <code>/assets/img/partners/mike-scaccia.jpg</code>
