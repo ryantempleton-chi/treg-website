@@ -1,9 +1,3 @@
-<!-- =========================
-     sell.html (FULL - updated)
-     Fixes:
-     - First tab is active by default
-     - Waits for process-timeline.js to define window.TREG.initProcessTimeline
-     ========================= -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,7 +17,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
-    <link rel="stylesheet" href="/assets/css/process-timeline.css" />
   </head>
 
   <body>
@@ -39,295 +32,36 @@
             <h1 class="hero-title">sell with treg.</h1>
 
             <p class="hero-subtitle" style="max-width: 880px;">
-              A strategic, step-by-step approach to selling — from pricing and prep to marketing, showings, and offers —
-              with a focus on clarity, communication, and strong presentation.
+              A strategic, modern approach to selling in Chicago — pricing guidance, prep support, and marketing that gets
+              attention (and results).
             </p>
 
             <div class="btn-row" style="margin-top: 1.4rem;">
               <a href="/intake.html?service=sell" class="btn btn-primary">start seller intake</a>
+              <a href="/sell-process.html" class="btn btn-ghost">view the full sell process</a>
               <a href="tel:+13126759379" class="btn btn-ghost">call (312) 675-9379</a>
             </div>
           </div>
         </section>
 
-        <!-- TIMELINE (interactive) -->
-        <section class="section">
-          <div class="container service-timeline sell-timeline" aria-label="Home selling timeline">
-            <div class="timeline-head">
-              <h2 class="section-heading">the selling process</h2>
-              <p class="section-lede">
-                Select a step to see what happens next — and how we keep the sale organized, strategic, and calm.
-              </p>
-            </div>
-
-            <!-- Timeline graphic -->
-            <div class="process-timeline" role="tablist" aria-label="Selling process steps">
-              <div class="process-line" aria-hidden="true"></div>
-
-              <!-- 1: CONSULT + PLAN -->
-              <div class="process-step">
-                <div class="process-step-title">consult + plan</div>
-
-                <button
-                  id="tab-consult"
-                  class="process-step-btn is-active"
-                  type="button"
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="step-panel"
-                  data-step="consult"
-                  style="--step-color: #f4eee6"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <path d="M9 2h6v4H9z"></path>
-                    <path d="M4 6h16v16H4z"></path>
-                    <path d="M8 10h8"></path>
-                    <path d="M8 14h8"></path>
-                    <path d="M8 18h6"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>goals + timing</li>
-                  <li>property walkthrough</li>
-                  <li>game plan</li>
-                </ul>
-              </div>
-
-              <!-- 2: PRICING -->
-              <div class="process-step">
-                <div class="process-step-title">pricing</div>
-
-                <button
-                  id="tab-pricing"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="pricing"
-                  style="--step-color: #e7ddcf"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <path d="M3 3v18h18"></path>
-                    <path d="m19 9-5 5-4-4-4 4"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>comps + competition</li>
-                  <li>positioning</li>
-                  <li>pricing strategy</li>
-                </ul>
-              </div>
-
-              <!-- 3: PREP -->
-              <div class="process-step">
-                <div class="process-step-title">prep</div>
-
-                <button
-                  id="tab-prep"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="prep"
-                  style="--step-color: #dccbb8"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M14 4a2 2 0 0 1 1.8 1.1l.5.9A2 2 0 0 0 18 7h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2a2 2 0 0 0 1.7-1l.5-.9A2 2 0 0 1 10 4z"
-                    ></path>
-                    <circle cx="12" cy="13" r="3"></circle>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>repairs + touch-ups</li>
-                  <li>staging guidance</li>
-                  <li>photo-ready</li>
-                </ul>
-              </div>
-
-              <!-- 4: LAUNCH -->
-              <div class="process-step">
-                <div class="process-step-title">launch</div>
-
-                <button
-                  id="tab-launch"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="launch"
-                  style="--step-color: #d8c7b3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"></path>
-                    <path d="M7.8 4.7a6.14 6.14 0 0 0-.8 7.5"></path>
-                    <circle cx="12" cy="9" r="2"></circle>
-                    <path d="M16.2 4.8c2 2 2.26 5.11.8 7.47"></path>
-                    <path d="M19.1 1.9a9.96 9.96 0 0 1 0 14.1"></path>
-                    <path d="M9.5 18h5"></path>
-                    <path d="m8 22 4-11 4 11"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>photos + listing copy</li>
-                  <li>MLS + marketing</li>
-                  <li>strong first impression</li>
-                </ul>
-              </div>
-
-              <!-- 5: SHOWINGS + OFFERS -->
-              <div class="process-step">
-                <div class="process-step-title">showings + offers</div>
-
-                <button
-                  id="tab-offers"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="offers"
-                  style="--step-color: #c9b8a4"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>feedback + adjustments</li>
-                  <li>negotiation strategy</li>
-                  <li>choose the best offer</li>
-                </ul>
-              </div>
-
-              <!-- 6: CONTRACT TO CLOSE -->
-              <div class="process-step">
-                <div class="process-step-title">contract to close</div>
-
-                <button
-                  id="tab-closing"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="closing"
-                  style="--step-color: #bfa889"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12.35 21H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 .71-1.53l7-6a2 2 0 0 1 2.58 0l7 6A2 2 0 0 1 21 10v2.35"
-                    ></path>
-                    <path d="M14.8 12.4A1 1 0 0 0 14 12h-4a1 1 0 0 0-1 1v8"></path>
-                    <path d="M15 18h6"></path>
-                    <path d="M18 15v6"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>inspection + appraisal</li>
-                  <li>attorney coordination</li>
-                  <li>final walkthrough + closing</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Locked-height description panel -->
-            <div class="timeline-panel" id="step-panel" role="tabpanel" aria-live="polite">
-              <h3 class="timeline-title" data-title></h3>
-              <div class="timeline-body" data-body></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION: WHAT TO EXPECT -->
+        <!-- SECTION: PRICING + MARKETING -->
         <section class="section section-muted">
           <div class="container">
-            <h2 class="section-heading">selling with a plan, not guesswork</h2>
+            <h2 class="section-heading">pricing + marketing that’s built to win</h2>
 
             <p class="section-lede" style="max-width: 820px;">
-              A great sale starts with strategy and preparation — then strong marketing and clear communication.
+              Great outcomes come from the right prep, the right price, and a plan that creates urgency without feeling
+              salesy.
             </p>
 
             <div class="section-grid two">
               <div>
                 <ul>
-                  <li><strong>Honest pricing guidance</strong> based on data, condition, and timing.</li>
-                  <li><strong>Prep and staging recommendations</strong> that fit your budget and bandwidth.</li>
-                  <li><strong>Modern marketing</strong> with professional photos and thoughtful listing copy.</li>
-                  <li><strong>Structured showings</strong> with clear updates and feedback.</li>
-                  <li><strong>Offer strategy</strong> tailored to your priorities and risk tolerance.</li>
+                  <li><strong>Pricing strategy</strong> — comps, positioning, timing, and the price that brings buyers to the table.</li>
+                  <li><strong>Prep + presentation</strong> — checklist, vendors, and recommendations that make the home show better.</li>
+                  <li><strong>Modern marketing</strong> — photography, copy, distribution, and buyer targeting.</li>
+                  <li><strong>Negotiation</strong> — terms, timing, credits, and protecting your bottom line.</li>
+                  <li><strong>Clear timeline</strong> — from list to close with fewer surprises.</li>
                 </ul>
 
                 <div class="btn-row" style="justify-content: flex-start; margin-top: 1.2rem;">
@@ -339,31 +73,25 @@
               <div>
                 <h3 class="section-heading" style="font-size: 1rem;">a great fit for</h3>
                 <ul>
-                  <li>Owners selling a condo, townhome, or single-family home in Chicago.</li>
-                  <li>Sellers balancing a buy-and-sell at the same time.</li>
-                  <li>Clients moving city ↔ suburbs and needing a coordinated plan.</li>
+                  <li>Homeowners who want a proactive plan, not reactive updates.</li>
+                  <li>Sellers balancing timeline + net proceeds + next move.</li>
+                  <li>Owners who want prep help and vendor referrals they can trust.</li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- SECTION: CHICAGO + SUBURBS -->
+        <!-- SECTION: REVIEWS -->
         <section class="section">
           <div class="container">
-            <h2 class="section-heading">chicago, neighborhoods, and beyond</h2>
-
+            <h2 class="section-heading">proof matters</h2>
             <p class="section-lede" style="max-width: 780px;">
-              Whether your property is in the city or outside it, we’ll help you position it thoughtfully within the broader market.
-            </p>
-
-            <p style="max-width: 880px;">
-              We’ll talk through how your home compares to nearby listings and recent sales — and how buyers are behaving in your price
-              bracket — so we can choose a strategy that protects your timeline and bottom line.
+              Real reviews from real clients — clear communication, strong strategy, and a calm process.
             </p>
 
             <div class="btn-row">
-              <a href="/neighborhoods.html" class="btn btn-ghost">browse neighborhood guides</a>
+              <a href="/reviews.html" class="btn btn-ghost">read client reviews</a>
             </div>
           </div>
         </section>
@@ -371,17 +99,17 @@
         <!-- FINAL CTA -->
         <section class="section section-cta">
           <div class="container">
-            <div class="section-cta-title">thinking about selling?</div>
+            <div class="section-cta-title">ready to take the next step?</div>
 
             <div class="section-cta-text">
-              Answer a few quick questions and we’ll help you evaluate pricing, timing, and next steps with clarity and confidence.
+              Answer a few quick questions and we’ll map a selling plan that fits your goals, timeline, and market.
             </div>
 
-            <div class="section-cta-meta">the templeton real estate group · chicago &amp; surrounding suburbs</div>
+            <div class="section-cta-meta">the templeton real estate group · chicago &amp; suburbs</div>
 
             <div class="btn-row" style="justify-content: center;">
               <a href="/intake.html?service=sell" class="btn btn-primary">start seller intake</a>
-              <a href="mailto:ryan@ryantempleton.com" class="btn btn-ghost">email our team</a>
+              <a href="/sell-process.html" class="btn btn-ghost">view the full sell process</a>
             </div>
           </div>
         </section>
@@ -392,63 +120,5 @@
     </div>
 
     <script src="/assets/js/layout.js" defer></script>
-    <script src="/assets/js/process-timeline.js" defer></script>
-
-    <!-- Page-specific content for the shared timeline component -->
-    <script>
-      (function initSellTimelineWhenReady() {
-        if (!window.TREG || typeof window.TREG.initProcessTimeline !== "function") {
-          return setTimeout(initSellTimelineWhenReady, 25);
-        }
-
-        window.TREG.initProcessTimeline(
-          {
-            consult: {
-              title: "Consultation & Plan",
-              body: `
-                <p>We start with your goals, timing, and what a successful sale looks like. Then we do a walkthrough (virtual or in-person) to understand condition, layout, and your home’s best selling points.</p>
-                <p>From there, we map the plan: prep priorities, marketing timeline, and how we’ll communicate through each phase.</p>
-              `,
-            },
-            pricing: {
-              title: "Pricing & Positioning",
-              body: `
-                <p>Pricing isn’t just a number — it’s positioning. We’ll review comps, current competition, and buyer behavior to recommend a strategy that makes sense for your goals and the market.</p>
-                <p>You’ll understand the “why” behind the number, and how we’re planning to win attention (and strong offers) when your listing goes live.</p>
-              `,
-            },
-            prep: {
-              title: "Prep, Repairs & Presentation",
-              body: `
-                <p>We’ll identify what’s worth doing — and what isn’t. That may include minor repairs, paint, decluttering, light staging, or simply better furniture placement and styling.</p>
-                <p>The goal is the same every time: maximize first impressions without overspending.</p>
-              `,
-            },
-            launch: {
-              title: "Photos, Marketing & Launch",
-              body: `
-                <p>Once the home is ready, we coordinate professional photography and craft listing copy that tells the right story. Then we launch thoughtfully on MLS and major platforms with a clean, modern presentation.</p>
-                <p>Strong marketing isn’t louder — it’s clearer. We focus on what buyers care about and how your home compares.</p>
-              `,
-            },
-            offers: {
-              title: "Showings, Feedback & Offers",
-              body: `
-                <p>We manage showings and keep you updated on activity and feedback. If the market speaks differently than the data did, we’ll talk through adjustments and act quickly.</p>
-                <p>When offers arrive, we evaluate the full picture — price, terms, timing, and buyer strength — and negotiate with a strategy that protects you.</p>
-              `,
-            },
-            closing: {
-              title: "Contract to Closing",
-              body: `
-                <p>After you’re under contract, we stay on top of the moving parts: attorney coordination, inspection, appraisal (if needed), timelines, and final logistics.</p>
-                <p>We aim for fewer surprises, clearer communication, and a smooth handoff — all the way to closing day.</p>
-              `,
-            },
-          },
-          "consult"
-        );
-      })();
-    </script>
   </body>
 </html>
