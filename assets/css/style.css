@@ -1,3 +1,4 @@
+/* style.css (copy/paste) */
 /* =======================================
    BASE STYLES – TREG BRAND
    style.css (clean + consolidated)
@@ -6,6 +7,7 @@
    - SERHANT-style mega menu
    - Global hero/sections/buttons/footer/team
    - Mobile: overflow guard + header/menu/footer polish
+   - Partners page styles (global, page-specific classes)
    ======================================= */
 
 /* =========================
@@ -106,19 +108,15 @@ a {
   border-bottom: 1px solid #e5e1d8;
 }
 
-/* RECOMMENDATION:
-   Use the same horizontal gutters as the rest of the site.
-   This prevents the logo (and everything else) from feeling tight to the edges. */
+/* Use the same horizontal gutters as the rest of the site. */
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 
-  /* was: padding: 1.1rem 0; */
   padding: 1.1rem var(--container-pad);
-
-  position: relative; /* allows future positioning without layout hacks */
+  position: relative;
 }
 
 /* Logo */
@@ -397,7 +395,6 @@ a {
   align-items: start;
   overflow: hidden;
 
-  /* reserve space for the big corner mark */
   padding-right: clamp(180px, 22vw, 320px);
 }
 
@@ -896,10 +893,10 @@ li + li {
   text-decoration: none;
 }
 
-.page-actions {
-  margin-top: 1.25rem;
+/* Common button row helper (used all over the site) */
+.btn-row {
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -943,27 +940,21 @@ li + li {
 
 /* =======================================
    MOBILE: HEADER SIMPLIFY + ALIGNMENT
-   - Hide desktop nav links (use MENU button)
-   - Center logo, menu button on right
    ======================================= */
 @media (max-width: 720px) {
-  /* Hide desktop nav entirely */
   .nav {
     display: none;
   }
 
-  /* Header layout: logo left, menu right */
   .header-inner {
     justify-content: space-between;
     gap: 0.75rem;
   }
 
-  /* Slightly smaller logo */
   .logo-img {
     height: 40px;
   }
 
-  /* Reset menu button positioning (no absolute) */
   .menu-btn {
     position: static;
     transform: none;
@@ -972,13 +963,8 @@ li + li {
 
 /* =======================================
    MOBILE: BIG MENU (MEGA MENU) OPTIMIZATION
-   - True modal sizing on mobile
-   - Sticky top bar
-   - Single-column stack
-   - Hide huge left word-stack on mobile
    ======================================= */
 @media (max-width: 900px) {
-  /* Make panel feel like a true mobile modal */
   .menu-panel {
     top: 12px;
     left: 12px;
@@ -988,14 +974,12 @@ li + li {
     border-radius: 22px;
   }
 
-  /* Allow inside to scroll */
   .menu-panel-inner {
     max-height: calc(100svh - 24px);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Sticky top row */
   .menu-panel-top {
     position: sticky;
     top: 0;
@@ -1007,7 +991,6 @@ li + li {
     margin-bottom: 0.75rem;
   }
 
-  /* Stack into one column */
   .menu-layout {
     display: flex;
     flex-direction: column;
@@ -1016,12 +999,10 @@ li + li {
     overflow: visible;
   }
 
-  /* Critical: hide the big left “buy/sell/rent” layer on mobile */
   .menu-primary {
     display: none;
   }
 
-  /* CTA row: full-width buttons */
   .menu-cta-row {
     justify-content: stretch;
     padding-right: 0;
@@ -1037,7 +1018,6 @@ li + li {
     justify-content: center;
   }
 
-  /* Secondary cards become full-width stack */
   .menu-secondary {
     border-left: none;
     padding-left: 0;
@@ -1070,7 +1050,6 @@ li + li {
   }
 }
 
-/* Extra-small polish */
 @media (max-width: 520px) {
   .menu-panel {
     left: 10px;
@@ -1107,8 +1086,168 @@ li + li {
     gap: 0.6rem 1rem;
   }
 }
+
 /* =======================================
-   PARTNERS PAGE
-   - Partner cards (logo + headshot + details)
-   - Mobile: logo/headshot side-by-side
+   PARTNERS PAGE ONLY (GLOBAL CLASSES)
+   partners.html uses these classes
+   - Desktop: media left, content right
+   - Mobile: media row (logo+headshot side-by-side), content below
    ======================================= */
+
+.partners-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+/* Category spacing */
+.partner-category {
+  scroll-margin-top: 92px;
+}
+
+/* Note box on partners page */
+.partner-note {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.1rem 1.15rem;
+  max-width: 980px;
+}
+
+/* Partner list layout */
+.partner-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+/* Card layout: left media row column + right content */
+.partner-card {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+/* The two images (logo + headshot) */
+.partner-media-row {
+  display: grid;
+  grid-template-columns: 90px 90px;
+  gap: 0.95rem;
+  align-content: start;
+}
+
+.partner-media {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  background: var(--treg-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content */
+.partner-content {
+  min-width: 0;
+}
+
+.partner-meta-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.65rem;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
+.partner-name {
+  margin: 0;
+}
+
+.partner-subtitle {
+  margin: 0.15rem 0 0.65rem;
+  color: var(--treg-slate);
+  line-height: 1.6;
+  max-width: 72ch;
+}
+
+.partner-details {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.2rem 0 0.85rem;
+  color: var(--treg-slate);
+  line-height: 1.6;
+}
+
+.partner-details div strong {
+  color: var(--treg-charcoal);
+}
+
+.partner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: flex-start;
+}
+
+/* Mid-size screens: slightly smaller media */
+@media (max-width: 760px) {
+  .partner-card {
+    grid-template-columns: 156px 1fr;
+  }
+
+  .partner-media-row {
+    grid-template-columns: 72px 72px;
+    gap: 0.75rem;
+  }
+
+  .partner-media {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* Small mobile: images side-by-side, content below */
+@media (max-width: 520px) {
+  .partner-card {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-media-row {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .partner-media {
+    width: 84px;
+    height: 84px;
+  }
+
+  .partner-content {
+    margin-top: 0.25rem;
+  }
+}
+
+/* Small helper tip block on partners page */
+.partner-tip {
+  margin-top: 1rem;
+  color: var(--treg-slate);
+  max-width: 900px;
+  line-height: 1.65;
+}
