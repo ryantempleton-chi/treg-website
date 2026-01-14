@@ -19,89 +19,128 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="icon" href="/faviconRT.ico" />
 
-    <!-- Partners page-only styles -->
+    <!-- Canonical (keeps things clean if you stick with /partners.html) -->
+    <link rel="canonical" href="https://ryantempleton.com/partners.html" />
+
     <style>
-      .partner-cards {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
+      /* ======================================= */
+      /* PARTNERS PAGE ONLY                      */
+      /* partners.html                            */
+      /* ======================================= */
+
+      .partners-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        justify-content: flex-start;
         margin-top: 1rem;
       }
 
-      .partner-card {
+      /* Category spacing */
+      .partner-category {
+        scroll-margin-top: 92px; /* helps when clicking anchors with a sticky header */
+      }
+
+      /* Partner list layout */
+      .partner-list {
         display: grid;
-        grid-template-columns: 160px 1fr;
-        gap: 1.25rem;
-        padding: 1.15rem 1.25rem;
-        background: #fff;
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      /* Card layout: left rail (logo + photo) + right content */
+      .partner-card {
         border: 1px solid rgba(0, 0, 0, 0.06);
+        background: #fff;
         border-radius: 16px;
-        margin-left: 1.4rem; /* shifts the data card to the right */
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: 90px 90px 1fr;
+        gap: 0.95rem;
+        align-items: start;
       }
 
       .partner-media {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.65rem;
-        align-content: start;
-      }
-
-      .partner-logo-wrap,
-      .partner-photo-wrap {
-        background: #f6f6f6;
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        width: 90px;
+        height: 90px;
         border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
         overflow: hidden;
-        aspect-ratio: 1 / 1;
+        background: var(--treg-cream);
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
-      .partner-photo-wrap {
-        border-radius: 50%;
-      }
-
-      .partner-logo-img,
-      .partner-photo-img {
+      .partner-media img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
       }
 
+      .partner-meta-top {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem 0.65rem;
+        align-items: baseline;
+        margin-bottom: 0.35rem;
+      }
+
       .partner-name {
-        font-weight: 700;
-        margin: 0 0 0.2rem;
+        margin: 0;
       }
 
       .partner-subtitle {
-        margin: 0 0 0.55rem;
+        margin: 0.15rem 0 0.65rem;
         color: var(--treg-slate);
-        line-height: 1.55;
+        line-height: 1.6;
+        max-width: 72ch;
       }
 
-      .partner-meta {
-        margin: 0.2rem 0 0;
+      .partner-details {
+        display: grid;
+        gap: 0.35rem;
+        margin: 0.2rem 0 0.85rem;
         color: var(--treg-slate);
-        line-height: 1.55;
-        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .partner-details div strong {
+        color: var(--treg-charcoal);
       }
 
       .partner-actions {
         display: flex;
-        gap: 0.6rem;
         flex-wrap: wrap;
-        margin-top: 0.85rem;
+        gap: 0.6rem;
+        justify-content: flex-start;
       }
 
-      @media (max-width: 720px) {
+      /* Mobile */
+      @media (max-width: 760px) {
         .partner-card {
-          grid-template-columns: 1fr;
-          margin-left: 0;
+          grid-template-columns: 72px 72px 1fr;
         }
         .partner-media {
-          grid-template-columns: 88px 88px;
+          width: 72px;
+          height: 72px;
+          border-radius: 12px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .partner-card {
+          grid-template-columns: 1fr;
+        }
+        .partner-card .partner-media {
+          width: 84px;
+          height: 84px;
+        }
+        .partner-card .partner-media:nth-child(1),
+        .partner-card .partner-media:nth-child(2) {
+          display: inline-flex;
+          margin-right: 0.6rem;
         }
       }
     </style>
@@ -136,11 +175,11 @@
           <div class="container">
             <h2 class="section-heading">partner list</h2>
             <p class="section-lede" style="max-width: 860px;">
-              Looking for something specific? Jump to a category below — or reach out and we’ll match you with the best option
-              for your timeline and property type.
+              Want the best match for your scenario (first-time buyer, condo vs. SFH, investor timeline, etc.)?
+              Tell us what you’re doing and we’ll point you to the right person.
             </p>
 
-            <div class="btn-row" style="justify-content: flex-start; flex-wrap: wrap; margin-top: 1rem;">
+            <div class="partners-jump">
               <a class="btn btn-ghost" href="#lenders">lenders</a>
               <a class="btn btn-ghost" href="#attorneys">attorneys</a>
               <a class="btn btn-ghost" href="#inspectors">inspectors</a>
@@ -159,54 +198,53 @@
               <h3 style="margin:0 0 0.4rem;">a quick note on referrals</h3>
               <p style="margin:0; color:var(--treg-slate); line-height:1.65;">
                 These referrals are shared as a convenience based on past client experience. You’re always free to choose any provider.
-                We don’t guarantee pricing, timelines, or outcomes — but we do prioritize partners who are responsive, professional, and
-                consistent.
+                We don’t guarantee pricing, timelines, or outcomes — but we do prioritize partners who are responsive, professional,
+                and consistent.
               </p>
             </div>
           </div>
         </section>
 
         <!-- CATEGORY: LENDERS -->
-        <section class="section section-muted" id="lenders">
+        <section class="section section-muted partner-category" id="lenders">
           <div class="container">
             <h2 class="section-heading">lenders</h2>
             <p class="section-lede" style="max-width: 860px;">
-              Strong pre-approvals, clear communication, and fast underwriting — especially important in competitive situations.
+              Strong pre-approvals, clear communication, and fast underwriting — especially important when the pace picks up.
+              If you tell us your price point, property type, and timeline, we’ll help match you with the best fit.
             </p>
 
-            <div class="partner-cards">
+            <div class="partner-list">
               <!-- Mike Scaccia -->
               <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo-wrap">
-                    <img
-                      class="partner-logo-img"
-                      src="/assets/img/partners/placeholder-logo.png"
-                      alt=""
-                    />
-                    <!-- If you haven't created the logo placeholder yet, swap to:
-                         src="/assets/img/team/placeholder.jpg"
-                    -->
-                  </div>
-                  <div class="partner-photo-wrap">
-                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
-                  </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
                 </div>
 
                 <div>
-                  <div class="hero-label">lender</div>
-                  <h3 class="partner-name">Mike Scaccia — LeaderOne Financial Corporation</h3>
-                  <p class="partner-subtitle">VP of Mortgage Lending · NMLS #1443090</p>
+                  <div class="partner-meta-top">
+                    <div class="hero-label">lender</div>
+                  </div>
 
-                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+17088229809">708.822.9809</a></p>
-                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:MikeScaccia@leader1.com">MikeScaccia@leader1.com</a></p>
-                  <p class="partner-meta">
-                    <strong>Address:</strong> 1111 W 22nd St, Suite 620 · Oak Brook, IL 60523
+                  <h3 class="partner-name">Mike Scaccia</h3>
+                  <p class="partner-subtitle">
+                    VP of Mortgage Lending · LeaderOne Financial Corporation
                   </p>
 
+                  <div class="partner-details">
+                    <div><strong>NMLS:</strong> 1443090</div>
+                    <div><strong>Office:</strong> <a href="tel:+17088229809">708.822.9809</a></div>
+                    <div><strong>Email:</strong> <a href="mailto:MikeScaccia@leader1.com">MikeScaccia@leader1.com</a></div>
+                    <div><strong>Address:</strong> 1111 W 22nd St, Suite 620 · Oak Brook, IL 60523</div>
+                    <div><strong>Website:</strong> <a href="https://www.leaderonefinancial.com/mlo/mike-scaccia" target="_blank" rel="noopener">leaderonefinancial.com</a></div>
+                  </div>
+
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="https://www.leaderonefinancial.com/mlo/mike-scaccia" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="mailto:MikeScaccia@leader1.com">email</a>
+                    <a class="btn btn-ghost" href="https://www.leaderonefinancial.com/mlo/mike-scaccia" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -214,27 +252,34 @@
 
               <!-- Mike Del Preto -->
               <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo-wrap">
-                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
-                  </div>
-                  <div class="partner-photo-wrap">
-                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
-                  </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
                 </div>
 
                 <div>
-                  <div class="hero-label">lender</div>
-                  <h3 class="partner-name">Mike Del Preto — A and N Mortgage Services</h3>
-                  <p class="partner-subtitle">SVP of Mortgage Lending · NMLS #230942</p>
+                  <div class="partner-meta-top">
+                    <div class="hero-label">lender</div>
+                  </div>
 
-                  <p class="partner-meta"><strong>Cell:</strong> <a href="tel:+17088229809">708.822.9809</a></p>
-                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:mike@delpretoteam.com">mike@delpretoteam.com</a></p>
-                  <p class="partner-meta"><strong>Address:</strong> 1945 N Elston Ave · Chicago, IL 60642</p>
+                  <h3 class="partner-name">Mike Del Preto</h3>
+                  <p class="partner-subtitle">
+                    SVP of Mortgage Lending · A and N Mortgage Services
+                  </p>
+
+                  <div class="partner-details">
+                    <div><strong>NMLS:</strong> 230942</div>
+                    <div><strong>Phone:</strong> <a href="tel:+17088229809">708.822.9809</a></div>
+                    <div><strong>Email:</strong> <a href="mailto:mike@delpretoteam.com">mike@delpretoteam.com</a></div>
+                    <div><strong>Address:</strong> 1945 N Elston Ave · Chicago, IL 60642</div>
+                    <div><strong>Website:</strong> <a href="https://delpretomortgage.com/" target="_blank" rel="noopener">delpretomortgage.com</a></div>
+                  </div>
 
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="https://delpretomortgage.com/" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="mailto:mike@delpretoteam.com">email</a>
+                    <a class="btn btn-ghost" href="https://delpretomortgage.com/" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -244,37 +289,44 @@
         </section>
 
         <!-- CATEGORY: ATTORNEYS -->
-        <section class="section" id="attorneys">
+        <section class="section partner-category" id="attorneys">
           <div class="container">
             <h2 class="section-heading">attorneys</h2>
             <p class="section-lede" style="max-width: 860px;">
               Clear advice, responsive review, and calm negotiation through attorney review, inspection, and closing.
+              The right attorney can reduce friction, spot issues early, and keep the timeline moving.
             </p>
 
-            <div class="partner-cards">
+            <div class="partner-list">
               <!-- Nick Baumgartner -->
               <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo-wrap">
-                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
-                  </div>
-                  <div class="partner-photo-wrap">
-                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
-                  </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
                 </div>
 
                 <div>
-                  <div class="hero-label">attorney</div>
-                  <h3 class="partner-name">Nick Baumgartner — Law Office of Damon M. Fisch, P.C.</h3>
-                  <p class="partner-subtitle">Real Estate Attorney</p>
+                  <div class="partner-meta-top">
+                    <div class="hero-label">attorney</div>
+                  </div>
 
-                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+16308579511">630.857.9511</a></p>
-                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:nrb@fisch.law">nrb@fisch.law</a></p>
-                  <p class="partner-meta"><strong>Address:</strong> 22 W Chicago Ave, Suite 204 · Naperville, IL 60540</p>
+                  <h3 class="partner-name">Nick Baumgartner</h3>
+                  <p class="partner-subtitle">
+                    Real Estate Attorney · Law Office of Damon M. Fisch, P.C.
+                  </p>
+
+                  <div class="partner-details">
+                    <div><strong>Office:</strong> <a href="tel:+16308579511">630.857.9511</a></div>
+                    <div><strong>Email:</strong> <a href="mailto:nrb@fisch.law">nrb@fisch.law</a></div>
+                    <div><strong>Address:</strong> 22 W Chicago Ave, Suite 204 · Naperville, IL 60540</div>
+                    <div><strong>Website:</strong> <a href="https://www.fisch.law" target="_blank" rel="noopener">fisch.law</a></div>
+                  </div>
 
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="https://www.fisch.law" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="mailto:nrb@fisch.law">email</a>
+                    <a class="btn btn-ghost" href="https://www.fisch.law" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -282,27 +334,33 @@
 
               <!-- Sarah Sutton -->
               <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo-wrap">
-                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
-                  </div>
-                  <div class="partner-photo-wrap">
-                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
-                  </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
                 </div>
 
                 <div>
-                  <div class="hero-label">attorney</div>
-                  <h3 class="partner-name">Sarah Sutton — Sutton Legal Group</h3>
-                  <p class="partner-subtitle">Real Estate Attorney</p>
+                  <div class="partner-meta-top">
+                    <div class="hero-label">attorney</div>
+                  </div>
 
-                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+17733402678">773.340.2678</a></p>
-                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:sarah@suttonlegalgroup.com">sarah@suttonlegalgroup.com</a></p>
-                  <p class="partner-meta"><strong>Address:</strong> 333 S Wabash Ave, Suite 2700 · Chicago, IL 60604</p>
+                  <h3 class="partner-name">Sarah Sutton</h3>
+                  <p class="partner-subtitle">
+                    Real Estate Attorney · Sutton Legal Group
+                  </p>
+
+                  <div class="partner-details">
+                    <div><strong>Office:</strong> <a href="tel:+17733402678">773.340.2678</a></div>
+                    <div><strong>Email:</strong> <a href="mailto:sarah@suttonlegalgroup.com">sarah@suttonlegalgroup.com</a></div>
+                    <div><strong>Address:</strong> 333 S Wabash Ave, Suite 2700 · Chicago, IL 60604</div>
+                    <div><strong>Website:</strong> <a href="https://www.suttonlegalgroup.com/" target="_blank" rel="noopener">suttonlegalgroup.com</a></div>
+                  </div>
 
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="https://www.suttonlegalgroup.com/" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="mailto:sarah@suttonlegalgroup.com">email</a>
+                    <a class="btn btn-ghost" href="https://www.suttonlegalgroup.com/" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -312,32 +370,38 @@
         </section>
 
         <!-- CATEGORY: INSPECTORS -->
-        <section class="section section-muted" id="inspectors">
+        <section class="section section-muted partner-category" id="inspectors">
           <div class="container">
             <h2 class="section-heading">inspectors</h2>
             <p class="section-lede" style="max-width: 860px;">
-              Thorough, clear reporting — and someone who can explain what matters vs. what’s normal maintenance.
+              Thorough reporting and practical guidance — especially helpful in Chicago where building age, condo systems,
+              and maintenance norms vary a lot. We like inspectors who explain what matters vs. what’s routine.
             </p>
 
-            <div class="partner-cards">
-              <!-- Stephen (City) -->
+            <div class="partner-list">
+              <!-- Stephen W. Wrought -->
               <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo-wrap">
-                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
-                  </div>
-                  <div class="partner-photo-wrap">
-                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
-                  </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
                 </div>
 
                 <div>
-                  <div class="hero-label">inspector · city</div>
-                  <h3 class="partner-name">Stephen W. Wrought — HouseCall Inspections LLC</h3>
-                  <p class="partner-subtitle">Owner / Inspector</p>
+                  <div class="partner-meta-top">
+                    <div class="hero-label">inspector (city)</div>
+                  </div>
 
-                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+17734260458">773.426.0458</a></p>
-                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:housecallinspectionsllc@gmail.com">housecallinspectionsllc@gmail.com</a></p>
+                  <h3 class="partner-name">Stephen W. Wrought</h3>
+                  <p class="partner-subtitle">
+                    Owner / Inspector · HouseCall Inspections LLC
+                  </p>
+
+                  <div class="partner-details">
+                    <div><strong>Office:</strong> <a href="tel:+17734260458">773.426.0458</a></div>
+                    <div><strong>Email:</strong> <a href="mailto:housecallinspectionsllc@gmail.com">housecallinspectionsllc@gmail.com</a></div>
+                  </div>
 
                   <div class="partner-actions">
                     <a class="btn btn-ghost" href="mailto:housecallinspectionsllc@gmail.com">email</a>
@@ -346,28 +410,34 @@
                 </div>
               </div>
 
-              <!-- Kevin (Suburbs) -->
+              <!-- Kevin Raugstad -->
               <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo-wrap">
-                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
-                  </div>
-                  <div class="partner-photo-wrap">
-                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
-                  </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
+                </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
                 </div>
 
                 <div>
-                  <div class="hero-label">inspector · suburbs</div>
-                  <h3 class="partner-name">Kevin Raugstad — Dynamic Home Inspection Services LLC</h3>
-                  <p class="partner-subtitle">Owner / Inspector</p>
+                  <div class="partner-meta-top">
+                    <div class="hero-label">inspector (suburbs)</div>
+                  </div>
 
-                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+18477210630">847.721.0630</a></p>
-                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:kevin@dynamichis.com">kevin@dynamichis.com</a></p>
+                  <h3 class="partner-name">Kevin Raugstad</h3>
+                  <p class="partner-subtitle">
+                    Owner / Inspector · Dynamic Home Inspection Services LLC
+                  </p>
+
+                  <div class="partner-details">
+                    <div><strong>Office:</strong> <a href="tel:+18477210630">847.721.0630</a></div>
+                    <div><strong>Email:</strong> <a href="mailto:kevin@dynamichis.com">kevin@dynamichis.com</a></div>
+                    <div><strong>Website:</strong> <a href="https://www.dynamichis.com/" target="_blank" rel="noopener">dynamichis.com</a></div>
+                  </div>
 
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="https://www.dynamichis.com/" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="mailto:kevin@dynamichis.com">email</a>
+                    <a class="btn btn-ghost" href="https://www.dynamichis.com/" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -376,29 +446,43 @@
           </div>
         </section>
 
-        <!-- CATEGORY: MOVERS (placeholders for now) -->
-        <section class="section" id="movers">
+        <!-- CATEGORY: MOVERS -->
+        <section class="section partner-category" id="movers">
           <div class="container">
             <h2 class="section-heading">movers</h2>
             <p class="section-lede" style="max-width: 860px;">
-              Reliable crews, clean communication, and the logistics experience that matters in Chicago buildings.
+              Reliable crews, clean communication, and the logistics experience that matters in Chicago buildings:
+              elevator reservations, COI requirements, tight staircases, and loading zones.
             </p>
 
-            <div class="partner-cards">
+            <div class="partner-list">
+              <!-- STI Moving & Storage -->
               <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo-wrap">
-                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
-                  </div>
-                  <div class="partner-photo-wrap">
-                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
-                  </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
                 </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                </div>
+
                 <div>
-                  <div class="hero-label">movers</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-subtitle">Great for: high-rises / elevator reservations / etc.</p>
+                  <div class="partner-meta-top">
+                    <div class="hero-label">movers</div>
+                  </div>
+
+                  <h3 class="partner-name">STI Moving &amp; Storage</h3>
+                  <p class="partner-subtitle">
+                    Local Chicago movers · Residential moves, building coordination, and storage options.
+                  </p>
+
+                  <div class="partner-details">
+                    <div><strong>Phone:</strong> <a href="tel:+18476751223">847.675.1223</a></div>
+                    <div><strong>Address:</strong> 7400 Niles Center Rd · Skokie, IL 60077</div>
+                    <div><strong>Website:</strong> <a href="https://www.stimovers.com/local-chicago-movers/" target="_blank" rel="noopener">stimovers.com</a></div>
+                  </div>
+
                   <div class="partner-actions">
+                    <a class="btn btn-ghost" href="https://www.stimovers.com/local-chicago-movers/" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -407,33 +491,54 @@
           </div>
         </section>
 
-        <!-- CATEGORY: OTHER (placeholders for now) -->
-        <section class="section section-muted" id="other">
+        <!-- CATEGORY: OTHER -->
+        <section class="section section-muted partner-category" id="other">
           <div class="container">
             <h2 class="section-heading">other</h2>
             <p class="section-lede" style="max-width: 860px;">
               Contractors, electricians, plumbers, handymen, cleaners, painters — the “who do you use for…” list.
+              Add as many as you’d like; the layout below is ready for plug-and-play.
             </p>
 
-            <div class="partner-cards">
+            <div class="partner-list">
+              <!-- Placeholder template card -->
               <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo-wrap">
-                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
-                  </div>
-                  <div class="partner-photo-wrap">
-                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
-                  </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder-logo.png" alt="" />
                 </div>
+                <div class="partner-media" aria-hidden="true">
+                  <img src="/assets/img/partners/placeholder.jpg" alt="" />
+                </div>
+
                 <div>
-                  <div class="hero-label">trade</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-subtitle">Category: electrician / plumber / contractor / etc.</p>
+                  <div class="partner-meta-top">
+                    <div class="hero-label">trade</div>
+                  </div>
+
+                  <h3 class="partner-name">Name Here</h3>
+                  <p class="partner-subtitle">
+                    Category: electrician / plumber / contractor / etc. Add a short note on what they’re best for.
+                  </p>
+
+                  <div class="partner-details">
+                    <div><strong>Phone:</strong> <a href="tel:+13125551234">(312) 555-1234</a></div>
+                    <div><strong>Email:</strong> <a href="mailto:hello@example.com">hello@example.com</a></div>
+                    <div><strong>Website:</strong> <a href="#" target="_blank" rel="noopener">example.com</a></div>
+                  </div>
+
                   <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:hello@example.com">email</a>
+                    <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">website</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div style="margin-top: 1rem; color: var(--treg-slate); max-width: 900px; line-height: 1.65;">
+              Tip: when you add real logos/headshots later, just replace the image source in each card. For example:
+              <br />
+              <code>/assets/img/partners/mike-scaccia-logo.png</code> and <code>/assets/img/partners/mike-scaccia.jpg</code>
             </div>
           </div>
         </section>
