@@ -19,9 +19,8 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="icon" href="/faviconRT.ico" />
 
-    <!-- Partners page-only tweaks -->
+    <!-- Partners page-only styles -->
     <style>
-      /* Card layout: [logo][photo] + content, with a subtle right shift */
       .partner-cards {
         display: grid;
         grid-template-columns: 1fr;
@@ -31,13 +30,13 @@
 
       .partner-card {
         display: grid;
-        grid-template-columns: 140px 1fr;
+        grid-template-columns: 160px 1fr;
         gap: 1.25rem;
         padding: 1.15rem 1.25rem;
         background: #fff;
         border: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: 16px;
-        margin-left: 1.4rem; /* 👈 shifts the "data card" to the right */
+        margin-left: 1.4rem; /* shifts the data card to the right */
       }
 
       .partner-media {
@@ -47,49 +46,59 @@
         align-content: start;
       }
 
-      .partner-logo,
-      .partner-photo {
+      .partner-logo-wrap,
+      .partner-photo-wrap {
+        background: #f6f6f6;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #f6f6f6;
-        color: #888;
-        border-radius: 12px;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        font-size: 0.7rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        aspect-ratio: 1 / 1;
-        user-select: none;
       }
 
-      .partner-photo {
+      .partner-photo-wrap {
         border-radius: 50%;
+      }
+
+      .partner-logo-img,
+      .partner-photo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
       }
 
       .partner-name {
         font-weight: 700;
-        margin: 0 0 0.25rem;
+        margin: 0 0 0.2rem;
       }
 
-      .partner-role {
-        margin: 0 0 0.5rem;
+      .partner-subtitle {
+        margin: 0 0 0.55rem;
         color: var(--treg-slate);
         line-height: 1.55;
+      }
+
+      .partner-meta {
+        margin: 0.2rem 0 0;
+        color: var(--treg-slate);
+        line-height: 1.55;
+        font-size: 0.95rem;
       }
 
       .partner-actions {
         display: flex;
         gap: 0.6rem;
         flex-wrap: wrap;
-        margin-top: 0.75rem;
+        margin-top: 0.85rem;
       }
 
-      /* Mobile: stack media above text */
       @media (max-width: 720px) {
         .partner-card {
           grid-template-columns: 1fr;
-          margin-left: 0; /* remove right shift on small screens */
+          margin-left: 0;
         }
         .partner-media {
           grid-template-columns: 88px 88px;
@@ -166,49 +175,66 @@
             </p>
 
             <div class="partner-cards">
+              <!-- Mike Scaccia -->
               <div class="partner-card">
                 <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
+                  <div class="partner-logo-wrap">
+                    <img
+                      class="partner-logo-img"
+                      src="/assets/img/partners/placeholder-logo.png"
+                      alt=""
+                    />
+                    <!-- If you haven't created the logo placeholder yet, swap to:
+                         src="/assets/img/team/placeholder.jpg"
+                    -->
+                  </div>
+                  <div class="partner-photo-wrap">
+                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
+                  </div>
                 </div>
-                <div class="partner-content">
+
+                <div>
                   <div class="hero-label">lender</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Ideal for: first-time buyers / condos / fast close / etc.</p>
+                  <h3 class="partner-name">Mike Scaccia — LeaderOne Financial Corporation</h3>
+                  <p class="partner-subtitle">VP of Mortgage Lending · NMLS #1443090</p>
+
+                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+17088229809">708.822.9809</a></p>
+                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:MikeScaccia@leader1.com">MikeScaccia@leader1.com</a></p>
+                  <p class="partner-meta">
+                    <strong>Address:</strong> 1111 W 22nd St, Suite 620 · Oak Brook, IL 60523
+                  </p>
+
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="https://www.leaderonefinancial.com/mlo/mike-scaccia" target="_blank" rel="noopener">website</a>
+                    <a class="btn btn-ghost" href="mailto:MikeScaccia@leader1.com">email</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
               </div>
 
+              <!-- Mike Del Preto -->
               <div class="partner-card">
                 <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
-                  <div class="hero-label">lender</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Ideal for: jumbo / self-employed / rate buydowns / etc.</p>
-                  <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  <div class="partner-logo-wrap">
+                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-photo-wrap">
+                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
                   </div>
                 </div>
-              </div>
 
-              <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
+                <div>
                   <div class="hero-label">lender</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Ideal for: investors / multi-units / DSCR / etc.</p>
+                  <h3 class="partner-name">Mike Del Preto — A and N Mortgage Services</h3>
+                  <p class="partner-subtitle">SVP of Mortgage Lending · NMLS #230942</p>
+
+                  <p class="partner-meta"><strong>Cell:</strong> <a href="tel:+17088229809">708.822.9809</a></p>
+                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:mike@delpretoteam.com">mike@delpretoteam.com</a></p>
+                  <p class="partner-meta"><strong>Address:</strong> 1945 N Elston Ave · Chicago, IL 60642</p>
+
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="https://delpretomortgage.com/" target="_blank" rel="noopener">website</a>
+                    <a class="btn btn-ghost" href="mailto:mike@delpretoteam.com">email</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -226,49 +252,57 @@
             </p>
 
             <div class="partner-cards">
+              <!-- Nick Baumgartner -->
               <div class="partner-card">
                 <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
+                  <div class="partner-logo-wrap">
+                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-photo-wrap">
+                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
+                  </div>
                 </div>
-                <div class="partner-content">
+
+                <div>
                   <div class="hero-label">attorney</div>
-                  <h3 class="partner-name">Name Here — Firm</h3>
-                  <p class="partner-role">Great for: first-time buyers / condo-heavy deals / etc.</p>
+                  <h3 class="partner-name">Nick Baumgartner — Law Office of Damon M. Fisch, P.C.</h3>
+                  <p class="partner-subtitle">Real Estate Attorney</p>
+
+                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+16308579511">630.857.9511</a></p>
+                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:nrb@fisch.law">nrb@fisch.law</a></p>
+                  <p class="partner-meta"><strong>Address:</strong> 22 W Chicago Ave, Suite 204 · Naperville, IL 60540</p>
+
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="https://www.fisch.law" target="_blank" rel="noopener">website</a>
+                    <a class="btn btn-ghost" href="mailto:nrb@fisch.law">email</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
               </div>
 
+              <!-- Sarah Sutton -->
               <div class="partner-card">
                 <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
-                  <div class="hero-label">attorney</div>
-                  <h3 class="partner-name">Name Here — Firm</h3>
-                  <p class="partner-role">Great for: complex negotiations / multi-unit / etc.</p>
-                  <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  <div class="partner-logo-wrap">
+                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-photo-wrap">
+                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
                   </div>
                 </div>
-              </div>
 
-              <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
+                <div>
                   <div class="hero-label">attorney</div>
-                  <h3 class="partner-name">Name Here — Firm</h3>
-                  <p class="partner-role">Great for: investor closings / fast timelines / etc.</p>
+                  <h3 class="partner-name">Sarah Sutton — Sutton Legal Group</h3>
+                  <p class="partner-subtitle">Real Estate Attorney</p>
+
+                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+17733402678">773.340.2678</a></p>
+                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:sarah@suttonlegalgroup.com">sarah@suttonlegalgroup.com</a></p>
+                  <p class="partner-meta"><strong>Address:</strong> 333 S Wabash Ave, Suite 2700 · Chicago, IL 60604</p>
+
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="https://www.suttonlegalgroup.com/" target="_blank" rel="noopener">website</a>
+                    <a class="btn btn-ghost" href="mailto:sarah@suttonlegalgroup.com">email</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -286,49 +320,54 @@
             </p>
 
             <div class="partner-cards">
+              <!-- Stephen (City) -->
               <div class="partner-card">
                 <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
+                  <div class="partner-logo-wrap">
+                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-photo-wrap">
+                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
+                  </div>
                 </div>
-                <div class="partner-content">
-                  <div class="hero-label">inspector</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Great for: condos / vintage homes / etc.</p>
+
+                <div>
+                  <div class="hero-label">inspector · city</div>
+                  <h3 class="partner-name">Stephen W. Wrought — HouseCall Inspections LLC</h3>
+                  <p class="partner-subtitle">Owner / Inspector</p>
+
+                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+17734260458">773.426.0458</a></p>
+                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:housecallinspectionsllc@gmail.com">housecallinspectionsllc@gmail.com</a></p>
+
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="mailto:housecallinspectionsllc@gmail.com">email</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
               </div>
 
+              <!-- Kevin (Suburbs) -->
               <div class="partner-card">
                 <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
-                  <div class="hero-label">inspector</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Great for: SFHs / larger properties / etc.</p>
-                  <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  <div class="partner-logo-wrap">
+                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-photo-wrap">
+                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
                   </div>
                 </div>
-              </div>
 
-              <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
-                  <div class="hero-label">inspector</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Great for: quick turnaround / tight deadlines / etc.</p>
+                <div>
+                  <div class="hero-label">inspector · suburbs</div>
+                  <h3 class="partner-name">Kevin Raugstad — Dynamic Home Inspection Services LLC</h3>
+                  <p class="partner-subtitle">Owner / Inspector</p>
+
+                  <p class="partner-meta"><strong>Office:</strong> <a href="tel:+18477210630">847.721.0630</a></p>
+                  <p class="partner-meta"><strong>Email:</strong> <a href="mailto:kevin@dynamichis.com">kevin@dynamichis.com</a></p>
+
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="https://www.dynamichis.com/" target="_blank" rel="noopener">website</a>
+                    <a class="btn btn-ghost" href="mailto:kevin@dynamichis.com">email</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -337,7 +376,7 @@
           </div>
         </section>
 
-        <!-- CATEGORY: MOVERS -->
+        <!-- CATEGORY: MOVERS (placeholders for now) -->
         <section class="section" id="movers">
           <div class="container">
             <h2 class="section-heading">movers</h2>
@@ -348,47 +387,18 @@
             <div class="partner-cards">
               <div class="partner-card">
                 <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
-                  <div class="hero-label">movers</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Great for: high-rises / elevator reservations / etc.</p>
-                  <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  <div class="partner-logo-wrap">
+                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-photo-wrap">
+                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
                   </div>
                 </div>
-              </div>
-
-              <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
+                <div>
                   <div class="hero-label">movers</div>
                   <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Great for: vintage walk-ups / tight stairs / etc.</p>
+                  <p class="partner-subtitle">Great for: high-rises / elevator reservations / etc.</p>
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
-                  <div class="hero-label">movers</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Great for: last-minute moves / storage coordination / etc.</p>
-                  <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
@@ -397,7 +407,7 @@
           </div>
         </section>
 
-        <!-- CATEGORY: OTHER -->
+        <!-- CATEGORY: OTHER (placeholders for now) -->
         <section class="section section-muted" id="other">
           <div class="container">
             <h2 class="section-heading">other</h2>
@@ -408,47 +418,18 @@
             <div class="partner-cards">
               <div class="partner-card">
                 <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
-                  <div class="hero-label">trade</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Category: electrician / plumber / contractor / etc.</p>
-                  <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  <div class="partner-logo-wrap">
+                    <img class="partner-logo-img" src="/assets/img/partners/placeholder-logo.png" alt="" />
+                  </div>
+                  <div class="partner-photo-wrap">
+                    <img class="partner-photo-img" src="/assets/img/team/placeholder.jpg" alt="" />
                   </div>
                 </div>
-              </div>
-
-              <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
+                <div>
                   <div class="hero-label">trade</div>
                   <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Category: painter / handyman / etc.</p>
+                  <p class="partner-subtitle">Category: electrician / plumber / contractor / etc.</p>
                   <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="partner-card">
-                <div class="partner-media">
-                  <div class="partner-logo">logo</div>
-                  <div class="partner-photo">photo</div>
-                </div>
-                <div class="partner-content">
-                  <div class="hero-label">trade</div>
-                  <h3 class="partner-name">Name Here — Company</h3>
-                  <p class="partner-role">Category: cleaners / staging / etc.</p>
-                  <div class="partner-actions">
-                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
                     <a class="btn btn-ghost" href="/contact.html">request intro</a>
                   </div>
                 </div>
