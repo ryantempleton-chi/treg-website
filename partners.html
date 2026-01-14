@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Trusted Partners | Templeton Real Estate Group</title>
+    <title>Partners | Templeton Real Estate Group</title>
     <meta
       name="description"
-      content="A curated list of trusted Chicago real estate partners — attorneys, lenders, inspectors, movers, and more — recommended by Templeton Real Estate Group."
+      content="Trusted Chicago partners vetted by Templeton Real Estate Group — lenders, attorneys, inspectors, movers, and more."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,6 +17,85 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="icon" href="/faviconRT.ico" />
+
+    <!-- Partners page-only tweaks -->
+    <style>
+      /* Card layout: [logo][photo] + content, with a subtle right shift */
+      .partner-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .partner-card {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 1.25rem;
+        padding: 1.15rem 1.25rem;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 16px;
+        margin-left: 1.4rem; /* 👈 shifts the "data card" to the right */
+      }
+
+      .partner-media {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.65rem;
+        align-content: start;
+      }
+
+      .partner-logo,
+      .partner-photo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f6f6f6;
+        color: #888;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        aspect-ratio: 1 / 1;
+        user-select: none;
+      }
+
+      .partner-photo {
+        border-radius: 50%;
+      }
+
+      .partner-name {
+        font-weight: 700;
+        margin: 0 0 0.25rem;
+      }
+
+      .partner-role {
+        margin: 0 0 0.5rem;
+        color: var(--treg-slate);
+        line-height: 1.55;
+      }
+
+      .partner-actions {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-top: 0.75rem;
+      }
+
+      /* Mobile: stack media above text */
+      @media (max-width: 720px) {
+        .partner-card {
+          grid-template-columns: 1fr;
+          margin-left: 0; /* remove right shift on small screens */
+        }
+        .partner-media {
+          grid-template-columns: 88px 88px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -31,170 +110,367 @@
             <div class="hero-label">partners</div>
             <h1 class="hero-title">trusted partners — vetted for chicago.</h1>
 
-            <p class="hero-subtitle" style="max-width: 880px;">
-              Inspectors, attorneys, lenders, contractors, movers, and more — the people we recommend because they show up,
-              communicate clearly, and keep deals moving.
+            <p class="hero-subtitle" style="max-width: 920px;">
+              Inspectors, attorneys, lenders, movers, and more — the people we recommend because they communicate, show up,
+              and get it done. Tell us your scenario and we’ll point you to the right fit.
             </p>
 
             <div class="btn-row" style="margin-top: 1.4rem;">
-              <a href="/contact.html" class="btn btn-primary">request an intro</a>
-              <a href="/buy.html" class="btn btn-ghost">back to services</a>
+              <a href="/contact.html" class="btn btn-primary">request a referral</a>
+              <a href="#partner-list" class="btn btn-ghost">view partner list</a>
             </div>
           </div>
         </section>
 
-        <!-- INTRO / HOW THIS LIST WORKS -->
-        <section class="section">
-          <div class="container">
-            <h2 class="section-heading">how we choose partners</h2>
-
-            <p class="section-lede" style="max-width: 900px;">
-              This isn’t a paid list and it’s not “everyone we’ve ever met.” These are partners we’ve seen do great work:
-              responsive communication, clean timelines, and professional outcomes.
-            </p>
-
-            <ul style="max-width: 900px;">
-              <li><strong>Vetted through real transactions</strong> — not just referrals.</li>
-              <li><strong>Strong communication</strong> — because that’s what keeps stress low.</li>
-              <li><strong>Chicago-specific experience</strong> — condos, HOAs, vintage buildings, and city logistics.</li>
-            </ul>
-
-            <p style="max-width: 900px; margin-top: 1rem;">
-              You’re never required to use anyone on this list — we’re happy to work with your preferred pros.
-            </p>
-          </div>
-        </section>
-
-        <!-- PARTNER LIST -->
-        <section class="section section-muted">
+        <!-- QUICK NAV -->
+        <section class="section section-muted" id="partner-list">
           <div class="container">
             <h2 class="section-heading">partner list</h2>
-            <p class="section-lede" style="max-width: 900px;">
-              Want the best match for your scenario (first-time buyer, condo vs. SFH, investor timeline, etc.)?
-              Tell us what you’re doing and we’ll point you to the right person.
+            <p class="section-lede" style="max-width: 860px;">
+              Looking for something specific? Jump to a category below — or reach out and we’ll match you with the best option
+              for your timeline and property type.
             </p>
 
-            <!-- CATEGORY: LENDERS -->
-            <div style="margin-top: 1.25rem;">
-              <h3 class="section-heading" style="font-size: 1rem;">lenders</h3>
-
-              <div class="section-grid">
-                <!-- Card -->
-                <div style="border:1px solid rgba(0,0,0,0.06); background:#fff; border-radius:16px; padding:1.1rem;">
-                  <h4 style="margin:0 0 0.35rem;">Name — Company</h4>
-                  <p style="margin:0; color:var(--treg-slate); line-height:1.6;">
-                    Best for: conventional, FHA, VA, jumbo, etc. Short note about why you trust them.
-                  </p>
-                  <p style="margin:0.75rem 0 0;">
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
-                  </p>
-                </div>
-
-                <div style="border:1px solid rgba(0,0,0,0.06); background:#fff; border-radius:16px; padding:1.1rem;">
-                  <h4 style="margin:0 0 0.35rem;">Name — Company</h4>
-                  <p style="margin:0; color:var(--treg-slate); line-height:1.6;">
-                    Best for: first-time buyers, fast closings, unique income scenarios, etc.
-                  </p>
-                  <p style="margin:0.75rem 0 0;">
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
-                  </p>
-                </div>
-              </div>
+            <div class="btn-row" style="justify-content: flex-start; flex-wrap: wrap; margin-top: 1rem;">
+              <a class="btn btn-ghost" href="#lenders">lenders</a>
+              <a class="btn btn-ghost" href="#attorneys">attorneys</a>
+              <a class="btn btn-ghost" href="#inspectors">inspectors</a>
+              <a class="btn btn-ghost" href="#movers">movers</a>
+              <a class="btn btn-ghost" href="#other">other</a>
             </div>
+          </div>
+        </section>
 
-            <!-- CATEGORY: ATTORNEYS -->
-            <div style="margin-top: 1.75rem;">
-              <h3 class="section-heading" style="font-size: 1rem;">real estate attorneys</h3>
-
-              <div class="section-grid">
-                <div style="border:1px solid rgba(0,0,0,0.06); background:#fff; border-radius:16px; padding:1.1rem;">
-                  <h4 style="margin:0 0 0.35rem;">Name — Firm</h4>
-                  <p style="margin:0; color:var(--treg-slate); line-height:1.6;">
-                    Known for: clear explanations, quick turnaround, strong negotiation in attorney review.
-                  </p>
-                  <p style="margin:0.75rem 0 0;">
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- CATEGORY: INSPECTORS -->
-            <div style="margin-top: 1.75rem;">
-              <h3 class="section-heading" style="font-size: 1rem;">home inspectors</h3>
-
-              <div class="section-grid">
-                <div style="border:1px solid rgba(0,0,0,0.06); background:#fff; border-radius:16px; padding:1.1rem;">
-                  <h4 style="margin:0 0 0.35rem;">Name — Company</h4>
-                  <p style="margin:0; color:var(--treg-slate); line-height:1.6;">
-                    Known for: thorough reports, practical guidance, and fast scheduling.
-                  </p>
-                  <p style="margin:0.75rem 0 0;">
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- CATEGORY: CONTRACTORS / HANDY -->
-            <div style="margin-top: 1.75rem;">
-              <h3 class="section-heading" style="font-size: 1rem;">contractors + handy pros</h3>
-
-              <div class="section-grid">
-                <div style="border:1px solid rgba(0,0,0,0.06); background:#fff; border-radius:16px; padding:1.1rem;">
-                  <h4 style="margin:0 0 0.35rem;">Name — Trade</h4>
-                  <p style="margin:0; color:var(--treg-slate); line-height:1.6;">
-                    Examples: electrician, plumber, HVAC, painter, general handyman.
-                  </p>
-                  <p style="margin:0.75rem 0 0;">
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- CATEGORY: MOVERS -->
-            <div style="margin-top: 1.75rem;">
-              <h3 class="section-heading" style="font-size: 1rem;">movers</h3>
-
-              <div class="section-grid">
-                <div style="border:1px solid rgba(0,0,0,0.06); background:#fff; border-radius:16px; padding:1.1rem;">
-                  <h4 style="margin:0 0 0.35rem;">Name — Company</h4>
-                  <p style="margin:0; color:var(--treg-slate); line-height:1.6;">
-                    Known for: on-time crews, careful handling, clean communication, fair pricing.
-                  </p>
-                  <p style="margin:0.75rem 0 0;">
-                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- DISCLAIMER -->
-            <div style="margin-top: 2rem; max-width: 920px;">
-              <p style="margin:0; color:var(--treg-slate); line-height:1.6;">
-                <strong>Note:</strong> Partner recommendations are provided as a courtesy. Templeton Real Estate Group does not receive
-                compensation for referrals unless explicitly disclosed, and you are free to choose any provider you prefer.
-                Availability, pricing, and scope of work are determined by each provider.
+        <!-- NOTE / DISCLAIMER -->
+        <section class="section">
+          <div class="container">
+            <div
+              style="border:1px solid rgba(0,0,0,0.06); background:#fff; border-radius:16px; padding:1.1rem 1.15rem; max-width: 980px;"
+            >
+              <h3 style="margin:0 0 0.4rem;">a quick note on referrals</h3>
+              <p style="margin:0; color:var(--treg-slate); line-height:1.65;">
+                These referrals are shared as a convenience based on past client experience. You’re always free to choose any provider.
+                We don’t guarantee pricing, timelines, or outcomes — but we do prioritize partners who are responsive, professional, and
+                consistent.
               </p>
             </div>
           </div>
         </section>
 
-        <!-- CTA -->
+        <!-- CATEGORY: LENDERS -->
+        <section class="section section-muted" id="lenders">
+          <div class="container">
+            <h2 class="section-heading">lenders</h2>
+            <p class="section-lede" style="max-width: 860px;">
+              Strong pre-approvals, clear communication, and fast underwriting — especially important in competitive situations.
+            </p>
+
+            <div class="partner-cards">
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">lender</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Ideal for: first-time buyers / condos / fast close / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">lender</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Ideal for: jumbo / self-employed / rate buydowns / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">lender</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Ideal for: investors / multi-units / DSCR / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORY: ATTORNEYS -->
+        <section class="section" id="attorneys">
+          <div class="container">
+            <h2 class="section-heading">attorneys</h2>
+            <p class="section-lede" style="max-width: 860px;">
+              Clear advice, responsive review, and calm negotiation through attorney review, inspection, and closing.
+            </p>
+
+            <div class="partner-cards">
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">attorney</div>
+                  <h3 class="partner-name">Name Here — Firm</h3>
+                  <p class="partner-role">Great for: first-time buyers / condo-heavy deals / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">attorney</div>
+                  <h3 class="partner-name">Name Here — Firm</h3>
+                  <p class="partner-role">Great for: complex negotiations / multi-unit / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">attorney</div>
+                  <h3 class="partner-name">Name Here — Firm</h3>
+                  <p class="partner-role">Great for: investor closings / fast timelines / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORY: INSPECTORS -->
+        <section class="section section-muted" id="inspectors">
+          <div class="container">
+            <h2 class="section-heading">inspectors</h2>
+            <p class="section-lede" style="max-width: 860px;">
+              Thorough, clear reporting — and someone who can explain what matters vs. what’s normal maintenance.
+            </p>
+
+            <div class="partner-cards">
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">inspector</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Great for: condos / vintage homes / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">inspector</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Great for: SFHs / larger properties / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">inspector</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Great for: quick turnaround / tight deadlines / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORY: MOVERS -->
+        <section class="section" id="movers">
+          <div class="container">
+            <h2 class="section-heading">movers</h2>
+            <p class="section-lede" style="max-width: 860px;">
+              Reliable crews, clean communication, and the logistics experience that matters in Chicago buildings.
+            </p>
+
+            <div class="partner-cards">
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">movers</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Great for: high-rises / elevator reservations / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">movers</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Great for: vintage walk-ups / tight stairs / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">movers</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Great for: last-minute moves / storage coordination / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORY: OTHER -->
+        <section class="section section-muted" id="other">
+          <div class="container">
+            <h2 class="section-heading">other</h2>
+            <p class="section-lede" style="max-width: 860px;">
+              Contractors, electricians, plumbers, handymen, cleaners, painters — the “who do you use for…” list.
+            </p>
+
+            <div class="partner-cards">
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">trade</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Category: electrician / plumber / contractor / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">trade</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Category: painter / handyman / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="partner-card">
+                <div class="partner-media">
+                  <div class="partner-logo">logo</div>
+                  <div class="partner-photo">photo</div>
+                </div>
+                <div class="partner-content">
+                  <div class="hero-label">trade</div>
+                  <h3 class="partner-name">Name Here — Company</h3>
+                  <p class="partner-role">Category: cleaners / staging / etc.</p>
+                  <div class="partner-actions">
+                    <a class="btn btn-ghost" href="mailto:your@email.com">email</a>
+                    <a class="btn btn-ghost" href="/contact.html">request intro</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FINAL CTA -->
         <section class="section section-cta">
           <div class="container">
-            <div class="section-cta-title">want a referral that fits your situation?</div>
+            <div class="section-cta-title">want the right referral for your situation?</div>
 
             <div class="section-cta-text">
-              Tell us what you’re working on (buy, sell, or rent) and we’ll connect you with the right person for the job.
+              Tell us what you’re working on (buying, selling, renting, timeline, property type) and we’ll point you to the best fit.
             </div>
 
-            <div class="section-cta-meta">the templeton real estate group · chicago &amp; surrounding suburbs</div>
+            <div class="section-cta-meta">the templeton real estate group · chicago</div>
 
             <div class="btn-row" style="justify-content: center;">
-              <a href="/contact.html" class="btn btn-primary">request an intro</a>
-              <a href="/buy.html" class="btn btn-ghost">back to services</a>
+              <a href="/contact.html" class="btn btn-primary">request a referral</a>
+              <a href="/intake.html" class="btn btn-ghost">start intake</a>
             </div>
           </div>
         </section>
