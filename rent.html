@@ -1,8 +1,8 @@
 <!-- =========================
-     rent.html (FULL - updated)
-     Fixes:
-     - Ensures first tab is active by default (class + aria-selected)
-     - Waits for process-timeline.js to load before calling initProcessTimeline
+     rent.html (UPDATED)
+     Notes:
+     - Timeline removed (now lives on rent-process.html)
+     - Keeps original hero + sections + CTA
      ========================= -->
 <!doctype html>
 <html lang="en">
@@ -23,7 +23,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
-    <link rel="stylesheet" href="/assets/css/process-timeline.css" />
   </head>
 
   <body>
@@ -45,270 +44,8 @@
 
             <div class="btn-row" style="margin-top: 1.4rem;">
               <a href="/intake.html?service=rent" class="btn btn-primary">start renter intake</a>
+              <a href="/rent-process.html" class="btn btn-ghost">view the full renting process</a>
               <a href="tel:+13126759379" class="btn btn-ghost">call (312) 675-9379</a>
-            </div>
-          </div>
-        </section>
-
-        <!-- TIMELINE (interactive) -->
-        <section class="section">
-          <div class="container service-timeline rent-timeline" aria-label="Renting timeline">
-            <div class="timeline-head">
-              <h2 class="section-heading">the renting process</h2>
-              <p class="section-lede">
-                Select a step to see what happens next — and how we keep your search efficient, organized, and clear.
-              </p>
-            </div>
-
-            <!-- Timeline graphic -->
-            <div class="process-timeline" role="tablist" aria-label="Renting process steps">
-              <div class="process-line" aria-hidden="true"></div>
-
-              <!-- 1: CONSULT -->
-              <div class="process-step">
-                <div class="process-step-title">consult</div>
-
-                <button
-                  id="tab-consult"
-                  class="process-step-btn is-active"
-                  type="button"
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="step-panel"
-                  data-step="consult"
-                  style="--step-color: #f4eee6"
-                >
-                  <!-- Lucide-ish: message-circle -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>timing + budget</li>
-                  <li>must-haves</li>
-                  <li>search plan</li>
-                </ul>
-              </div>
-
-              <!-- 2: SEARCH SETUP -->
-              <div class="process-step">
-                <div class="process-step-title">search setup</div>
-
-                <button
-                  id="tab-setup"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="setup"
-                  style="--step-color: #e7ddcf"
-                >
-                  <!-- Lucide-ish: sliders -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <line x1="4" y1="21" x2="4" y2="14"></line>
-                    <line x1="4" y1="10" x2="4" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12" y2="3"></line>
-                    <line x1="20" y1="21" x2="20" y2="16"></line>
-                    <line x1="20" y1="12" x2="20" y2="3"></line>
-                    <line x1="2" y1="14" x2="6" y2="14"></line>
-                    <line x1="10" y1="8" x2="14" y2="8"></line>
-                    <line x1="18" y1="16" x2="22" y2="16"></line>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>neighborhood shortlist</li>
-                  <li>set expectations</li>
-                  <li>watch the market</li>
-                </ul>
-              </div>
-
-              <!-- 3: TOURING -->
-              <div class="process-step">
-                <div class="process-step-title">touring</div>
-
-                <button
-                  id="tab-touring"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="touring"
-                  style="--step-color: #dccbb8"
-                >
-                  <!-- Lucide-ish: calendar -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>stack showings</li>
-                  <li>move efficiently</li>
-                  <li>compare clearly</li>
-                </ul>
-              </div>
-
-              <!-- 4: APPLY -->
-              <div class="process-step">
-                <div class="process-step-title">apply</div>
-
-                <button
-                  id="tab-apply"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="apply"
-                  style="--step-color: #d8c7b3"
-                >
-                  <!-- Lucide-ish: file-text -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <path d="M14 2v6h6"></path>
-                    <line x1="8" y1="13" x2="16" y2="13"></line>
-                    <line x1="8" y1="17" x2="16" y2="17"></line>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>fees + requirements</li>
-                  <li>submit cleanly</li>
-                  <li>move fast</li>
-                </ul>
-              </div>
-
-              <!-- 5: APPROVAL + LEASE -->
-              <div class="process-step">
-                <div class="process-step-title">approval + lease</div>
-
-                <button
-                  id="tab-lease"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="lease"
-                  style="--step-color: #c9b8a4"
-                >
-                  <!-- Lucide: clipboard-check -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
-                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                    <path d="m9 14 2 2 4-4"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>deposit / move-in fee</li>
-                  <li>lease terms</li>
-                  <li>confirm dates</li>
-                </ul>
-              </div>
-
-              <!-- 6: MOVE-IN -->
-              <div class="process-step">
-                <div class="process-step-title">move-in</div>
-
-                <button
-                  id="tab-movein"
-                  class="process-step-btn"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="step-panel"
-                  data-step="movein"
-                  style="--step-color: #bfa889"
-                >
-                  <!-- Lucide-ish: home -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="process-icon"
-                    aria-hidden="true"
-                  >
-                    <path d="M3 9.5 12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"></path>
-                  </svg>
-                </button>
-
-                <ul class="process-bullets">
-                  <li>utilities</li>
-                  <li>building logistics</li>
-                  <li>keys + move day</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Locked-height description panel -->
-            <div class="timeline-panel" id="step-panel" role="tabpanel" aria-live="polite">
-              <h3 class="timeline-title" data-title></h3>
-              <div class="timeline-body" data-body></div>
             </div>
           </div>
         </section>
@@ -367,6 +104,7 @@
 
             <div class="btn-row">
               <a href="/neighborhoods.html" class="btn btn-ghost">browse neighborhood guides</a>
+              <a href="/rent-process.html" class="btn btn-ghost">view the full renting process</a>
             </div>
           </div>
         </section>
@@ -385,6 +123,7 @@
 
             <div class="btn-row" style="justify-content: center;">
               <a href="/intake.html?service=rent" class="btn btn-primary">start renter intake</a>
+              <a href="/rent-process.html" class="btn btn-ghost">view the full renting process</a>
               <a href="tel:+13126759379" class="btn btn-ghost">call (312) 675-9379</a>
             </div>
           </div>
@@ -396,64 +135,5 @@
     </div>
 
     <script src="/assets/js/layout.js" defer></script>
-    <script src="/assets/js/process-timeline.js" defer></script>
-
-    <!-- Page-specific content for the shared timeline component -->
-    <script>
-      (function initRentTimelineWhenReady() {
-        // Wait until process-timeline.js has defined the initializer.
-        if (!window.TREG || typeof window.TREG.initProcessTimeline !== "function") {
-          return setTimeout(initRentTimelineWhenReady, 25);
-        }
-
-        window.TREG.initProcessTimeline(
-          {
-            consult: {
-              title: "Initial Consult",
-              body: `
-                <p>We start with a quick conversation to clarify timing, budget, and must-haves. This is where we align on neighborhoods, building style, pets, parking, amenities, and any non-negotiables.</p>
-                <p>We’ll also set expectations on fees, typical approval timelines, and what moves quickly — so you’re not surprised mid-search.</p>
-              `,
-            },
-            setup: {
-              title: "Search Setup & Strategy",
-              body: `
-                <p>Next, we tighten your search into something realistic and actionable. We’ll talk through what your budget typically gets in different areas and identify smart trade-offs if needed.</p>
-                <p>Then we’ll monitor new listings and changes so you’re seeing the right options as they hit the market — not days later.</p>
-              `,
-            },
-            touring: {
-              title: "Touring & Comparing Options",
-              body: `
-                <p>We coordinate showings and stack appointments into efficient windows of time. Chicago rentals can move fast — but touring doesn’t have to feel chaotic.</p>
-                <p>As you tour, we’ll help you compare units clearly: value, layout, building rules, commute, and any red flags that aren’t obvious in photos.</p>
-              `,
-            },
-            apply: {
-              title: "Applying for the Right Unit",
-              body: `
-                <p>When you’re ready to move, we’ll walk you through requirements and fees so your application is clean, complete, and submitted quickly.</p>
-                <p>We’ll help you understand what matters most to landlords and buildings — and how to position your application clearly to avoid delays.</p>
-              `,
-            },
-            lease: {
-              title: "Approval, Deposits & Lease Review",
-              body: `
-                <p>After approval, we confirm timelines, deposits or move-in fees, and key lease terms. We’ll make sure you understand what you’re signing — and what to expect before move-in day.</p>
-                <p>If anything feels unclear or inconsistent, we’ll flag it early so you’re not solving problems last-minute.</p>
-              `,
-            },
-            movein: {
-              title: "Move-In & Logistics",
-              body: `
-                <p>We’ll help you stay on top of move-in logistics: building rules, elevator reservations (if needed), utilities setup, and key pickup.</p>
-                <p>The goal is simple: a smooth move and a clear handoff, so day one feels easy.</p>
-              `,
-            },
-          },
-          "consult"
-        );
-      })();
-    </script>
   </body>
 </html>
