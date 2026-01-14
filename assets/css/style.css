@@ -1090,8 +1090,8 @@ li + li {
 /* =======================================
    PARTNERS PAGE ONLY (GLOBAL CLASSES)
    partners.html uses these classes
-   - Desktop: media left, content right
-   - Mobile: media row (logo+headshot side-by-side), content below
+   - Desktop: images stacked vertically (bigger), content right
+   - Mobile: images side-by-side, HEADSHOT first then LOGO, content below
    ======================================= */
 
 .partners-jump {
@@ -1123,7 +1123,8 @@ li + li {
   margin-top: 1.25rem;
 }
 
-/* Card layout: left media row column + right content */
+/* Card layout:
+   Desktop = media stack on left, content on right */
 .partner-card {
   border: 1px solid rgba(0, 0, 0, 0.06);
   background: #fff;
@@ -1131,23 +1132,24 @@ li + li {
   padding: 1rem;
 
   display: grid;
-  grid-template-columns: 190px 1fr;
-  gap: 1rem;
+  grid-template-columns: 200px 1fr; /* slightly wider media column */
+  gap: 1.1rem;
   align-items: start;
 }
 
-/* The two images (logo + headshot) */
-.partner-media-row {
+/* Media wrapper (DESKTOP: stacked) */
+.partner-media-stack {
   display: grid;
-  grid-template-columns: 90px 90px;
-  gap: 0.95rem;
+  grid-template-rows: 1fr 1fr; /* stacked */
+  gap: 0.85rem;
   align-content: start;
 }
 
+/* Individual media tiles (fill the full left column) */
 .partner-media {
-  width: 90px;
-  height: 90px;
-  border-radius: 12px;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* big squares that fill the column */
+  border-radius: 14px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   overflow: hidden;
   background: var(--treg-cream);
@@ -1163,7 +1165,7 @@ li + li {
   display: block;
 }
 
-/* Content */
+/* Content column */
 .partner-content {
   min-width: 0;
 }
@@ -1206,37 +1208,40 @@ li + li {
   justify-content: flex-start;
 }
 
-/* Mid-size screens: slightly smaller media */
-@media (max-width: 760px) {
+/* Mid-size screens: tighten the left column slightly */
+@media (max-width: 860px) {
   .partner-card {
-    grid-template-columns: 156px 1fr;
-  }
-
-  .partner-media-row {
-    grid-template-columns: 72px 72px;
-    gap: 0.75rem;
-  }
-
-  .partner-media {
-    width: 72px;
-    height: 72px;
+    grid-template-columns: 170px 1fr;
   }
 }
 
-/* Small mobile: images side-by-side, content below */
+/* Small mobile:
+   - content below
+   - images side-by-side
+   - HEADSHOT first, LOGO second */
 @media (max-width: 520px) {
   .partner-card {
     grid-template-columns: 1fr;
   }
 
-  .partner-media-row {
+  .partner-media-stack {
     display: flex;
     gap: 0.75rem;
+    width: min(340px, 100%);
   }
 
   .partner-media {
-    width: 84px;
-    height: 84px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Force order on mobile */
+  .partner-media--headshot {
+    order: 1;
+  }
+
+  .partner-media--logo {
+    order: 2;
   }
 
   .partner-content {
