@@ -1273,35 +1273,35 @@ li + li {
   }
 }
 /* =======================================
-   TEAM PAGE (DESKTOP/TABLET) SPACING TIGHTEN
-   Keeps mobile untouched
+   TEAM PAGE (DESKTOP/TABLET) SPACING TIGHTEN – V2
+   Still leaves mobile untouched
    ======================================= */
 
 @media (min-width: 721px) {
-  /* Reduce overall vertical rhythm between sections */
+  /* Overall vertical rhythm between sections */
   .team-page .section {
-    padding: 1.5rem 0; /* was 1.75rem */
+    padding: 1.25rem 0; /* was 1.5rem */
   }
 
-  /* Muted section (team grid wrapper) slightly tighter */
+  /* Muted section (team grid wrapper) tighter */
   .team-page .section.section-muted {
-    padding-top: 1.15rem;
-    padding-bottom: 1.2rem;
+    padding-top: 0.95rem;
+    padding-bottom: 1rem;
   }
 
-  /* Reduce container vertical padding without touching horizontal gutters */
+  /* Container vertical padding tighter */
   .team-page .container {
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
   }
 
-  /* Pull team cards closer to the intro */
+  /* Pull team cards closer */
   .team-page .team-grid {
-    margin-top: 0.65rem; /* was 0.9rem */
+    margin-top: 0.45rem; /* was 0.65rem */
   }
 
-  /* Hero → intro transition feels tighter but still premium */
+  /* Hero → intro spacing */
   .team-page .hero-inner {
-    padding-bottom: 1.85rem; /* was 2.1rem */
+    padding-bottom: 1.55rem; /* was 1.85rem */
   }
 }
