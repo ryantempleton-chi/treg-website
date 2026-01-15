@@ -1278,31 +1278,30 @@ li + li {
    ======================================= */
 
 @media (min-width: 721px) {
-  /* Reduce the "double padding" effect (section + container) */
+  /* Reduce overall vertical rhythm between sections */
   .team-page .section {
-    padding: 1.75rem 0; /* was effectively much larger */
+    padding: 1.5rem 0; /* was 1.75rem */
   }
 
-  /* Your muted section already has custom padding; tighten a touch more */
+  /* Muted section (team grid wrapper) slightly tighter */
   .team-page .section.section-muted {
-    padding-top: 1.35rem;
-    padding-bottom: 1.35rem;
+    padding-top: 1.15rem;
+    padding-bottom: 1.2rem;
   }
 
-  /* Container currently adds extra vertical padding everywhere.
-     On Team page only, keep horizontal padding but reduce vertical. */
+  /* Reduce container vertical padding without touching horizontal gutters */
   .team-page .container {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
   }
 
-  /* Pull the grid up a bit so the cards sit closer to the intro */
+  /* Pull team cards closer to the intro */
   .team-page .team-grid {
-    margin-top: 0.9rem; /* was 1.5rem */
+    margin-top: 0.65rem; /* was 0.9rem */
   }
 
-  /* Optional: slightly tighten hero bottom spacing on desktop */
+  /* Hero → intro transition feels tighter but still premium */
   .team-page .hero-inner {
-    padding-bottom: 2.1rem; /* was 2.75rem */
+    padding-bottom: 1.85rem; /* was 2.1rem */
   }
 }
