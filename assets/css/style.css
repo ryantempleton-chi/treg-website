@@ -644,25 +644,27 @@ li + li {
    ========================= */
 .win-item-title {
   position: relative;
-  padding-left: 2.1rem; /* space for badge */
+  padding-left: 2.2rem;     /* space reserved for badge */
+  margin: 0 0 0.4rem;       /* keeps spacing tight + consistent */
+  line-height: 1.15;        /* prevents extra "air" in the title line */
 }
 
 .win-item-title::before {
   content: "✓";
   position: absolute;
   left: 0;
-  top: 0.08rem;
+  top: 0.05rem;             /* aligns badge with cap-height */
 
-  width: 1.55rem;
-  height: 1.55rem;
+  width: 1.7rem;
+  height: 1.7rem;
   border-radius: 999px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 1.05rem; /* makes it pop */
-  font-weight: 700;
+  font-size: 1.15rem;       /* bigger check without affecting layout */
+  font-weight: 800;
   line-height: 1;
 
   color: var(--treg-charcoal);
