@@ -643,32 +643,41 @@ li + li {
 /* =========================
    CTA SECTIONS
    ========================= */
+
 .section-cta {
   text-align: center;
 }
 
+/* Headline */
 .section-cta-title {
   font-family: "Oswald", system-ui, sans-serif;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.45rem;
 }
 
+/* Supporting paragraph */
+.section-cta-text {
+  max-width: 920px;
+  margin: 0.35rem auto 1.4rem; /* top | left/right | bottom */
+  color: var(--treg-slate);
+  line-height: 1.6;
+}
+
+/* Meta / tagline line */
 .section-cta-meta {
   font-family: "Roboto", system-ui, sans-serif;
-  font-size: .8rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--treg-slate);
-  margin-top: 0.85rem;
-  margin-bottom: 1rem;
+  margin-top: 1.2rem;
 }
-.section-cta-text {
-  margin: 0.35rem auto 1.75rem; /* top | left/right | bottom */
-  max-width: 920px;
-  color: var(--treg-slate);
-  line-height: 1.6;
+
+/* Variant when meta appears AFTER buttons (buy.html case) */
+.section-cta-meta--after {
+  margin-top: 1.4rem;
 }
 /* =========================
    ABOUT PHOTO
