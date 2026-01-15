@@ -640,38 +640,34 @@ li + li {
   color: var(--treg-charcoal);
 }
 /* =========================
-   BUY PAGE: "HELP YOU WIN" CHECK ICON
+   BUY PAGE: "HELP YOU WIN" CHECK BADGE
    ========================= */
-.win-item-title::before {
-  content: "✓";
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--treg-bronze); /* subtle brand accent */
-  line-height: 1;
-  margin-top: 0.1rem;
+.win-item-title {
+  position: relative;
+  padding-left: 2.1rem; /* space for badge */
 }
 
-/* circle badge */
 .win-item-title::before {
   content: "✓";
-  display: inline-flex;
+  position: absolute;
+  left: 0;
+  top: 0.08rem;
+
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 999px;
+
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-
-  font-size: 0.85rem;
-  line-height: 1;
+  font-size: 1.05rem; /* makes it pop */
   font-weight: 700;
+  line-height: 1;
 
   color: var(--treg-charcoal);
-  border: 1px solid rgba(207, 177, 142, 0.75); /* bronze */
-  background: rgba(207, 177, 142, 0.10);      /* soft bronze wash */
-
-  flex: 0 0 22px;
-  transform: translateY(1px);
+  border: 1px solid rgba(207, 177, 142, 0.75);
+  background: rgba(207, 177, 142, 0.10);
 }
 /* =========================
    CTA SECTIONS
