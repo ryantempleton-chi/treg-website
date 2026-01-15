@@ -1132,7 +1132,7 @@ li + li {
   padding: 1rem;
 
   display: grid;
-  grid-template-columns: 200px 1fr; /* slightly wider media column */
+  grid-template-columns: 200px 1fr;
   gap: 1.1rem;
   align-items: start;
 }
@@ -1140,15 +1140,16 @@ li + li {
 /* Media wrapper (DESKTOP: stacked) */
 .partner-media-stack {
   display: grid;
-  grid-template-rows: 1fr 1fr; /* stacked */
+  grid-template-rows: 1fr 1fr;
   gap: 0.85rem;
   align-content: start;
+  height: 100%;
 }
 
-/* Individual media tiles (fill the full left column) */
+/* Individual media tiles */
 .partner-media {
   width: 100%;
-  aspect-ratio: 1 / 1; /* big squares that fill the column */
+  aspect-ratio: 1 / 1;
   border-radius: 14px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   overflow: hidden;
@@ -1163,6 +1164,12 @@ li + li {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Logos: don't crop */
+.partner-media--logo img {
+  object-fit: contain;
+  padding: 10%;
 }
 
 /* Content column */
@@ -1208,17 +1215,14 @@ li + li {
   justify-content: flex-start;
 }
 
-/* Mid-size screens: tighten the left column slightly */
+/* Mid-size screens */
 @media (max-width: 860px) {
   .partner-card {
     grid-template-columns: 170px 1fr;
   }
 }
 
-/* Small mobile:
-   - content below
-   - images side-by-side
-   - HEADSHOT first, LOGO second */
+/* Small mobile */
 @media (max-width: 520px) {
   .partner-card {
     grid-template-columns: 1fr;
@@ -1231,15 +1235,13 @@ li + li {
   }
 
   .partner-media {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+    flex: 1 1 0;
   }
 
   /* Force order on mobile */
   .partner-media--headshot {
     order: 1;
   }
-
   .partner-media--logo {
     order: 2;
   }
