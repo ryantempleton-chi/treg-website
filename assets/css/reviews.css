@@ -3,7 +3,9 @@
 /* reviews.css                             */
 /* ======================================= */
 
-/* ===== PROOF GRID ===== */
+/* =========================
+   PROOF GRID
+   ========================= */
 
 .reviews-proof-grid {
   display: grid;
@@ -21,10 +23,10 @@
 }
 
 .reviews-stars {
-  font-size: 2.4rem;
+  font-size: 2.55rem;
   letter-spacing: 0.14em;
   line-height: 1;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
   color: var(--treg-bronze);
 }
 
@@ -33,13 +35,13 @@
   font-weight: 700;
   font-size: 1.25rem;
   text-transform: lowercase;
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.3rem;
 }
 
 .reviews-proof-subtitle {
   color: var(--treg-slate);
   margin: 0;
-  max-width: 52ch; /* a little wider so it breathes */
+  max-width: 52ch;
   line-height: 1.6;
 }
 
@@ -63,14 +65,16 @@
   line-height: 1.6;
 }
 
-/* Optional: icon inside buttons (if you add it later) */
+/* Optional: icon inside buttons */
 .btn-icon {
   width: 16px;
   height: 16px;
   display: inline-block;
 }
 
-/* ===== TESTIMONIALS GRID ===== */
+/* =========================
+   TESTIMONIALS GRID
+   ========================= */
 
 .testimonials-grid {
   display: grid;
@@ -84,7 +88,10 @@
   background: #ffffff;
   border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 1.15rem 1.2rem 1.1rem;
+
+  /* a touch more air */
+  padding: 1.4rem 1.45rem 1.4rem;
+
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.06);
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
@@ -95,17 +102,20 @@
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-/* ===== TESTIMONIAL KICKER (TYPE + LOCATION split) ===== */
+/* =========================
+   TESTIMONIAL KICKER
+   TYPE + LOCATION split
+   ========================= */
 
 .testimonial-kicker {
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.75rem; /* more spacing */
   line-height: 1;
 }
 
 .testimonial-type {
   display: block;
   font-family: "Oswald", system-ui, sans-serif;
-  font-size: 1.35rem; /* BIG TYPE */
+  font-size: 1.45rem; /* BIG TYPE */
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--treg-charcoal);
@@ -113,30 +123,41 @@
 
 .testimonial-location {
   display: block;
-  margin-top: 0.25rem;
+  margin-top: 0.3rem;
   font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.78rem; /* smaller location */
+  font-size: 0.8rem; /* slightly bigger + cleaner */
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(55, 58, 58, 0.75);
 }
 
-/* Quote title */
+/* =========================
+   QUOTE TITLE + BODY
+   ========================= */
+
 .testimonial-title {
   font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.15rem;
+
+  /* bigger headline */
+  font-size: 1.3rem;
+
   text-transform: lowercase;
-  margin: 0 0 0.65rem;
   color: var(--treg-charcoal);
   line-height: 1.2;
+
+  /* more breathing room */
+  margin: 0 0 0.85rem;
 }
 
-/* Body */
 .testimonial-text {
-  margin: 0 0 0.95rem;
+  /* slightly larger + more readable */
+  font-size: 1.02rem;
+  line-height: 1.7;
+
   color: var(--treg-slate);
-  line-height: 1.65;
-  font-size: 0.98rem;
+
+  /* more separation before initials */
+  margin: 0 0 1.2rem;
 }
 
 /* Initials */
@@ -148,7 +169,10 @@
   color: rgba(55, 58, 58, 0.9);
 }
 
-/* Proof buttons row (only affects this page if you keep it here) */
+/* =========================
+   BUTTON ROWS (PAGE ONLY)
+   ========================= */
+
 .btn-row {
   display: flex;
   gap: 12px;
@@ -162,7 +186,9 @@
   margin-top: 1.25rem;
 }
 
-/* ===== RESPONSIVE ===== */
+/* =========================
+   RESPONSIVE
+   ========================= */
 
 @media (max-width: 900px) {
   .reviews-proof-grid {
