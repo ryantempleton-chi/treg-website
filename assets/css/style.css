@@ -671,6 +671,8 @@ li + li {
   color: var(--treg-charcoal);
   border: 2px solid rgba(207, 177, 142, 0.85);
   background: rgba(207, 177, 142, 0.14);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .win-card {
