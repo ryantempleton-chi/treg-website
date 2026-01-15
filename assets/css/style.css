@@ -1272,3 +1272,37 @@ li + li {
     object-position: center 22%;
   }
 }
+/* =======================================
+   TEAM PAGE (DESKTOP/TABLET) SPACING TIGHTEN
+   Keeps mobile untouched
+   ======================================= */
+
+@media (min-width: 721px) {
+  /* Reduce the "double padding" effect (section + container) */
+  .team-page .section {
+    padding: 1.75rem 0; /* was effectively much larger */
+  }
+
+  /* Your muted section already has custom padding; tighten a touch more */
+  .team-page .section.section-muted {
+    padding-top: 1.35rem;
+    padding-bottom: 1.35rem;
+  }
+
+  /* Container currently adds extra vertical padding everywhere.
+     On Team page only, keep horizontal padding but reduce vertical. */
+  .team-page .container {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  /* Pull the grid up a bit so the cards sit closer to the intro */
+  .team-page .team-grid {
+    margin-top: 0.9rem; /* was 1.5rem */
+  }
+
+  /* Optional: slightly tighten hero bottom spacing on desktop */
+  .team-page .hero-inner {
+    padding-bottom: 2.1rem; /* was 2.75rem */
+  }
+}
