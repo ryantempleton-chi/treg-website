@@ -657,7 +657,7 @@ li + li {
 
 .section-cta-meta {
   font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--treg-slate);
