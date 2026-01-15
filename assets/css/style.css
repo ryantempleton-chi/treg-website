@@ -657,10 +657,11 @@ li + li {
 
 .section-cta-meta {
   font-family: "Roboto", system-ui, sans-serif;
-  font-size: 1rem;
+  font-size: .8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--treg-slate);
+  margin-top: 0.85rem;
   margin-bottom: 1rem;
 }
 .section-cta-text {
