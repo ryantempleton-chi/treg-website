@@ -642,11 +642,13 @@ li + li {
 /* =========================
    BUY PAGE: "HELP YOU WIN" CHECK ICON
    ========================= */
-.win-item-title {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  margin: 0 0 0.4rem;
+.win-item-title::before {
+  content: "✓";
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--treg-bronze); /* subtle brand accent */
+  line-height: 1;
+  margin-top: 0.1rem;
 }
 
 /* circle badge */
