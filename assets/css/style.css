@@ -664,7 +664,7 @@ li + li {
   margin-bottom: 1rem;
 }
 .section-cta-text {
-  margin: 0.35rem auto 1.1rem; /* top | left/right | bottom */
+  margin: 0.35rem auto 1.75rem; /* top | left/right | bottom */
   max-width: 920px;
   color: var(--treg-slate);
   line-height: 1.6;
