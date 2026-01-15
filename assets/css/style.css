@@ -650,8 +650,8 @@ li + li {
 
 .win-row {
   display: grid;
-  grid-template-columns: 88px 1fr; /* left badge column + card */
-  gap: 1.2rem;
+  grid-template-columns: 76px 1fr; /* left badge column + card */
+  gap: 1rem;
   align-items: center;
 }
 
