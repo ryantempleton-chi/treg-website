@@ -62,13 +62,26 @@
                       viewBox="0 0 48 48"
                       aria-hidden="true"
                     >
-                      <path fill="#EA4335" d="M24 9.5c3.1 0 5.8 1.1 7.9 3.1l5.9-5.9C34.2 3.2 29.4 1 24 1 14.6 1 6.5 6.4 2.7 14.3l6.9 5.3C11.3 13.5 17.2 9.5 24 9.5z"/>
-                      <path fill="#4285F4" d="M46.5 24.5c0-1.7-.2-3.3-.5-4.9H24v9.3h12.6c-.5 2.7-2 5-4.2 6.6l6.5 5c3.8-3.5 6-8.7 6-16z"/>
-                      <path fill="#FBBC05" d="M9.6 28.5c-.5-1.5-.8-3.1-.8-4.7s.3-3.2.8-4.7l-6.9-5.3C1.3 16.7 0 20.2 0 23.8s1.3 7.1 2.7 10l6.9-5.3z"/>
-                      <path fill="#34A853" d="M24 46c5.4 0 10-1.8 13.3-4.9l-6.5-5c-1.8 1.2-4.2 2-6.8 2-6.8 0-12.7-4-15.4-9.7l-6.9 5.3C6.5 41.6 14.6 46 24 46z"/>
+                      <path
+                        fill="#EA4335"
+                        d="M24 9.5c3.1 0 5.8 1.1 7.9 3.1l5.9-5.9C34.2 3.2 29.4 1 24 1 14.6 1 6.5 6.4 2.7 14.3l6.9 5.3C11.3 13.5 17.2 9.5 24 9.5z"
+                      />
+                      <path
+                        fill="#4285F4"
+                        d="M46.5 24.5c0-1.7-.2-3.3-.5-4.9H24v9.3h12.6c-.5 2.7-2 5-4.2 6.6l6.5 5c3.8-3.5 6-8.7 6-16z"
+                      />
+                      <path
+                        fill="#FBBC05"
+                        d="M9.6 28.5c-.5-1.5-.8-3.1-.8-4.7s.3-3.2.8-4.7l-6.9-5.3C1.3 16.7 0 20.2 0 23.8s1.3 7.1 2.7 10l6.9-5.3z"
+                      />
+                      <path
+                        fill="#34A853"
+                        d="M24 46c5.4 0 10-1.8 13.3-4.9l-6.5-5c-1.8 1.2-4.2 2-6.8 2-6.8 0-12.7-4-15.4-9.7l-6.9 5.3C6.5 41.6 14.6 46 24 46z"
+                      />
                     </svg>
                     Read more reviews on Google
                   </a>
+
                   <a href="/contact.html" class="btn btn-ghost">Connect with our team</a>
                 </div>
               </div>
@@ -113,8 +126,10 @@
 
               <!-- Card 2 – First-time buyer -->
               <article class="testimonial-card">
+                <div class="testimonial-kicker">
                   <span class="testimonial-type">FIRST-TIME BUYER</span>
                   <span class="testimonial-location">WEST LOOP</span>
+                </div>
                 <h3 class="testimonial-title">“educated us every step of the way.”</h3>
                 <p class="testimonial-text">
                   “As first-time buyers, we had a lot of questions. Ryan walked us through every step, from
@@ -126,8 +141,10 @@
 
               <!-- Card 3 – Seller -->
               <article class="testimonial-card">
+                <div class="testimonial-kicker">
                   <span class="testimonial-type">SELLER</span>
                   <span class="testimonial-location">LINCOLN PARK</span>
+                </div>
                 <h3 class="testimonial-title">“great marketing, even better communication.”</h3>
                 <p class="testimonial-text">
                   “Templeton Real Estate Group handled everything — photos, staging advice, listing strategy, and
@@ -139,8 +156,10 @@
 
               <!-- Card 4 – Repeat client -->
               <article class="testimonial-card">
+                <div class="testimonial-kicker">
                   <span class="testimonial-type">REPEAT CLIENT</span>
                   <span class="testimonial-location">BUY &amp; SELL</span>
+                </div>
                 <h3 class="testimonial-title">“our go-to team for every move.”</h3>
                 <p class="testimonial-text">
                   “We’ve worked with Ryan first as renters, then as buyers, and now as sellers. He knows the Chicago
@@ -152,8 +171,10 @@
 
               <!-- Card 5 – Relocation -->
               <article class="testimonial-card">
+                <div class="testimonial-kicker">
                   <span class="testimonial-type">RELOCATION</span>
                   <span class="testimonial-location">RIVER NORTH</span>
+                </div>
                 <h3 class="testimonial-title">“helped us learn the city quickly.”</h3>
                 <p class="testimonial-text">
                   “Moving to Chicago from out of state was overwhelming, but the TREG team helped us compare
@@ -165,8 +186,10 @@
 
               <!-- Card 6 – Landlord / investor -->
               <article class="testimonial-card">
+                <div class="testimonial-kicker">
                   <span class="testimonial-type">LANDLORD</span>
                   <span class="testimonial-location">LOGAN SQUARE</span>
+                </div>
                 <h3 class="testimonial-title">“great partner for leasing and beyond.”</h3>
                 <p class="testimonial-text">
                   “Ryan has helped us lease our Logan Square units multiple times. He’s efficient with showings,
@@ -183,8 +206,13 @@
           <div class="container">
             <div class="section-cta-title">ready for your next move?</div>
             <div class="section-cta-text" style="max-width: 820px; margin: 0 auto 1rem;">
-              If you’re thinking about renting, buying, or selling in Chicago, we’d love<br>
+              If you’re thinking about renting, buying, or selling in Chicago, we’d love<br />
               to help you build a clear plan and move forward with confidence.
+
+              <!-- If you ever want to avoid <br>, you can do this instead:
+              If you’re thinking about renting, buying, or selling in Chicago, we’d love
+              <span class="no-wrap">to help you build a clear plan</span> and move forward with confidence.
+              -->
             </div>
             <div class="section-cta-meta">the templeton real estate group · chicago real estate</div>
 
