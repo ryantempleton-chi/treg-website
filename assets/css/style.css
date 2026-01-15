@@ -663,7 +663,12 @@ li + li {
   color: var(--treg-slate);
   margin-bottom: 1rem;
 }
-
+.section-cta-text {
+  margin: 0.35rem auto 1.1rem; /* top | left/right | bottom */
+  max-width: 920px;
+  color: var(--treg-slate);
+  line-height: 1.6;
+}
 /* =========================
    ABOUT PHOTO
    ========================= */
