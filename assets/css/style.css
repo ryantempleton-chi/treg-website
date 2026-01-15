@@ -679,6 +679,11 @@ li + li {
 .section-cta-meta--after {
   margin-top: 1.4rem;
 }
+
+/* Prevent awkward single-word wraps (ex: "done.") */
+.no-wrap {
+  white-space: nowrap;
+}
 /* =========================
    ABOUT PHOTO
    ========================= */
