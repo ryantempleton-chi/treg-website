@@ -1259,10 +1259,16 @@ li + li {
   line-height: 1.65;
 }
 
-/* Improve portrait framing on mobile (team/about headshots) */
+/* Improve portrait framing on mobile (bring faces DOWN slightly vs "top") */
 @media (max-width: 640px) {
-  .team-thumb img,
-  .about-photo {
-    object-position: center top;
+  .team-thumb img {
+    object-position: center 18%;
+  }
+}
+
+/* Even smaller screens: nudge a touch more (optional, but usually helps iPhone minis) */
+@media (max-width: 420px) {
+  .team-thumb img {
+    object-position: center 22%;
   }
 }
