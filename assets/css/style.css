@@ -1258,3 +1258,11 @@ li + li {
   max-width: 900px;
   line-height: 1.65;
 }
+
+/* Improve portrait framing on mobile (team/about headshots) */
+@media (max-width: 640px) {
+  .team-thumb img,
+  .about-photo {
+    object-position: center top;
+  }
+}
