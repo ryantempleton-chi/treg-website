@@ -1280,7 +1280,7 @@ li + li {
 @media (min-width: 721px) {
   /* Overall vertical rhythm between sections */
   .team-page .section {
-    padding: 1.25rem 0; /* was 1.5rem */
+    padding: 0.25rem 0; /* was 1.5rem */
   }
 
   /* Muted section (team grid wrapper) tighter */
