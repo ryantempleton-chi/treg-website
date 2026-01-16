@@ -1275,7 +1275,28 @@ li + li {
   gap: 1.1rem;
   align-items: start;
 }
+/* LENDER cards: add brokerage logo tile (bottom-right) */
+.partner-card--lender {
+  position: relative;
+  padding-right: 220px; /* reserves room for the brokerage tile on the right */
+}
 
+.partner-card--lender .partner-media--brokerage {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+
+  width: 200px;        /* match left media column */
+  aspect-ratio: 1 / 1; /* same square tile */
+}
+
+/* Ensure brokerage tile fills like the other logo tiles */
+.partner-media--brokerage img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
 /* Media wrapper (DESKTOP: stacked) */
 .partner-media-stack {
   display: grid;
