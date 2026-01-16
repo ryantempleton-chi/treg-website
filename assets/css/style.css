@@ -1299,10 +1299,19 @@ li + li {
   display: block;
 }
 
-/* Logos: don't crop */
+/* Logos: full bleed (match headshots) */
+.partner-media--logo {
+  background: transparent; /* remove shaded backdrop */
+  border: 0;               /* remove border on logo tile */
+  padding: 0;
+}
+
 .partner-media--logo img {
-  object-fit: contain;
-  padding: 10%;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;       /* fill the tile */
+  padding: 0;              /* remove inset */
 }
 
 /* Content column */
