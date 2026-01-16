@@ -806,7 +806,44 @@ li + li {
   object-fit: cover;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
 }
+/* =========================
+   ABOUT: SIGN-OFF (ABOUT PAGE)
+   ========================= */
 
+.about-signoff {
+  margin-top: 1.15rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  max-width: 560px; /* keeps it feeling like a letter */
+}
+
+.about-signoff-line {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--treg-slate);
+  margin-bottom: 0.55rem;
+}
+
+.about-signature {
+  display: block;
+  width: min(320px, 100%);
+  height: auto;
+  opacity: 0.92;
+  filter: contrast(1.05);
+}
+
+/* Optional: slightly tighter + centered on small screens */
+@media (max-width: 720px) {
+  .about-signoff {
+    max-width: 100%;
+  }
+
+  .about-signature {
+    width: min(300px, 100%);
+  }
+}
 /* =========================
    TEAM INDEX
    ========================= */
