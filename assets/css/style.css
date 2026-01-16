@@ -815,15 +815,18 @@ li + li {
   padding-top: 0.9rem;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   max-width: 560px; /* keeps it feeling like a letter */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* RIGHT align container */
+  text-align: right;     /* RIGHT align text */
+  gap: 0.5rem;
 }
 
-.about-signoff-line {
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+.about-closing {
+  margin: 0;
+  font-style: italic;
   color: var(--treg-slate);
-  margin-bottom: 0.55rem;
 }
 
 .about-signature {
@@ -834,10 +837,12 @@ li + li {
   filter: contrast(1.05);
 }
 
-/* Optional: slightly tighter + centered on small screens */
+/* Mobile: center instead of right-align so it still feels natural */
 @media (max-width: 720px) {
   .about-signoff {
     max-width: 100%;
+    align-items: center;
+    text-align: center;
   }
 
   .about-signature {
