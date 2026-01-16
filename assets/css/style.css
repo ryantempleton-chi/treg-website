@@ -1447,3 +1447,6 @@ li + li {
     padding-bottom: 1.55rem; /* was 1.85rem */
   }
 }
+#partners-cta .section-cta-meta {
+  margin-bottom: 1.25rem;
+}
