@@ -1230,7 +1230,9 @@ li + li {
    PARTNERS PAGE ONLY (GLOBAL CLASSES)
    partners.html uses these classes
    - Desktop: images stacked vertically (bigger), content right
-   - Mobile: images side-by-side, HEADSHOT first then LOGO, content below
+   - Mobile:
+      • default cards: headshot + logo side-by-side
+      • lender cards: big headshot + two stacked logos (team + brokerage) beside it
    ======================================= */
 
 .partners-jump {
@@ -1275,6 +1277,7 @@ li + li {
   gap: 1.1rem;
   align-items: start;
 }
+
 /* LENDER cards: add brokerage logo tile (bottom-right) */
 .partner-card--lender {
   position: relative;
@@ -1297,6 +1300,7 @@ li + li {
   display: block;
   object-fit: cover;
 }
+
 /* Media wrapper (DESKTOP: stacked) */
 .partner-media-stack {
   display: grid;
@@ -1304,6 +1308,16 @@ li + li {
   gap: 0.85rem;
   align-content: start;
   height: 100%;
+}
+
+/* Lender mobile layout helper (big headshot + stacked logos) */
+.partner-media-stack--lender {
+  /* desktop can behave like the default stack */
+}
+
+/* Mobile-only stacked brokerage logo tile (hidden by default / desktop) */
+.partner-media--brokerage-mobile {
+  display: none;
 }
 
 /* Individual media tiles
@@ -1390,7 +1404,33 @@ li + li {
     grid-template-columns: 1fr;
   }
 
-  .partner-media-stack {
+  /* LENDERS: big headshot left + stacked logos right */
+  .partner-media-stack--lender {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* headshot | logos column */
+    gap: 0.75rem;
+    width: min(360px, 100%);
+    align-items: start;
+  }
+
+  .partner-media-stack--lender .partner-media--headshot {
+    grid-column: 1;
+    grid-row: 1 / span 2; /* spans both logo rows */
+  }
+
+  .partner-media-stack--lender .partner-media--logo {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .partner-media-stack--lender .partner-media--brokerage-mobile {
+    grid-column: 2;
+    grid-row: 2;
+    display: block; /* show ONLY on mobile */
+  }
+
+  /* NON-LENDERS (attorneys, trades, etc.): keep current side-by-side */
+  .partner-media-stack:not(.partner-media-stack--lender) {
     display: flex;
     gap: 0.75rem;
     width: min(340px, 100%);
@@ -1400,17 +1440,17 @@ li + li {
     flex: 1 1 0;
   }
 
-  /* Force order on mobile */
-  .partner-media--headshot {
-    order: 1;
-  }
-
-  .partner-media--logo {
-    order: 2;
-  }
-
   .partner-content {
     margin-top: 0.25rem;
+  }
+
+  /* Hide the desktop bottom-right brokerage tile on mobile */
+  .partner-card--lender {
+    padding-right: 1rem; /* remove reserved space */
+  }
+
+  .partner-card--lender .partner-media--brokerage {
+    display: none;
   }
 }
 
