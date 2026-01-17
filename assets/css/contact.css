@@ -279,30 +279,87 @@
 }
 
 /* ========================= */
-/* SOCIAL PROOF              */
+/* SOCIAL PROOF (CONTACT)    */
 /* ========================= */
 
+.contact-proof-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Bigger + gold stars */
 .contact-proof-stars {
-  font-size: 1rem;
-  letter-spacing: 0.12em;
-  color: var(--treg-charcoal);
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: #fbbc05;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  margin: 0;
 }
 
 .contact-proof-title {
   font-family: "League Spartan", system-ui, sans-serif;
   font-weight: 700;
-  margin-top: 0.15rem;
+  font-size: 1.25rem;
+  margin: 0.15rem 0 0.25rem;
+  color: var(--treg-charcoal);
 }
 
 .contact-proof-subtitle {
   color: var(--treg-slate);
   line-height: 1.55;
-  margin-top: 0.25rem;
+  margin: 0;
   font-size: 0.95rem;
+  max-width: 56ch;
 }
 
+/* Google mark row */
+.contact-proof-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--treg-slate);
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.contact-proof-brand .google-mark {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.contact-proof-actions {
+  justify-content: flex-start;
+  margin-top: 0.95rem;
+}
+
+/* Keep your existing spacing helper */
 .contact-cta {
   margin-top: 0.6rem;
+}
+
+/* Mobile: stack buttons nicely */
+@media (max-width: 520px) {
+  .contact-proof-top {
+    align-items: flex-start;
+  }
+
+  .contact-proof-stars {
+    font-size: 1.45rem;
+  }
+
+  .contact-proof-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ========================= */
