@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Thank You | Templeton Real Estate Group</title>
+    <meta
+      name="description"
+      content="Thank you for reaching out to Templeton Real Estate Group. We’ve received your intake and will follow up shortly with clear next steps for buying, selling, renting, or landlord services in Chicago."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts + Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <!-- Optional: if you want a dedicated stylesheet later, add /assets/css/thank-you.css -->
+  </head>
+
+  <body>
+    <div class="page">
+      <div id="site-header"></div>
+
+      <main class="main">
+        <!-- HERO -->
+        <section class="hero">
+          <div class="hero-inner">
+            <div class="hero-label">thank you</div>
+            <h1 class="hero-title">we’ve received your intake.</h1>
+            <p class="hero-subtitle" style="max-width: 880px;">
+              We’ll review your details and follow up soon with clear next steps. If you need us sooner, reach out anytime.
+            </p>
+          </div>
+        </section>
+
+        <!-- CONFIRMATION CONTENT -->
+        <section class="intake-form">
+          <div class="container">
+            <div class="intake-card" style="padding: 28px;">
+              <h2 style="margin: 0 0 10px; font-family: 'Oswald', sans-serif; letter-spacing: 0.04em; text-transform: uppercase;">
+                what happens next
+              </h2>
+
+              <ul style="margin: 0; padding-left: 18px; line-height: 1.75;">
+                <li>Our team will review your goals, timing, and must-haves.</li>
+                <li>We’ll reach out to confirm details and share a clean plan forward.</li>
+                <li>If it’s a rental search, we’ll start building a showing strategy and shortlist.</li>
+              </ul>
+
+              <div style="margin-top: 18px;">
+                <p style="margin: 0 0 10px;">
+                  Prefer to connect right away? We’re happy to help.
+                </p>
+
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                  <a class="btn" href="/contact.html">contact us</a>
+                  <a class="btn btn-outline" href="/">back to home</a>
+                </div>
+
+                <p style="margin: 16px 0 0; font-size: 0.95rem; opacity: 0.9;">
+                  Tip: If you were referred by someone, feel free to mention their name when we connect.
+                </p>
+              </div>
+            </div>
+
+            <p class="intake-note">
+              Thank you again for choosing Templeton Real Estate Group. We’re honored to help you navigate Chicago real estate with clarity and confidence.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <div id="site-footer"></div>
+    </div>
+
+    <script src="/assets/js/layout.js"></script>
+
+    <!-- Optional service-based copy personalization -->
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const raw =
+          (params.get("service") ||
+            params.get("type") ||
+            params.get("intent") ||
+            params.get("for") ||
+            "") + "";
+        const value = raw.trim().toLowerCase();
+
+        const labelEl = document.querySelector(".hero-label");
+        const titleEl = document.querySelector(".hero-title");
+        const subEl = document.querySelector(".hero-subtitle");
+
+        if (!labelEl || !titleEl || !subEl) return;
+
+        const normalizeService = (v) => {
+          if (!v) return "";
+          const s = v.replace(/\s+/g, "-").replace(/_/g, "-");
+
+          const buy = new Set(["buy", "buyer", "purchase", "purchasing", "buying", "homebuyer"]);
+          const sell = new Set(["sell", "seller", "sale", "selling", "list", "listing", "listings"]);
+          const rent = new Set(["rent", "renter", "rental", "leasing", "lease", "tenant", "tenant-rep"]);
+          const landlord = new Set([
+            "landlord",
+            "ll",
+            "owner",
+            "investor",
+            "property",
+            "property-owner",
+            "leasing-owner",
+            "landlord-rep"
+          ]);
+
+          if (buy.has(s)) return "buy";
+          if (sell.has(s)) return "sell";
+          if (rent.has(s)) return "rent";
+          if (landlord.has(s)) return "landlord";
+
+          if (s.includes("buy")) return "buy";
+          if (s.includes("sell") || s.includes("list")) return "sell";
+          if (s.includes("rent") || s.includes("lease")) return "rent";
+          if (s.includes("landlord") || s.includes("owner") || s.includes("investor")) return "landlord";
+          return "";
+        };
+
+        const key = normalizeService(value);
+
+        const copy = {
+          buy: {
+            label: "thank you",
+            title: "we’ve got your purchase details.",
+            sub: "We’ll review your goals and follow up with clear next steps and a smart plan for buying in Chicago."
+          },
+          sell: {
+            label: "thank you",
+            title: "we’ve got your sale details.",
+            sub: "We’ll review your timeline and reach out with pricing thoughts and a clear strategy for selling in Chicago."
+          },
+          rent: {
+            label: "thank you",
+            title: "we’ve got your rental details.",
+            sub: "We’ll review your timing and must-haves, then follow up with a clean, organized plan for your Chicago apartment search."
+          },
+          landlord: {
+            label: "thank you",
+            title: "we’ve got your property details.",
+            sub: "We’ll review your goals and follow up with next steps for pricing, timing, and leasing in Chicago."
+          }
+        };
+
+        if (key && copy[key]) {
+          labelEl.textContent = copy[key].label;
+          titleEl.textContent = copy[key].title;
+          subEl.textContent = copy[key].sub;
+        }
+      })();
+    </script>
+  </body>
+</html>
