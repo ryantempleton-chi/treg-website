@@ -442,3 +442,10 @@
   stroke-linejoin: round;
   opacity: 0.95;
 }
+/* FORCE stars sizing + color to match reviews */
+.contact-proof-card .contact-proof-stars {
+  font-size: 1.6rem;          /* bigger */
+  letter-spacing: 0.12em;
+  line-height: 1;
+  color: var(--treg-bronze);
+}
