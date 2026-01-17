@@ -290,14 +290,13 @@
   margin-bottom: 0.35rem;
 }
 
-/* Bigger + gold stars */
+/* Match reviews page: size + color */
 .contact-proof-stars {
   font-family: "League Spartan", system-ui, sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.25rem;        /* matches reviews */
   line-height: 1;
-  letter-spacing: 0.08em;
-  color: #fbbc05;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  letter-spacing: 0.12em;    /* matches reviews */
+  color: var(--treg-bronze); /* matches brand + reviews vibe */
   margin: 0;
 }
 
@@ -346,14 +345,10 @@
   margin-top: 0.6rem;
 }
 
-/* Mobile: stack buttons nicely */
+/* Mobile: stack buttons nicely (DON’T override stars size) */
 @media (max-width: 520px) {
   .contact-proof-top {
     align-items: flex-start;
-  }
-
-  .contact-proof-stars {
-    font-size: 1.45rem;
   }
 
   .contact-proof-actions .btn {
@@ -396,6 +391,7 @@
     white-space: normal;
   }
 }
+
 /* ========================= */
 /* ICON BUTTON ROW (Contact) */
 /* ========================= */
