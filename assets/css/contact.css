@@ -444,7 +444,7 @@
 }
 /* FORCE stars sizing + color to match reviews */
 .contact-proof-card .contact-proof-stars {
-  font-size: 1.6rem;          /* bigger */
+  font-size: 1.8rem;          /* bigger */
   letter-spacing: 0.12em;
   line-height: 1;
   color: var(--treg-bronze);
