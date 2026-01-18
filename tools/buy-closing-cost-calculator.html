@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Buyer Closing Cost Calculator | Templeton Real Estate Group</title>
-  <meta name="description" content="Estimate buyer closing costs in Chicago and surrounding suburbs. Lender fees, title, recording, escrows, prepaids, and basic prorations." />
+  <meta name="description" content="Estimate buyer closing costs in Chicago and surrounding suburbs. Lender fees, title, recording, escrows, and prepaids." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Fonts (site standard) -->
@@ -327,17 +327,25 @@
                 </div>
 
                 <div class="calc-field">
+                  <label for="closingDate">Estimated closing date</label>
+                  <input id="closingDate" type="date" />
+                </div>
+
+                <div class="calc-field">
                   <label for="interestRate">Interest rate (%)</label>
                   <input id="interestRate" inputmode="decimal" value="6.5" />
                 </div>
 
                 <div class="calc-field">
-                  <label for="closeDate">Anticipated closing date</label>
-                  <input id="closeDate" type="date" />
+                  <label for="prepaidMode">Prepaid interest days</label>
+                  <select id="prepaidMode">
+                    <option value="auto" selected>Auto-calc from closing date</option>
+                    <option value="manual">Manual</option>
+                  </select>
                 </div>
 
                 <div class="calc-field">
-                  <label for="daysPrepaid">Prepaid interest days (used if no closing date)</label>
+                  <label for="daysPrepaid">Prepaid interest days (manual)</label>
                   <input id="daysPrepaid" inputmode="numeric" value="10" />
                 </div>
 
@@ -347,11 +355,22 @@
                 </div>
 
                 <div class="calc-field">
-                  <label for="prorationPct">Tax proration (%)</label>
-                  <select id="prorationPct">
-                    <option value="100" selected>100%</option>
-                    <option value="105">105%</option>
+                  <label for="taxProrationFactor">Tax proration factor</label>
+                  <input id="taxProrationFactor" inputmode="decimal" value="1.05" />
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="taxProrationMode">Property tax credit from seller</label>
+                  <select id="taxProrationMode">
+                    <option value="auto" selected>Auto-calc from closing date (common IL approach)</option>
+                    <option value="manual">Manual amount</option>
+                    <option value="none">No credit</option>
                   </select>
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="taxCreditManual">Tax credit amount (manual)</label>
+                  <input id="taxCreditManual" inputmode="decimal" value="0" />
                 </div>
 
                 <div class="calc-field">
@@ -370,16 +389,30 @@
                 </div>
 
                 <div class="calc-field">
-                  <label for="hoaMonthly">HOA monthly (if applicable)</label>
-                  <input id="hoaMonthly" inputmode="decimal" value="0" />
+                  <label for="monthlyHoa">Monthly HOA (if applicable)</label>
+                  <input id="monthlyHoa" inputmode="decimal" value="0" />
                 </div>
 
                 <div class="calc-field">
-                  <label for="hoaProrationMode">HOA proration assumption</label>
+                  <label for="hoaProrationMode">HOA proration</label>
                   <select id="hoaProrationMode">
-                    <option value="sellerPaidThroughMonth" selected>Seller paid through end of month (buyer reimburses)</option>
-                    <option value="none">No HOA proration</option>
+                    <option value="auto" selected>Auto (buyer reimburses if paid through month-end)</option>
+                    <option value="manual">Manual amount</option>
+                    <option value="none">None</option>
                   </select>
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="hoaPaidThrough">HOA paid through</label>
+                  <select id="hoaPaidThrough">
+                    <option value="month_end" selected>End of month</option>
+                    <option value="close_date">Only through closing date</option>
+                  </select>
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="hoaProrationManual">HOA proration amount (manual)</label>
+                  <input id="hoaProrationManual" inputmode="decimal" value="0" />
                 </div>
 
                 <div class="calc-field calc-span-2">
@@ -437,8 +470,7 @@
               </form>
 
               <p class="calc-note">
-                Defaults are intentionally conservative. Actual costs and credits vary by lender, title company, HOA, property tax billing cycle,
-                and the exact closing date.
+                These defaults are intentionally conservative. Actual costs can vary by lender, title company, HOA requirements, and closing date.
               </p>
             </div>
 
@@ -473,8 +505,8 @@
 
               <div class="calc-disclaimer">
                 This tool provides a rough estimate for planning purposes only. Actual fees and credits vary by lender, title company,
-                property tax bill timing and proration method, HOA paid-through dates, and negotiated terms. Templeton Real Estate Group, LLC and
-                Keller Williams ONEChicago do not guarantee figures shown here and are not responsible for decisions made based on this estimate.
+                municipality, property tax bill, HOA requirements, and closing date. Templeton Real Estate Group, LLC and Keller Williams ONEChicago
+                do not guarantee figures shown here and are not responsible for decisions made based on this estimate.
               </div>
             </div>
           </div>
@@ -520,7 +552,8 @@
     }
 
     function moneyFmt(n) {
-      return n.toLocaleString(undefined, {
+      const rounded = Math.round(n || 0);
+      return rounded.toLocaleString(undefined, {
         style: "currency",
         currency: "USD",
         maximumFractionDigits: 0
@@ -541,31 +574,34 @@
       return parseNumber(el ? el.value : 0);
     }
 
-    // ---------- Date helpers ----------
-    function parseDate(id) {
+    function getDateVal(id) {
       const el = document.getElementById(id);
-      if (!el || !el.value) return null;
-      const d = new Date(el.value + "T00:00:00");
+      const v = el ? String(el.value || "").trim() : "";
+      if (!v) return null;
+      const d = new Date(v + "T12:00:00");
       return Number.isFinite(d.getTime()) ? d : null;
     }
 
-    function daysInMonth(d) {
-      return new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    function endOfMonth(d) {
+      return new Date(d.getFullYear(), d.getMonth() + 1, 0, 12);
     }
 
-    function isLeapYear(y) {
-      return (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0);
+    function daysBetween(a, b) {
+      // difference in whole days between dates at noon
+      const ms = (b.getTime() - a.getTime());
+      return Math.max(0, Math.round(ms / 86400000));
     }
 
     function dayOfYear(d) {
-      const start = new Date(d.getFullYear(), 0, 1);
-      return Math.floor((d - start) / 86400000) + 1;
+      const start = new Date(d.getFullYear(), 0, 1, 12);
+      return daysBetween(start, d) + 1;
     }
 
-    function prepaidInterestDaysFromClose(closeDate) {
-      const nextMonthFirst = new Date(closeDate.getFullYear(), closeDate.getMonth() + 1, 1);
-      const diffDays = Math.max(0, Math.round((nextMonthFirst - closeDate) / 86400000));
-      return diffDays;
+    function daysInYear(d) {
+      const y = d.getFullYear();
+      const start = new Date(y, 0, 1, 12);
+      const next = new Date(y + 1, 0, 1, 12);
+      return Math.round((next - start) / 86400000);
     }
 
     // ---------- Field groups ----------
@@ -573,7 +609,9 @@
       "purchasePrice",
       "annualTax",
       "annualIns",
-      "hoaMonthly",
+      "monthlyHoa",
+      "taxCreditManual",
+      "hoaProrationManual",
       "lenderFees",
       "attorneyFee",
       "titleSettlementFee",
@@ -586,7 +624,8 @@
     const percentFieldIds = [
       "downPct",
       "interestRate",
-      "pointsPct"
+      "pointsPct",
+      "taxProrationFactor"
     ];
 
     const intFieldIds = [
@@ -599,16 +638,21 @@
     const defaults = {
       purchasePrice: "450000",
       downPct: "20",
+      closingDate: "",
       interestRate: "6.5",
-      closeDate: "",
+      prepaidMode: "auto",
       daysPrepaid: "10",
       annualTax: "9000",
-      prorationPct: "100",
+      taxProrationFactor: "1.05",
+      taxProrationMode: "auto",
+      taxCreditManual: "0",
       annualIns: "1600",
       taxEscrowMonths: "2",
       insEscrowMonths: "3",
-      hoaMonthly: "0",
-      hoaProrationMode: "sellerPaidThroughMonth",
+      monthlyHoa: "0",
+      hoaProrationMode: "auto",
+      hoaPaidThrough: "month_end",
+      hoaProrationManual: "0",
       lenderFees: "2200",
       pointsPct: "0",
       attorneyFee: "500",
@@ -620,14 +664,60 @@
       miscTitleFees: "250"
     };
 
+    function setReasonableDefaultDate() {
+      const el = document.getElementById("closingDate");
+      if (!el) return;
+      if (String(el.value || "").trim()) return;
+      const today = new Date();
+      const guess = new Date(today.getFullYear(), today.getMonth() + 1, 15);
+      const yyyy = guess.getFullYear();
+      const mm = String(guess.getMonth() + 1).padStart(2, "0");
+      const dd = String(guess.getDate()).padStart(2, "0");
+      el.value = `${yyyy}-${mm}-${dd}`;
+    }
+
     function resetDefaults() {
       for (const [k, v] of Object.entries(defaults)) {
         const el = document.getElementById(k);
         if (!el) continue;
         el.value = v;
       }
+      setReasonableDefaultDate();
       formatAll();
       calculate();
+    }
+
+    // ---------- Robust components ----------
+    function computePrepaidInterestDays(closingDate) {
+      if (!closingDate) return Math.max(getVal("daysPrepaid"), 0);
+      const eom = endOfMonth(closingDate);
+      // Typical: from closing date through end of month (not including next month)
+      const days = daysBetween(closingDate, new Date(eom.getFullYear(), eom.getMonth(), eom.getDate() + 1, 12));
+      return Math.max(0, days);
+    }
+
+    function computeBuyerTaxCredit(closingDate, annualTax, factor) {
+      // Common IL pattern: seller credits buyer for Jan 1 -> day before closing (taxes paid in arrears),
+      // often based on last year's bill * a factor (e.g., 105%).
+      if (!closingDate) return 0;
+      const doy = dayOfYear(closingDate); // includes closing day
+      const daysSellerOwes = Math.max(0, doy - 1); // Jan1 through day before closing
+      const diy = daysInYear(closingDate);
+      const base = (annualTax * factor) * (daysSellerOwes / diy);
+      return Math.max(0, base);
+    }
+
+    function computeHoaProrationBuyer(closingDate, monthlyHoa, paidThrough) {
+      if (!closingDate || monthlyHoa <= 0) return 0;
+      if (paidThrough !== "month_end") return 0;
+
+      // Buyer reimburses seller for days AFTER closing through month-end (assuming seller paid full month)
+      const eom = endOfMonth(closingDate);
+      const nextDay = new Date(closingDate.getFullYear(), closingDate.getMonth(), closingDate.getDate() + 1, 12);
+      const daysRemaining = daysBetween(nextDay, new Date(eom.getFullYear(), eom.getMonth(), eom.getDate() + 1, 12));
+      // Use actual days in month for better proration
+      const daysInMonth = eom.getDate();
+      return (monthlyHoa / daysInMonth) * Math.max(0, daysRemaining);
     }
 
     // ---------- Calculation ----------
@@ -635,6 +725,8 @@
       const price = getVal("purchasePrice");
       const downPct = getVal("downPct") / 100;
       const loan = Math.max(price * (1 - downPct), 0);
+
+      const closingDate = getDateVal("closingDate");
 
       const lenderFees = getVal("lenderFees");
       const points = loan * (getVal("pointsPct") / 100);
@@ -656,41 +748,37 @@
       const taxEscrow = (annualTax / 12) * taxEscMonths;
       const insEscrow = (annualIns / 12) * insEscMonths;
 
-      // Prepaid interest days: if close date exists, override the manual days field
-      const closeDate = parseDate("closeDate");
-      const daysPrepaid = closeDate ? prepaidInterestDaysFromClose(closeDate) : Math.max(getVal("daysPrepaid"), 0);
-
+      // Prepaid interest
       const rate = getVal("interestRate") / 100;
-      const prepaidInterest = loan * rate / 365 * daysPrepaid;
+      const prepaidMode = document.getElementById("prepaidMode").value;
+      const days = prepaidMode === "auto"
+        ? computePrepaidInterestDays(closingDate)
+        : Math.max(getVal("daysPrepaid"), 0);
 
-      // Tax proration credit (estimate): seller credits buyer for seller's portion through the day before closing
-      let taxProrationCredit = 0;
-      const prorationFactor = Math.max(getVal("prorationPct"), 0) / 100;
-      if (closeDate && annualTax > 0) {
-        const y = closeDate.getFullYear();
-        const diy = isLeapYear(y) ? 366 : 365;
-        const sellerPortion = Math.max(dayOfYear(closeDate) - 1, 0) / diy;
-        taxProrationCredit = annualTax * sellerPortion * prorationFactor;
-      }
+      const prepaidInterest = loan * rate / 365 * days;
 
-      // HOA proration (estimate): if seller paid through end of month, buyer reimburses remaining days after closing
-      let hoaProrationBuyerOwes = 0;
-      const hoaMonthly = getVal("hoaMonthly");
-      const hoaMode = document.getElementById("hoaProrationMode").value;
-      if (closeDate && hoaMonthly > 0 && hoaMode === "sellerPaidThroughMonth") {
-        const dim = daysInMonth(closeDate);
-        const day = closeDate.getDate();
-        const daysRemaining = Math.max(dim - day, 0);
-        hoaProrationBuyerOwes = (hoaMonthly / dim) * daysRemaining;
-      }
+      // Tax credit (reduces buyer cash to close)
+      const taxProrationMode = document.getElementById("taxProrationMode").value;
+      const factor = Math.max(getVal("taxProrationFactor"), 0);
+      const taxCredit = taxProrationMode === "auto"
+        ? computeBuyerTaxCredit(closingDate, annualTax, factor)
+        : (taxProrationMode === "manual" ? Math.max(getVal("taxCreditManual"), 0) : 0);
+
+      // HOA proration (buyer reimbursement to seller; increases cash to close)
+      const monthlyHoa = Math.max(getVal("monthlyHoa"), 0);
+      const hoaProrationMode = document.getElementById("hoaProrationMode").value;
+      const hoaPaidThrough = document.getElementById("hoaPaidThrough").value;
+      const hoaProration = hoaProrationMode === "auto"
+        ? computeHoaProrationBuyer(closingDate, monthlyHoa, hoaPaidThrough)
+        : (hoaProrationMode === "manual" ? Math.max(getVal("hoaProrationManual"), 0) : 0);
 
       const closingCosts =
         lenderFees + points +
         settlement + lendersTitle + ownersTitle + miscTitle +
         recording + attorney +
         taxEscrow + insEscrow + prepaidInterest +
-        hoaProrationBuyerOwes -
-        taxProrationCredit;
+        hoaProration
+        - taxCredit;
 
       const downPayment = price * downPct;
       const cashToClose = closingCosts + downPayment;
@@ -708,17 +796,17 @@
         ["Other title/escrow misc", miscTitle],
         ["Recording fees (est.)", recording],
         ["Attorney fee", attorney],
-        [`Tax escrow (${taxEscMonths} mo.)`, taxEscrow],
-        [`Insurance escrow (${insEscMonths} mo.)`, insEscrow],
-        [`Prepaid interest (${daysPrepaid} days)`, prepaidInterest],
-        ["HOA proration (buyer reimburses)", hoaProrationBuyerOwes],
-        ["Estimated tax proration credit (seller → buyer)", -taxProrationCredit]
+        ["Tax escrow", taxEscrow],
+        ["Insurance escrow", insEscrow],
+        ["Prepaid interest", prepaidInterest],
+        ["HOA proration (if applicable)", hoaProration],
+        ["Estimated tax credit from seller", -taxCredit]
       ];
 
       const tbody = document.getElementById("breakdown");
       tbody.innerHTML = "";
       for (const [label, val] of rows) {
-        if (Math.abs(val) < 0.01) continue;
+        if (Math.round(val) === 0) continue;
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
@@ -801,9 +889,12 @@
       });
     }
 
+    // Buttons still work
     document.getElementById("calcBtn").addEventListener("click", calculate);
     document.getElementById("resetBtn").addEventListener("click", resetDefaults);
 
+    // Init
+    setReasonableDefaultDate();
     bindLiveRecalc();
     bindBlurFormatting();
     formatAll();
