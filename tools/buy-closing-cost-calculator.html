@@ -14,9 +14,10 @@
   <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/css/style.css" />
 
-  <!-- Page-only CSS (namespaced to avoid conflicts) -->
+  <!-- Page-only CSS (namespaced; avoids global conflicts) -->
   <style>
     .calc-page .hero-title { text-transform: lowercase; }
+
     .calc-grid {
       display: grid;
       gap: 1.25rem;
@@ -156,9 +157,10 @@
 <body class="calc-page">
   <div class="page">
 
-    <!-- ✅ Paste your existing HEADER here (unchanged) -->
+    <!-- HEADER (exact) -->
     <header class="site-header">
       <div class="container header-inner">
+        <!-- Logo -->
         <a href="/" class="logo-link">
           <img
             src="/assets/img/logo-transparent-lg.png"
@@ -167,6 +169,7 @@
           />
         </a>
 
+        <!-- SERHANT-style Menu button -->
         <button
           class="menu-btn"
           type="button"
@@ -178,6 +181,7 @@
           menu
         </button>
 
+        <!-- Primary navigation -->
         <nav class="nav" aria-label="Primary navigation">
           <ul class="nav-list">
             <li class="nav-item"><a href="/" class="nav-link">home</a></li>
@@ -207,6 +211,7 @@
         </nav>
       </div>
 
+      <!-- Backdrop + panel -->
       <div class="menu-backdrop" data-menu-close aria-hidden="true"></div>
 
       <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
@@ -225,6 +230,7 @@
           </div>
 
           <div class="menu-layout">
+            <!-- LEFT: big primary links -->
             <div class="menu-primary" aria-label="Primary menu links">
               <a class="menu-primary-link" href="/buy.html">buy.</a>
               <a class="menu-primary-link" href="/sell.html">sell.</a>
@@ -234,12 +240,14 @@
               <a class="menu-primary-link" href="/team/">meet the team.</a>
               <a class="menu-primary-link" href="/contact.html">contact us.</a>
 
+              <!-- CTA row (left column) -->
               <div class="menu-cta-row">
                 <a class="btn btn-primary" href="/intake.html">start intake</a>
                 <a class="btn btn-ghost" href="/contact.html">email our team</a>
               </div>
             </div>
 
+            <!-- RIGHT: grouped subtle links -->
             <div class="menu-secondary" aria-label="Secondary menu links">
               <div class="menu-col">
                 <div class="menu-col-title">Work with us</div>
@@ -265,10 +273,12 @@
                 <a class="menu-link" href="/reviews.html">Testimonials</a>
               </div>
 
+              <!-- Spacer box (invisible) to force a perfect 2x2 grid -->
               <div class="menu-col menu-col--spacer" aria-hidden="true"></div>
             </div>
           </div>
 
+          <!-- Big corner favicon / mark (we'll position with CSS) -->
           <img
             src="/assets/img/icons/favicon-1500x1500-tran.png"
             alt=""
@@ -279,8 +289,8 @@
       </div>
     </header>
 
-    <main class="main calc-main">
-      <!-- HERO (uses your global hero classes) -->
+    <main class="main">
+      <!-- HERO -->
       <section class="hero">
         <div class="hero-inner">
           <div class="hero-label">Tools</div>
@@ -297,6 +307,7 @@
         </div>
       </section>
 
+      <!-- CONTENT -->
       <section class="section">
         <div class="container">
           <div class="calc-grid">
@@ -400,8 +411,7 @@
               </form>
 
               <p class="calc-note">
-                These defaults are intentionally conservative. If you’d like, we can later replace certain items with Chicago-accurate formulas
-                (ex: recording, title ranges, escrows) as you collect more statements.
+                These defaults are intentionally conservative. Actual costs can vary by lender, title company, and closing date.
               </p>
             </div>
 
@@ -445,9 +455,10 @@
       </section>
     </main>
 
-    <!-- ✅ Paste your existing FOOTER here (unchanged) -->
+    <!-- FOOTER (exact) -->
     <footer class="site-footer">
       <div class="site-footer-inner">
+
         <div class="footer-brand">
           templeton real estate group · chicago, il
         </div>
@@ -462,8 +473,10 @@
         <div>
           &copy; <span id="year"></span> Templeton Real Estate Group, LLC.
         </div>
+
       </div>
     </footer>
+
   </div>
 
   <script>
@@ -560,9 +573,9 @@
         ["Other title/escrow misc", miscTitle],
         ["Recording fees (est.)", recording],
         ["Attorney fee", attorney],
-        [`Tax escrow (${taxEscMonths} mo.)`, taxEscrow],
-        [`Insurance escrow (${insEscMonths} mo.)`, insEscrow],
-        [`Prepaid interest (${days} days)`, prepaidInterest],
+        ["Tax escrow", taxEscrow],
+        ["Insurance escrow", insEscrow],
+        ["Prepaid interest", prepaidInterest]
       ];
 
       const tbody = document.getElementById("breakdown");
@@ -582,10 +595,8 @@
     document.getElementById("calcBtn").addEventListener("click", calculate);
     document.getElementById("resetBtn").addEventListener("click", resetDefaults);
 
+    // Initial calc
     calculate();
   </script>
-
-  <!-- IMPORTANT: this relies on your existing menu JS that toggles body.menu-open.
-       If that script is global elsewhere (recommended), you don't need anything here. -->
 </body>
 </html>
