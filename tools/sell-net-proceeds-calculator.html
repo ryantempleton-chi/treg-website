@@ -6,14 +6,18 @@
   <meta name="description" content="Estimate seller closing costs and net proceeds in Chicago and surrounding suburbs, including transfer taxes and commissions." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Fonts (site standard) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 
+  <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/css/style.css" />
 
+  <!-- Page-only CSS (namespaced; avoids global conflicts) -->
   <style>
     .calc-page .hero-title { text-transform: lowercase; }
+
     .calc-grid {
       display: grid;
       gap: 1.25rem;
@@ -22,12 +26,14 @@
     @media (min-width: 900px) {
       .calc-grid { grid-template-columns: 1.05fr 0.95fr; }
     }
+
     .calc-card {
       border: 1px solid rgba(0, 0, 0, 0.06);
       background: #fff;
       border-radius: 16px;
       padding: 1.1rem;
     }
+
     .calc-card h2 {
       font-family: "Oswald", system-ui, sans-serif;
       font-size: 1.05rem;
@@ -35,6 +41,7 @@
       text-transform: uppercase;
       margin: 0 0 0.85rem;
     }
+
     .calc-form {
       display: grid;
       grid-template-columns: 1fr;
@@ -44,6 +51,7 @@
       .calc-form { grid-template-columns: 1fr 1fr; }
       .calc-span-2 { grid-column: 1 / -1; }
     }
+
     .calc-field label {
       display: block;
       font-family: "Roboto", system-ui, sans-serif;
@@ -53,6 +61,7 @@
       color: var(--treg-slate);
       margin-bottom: 0.45rem;
     }
+
     .calc-field input,
     .calc-field select {
       width: 100%;
@@ -64,6 +73,7 @@
       background: #fff;
       color: var(--treg-charcoal);
     }
+
     .calc-actions {
       display: flex;
       flex-wrap: wrap;
@@ -71,9 +81,14 @@
       align-items: center;
       margin-top: 0.35rem;
     }
+
     .calc-actions .btn { pointer-events: auto; }
 
-    .calc-results { display: grid; gap: 0.75rem; }
+    .calc-results {
+      display: grid;
+      gap: 0.75rem;
+    }
+
     .calc-kpi {
       border-radius: 16px;
       border: 1px solid rgba(0, 0, 0, 0.06);
@@ -84,6 +99,7 @@
       gap: 1rem;
       align-items: baseline;
     }
+
     .calc-kpi strong {
       font-family: "Roboto", system-ui, sans-serif;
       font-size: 0.78rem;
@@ -92,6 +108,7 @@
       color: var(--treg-slate);
       font-weight: 600;
     }
+
     .calc-kpi span {
       font-family: "League Spartan", system-ui, sans-serif;
       font-weight: 700;
@@ -133,10 +150,140 @@
 <body class="calc-page">
   <div class="page">
 
-    <!-- ✅ HEADER: paste the same site header markup here (unchanged) -->
-    <!-- (Copy from the buyer page above to keep it identical.) -->
+    <!-- HEADER (exact) -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!-- Logo -->
+        <a href="/" class="logo-link">
+          <img
+            src="/assets/img/logo-transparent-lg.png"
+            alt="ryantempleton. chicago · templeton real estate group"
+            class="logo-img"
+          />
+        </a>
+
+        <!-- SERHANT-style Menu button -->
+        <button
+          class="menu-btn"
+          type="button"
+          aria-label="Open menu"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+        >
+          <span class="menu-btn-icon" aria-hidden="true"><span></span></span>
+          menu
+        </button>
+
+        <!-- Primary navigation -->
+        <nav class="nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/" class="nav-link">home</a></li>
+
+            <li class="nav-item has-dropdown">
+              <button class="nav-link-dropdown" type="button">about</button>
+              <ul class="nav-dropdown">
+                <li><a class="nav-dropdown-link" href="/about.html">our story</a></li>
+                <li><a class="nav-dropdown-link" href="/team/">meet the team</a></li>
+                <li><a class="nav-dropdown-link" href="/reviews.html">client reviews</a></li>
+                <li><a class="nav-dropdown-link" href="/partners.html">partners</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link nav-link-dropdown">buy | sell | rent</a>
+              <ul class="nav-dropdown">
+                <li><a href="/buy.html" class="nav-dropdown-link">buy</a></li>
+                <li><a href="/sell.html" class="nav-dropdown-link">sell</a></li>
+                <li><a href="/rent.html" class="nav-dropdown-link">rent</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="/neighborhoods.html" class="nav-link">neighborhoods</a></li>
+            <li class="nav-item"><a href="/contact.html" class="nav-link">contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Backdrop + panel -->
+      <div class="menu-backdrop" data-menu-close aria-hidden="true"></div>
+
+      <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+        <div class="menu-panel-inner">
+          <div class="menu-panel-top">
+            <div class="menu-panel-title">menu</div>
+
+            <div class="menu-panel-top-right">
+              <img
+                class="menu-panel-mark"
+                src="/assets/img/logo-transparent-lg.png"
+                alt="Templeton Real Estate Group"
+              />
+              <button class="menu-close" type="button" data-menu-close aria-label="Close menu">✕</button>
+            </div>
+          </div>
+
+          <div class="menu-layout">
+            <!-- LEFT: big primary links -->
+            <div class="menu-primary" aria-label="Primary menu links">
+              <a class="menu-primary-link" href="/buy.html">buy.</a>
+              <a class="menu-primary-link" href="/sell.html">sell.</a>
+              <a class="menu-primary-link" href="/rent.html">rent.</a>
+              <a class="menu-primary-link" href="/neighborhoods.html">neighborhoods.</a>
+              <a class="menu-primary-link" href="/partners.html">partners.</a>
+              <a class="menu-primary-link" href="/team/">meet the team.</a>
+              <a class="menu-primary-link" href="/contact.html">contact us.</a>
+
+              <!-- CTA row (left column) -->
+              <div class="menu-cta-row">
+                <a class="btn btn-primary" href="/intake.html">start intake</a>
+                <a class="btn btn-ghost" href="/contact.html">email our team</a>
+              </div>
+            </div>
+
+            <!-- RIGHT: grouped subtle links -->
+            <div class="menu-secondary" aria-label="Secondary menu links">
+              <div class="menu-col">
+                <div class="menu-col-title">Work with us</div>
+                <a class="menu-link" href="/buy-process.html">Buy Process</a>
+                <a class="menu-link" href="/sell-process.html">Sell Process</a>
+                <a class="menu-link" href="/rent-process.html">Rent Process</a>
+                <a class="menu-link" href="/intake.html">New Client Intake</a>
+              </div>
+
+              <div class="menu-col">
+                <div class="menu-col-title">Company</div>
+                <a class="menu-link" href="/about.html">Our Story</a>
+                <a class="menu-link" href="/reviews.html">Client Reviews</a>
+                <a class="menu-link" href="/partners.html">Partners</a>
+                <a class="menu-link" href="/contact.html">Contact</a>
+              </div>
+
+              <div class="menu-col">
+                <div class="menu-col-title">Explore</div>
+                <a class="menu-link" href="/">Home</a>
+                <a class="menu-link" href="/neighborhoods.html">Neighborhood Guides</a>
+                <a class="menu-link" href="/partners.html">Partner Referrals</a>
+                <a class="menu-link" href="/reviews.html">Testimonials</a>
+              </div>
+
+              <!-- Spacer box (invisible) to force a perfect 2x2 grid -->
+              <div class="menu-col menu-col--spacer" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- Big corner favicon / mark (we'll position with CSS) -->
+          <img
+            src="/assets/img/icons/favicon-1500x1500-tran.png"
+            alt=""
+            aria-hidden="true"
+            class="menu-corner-mark"
+          />
+        </div>
+      </div>
+    </header>
 
     <main class="main">
+      <!-- HERO -->
       <section class="hero">
         <div class="hero-inner">
           <div class="hero-label">Tools</div>
@@ -153,9 +300,11 @@
         </div>
       </section>
 
+      <!-- CONTENT -->
       <section class="section">
         <div class="container">
           <div class="calc-grid">
+            <!-- Inputs -->
             <div class="calc-card">
               <h2>Inputs</h2>
 
@@ -211,6 +360,7 @@
               </form>
             </div>
 
+            <!-- Results -->
             <div class="calc-card">
               <h2>Results</h2>
 
@@ -231,7 +381,10 @@
 
               <table class="calc-table" aria-label="Seller cost breakdown">
                 <thead>
-                  <tr><th>Category</th><th>Estimate</th></tr>
+                  <tr>
+                    <th>Category</th>
+                    <th>Estimate</th>
+                  </tr>
                 </thead>
                 <tbody id="breakdown"></tbody>
               </table>
@@ -247,9 +400,10 @@
       </section>
     </main>
 
-    <!-- ✅ FOOTER: paste your site footer markup (unchanged) -->
+    <!-- FOOTER (exact) -->
     <footer class="site-footer">
       <div class="site-footer-inner">
+
         <div class="footer-brand">
           templeton real estate group · chicago, il
         </div>
@@ -264,13 +418,17 @@
         <div>
           &copy; <span id="year"></span> Templeton Real Estate Group, LLC.
         </div>
+
       </div>
     </footer>
+
   </div>
 
   <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // Helpers
     function num(id) {
       const v = document.getElementById(id).value.trim().replace(/[$,]/g, "");
       const n = Number(v);
@@ -347,7 +505,7 @@
         ["City transfer tax", cityTax],
         ["County transfer tax", countyTax],
         ["State transfer tax", stateTax],
-        ["Custom local transfer tax", customTax],
+        ["Custom local transfer tax", customTax]
       ];
 
       const tbody = document.getElementById("breakdown");
@@ -368,9 +526,8 @@
     document.getElementById("calcBtn").addEventListener("click", calculate);
     document.getElementById("resetBtn").addEventListener("click", resetDefaults);
 
+    // Initial calc
     calculate();
   </script>
-
-  <!-- IMPORTANT: like the buyer page, this expects your existing mega-menu JS is loaded globally -->
 </body>
 </html>
