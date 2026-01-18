@@ -482,7 +482,7 @@
   <script>
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
-
+  
     // Helpers
     function num(id) {
       const v = document.getElementById(id).value.trim().replace(/[$,]/g, "");
@@ -492,7 +492,7 @@
     function money(n) {
       return n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
     }
-
+  
     const defaults = {
       purchasePrice: "450000",
       downPct: "20",
@@ -512,7 +512,7 @@
       recordingFees: "250",
       miscTitleFees: "250"
     };
-
+  
     function resetDefaults() {
       for (const [k, v] of Object.entries(defaults)) {
         const el = document.getElementById(k);
@@ -521,49 +521,49 @@
       }
       calculate();
     }
-
+  
     function calculate() {
       const price = num("purchasePrice");
       const downPct = num("downPct") / 100;
       const loan = Math.max(price * (1 - downPct), 0);
-
+  
       const lenderFees = num("lenderFees");
       const points = loan * (num("pointsPct") / 100);
-
+  
       const settlement = num("titleSettlementFee");
       const lendersTitle = num("lendersTitle");
       const miscTitle = num("miscTitleFees");
       const recording = num("recordingFees");
       const attorney = num("attorneyFee");
-
+  
       const includeOwners = document.getElementById("includeOwnersTitle").value === "yes";
       const ownersTitle = includeOwners ? num("ownersTitle") : 0;
-
+  
       const annualTax = num("annualTax");
       const annualIns = num("annualIns");
       const taxEscMonths = Math.max(num("taxEscrowMonths"), 0);
       const insEscMonths = Math.max(num("insEscrowMonths"), 0);
-
+  
       const taxEscrow = (annualTax / 12) * taxEscMonths;
       const insEscrow = (annualIns / 12) * insEscMonths;
-
+  
       const rate = num("interestRate") / 100;
       const days = Math.max(num("daysPrepaid"), 0);
       const prepaidInterest = loan * rate / 365 * days;
-
+  
       const closingCosts =
         lenderFees + points +
         settlement + lendersTitle + ownersTitle + miscTitle +
         recording + attorney +
         taxEscrow + insEscrow + prepaidInterest;
-
+  
       const downPayment = price * downPct;
       const cashToClose = closingCosts + downPayment;
-
+  
       document.getElementById("closingCosts").textContent = money(closingCosts);
       document.getElementById("downPayment").textContent = money(downPayment);
       document.getElementById("cashToClose").textContent = money(cashToClose);
-
+  
       const rows = [
         ["Lender fees (est.)", lenderFees],
         ["Discount points", points],
@@ -577,7 +577,7 @@
         ["Insurance escrow", insEscrow],
         ["Prepaid interest", prepaidInterest]
       ];
-
+  
       const tbody = document.getElementById("breakdown");
       tbody.innerHTML = "";
       for (const [label, val] of rows) {
@@ -591,11 +591,29 @@
         tbody.appendChild(tr);
       }
     }
-
+  
+    // Live-recalc (debounced so typing feels smooth)
+    function bindLiveRecalc() {
+      const form = document.getElementById("buyerCalc");
+      if (!form) return;
+  
+      let t = null;
+      const schedule = () => {
+        window.clearTimeout(t);
+        t = window.setTimeout(calculate, 120);
+      };
+  
+      const fields = form.querySelectorAll("input, select");
+      fields.forEach((el) => {
+        el.addEventListener("input", schedule);
+        el.addEventListener("change", schedule);
+      });
+    }
+  
     document.getElementById("calcBtn").addEventListener("click", calculate);
     document.getElementById("resetBtn").addEventListener("click", resetDefaults);
-
-    // Initial calc
+  
+    bindLiveRecalc();
     calculate();
   </script>
 </body>
