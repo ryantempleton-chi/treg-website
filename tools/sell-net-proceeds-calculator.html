@@ -427,7 +427,7 @@
   <script>
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
-
+  
     // Helpers
     function num(id) {
       const v = document.getElementById(id).value.trim().replace(/[$,]/g, "");
@@ -437,7 +437,7 @@
     function money(n) {
       return n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
     }
-
+  
     const defaults = {
       salePrice: "500000",
       mortgagePayoff: "0",
@@ -448,7 +448,7 @@
       titleSellerFees: "450",
       taxProrationCredit: "0"
     };
-
+  
     function resetDefaults() {
       for (const [k, v] of Object.entries(defaults)) {
         const el = document.getElementById(k);
@@ -457,46 +457,46 @@
       }
       calculate();
     }
-
+  
     function transferTaxRates(mode) {
       // Rates in $ per $1,000 of sale price (editable defaults)
       if (mode === "chicago") return { city: 7.50, county: 0.50, state: 1.00 };
       if (mode === "cook_non_chicago") return { city: 0.00, county: 0.50, state: 1.00 };
       return { city: 0.00, county: 0.00, state: 0.00 };
     }
-
+  
     function calculate() {
       const price = num("salePrice");
       const payoff = num("mortgagePayoff");
-
+  
       const commission = price * (num("commissionPct") / 100);
       const attorney = num("attorneyFee");
       const titleSellerFees = num("titleSellerFees");
       const taxProrationCredit = num("taxProrationCredit");
-
+  
       const mode = document.getElementById("locationMode").value;
       const rates = transferTaxRates(mode);
       const customLocal = Math.max(num("customLocalTax"), 0);
-
+  
       const cityTax = price / 1000 * rates.city;
       const countyTax = price / 1000 * rates.county;
       const stateTax = price / 1000 * rates.state;
       const customTax = price / 1000 * customLocal;
-
+  
       const sellerCosts =
         commission +
         attorney +
         titleSellerFees +
         taxProrationCredit +
         cityTax + countyTax + stateTax + customTax;
-
+  
       const netBeforePayoff = price - sellerCosts;
       const netAfterPayoff = netBeforePayoff - payoff;
-
+  
       document.getElementById("sellerCosts").textContent = money(sellerCosts);
       document.getElementById("netBeforePayoff").textContent = money(netBeforePayoff);
       document.getElementById("netAfterPayoff").textContent = money(netAfterPayoff);
-
+  
       const rows = [
         ["Commission", commission],
         ["Attorney fee", attorney],
@@ -507,7 +507,7 @@
         ["State transfer tax", stateTax],
         ["Custom local transfer tax", customTax]
       ];
-
+  
       const tbody = document.getElementById("breakdown");
       tbody.innerHTML = "";
       for (const [label, val] of rows) {
@@ -522,11 +522,29 @@
         tbody.appendChild(tr);
       }
     }
-
+  
+    // Live-recalc (debounced so typing feels smooth)
+    function bindLiveRecalc() {
+      const form = document.getElementById("sellerCalc");
+      if (!form) return;
+  
+      let t = null;
+      const schedule = () => {
+        window.clearTimeout(t);
+        t = window.setTimeout(calculate, 120);
+      };
+  
+      const fields = form.querySelectorAll("input, select");
+      fields.forEach((el) => {
+        el.addEventListener("input", schedule);
+        el.addEventListener("change", schedule);
+      });
+    }
+  
     document.getElementById("calcBtn").addEventListener("click", calculate);
     document.getElementById("resetBtn").addEventListener("click", resetDefaults);
-
-    // Initial calc
+  
+    bindLiveRecalc();
     calculate();
   </script>
 </body>
