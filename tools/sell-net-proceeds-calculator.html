@@ -407,14 +407,6 @@
                   <input id="monthlyHoa" inputmode="decimal" value="0" />
                 </div>
 
-                <div class="calc-field">
-                  <label for="hoaPaidThrough">HOA paid through</label>
-                  <select id="hoaPaidThrough">
-                    <option value="month_end" selected>End of month</option>
-                    <option value="close_date">Only through closing date</option>
-                  </select>
-                </div>
-
                 <!-- AUTO HOA proration credit (hidden until relevant) -->
                 <div class="calc-field calc-span-2 calc-auto-row" id="rowHoaProration">
                   <label for="hoaProrationCredit">HOA proration credit to seller (auto)</label>
@@ -430,15 +422,20 @@
                   </select>
                 </div>
 
-                <div class="calc-field">
-                  <label for="customLocalTax">Custom local transfer tax ($/1,000)</label>
-                  <input id="customLocalTax" inputmode="decimal" value="0" />
+                <!-- AUTO transfer taxes (hidden until relevant) -->
+                <div class="calc-field calc-auto-row" id="rowCityTax">
+                  <label for="cityTransferTax">City transfer tax (auto)</label>
+                  <input id="cityTransferTax" inputmode="decimal" value="$0" readonly />
                 </div>
 
-                <!-- AUTO transfer tax total (hidden until relevant) -->
-                <div class="calc-field calc-auto-row" id="rowTransferTax">
-                  <label for="transferTaxTotal">Estimated transfer taxes (auto)</label>
-                  <input id="transferTaxTotal" inputmode="decimal" value="$0" readonly />
+                <div class="calc-field calc-auto-row" id="rowCountyTax">
+                  <label for="countyTransferTax">County transfer tax (auto)</label>
+                  <input id="countyTransferTax" inputmode="decimal" value="$0" readonly />
+                </div>
+
+                <div class="calc-field calc-auto-row" id="rowStateTax">
+                  <label for="stateTransferTax">State transfer tax (auto)</label>
+                  <input id="stateTransferTax" inputmode="decimal" value="$0" readonly />
                 </div>
 
                 <div class="calc-field">
@@ -582,7 +579,6 @@
     }
 
     function percentDisplay(n) {
-      // "5" -> "5%"
       return `${percentFmt(n)}%`;
     }
 
@@ -665,15 +661,9 @@
       "otherSellerCosts"
     ];
 
-    // Note: these are percent-style inputs that should show a trailing "%"
     const percentPrettyFieldIds = [
       "commissionPct",
       "taxProrationPct"
-    ];
-
-    // Numeric (not percent) but we still clean-format on blur
-    const numericFieldIds = [
-      "customLocalTax" // $ per 1,000
     ];
 
     const defaults = {
@@ -685,9 +675,7 @@
       annualTax: "9000",
       taxProrationPct: "5",
       monthlyHoa: "0",
-      hoaPaidThrough: "month_end",
       locationMode: "chicago",
-      customLocalTax: "0",
       titleSellerFees: "450",
       recordingFees: "0",
       hoaDocsFees: "0",
@@ -708,12 +696,15 @@
 
     function transferTaxRates(mode) {
       // Rates in $ per $1,000 of sale price
+      // Chicago: City 7.50, Cook 0.50, IL State 1.00
       if (mode === "chicago") return { city: 7.50, county: 0.50, state: 1.00 };
+      // Cook (non-Chicago): no city, Cook 0.50, IL State 1.00
       if (mode === "cook_non_chicago") return { city: 0.00, county: 0.50, state: 1.00 };
+      // None
       return { city: 0.00, county: 0.00, state: 0.00 };
     }
 
-    // Illinois proration conventions vary by contract; this is a common planning model:
+    // Common planning model:
     // seller credit ~= (annual taxes * (1 + factor%)) * portion of year elapsed at closing.
     function computeSellerTaxProration(closingDate, annualTax, factorPct) {
       if (!closingDate || annualTax <= 0) return 0;
@@ -724,10 +715,9 @@
       return Math.max(0, (annualTax * factor) * (daysSellerOwes / diy));
     }
 
-    // HOA proration credit to seller if seller paid through month-end.
-    function computeHoaProrationCreditToSeller(closingDate, monthlyHoa, paidThrough) {
+    // HOA proration credit to seller (seller assumes HOA is prepaid through month-end)
+    function computeHoaProrationCreditToSeller(closingDate, monthlyHoa) {
       if (!closingDate || monthlyHoa <= 0) return 0;
-      if (paidThrough !== "month_end") return 0;
 
       const eom = endOfMonth(closingDate);
       const nextDay = new Date(closingDate.getFullYear(), closingDate.getMonth(), closingDate.getDate() + 1, 12);
@@ -735,6 +725,7 @@
 
       const daysRemaining = daysBetween(nextDay, endPlusOne);
       const daysInMonth = eom.getDate();
+
       return (monthlyHoa / daysInMonth) * Math.max(0, daysRemaining);
     }
 
@@ -755,17 +746,13 @@
       const sellerCredits = Math.max(getVal("sellerCredits"), 0);
       const otherSellerCosts = Math.max(getVal("otherSellerCosts"), 0);
 
-      // Transfer taxes (auto)
+      // Transfer taxes (auto) — show 3 line items
       const mode = document.getElementById("locationMode").value;
       const rates = transferTaxRates(mode);
-      const customLocal = Math.max(getVal("customLocalTax"), 0);
 
-      const cityTax = price / 1000 * rates.city;
-      const countyTax = price / 1000 * rates.county;
-      const stateTax = price / 1000 * rates.state;
-      const customTax = price / 1000 * customLocal;
-
-      const transferTaxesTotal = Math.max(0, cityTax + countyTax + stateTax + customTax);
+      const cityTax = Math.max(0, price / 1000 * rates.city);
+      const countyTax = Math.max(0, price / 1000 * rates.county);
+      const stateTax = Math.max(0, price / 1000 * rates.state);
 
       // Tax proration (auto only)
       const annualTax = Math.max(getVal("annualTax"), 0);
@@ -774,21 +761,29 @@
 
       // HOA proration (auto only)
       const monthlyHoa = Math.max(getVal("monthlyHoa"), 0);
-      const hoaPaidThrough = document.getElementById("hoaPaidThrough").value;
-      const hoaCredit = computeHoaProrationCreditToSeller(closingDate, monthlyHoa, hoaPaidThrough);
+      const hoaCredit = computeHoaProrationCreditToSeller(closingDate, monthlyHoa);
 
-      // Update readonly displays (always update values even if hidden)
+      // Update readonly displays
       const taxEl = document.getElementById("taxProrationCredit");
       const hoaEl = document.getElementById("hoaProrationCredit");
-      const taxTotEl = document.getElementById("transferTaxTotal");
+      const cityEl = document.getElementById("cityTransferTax");
+      const countyEl = document.getElementById("countyTransferTax");
+      const stateEl = document.getElementById("stateTransferTax");
+
       if (taxEl) taxEl.value = moneyFmt(taxProrationCredit);
       if (hoaEl) hoaEl.value = moneyFmt(hoaCredit);
-      if (taxTotEl) taxTotEl.value = moneyFmt(transferTaxesTotal);
+      if (cityEl) cityEl.value = moneyFmt(cityTax);
+      if (countyEl) countyEl.value = moneyFmt(countyTax);
+      if (stateEl) stateEl.value = moneyFmt(stateTax);
 
       // Show/hide auto rows only when relevant
       setRowVisible("rowTaxProration", isMeaningfullyNonZero(taxProrationCredit));
       setRowVisible("rowHoaProration", isMeaningfullyNonZero(hoaCredit));
-      setRowVisible("rowTransferTax", isMeaningfullyNonZero(transferTaxesTotal));
+      setRowVisible("rowCityTax", isMeaningfullyNonZero(cityTax));
+      setRowVisible("rowCountyTax", isMeaningfullyNonZero(countyTax));
+      setRowVisible("rowStateTax", isMeaningfullyNonZero(stateTax));
+
+      const transferTaxesTotal = cityTax + countyTax + stateTax;
 
       // Seller costs: proration credit is a COST to seller; HOA proration is a CREDIT (reduces costs)
       const sellerCosts =
@@ -819,7 +814,9 @@
         ["Seller credits (repairs / concessions)", sellerCredits],
         ["Other seller costs", otherSellerCosts],
         ["Tax proration credit to buyer (auto)", taxProrationCredit],
-        ["Transfer taxes (auto)", transferTaxesTotal],
+        ["City transfer tax (auto)", cityTax],
+        ["County transfer tax (auto)", countyTax],
+        ["State transfer tax (auto)", stateTax],
         ["HOA proration credit to seller (auto, if applicable)", -hoaCredit]
       ];
 
@@ -863,14 +860,8 @@
     }
 
     function formatPercentPrettyField(el) {
-      // Accept "5", "5%", etc. and display as "5%"
       const n = parseNumber(el.value);
       el.value = percentDisplay(n);
-    }
-
-    function formatNumericField(el) {
-      const n = parseNumber(el.value);
-      el.value = percentFmt(n);
     }
 
     function bindBlurFormatting() {
@@ -887,13 +878,6 @@
         el.addEventListener("blur", () => formatPercentPrettyField(el));
         el.addEventListener("focus", () => el.select());
       });
-
-      numericFieldIds.forEach((id) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.addEventListener("blur", () => formatNumericField(el));
-        el.addEventListener("focus", () => el.select());
-      });
     }
 
     function formatAll() {
@@ -905,11 +889,6 @@
       percentPrettyFieldIds.forEach((id) => {
         const el = document.getElementById(id);
         if (el) formatPercentPrettyField(el);
-      });
-
-      numericFieldIds.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) formatNumericField(el);
       });
     }
 
