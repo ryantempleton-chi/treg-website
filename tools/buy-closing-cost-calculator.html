@@ -74,6 +74,10 @@
       color: var(--treg-charcoal);
     }
 
+    .calc-field input[readonly] {
+      background: rgba(250, 250, 250, 0.9);
+    }
+
     .calc-actions {
       display: flex;
       flex-wrap: wrap;
@@ -150,6 +154,17 @@
       color: var(--treg-slate);
       font-size: 0.85rem;
       line-height: 1.55;
+    }
+
+    /* Auto-calculated rows: hidden until relevant */
+    .calc-auto-row {
+      display: none;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+    .calc-auto-row.is-visible {
+      display: block;
+      opacity: 1;
     }
   </style>
 </head>
@@ -336,45 +351,30 @@
                   <input id="interestRate" inputmode="decimal" value="6.5" />
                 </div>
 
-                <div class="calc-field">
-                  <label for="prepaidMode">Prepaid interest days</label>
-                  <select id="prepaidMode">
-                    <option value="auto" selected>Auto-calc from closing date</option>
-                    <option value="manual">Manual</option>
-                  </select>
+                <!-- AUTO prepaid interest days (hidden until relevant) -->
+                <div class="calc-field calc-auto-row" id="rowPrepaidDays">
+                  <label for="prepaidDaysAuto">Prepaid interest days (auto)</label>
+                  <input id="prepaidDaysAuto" inputmode="numeric" value="0" readonly />
                 </div>
 
                 <div class="calc-field">
-                  <label for="daysPrepaid">Prepaid interest days (manual)</label>
-                  <input id="daysPrepaid" inputmode="numeric" value="10" />
-                </div>
-
-                <div class="calc-field">
-                  <label for="annualTax">Annual property taxes (estimate)</label>
+                  <label for="annualTax">Property Taxes (annual)</label>
                   <input id="annualTax" inputmode="decimal" value="9000" />
                 </div>
 
                 <div class="calc-field">
-                  <label for="taxProrationFactor">Tax proration factor</label>
-                  <input id="taxProrationFactor" inputmode="decimal" value="1.05" />
+                  <label for="taxProrationPct">Tax proration factor (%)</label>
+                  <input id="taxProrationPct" inputmode="decimal" value="105" />
                 </div>
 
-                <div class="calc-field calc-span-2">
-                  <label for="taxProrationMode">Property tax credit from seller</label>
-                  <select id="taxProrationMode">
-                    <option value="auto" selected>Auto-calc from closing date (common IL approach)</option>
-                    <option value="manual">Manual amount</option>
-                    <option value="none">No credit</option>
-                  </select>
-                </div>
-
-                <div class="calc-field calc-span-2">
-                  <label for="taxCreditManual">Tax credit amount (manual)</label>
-                  <input id="taxCreditManual" inputmode="decimal" value="0" />
+                <!-- AUTO property tax credit (hidden until relevant) -->
+                <div class="calc-field calc-span-2 calc-auto-row" id="rowTaxCredit">
+                  <label for="taxCreditAuto">Estimated property tax credit from seller (auto)</label>
+                  <input id="taxCreditAuto" inputmode="decimal" value="$0" readonly />
                 </div>
 
                 <div class="calc-field">
-                  <label for="annualIns">Annual homeowner’s insurance (estimate)</label>
+                  <label for="annualIns">Homeowner’s Insurance (annual)</label>
                   <input id="annualIns" inputmode="decimal" value="1600" />
                 </div>
 
@@ -389,34 +389,18 @@
                 </div>
 
                 <div class="calc-field">
-                  <label for="monthlyHoa">Monthly HOA (if applicable)</label>
+                  <label for="monthlyHoa">HOA (monthly)</label>
                   <input id="monthlyHoa" inputmode="decimal" value="0" />
                 </div>
 
-                <div class="calc-field">
-                  <label for="hoaProrationMode">HOA proration</label>
-                  <select id="hoaProrationMode">
-                    <option value="auto" selected>Auto (buyer reimburses if paid through month-end)</option>
-                    <option value="manual">Manual amount</option>
-                    <option value="none">None</option>
-                  </select>
+                <!-- AUTO HOA proration (hidden until relevant) -->
+                <div class="calc-field calc-auto-row" id="rowHoaProration">
+                  <label for="hoaProrationAuto">HOA proration (auto)</label>
+                  <input id="hoaProrationAuto" inputmode="decimal" value="$0" readonly />
                 </div>
 
                 <div class="calc-field calc-span-2">
-                  <label for="hoaPaidThrough">HOA paid through</label>
-                  <select id="hoaPaidThrough">
-                    <option value="month_end" selected>End of month</option>
-                    <option value="close_date">Only through closing date</option>
-                  </select>
-                </div>
-
-                <div class="calc-field calc-span-2">
-                  <label for="hoaProrationManual">HOA proration amount (manual)</label>
-                  <input id="hoaProrationManual" inputmode="decimal" value="0" />
-                </div>
-
-                <div class="calc-field calc-span-2">
-                  <label for="lenderFees">Lender fees (estimate)</label>
+                  <label for="lenderFees">Est. Lender Fees</label>
                   <input id="lenderFees" inputmode="decimal" value="2200" />
                 </div>
 
@@ -431,7 +415,7 @@
                 </div>
 
                 <div class="calc-field">
-                  <label for="titleSettlementFee">Title/settlement fee (estimate)</label>
+                  <label for="titleSettlementFee">Est. Title/Escrow Fees</label>
                   <input id="titleSettlementFee" inputmode="decimal" value="2000" />
                 </div>
 
@@ -454,12 +438,12 @@
                 </div>
 
                 <div class="calc-field">
-                  <label for="recordingFees">Recording fees (estimate)</label>
+                  <label for="recordingFees">Recording Fees</label>
                   <input id="recordingFees" inputmode="decimal" value="250" />
                 </div>
 
                 <div class="calc-field">
-                  <label for="miscTitleFees">Other title/escrow misc (est.)</label>
+                  <label for="miscTitleFees">Additional Title/Escrow Fees</label>
                   <input id="miscTitleFees" inputmode="decimal" value="250" />
                 </div>
 
@@ -561,12 +545,16 @@
     }
 
     function percentFmt(n) {
-      const rounded = Math.round(n * 1000) / 1000;
+      const rounded = Math.round((n || 0) * 1000) / 1000;
       return String(rounded).replace(/\.0+$/, "").replace(/(\.\d*[1-9])0+$/, "$1");
     }
 
+    function percentDisplay(n) {
+      return `${percentFmt(n)}%`;
+    }
+
     function intFmt(n) {
-      return String(Math.max(0, Math.round(n)));
+      return String(Math.max(0, Math.round(n || 0)));
     }
 
     function getVal(id) {
@@ -587,7 +575,6 @@
     }
 
     function daysBetween(a, b) {
-      // difference in whole days between dates at noon
       const ms = (b.getTime() - a.getTime());
       return Math.max(0, Math.round(ms / 86400000));
     }
@@ -604,66 +591,6 @@
       return Math.round((next - start) / 86400000);
     }
 
-    // ---------- Field groups ----------
-    const currencyFieldIds = [
-      "purchasePrice",
-      "annualTax",
-      "annualIns",
-      "monthlyHoa",
-      "taxCreditManual",
-      "hoaProrationManual",
-      "lenderFees",
-      "attorneyFee",
-      "titleSettlementFee",
-      "lendersTitle",
-      "ownersTitle",
-      "recordingFees",
-      "miscTitleFees"
-    ];
-
-    const percentFieldIds = [
-      "downPct",
-      "interestRate",
-      "pointsPct",
-      "taxProrationFactor"
-    ];
-
-    const intFieldIds = [
-      "daysPrepaid",
-      "taxEscrowMonths",
-      "insEscrowMonths"
-    ];
-
-    // ---------- Defaults ----------
-    const defaults = {
-      purchasePrice: "450000",
-      downPct: "20",
-      closingDate: "",
-      interestRate: "6.5",
-      prepaidMode: "auto",
-      daysPrepaid: "10",
-      annualTax: "9000",
-      taxProrationFactor: "1.05",
-      taxProrationMode: "auto",
-      taxCreditManual: "0",
-      annualIns: "1600",
-      taxEscrowMonths: "2",
-      insEscrowMonths: "3",
-      monthlyHoa: "0",
-      hoaProrationMode: "auto",
-      hoaPaidThrough: "month_end",
-      hoaProrationManual: "0",
-      lenderFees: "2200",
-      pointsPct: "0",
-      attorneyFee: "500",
-      titleSettlementFee: "2000",
-      lendersTitle: "575",
-      includeOwnersTitle: "yes",
-      ownersTitle: "2330",
-      recordingFees: "250",
-      miscTitleFees: "250"
-    };
-
     function setReasonableDefaultDate() {
       const el = document.getElementById("closingDate");
       if (!el) return;
@@ -676,6 +603,76 @@
       el.value = `${yyyy}-${mm}-${dd}`;
     }
 
+    function isMeaningfullyNonZero(n) {
+      return Math.abs(Math.round(n || 0)) >= 1;
+    }
+
+    function setRowVisible(rowId, shouldShow) {
+      const row = document.getElementById(rowId);
+      if (!row) return;
+
+      if (shouldShow) {
+        row.style.display = "block";
+        requestAnimationFrame(() => row.classList.add("is-visible"));
+      } else {
+        row.classList.remove("is-visible");
+        window.setTimeout(() => {
+          if (!row.classList.contains("is-visible")) row.style.display = "none";
+        }, 200);
+      }
+    }
+
+    // ---------- Field groups ----------
+    const currencyFieldIds = [
+      "purchasePrice",
+      "annualTax",
+      "annualIns",
+      "monthlyHoa",
+      "lenderFees",
+      "attorneyFee",
+      "titleSettlementFee",
+      "lendersTitle",
+      "ownersTitle",
+      "recordingFees",
+      "miscTitleFees"
+    ];
+
+    // Percent inputs that should display with "%"
+    const percentPrettyFieldIds = [
+      "downPct",
+      "interestRate",
+      "pointsPct",
+      "taxProrationPct"
+    ];
+
+    const intFieldIds = [
+      "taxEscrowMonths",
+      "insEscrowMonths"
+    ];
+
+    // ---------- Defaults ----------
+    const defaults = {
+      purchasePrice: "450000",
+      downPct: "20",
+      closingDate: "",
+      interestRate: "6.5",
+      annualTax: "9000",
+      taxProrationPct: "105",
+      annualIns: "1600",
+      taxEscrowMonths: "2",
+      insEscrowMonths: "3",
+      monthlyHoa: "0",
+      lenderFees: "2200",
+      pointsPct: "0",
+      attorneyFee: "500",
+      titleSettlementFee: "2000",
+      lendersTitle: "575",
+      includeOwnersTitle: "yes",
+      ownersTitle: "2330",
+      recordingFees: "250",
+      miscTitleFees: "250"
+    };
+
     function resetDefaults() {
       for (const [k, v] of Object.entries(defaults)) {
         const el = document.getElementById(k);
@@ -687,35 +684,33 @@
       calculate();
     }
 
-    // ---------- Robust components ----------
+    // ---------- Auto-calculated components ----------
     function computePrepaidInterestDays(closingDate) {
-      if (!closingDate) return Math.max(getVal("daysPrepaid"), 0);
-      const eom = endOfMonth(closingDate);
-      // Typical: from closing date through end of month (not including next month)
-      const days = daysBetween(closingDate, new Date(eom.getFullYear(), eom.getMonth(), eom.getDate() + 1, 12));
-      return Math.max(0, days);
-    }
-
-    function computeBuyerTaxCredit(closingDate, annualTax, factor) {
-      // Common IL pattern: seller credits buyer for Jan 1 -> day before closing (taxes paid in arrears),
-      // often based on last year's bill * a factor (e.g., 105%).
       if (!closingDate) return 0;
-      const doy = dayOfYear(closingDate); // includes closing day
-      const daysSellerOwes = Math.max(0, doy - 1); // Jan1 through day before closing
-      const diy = daysInYear(closingDate);
-      const base = (annualTax * factor) * (daysSellerOwes / diy);
-      return Math.max(0, base);
+      const eom = endOfMonth(closingDate);
+      const endPlusOne = new Date(eom.getFullYear(), eom.getMonth(), eom.getDate() + 1, 12);
+      return Math.max(0, daysBetween(closingDate, endPlusOne));
     }
 
-    function computeHoaProrationBuyer(closingDate, monthlyHoa, paidThrough) {
-      if (!closingDate || monthlyHoa <= 0) return 0;
-      if (paidThrough !== "month_end") return 0;
+    // Buyer receives a credit from seller (reduces buyer cash-to-close).
+    // Planning model: (annual taxes * factor) * (Jan 1 -> day before closing) / days in year
+    function computeBuyerTaxCredit(closingDate, annualTax, factorPct) {
+      if (!closingDate || annualTax <= 0) return 0;
+      const doy = dayOfYear(closingDate);
+      const daysSellerOwes = Math.max(0, doy - 1);
+      const diy = daysInYear(closingDate);
+      const factor = Math.max(factorPct, 0) / 100; // 105% -> 1.05
+      return Math.max(0, (annualTax * factor) * (daysSellerOwes / diy));
+    }
 
-      // Buyer reimburses seller for days AFTER closing through month-end (assuming seller paid full month)
+    // Buyer reimburses seller for days AFTER closing through month-end (assumes HOA prepaid through EOM).
+    function computeHoaProrationBuyer(closingDate, monthlyHoa) {
+      if (!closingDate || monthlyHoa <= 0) return 0;
       const eom = endOfMonth(closingDate);
       const nextDay = new Date(closingDate.getFullYear(), closingDate.getMonth(), closingDate.getDate() + 1, 12);
-      const daysRemaining = daysBetween(nextDay, new Date(eom.getFullYear(), eom.getMonth(), eom.getDate() + 1, 12));
-      // Use actual days in month for better proration
+      const endPlusOne = new Date(eom.getFullYear(), eom.getMonth(), eom.getDate() + 1, 12);
+
+      const daysRemaining = daysBetween(nextDay, endPlusOne);
       const daysInMonth = eom.getDate();
       return (monthlyHoa / daysInMonth) * Math.max(0, daysRemaining);
     }
@@ -723,13 +718,13 @@
     // ---------- Calculation ----------
     function calculate() {
       const price = getVal("purchasePrice");
-      const downPct = getVal("downPct") / 100;
+      const downPct = Math.max(getVal("downPct"), 0) / 100;
       const loan = Math.max(price * (1 - downPct), 0);
 
       const closingDate = getDateVal("closingDate");
 
       const lenderFees = getVal("lenderFees");
-      const points = loan * (getVal("pointsPct") / 100);
+      const points = loan * (Math.max(getVal("pointsPct"), 0) / 100);
 
       const settlement = getVal("titleSettlementFee");
       const lendersTitle = getVal("lendersTitle");
@@ -740,8 +735,8 @@
       const includeOwners = document.getElementById("includeOwnersTitle").value === "yes";
       const ownersTitle = includeOwners ? getVal("ownersTitle") : 0;
 
-      const annualTax = getVal("annualTax");
-      const annualIns = getVal("annualIns");
+      const annualTax = Math.max(getVal("annualTax"), 0);
+      const annualIns = Math.max(getVal("annualIns"), 0);
       const taxEscMonths = Math.max(getVal("taxEscrowMonths"), 0);
       const insEscMonths = Math.max(getVal("insEscrowMonths"), 0);
 
@@ -749,29 +744,32 @@
       const insEscrow = (annualIns / 12) * insEscMonths;
 
       // Prepaid interest
-      const rate = getVal("interestRate") / 100;
-      const prepaidMode = document.getElementById("prepaidMode").value;
-      const days = prepaidMode === "auto"
-        ? computePrepaidInterestDays(closingDate)
-        : Math.max(getVal("daysPrepaid"), 0);
+      const rate = Math.max(getVal("interestRate"), 0) / 100;
+      const prepaidDays = computePrepaidInterestDays(closingDate);
+      const prepaidInterest = loan * rate / 365 * prepaidDays;
 
-      const prepaidInterest = loan * rate / 365 * days;
+      // Seller tax credit (auto)
+      const taxProrationPct = Math.max(getVal("taxProrationPct"), 0);
+      const taxCredit = computeBuyerTaxCredit(closingDate, annualTax, taxProrationPct);
 
-      // Tax credit (reduces buyer cash to close)
-      const taxProrationMode = document.getElementById("taxProrationMode").value;
-      const factor = Math.max(getVal("taxProrationFactor"), 0);
-      const taxCredit = taxProrationMode === "auto"
-        ? computeBuyerTaxCredit(closingDate, annualTax, factor)
-        : (taxProrationMode === "manual" ? Math.max(getVal("taxCreditManual"), 0) : 0);
-
-      // HOA proration (buyer reimbursement to seller; increases cash to close)
+      // HOA proration (auto)
       const monthlyHoa = Math.max(getVal("monthlyHoa"), 0);
-      const hoaProrationMode = document.getElementById("hoaProrationMode").value;
-      const hoaPaidThrough = document.getElementById("hoaPaidThrough").value;
-      const hoaProration = hoaProrationMode === "auto"
-        ? computeHoaProrationBuyer(closingDate, monthlyHoa, hoaPaidThrough)
-        : (hoaProrationMode === "manual" ? Math.max(getVal("hoaProrationManual"), 0) : 0);
+      const hoaProration = computeHoaProrationBuyer(closingDate, monthlyHoa);
 
+      // Update readonly displays (always update values even if hidden)
+      const prepaidEl = document.getElementById("prepaidDaysAuto");
+      const taxEl = document.getElementById("taxCreditAuto");
+      const hoaEl = document.getElementById("hoaProrationAuto");
+      if (prepaidEl) prepaidEl.value = intFmt(prepaidDays);
+      if (taxEl) taxEl.value = moneyFmt(taxCredit);
+      if (hoaEl) hoaEl.value = moneyFmt(hoaProration);
+
+      // Show/hide auto rows only when relevant
+      setRowVisible("rowPrepaidDays", prepaidDays > 0);
+      setRowVisible("rowTaxCredit", isMeaningfullyNonZero(taxCredit));
+      setRowVisible("rowHoaProration", isMeaningfullyNonZero(hoaProration));
+
+      // Closing costs include HOA proration; tax credit reduces buyer cash to close.
       const closingCosts =
         lenderFees + points +
         settlement + lendersTitle + ownersTitle + miscTitle +
@@ -788,19 +786,19 @@
       document.getElementById("cashToClose").textContent = moneyFmt(cashToClose);
 
       const rows = [
-        ["Lender fees (est.)", lenderFees],
+        ["Est. Lender Fees", lenderFees],
         ["Discount points", points],
-        ["Title/settlement fee", settlement],
+        ["Est. Title/Escrow Fees", settlement],
         ["Lender’s title insurance", lendersTitle],
         ["Owner’s title insurance", ownersTitle],
-        ["Other title/escrow misc", miscTitle],
-        ["Recording fees (est.)", recording],
+        ["Additional Title/Escrow Fees", miscTitle],
+        ["Recording Fees", recording],
         ["Attorney fee", attorney],
         ["Tax escrow", taxEscrow],
         ["Insurance escrow", insEscrow],
         ["Prepaid interest", prepaidInterest],
-        ["HOA proration (if applicable)", hoaProration],
-        ["Estimated tax credit from seller", -taxCredit]
+        ["HOA proration (auto, if applicable)", hoaProration],
+        ["Estimated property tax credit from seller (auto)", -taxCredit]
       ];
 
       const tbody = document.getElementById("breakdown");
@@ -841,9 +839,9 @@
       el.value = moneyFmt(n);
     }
 
-    function formatPercentField(el) {
+    function formatPercentPrettyField(el) {
       const n = parseNumber(el.value);
-      el.value = percentFmt(n);
+      el.value = percentDisplay(n);
     }
 
     function formatIntField(el) {
@@ -859,10 +857,10 @@
         el.addEventListener("focus", () => el.select());
       });
 
-      percentFieldIds.forEach((id) => {
+      percentPrettyFieldIds.forEach((id) => {
         const el = document.getElementById(id);
         if (!el) return;
-        el.addEventListener("blur", () => formatPercentField(el));
+        el.addEventListener("blur", () => formatPercentPrettyField(el));
         el.addEventListener("focus", () => el.select());
       });
 
@@ -879,17 +877,18 @@
         const el = document.getElementById(id);
         if (el) formatCurrencyField(el);
       });
-      percentFieldIds.forEach((id) => {
+
+      percentPrettyFieldIds.forEach((id) => {
         const el = document.getElementById(id);
-        if (el) formatPercentField(el);
+        if (el) formatPercentPrettyField(el);
       });
+
       intFieldIds.forEach((id) => {
         const el = document.getElementById(id);
         if (el) formatIntField(el);
       });
     }
 
-    // Buttons still work
     document.getElementById("calcBtn").addEventListener("click", calculate);
     document.getElementById("resetBtn").addEventListener("click", resetDefaults);
 
