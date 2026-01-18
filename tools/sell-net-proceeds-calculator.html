@@ -428,15 +428,54 @@
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
   
-    // Helpers
-    function num(id) {
-      const v = document.getElementById(id).value.trim().replace(/[$,]/g, "");
-      const n = Number(v);
+    // ---------- Parsing + formatting helpers ----------
+    function parseNumber(raw) {
+      const s = String(raw ?? "").trim();
+      if (!s) return 0;
+      const cleaned = s.replace(/[^0-9.\-]/g, "");
+      const n = Number(cleaned);
       return Number.isFinite(n) ? n : 0;
     }
-    function money(n) {
-      return n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  
+    function moneyFmt(n) {
+      return n.toLocaleString(undefined, {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      });
     }
+  
+    function moneyFmt2(n) {
+      return n.toLocaleString(undefined, {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 2
+      });
+    }
+  
+    function percentFmt(n) {
+      const rounded = Math.round(n * 1000) / 1000;
+      return String(rounded).replace(/\.0+$/, "").replace(/(\.\d*[1-9])0+$/, "$1");
+    }
+  
+    function getVal(id) {
+      const el = document.getElementById(id);
+      return parseNumber(el ? el.value : 0);
+    }
+  
+    // ---------- Field groups ----------
+    const currencyFieldIds = [
+      "salePrice",
+      "mortgagePayoff",
+      "attorneyFee",
+      "titleSellerFees",
+      "taxProrationCredit"
+    ];
+  
+    const percentFieldIds = [
+      "commissionPct",
+      "customLocalTax" // $ per 1,000 - we’ll still keep it numeric and clean
+    ];
   
     const defaults = {
       salePrice: "500000",
@@ -455,6 +494,7 @@
         if (!el) continue;
         el.value = v;
       }
+      formatAll();
       calculate();
     }
   
@@ -466,17 +506,17 @@
     }
   
     function calculate() {
-      const price = num("salePrice");
-      const payoff = num("mortgagePayoff");
+      const price = getVal("salePrice");
+      const payoff = getVal("mortgagePayoff");
   
-      const commission = price * (num("commissionPct") / 100);
-      const attorney = num("attorneyFee");
-      const titleSellerFees = num("titleSellerFees");
-      const taxProrationCredit = num("taxProrationCredit");
+      const commission = price * (getVal("commissionPct") / 100);
+      const attorney = getVal("attorneyFee");
+      const titleSellerFees = getVal("titleSellerFees");
+      const taxProrationCredit = getVal("taxProrationCredit");
   
       const mode = document.getElementById("locationMode").value;
       const rates = transferTaxRates(mode);
-      const customLocal = Math.max(num("customLocalTax"), 0);
+      const customLocal = Math.max(getVal("customLocalTax"), 0);
   
       const cityTax = price / 1000 * rates.city;
       const countyTax = price / 1000 * rates.county;
@@ -493,9 +533,9 @@
       const netBeforePayoff = price - sellerCosts;
       const netAfterPayoff = netBeforePayoff - payoff;
   
-      document.getElementById("sellerCosts").textContent = money(sellerCosts);
-      document.getElementById("netBeforePayoff").textContent = money(netBeforePayoff);
-      document.getElementById("netAfterPayoff").textContent = money(netAfterPayoff);
+      document.getElementById("sellerCosts").textContent = moneyFmt(sellerCosts);
+      document.getElementById("netBeforePayoff").textContent = moneyFmt(netBeforePayoff);
+      document.getElementById("netAfterPayoff").textContent = moneyFmt(netAfterPayoff);
   
       const rows = [
         ["Commission", commission],
@@ -516,14 +556,18 @@
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
         td1.textContent = label;
-        td2.textContent = money(val);
+  
+        // Transfer taxes can be fractional; show cents there
+        const showCents = /transfer tax/i.test(label);
+        td2.textContent = showCents ? moneyFmt2(val) : moneyFmt(val);
+  
         tr.appendChild(td1);
         tr.appendChild(td2);
         tbody.appendChild(tr);
       }
     }
   
-    // Live-recalc (debounced so typing feels smooth)
+    // ---------- Live recalc (debounced) ----------
     function bindLiveRecalc() {
       const form = document.getElementById("sellerCalc");
       if (!form) return;
@@ -534,10 +578,47 @@
         t = window.setTimeout(calculate, 120);
       };
   
-      const fields = form.querySelectorAll("input, select");
-      fields.forEach((el) => {
+      form.querySelectorAll("input, select").forEach((el) => {
         el.addEventListener("input", schedule);
         el.addEventListener("change", schedule);
+      });
+    }
+  
+    // ---------- Formatting on blur ----------
+    function formatCurrencyField(el) {
+      const n = parseNumber(el.value);
+      el.value = moneyFmt(n);
+    }
+  
+    function formatNumericField(el) {
+      const n = parseNumber(el.value);
+      el.value = percentFmt(n);
+    }
+  
+    function bindBlurFormatting() {
+      currencyFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("blur", () => formatCurrencyField(el));
+        el.addEventListener("focus", () => el.select());
+      });
+  
+      percentFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("blur", () => formatNumericField(el));
+        el.addEventListener("focus", () => el.select());
+      });
+    }
+  
+    function formatAll() {
+      currencyFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) formatCurrencyField(el);
+      });
+      percentFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) formatNumericField(el);
       });
     }
   
@@ -545,6 +626,8 @@
     document.getElementById("resetBtn").addEventListener("click", resetDefaults);
   
     bindLiveRecalc();
+    bindBlurFormatting();
+    formatAll();
     calculate();
   </script>
 </body>
