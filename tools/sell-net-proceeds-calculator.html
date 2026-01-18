@@ -320,6 +320,11 @@
                 </div>
 
                 <div class="calc-field">
+                  <label for="closingDate">Estimated closing date</label>
+                  <input id="closingDate" type="date" />
+                </div>
+
+                <div class="calc-field">
                   <label for="commissionPct">Total commission (%)</label>
                   <input id="commissionPct" inputmode="decimal" value="5" />
                 </div>
@@ -327,6 +332,57 @@
                 <div class="calc-field">
                   <label for="attorneyFee">Attorney fee (flat)</label>
                   <input id="attorneyFee" inputmode="decimal" value="500" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="annualTax">Annual property taxes (estimate)</label>
+                  <input id="annualTax" inputmode="decimal" value="9000" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="taxProrationFactor">Tax proration factor</label>
+                  <input id="taxProrationFactor" inputmode="decimal" value="1.05" />
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="taxProrationMode">Tax proration credit to buyer</label>
+                  <select id="taxProrationMode">
+                    <option value="auto" selected>Auto-calc from closing date (common IL approach)</option>
+                    <option value="manual">Manual amount</option>
+                    <option value="none">None</option>
+                  </select>
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="taxProrationManual">Tax proration credit (manual)</label>
+                  <input id="taxProrationManual" inputmode="decimal" value="0" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="monthlyHoa">Monthly HOA (if applicable)</label>
+                  <input id="monthlyHoa" inputmode="decimal" value="0" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="hoaPaidThrough">HOA paid through</label>
+                  <select id="hoaPaidThrough">
+                    <option value="month_end" selected>End of month</option>
+                    <option value="close_date">Only through closing date</option>
+                  </select>
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="hoaProrationMode">HOA proration (credit to seller)</label>
+                  <select id="hoaProrationMode">
+                    <option value="auto" selected>Auto (seller receives reimbursement if paid through month-end)</option>
+                    <option value="manual">Manual amount</option>
+                    <option value="none">None</option>
+                  </select>
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="hoaProrationManual">HOA proration credit (manual)</label>
+                  <input id="hoaProrationManual" inputmode="decimal" value="0" />
                 </div>
 
                 <div class="calc-field calc-span-2">
@@ -346,11 +402,6 @@
                 <div class="calc-field">
                   <label for="titleSellerFees">Title/escrow seller fees (est.)</label>
                   <input id="titleSellerFees" inputmode="decimal" value="450" />
-                </div>
-
-                <div class="calc-field calc-span-2">
-                  <label for="taxProrationCredit">Tax proration credit to buyer (est.)</label>
-                  <input id="taxProrationCredit" inputmode="decimal" value="0" />
                 </div>
 
                 <div class="calc-actions calc-span-2">
@@ -427,7 +478,7 @@
   <script>
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
-  
+
     // ---------- Parsing + formatting helpers ----------
     function parseNumber(raw) {
       const s = String(raw ?? "").trim();
@@ -436,107 +487,193 @@
       const n = Number(cleaned);
       return Number.isFinite(n) ? n : 0;
     }
-  
+
     function moneyFmt(n) {
-      return n.toLocaleString(undefined, {
+      const rounded = Math.round(n || 0);
+      return rounded.toLocaleString(undefined, {
         style: "currency",
         currency: "USD",
         maximumFractionDigits: 0
       });
     }
-  
-    function moneyFmt2(n) {
-      return n.toLocaleString(undefined, {
-        style: "currency",
-        currency: "USD",
-        maximumFractionDigits: 2
-      });
-    }
-  
+
     function percentFmt(n) {
       const rounded = Math.round(n * 1000) / 1000;
       return String(rounded).replace(/\.0+$/, "").replace(/(\.\d*[1-9])0+$/, "$1");
     }
-  
+
     function getVal(id) {
       const el = document.getElementById(id);
       return parseNumber(el ? el.value : 0);
     }
-  
-    // ---------- Field groups ----------
+
+    function getDateVal(id) {
+      const el = document.getElementById(id);
+      const v = el ? String(el.value || "").trim() : "";
+      if (!v) return null;
+      const d = new Date(v + "T12:00:00");
+      return Number.isFinite(d.getTime()) ? d : null;
+    }
+
+    function endOfMonth(d) {
+      return new Date(d.getFullYear(), d.getMonth() + 1, 0, 12);
+    }
+
+    function daysBetween(a, b) {
+      const ms = (b.getTime() - a.getTime());
+      return Math.max(0, Math.round(ms / 86400000));
+    }
+
+    function dayOfYear(d) {
+      const start = new Date(d.getFullYear(), 0, 1, 12);
+      return daysBetween(start, d) + 1;
+    }
+
+    function daysInYear(d) {
+      const y = d.getFullYear();
+      const start = new Date(y, 0, 1, 12);
+      const next = new Date(y + 1, 0, 1, 12);
+      return Math.round((next - start) / 86400000);
+    }
+
+    function setReasonableDefaultDate() {
+      const el = document.getElementById("closingDate");
+      if (!el) return;
+      if (String(el.value || "").trim()) return;
+      const today = new Date();
+      const guess = new Date(today.getFullYear(), today.getMonth() + 1, 15);
+      const yyyy = guess.getFullYear();
+      const mm = String(guess.getMonth() + 1).padStart(2, "0");
+      const dd = String(guess.getDate()).padStart(2, "0");
+      el.value = `${yyyy}-${mm}-${dd}`;
+    }
+
+    // ---------- Defaults ----------
     const currencyFieldIds = [
       "salePrice",
       "mortgagePayoff",
       "attorneyFee",
-      "titleSellerFees",
-      "taxProrationCredit"
+      "annualTax",
+      "taxProrationManual",
+      "monthlyHoa",
+      "hoaProrationManual",
+      "titleSellerFees"
     ];
-  
+
     const percentFieldIds = [
       "commissionPct",
-      "customLocalTax" // $ per 1,000 - we’ll still keep it numeric and clean
+      "customLocalTax",
+      "taxProrationFactor"
     ];
-  
+
     const defaults = {
       salePrice: "500000",
       mortgagePayoff: "0",
+      closingDate: "",
       commissionPct: "5",
       attorneyFee: "500",
+      annualTax: "9000",
+      taxProrationFactor: "1.05",
+      taxProrationMode: "auto",
+      taxProrationManual: "0",
+      monthlyHoa: "0",
+      hoaPaidThrough: "month_end",
+      hoaProrationMode: "auto",
+      hoaProrationManual: "0",
       locationMode: "chicago",
       customLocalTax: "0",
-      titleSellerFees: "450",
-      taxProrationCredit: "0"
+      titleSellerFees: "450"
     };
-  
+
     function resetDefaults() {
       for (const [k, v] of Object.entries(defaults)) {
         const el = document.getElementById(k);
         if (!el) continue;
         el.value = v;
       }
+      setReasonableDefaultDate();
       formatAll();
       calculate();
     }
-  
+
     function transferTaxRates(mode) {
       // Rates in $ per $1,000 of sale price (editable defaults)
       if (mode === "chicago") return { city: 7.50, county: 0.50, state: 1.00 };
       if (mode === "cook_non_chicago") return { city: 0.00, county: 0.50, state: 1.00 };
       return { city: 0.00, county: 0.00, state: 0.00 };
     }
-  
+
+    function computeSellerTaxProration(closingDate, annualTax, factor) {
+      if (!closingDate) return 0;
+      const doy = dayOfYear(closingDate);
+      const daysSellerOwes = Math.max(0, doy - 1);
+      const diy = daysInYear(closingDate);
+      const base = (annualTax * factor) * (daysSellerOwes / diy);
+      return Math.max(0, base);
+    }
+
+    function computeHoaProrationCreditToSeller(closingDate, monthlyHoa, paidThrough) {
+      if (!closingDate || monthlyHoa <= 0) return 0;
+      if (paidThrough !== "month_end") return 0;
+
+      const eom = endOfMonth(closingDate);
+      const nextDay = new Date(closingDate.getFullYear(), closingDate.getMonth(), closingDate.getDate() + 1, 12);
+      const daysRemaining = daysBetween(nextDay, new Date(eom.getFullYear(), eom.getMonth(), eom.getDate() + 1, 12));
+      const daysInMonth = eom.getDate();
+      // Buyer reimburses seller -> credit to seller
+      return (monthlyHoa / daysInMonth) * Math.max(0, daysRemaining);
+    }
+
     function calculate() {
       const price = getVal("salePrice");
       const payoff = getVal("mortgagePayoff");
-  
+      const closingDate = getDateVal("closingDate");
+
       const commission = price * (getVal("commissionPct") / 100);
       const attorney = getVal("attorneyFee");
       const titleSellerFees = getVal("titleSellerFees");
-      const taxProrationCredit = getVal("taxProrationCredit");
-  
+
+      // Transfer taxes
       const mode = document.getElementById("locationMode").value;
       const rates = transferTaxRates(mode);
       const customLocal = Math.max(getVal("customLocalTax"), 0);
-  
+
       const cityTax = price / 1000 * rates.city;
       const countyTax = price / 1000 * rates.county;
       const stateTax = price / 1000 * rates.state;
       const customTax = price / 1000 * customLocal;
-  
+
+      // Taxes (proration credit paid by seller)
+      const annualTax = getVal("annualTax");
+      const factor = Math.max(getVal("taxProrationFactor"), 0);
+      const taxMode = document.getElementById("taxProrationMode").value;
+      const taxProrationCredit = taxMode === "auto"
+        ? computeSellerTaxProration(closingDate, annualTax, factor)
+        : (taxMode === "manual" ? Math.max(getVal("taxProrationManual"), 0) : 0);
+
+      // HOA proration (credit to seller from buyer; reduces seller costs)
+      const monthlyHoa = Math.max(getVal("monthlyHoa"), 0);
+      const hoaPaidThrough = document.getElementById("hoaPaidThrough").value;
+      const hoaMode = document.getElementById("hoaProrationMode").value;
+      const hoaCredit = hoaMode === "auto"
+        ? computeHoaProrationCreditToSeller(closingDate, monthlyHoa, hoaPaidThrough)
+        : (hoaMode === "manual" ? Math.max(getVal("hoaProrationManual"), 0) : 0);
+
       const sellerCosts =
         commission +
         attorney +
         titleSellerFees +
         taxProrationCredit +
-        cityTax + countyTax + stateTax + customTax;
-  
+        cityTax + countyTax + stateTax + customTax
+        - hoaCredit;
+
       const netBeforePayoff = price - sellerCosts;
       const netAfterPayoff = netBeforePayoff - payoff;
-  
+
       document.getElementById("sellerCosts").textContent = moneyFmt(sellerCosts);
       document.getElementById("netBeforePayoff").textContent = moneyFmt(netBeforePayoff);
       document.getElementById("netAfterPayoff").textContent = moneyFmt(netAfterPayoff);
-  
+
       const rows = [
         ["Commission", commission],
         ["Attorney fee", attorney],
@@ -545,56 +682,53 @@
         ["City transfer tax", cityTax],
         ["County transfer tax", countyTax],
         ["State transfer tax", stateTax],
-        ["Custom local transfer tax", customTax]
+        ["Custom local transfer tax", customTax],
+        ["HOA proration credit to seller (if applicable)", -hoaCredit]
       ];
-  
+
       const tbody = document.getElementById("breakdown");
       tbody.innerHTML = "";
       for (const [label, val] of rows) {
-        if (val === 0) continue;
+        if (Math.round(val) === 0) continue;
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
         td1.textContent = label;
-  
-        // Transfer taxes can be fractional; show cents there
-        const showCents = /transfer tax/i.test(label);
-        td2.textContent = showCents ? moneyFmt2(val) : moneyFmt(val);
-  
+        td2.textContent = moneyFmt(val);
         tr.appendChild(td1);
         tr.appendChild(td2);
         tbody.appendChild(tr);
       }
     }
-  
+
     // ---------- Live recalc (debounced) ----------
     function bindLiveRecalc() {
       const form = document.getElementById("sellerCalc");
       if (!form) return;
-  
+
       let t = null;
       const schedule = () => {
         window.clearTimeout(t);
         t = window.setTimeout(calculate, 120);
       };
-  
+
       form.querySelectorAll("input, select").forEach((el) => {
         el.addEventListener("input", schedule);
         el.addEventListener("change", schedule);
       });
     }
-  
+
     // ---------- Formatting on blur ----------
     function formatCurrencyField(el) {
       const n = parseNumber(el.value);
       el.value = moneyFmt(n);
     }
-  
+
     function formatNumericField(el) {
       const n = parseNumber(el.value);
       el.value = percentFmt(n);
     }
-  
+
     function bindBlurFormatting() {
       currencyFieldIds.forEach((id) => {
         const el = document.getElementById(id);
@@ -602,7 +736,7 @@
         el.addEventListener("blur", () => formatCurrencyField(el));
         el.addEventListener("focus", () => el.select());
       });
-  
+
       percentFieldIds.forEach((id) => {
         const el = document.getElementById(id);
         if (!el) return;
@@ -610,7 +744,7 @@
         el.addEventListener("focus", () => el.select());
       });
     }
-  
+
     function formatAll() {
       currencyFieldIds.forEach((id) => {
         const el = document.getElementById(id);
@@ -621,10 +755,11 @@
         if (el) formatNumericField(el);
       });
     }
-  
+
     document.getElementById("calcBtn").addEventListener("click", calculate);
     document.getElementById("resetBtn").addEventListener("click", resetDefaults);
-  
+
+    setReasonableDefaultDate();
     bindLiveRecalc();
     bindBlurFormatting();
     formatAll();
