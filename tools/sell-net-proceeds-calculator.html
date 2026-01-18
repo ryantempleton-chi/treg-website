@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Seller Net Proceeds Calculator | Templeton Real Estate Group</title>
+  <meta name="description" content="Estimate seller closing costs and net proceeds in Chicago and surrounding suburbs, including transfer taxes and commissions." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <style>
+    .calc-page .hero-title { text-transform: lowercase; }
+    .calc-grid {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+    @media (min-width: 900px) {
+      .calc-grid { grid-template-columns: 1.05fr 0.95fr; }
+    }
+    .calc-card {
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.1rem;
+    }
+    .calc-card h2 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 0.85rem;
+    }
+    .calc-form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    @media (min-width: 560px) {
+      .calc-form { grid-template-columns: 1fr 1fr; }
+      .calc-span-2 { grid-column: 1 / -1; }
+    }
+    .calc-field label {
+      display: block;
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--treg-slate);
+      margin-bottom: 0.45rem;
+    }
+    .calc-field input,
+    .calc-field select {
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      border-radius: 14px;
+      padding: 0.75rem 0.85rem;
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.95rem;
+      background: #fff;
+      color: var(--treg-charcoal);
+    }
+    .calc-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 0.35rem;
+    }
+    .calc-actions .btn { pointer-events: auto; }
+
+    .calc-results { display: grid; gap: 0.75rem; }
+    .calc-kpi {
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(250, 250, 250, 0.75);
+      padding: 0.95rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .calc-kpi strong {
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--treg-slate);
+      font-weight: 600;
+    }
+    .calc-kpi span {
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--treg-charcoal);
+      white-space: nowrap;
+    }
+
+    .calc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+    }
+    .calc-table th,
+    .calc-table td {
+      text-align: left;
+      padding: 0.7rem 0.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.92rem;
+    }
+    .calc-table th {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--treg-slate);
+    }
+    .calc-table td:last-child { text-align: right; white-space: nowrap; }
+
+    .calc-disclaimer {
+      margin-top: 0.95rem;
+      color: var(--treg-slate);
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+
+<body class="calc-page">
+  <div class="page">
+
+    <!-- ✅ HEADER: paste the same site header markup here (unchanged) -->
+    <!-- (Copy from the buyer page above to keep it identical.) -->
+
+    <main class="main">
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-label">Tools</div>
+          <h1 class="hero-title">seller net proceeds calculator</h1>
+          <p class="hero-subtitle">
+            A quick estimate for commissions, transfer taxes, and common seller-side fees.
+            Add your payoff to see a ballpark net after payoff.
+          </p>
+
+          <div class="btn-row">
+            <a class="btn btn-ghost" href="/tools/buy-closing-cost-calculator.html">buyer calculator</a>
+            <a class="btn btn-primary" href="/intake.html">start intake</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="calc-grid">
+            <div class="calc-card">
+              <h2>Inputs</h2>
+
+              <form class="calc-form" id="sellerCalc" novalidate>
+                <div class="calc-field">
+                  <label for="salePrice">Sale price</label>
+                  <input id="salePrice" inputmode="decimal" value="500000" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="mortgagePayoff">Mortgage payoff (optional)</label>
+                  <input id="mortgagePayoff" inputmode="decimal" value="0" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="commissionPct">Total commission (%)</label>
+                  <input id="commissionPct" inputmode="decimal" value="5" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="attorneyFee">Attorney fee (flat)</label>
+                  <input id="attorneyFee" inputmode="decimal" value="500" />
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="locationMode">Transfer tax location</label>
+                  <select id="locationMode">
+                    <option value="chicago" selected>Chicago</option>
+                    <option value="cook_non_chicago">Cook (non-Chicago)</option>
+                    <option value="none">No transfer tax</option>
+                  </select>
+                </div>
+
+                <div class="calc-field">
+                  <label for="customLocalTax">Custom local transfer tax ($/1,000)</label>
+                  <input id="customLocalTax" inputmode="decimal" value="0" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="titleSellerFees">Title/escrow seller fees (est.)</label>
+                  <input id="titleSellerFees" inputmode="decimal" value="450" />
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="taxProrationCredit">Tax proration credit to buyer (est.)</label>
+                  <input id="taxProrationCredit" inputmode="decimal" value="0" />
+                </div>
+
+                <div class="calc-actions calc-span-2">
+                  <button class="btn btn-primary" type="button" id="calcBtn">calculate</button>
+                  <button class="btn btn-ghost" type="button" id="resetBtn">reset</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="calc-card">
+              <h2>Results</h2>
+
+              <div class="calc-results">
+                <div class="calc-kpi">
+                  <strong>Estimated seller costs</strong>
+                  <span id="sellerCosts">$—</span>
+                </div>
+                <div class="calc-kpi">
+                  <strong>Estimated net (before payoff)</strong>
+                  <span id="netBeforePayoff">$—</span>
+                </div>
+                <div class="calc-kpi">
+                  <strong>Estimated net (after payoff)</strong>
+                  <span id="netAfterPayoff">$—</span>
+                </div>
+              </div>
+
+              <table class="calc-table" aria-label="Seller cost breakdown">
+                <thead>
+                  <tr><th>Category</th><th>Estimate</th></tr>
+                </thead>
+                <tbody id="breakdown"></tbody>
+              </table>
+
+              <div class="calc-disclaimer">
+                This tool provides a rough estimate for planning purposes only. Actual costs and credits vary by municipality, proration method,
+                title company, lien payoffs, HOA requirements, and negotiated terms. Templeton Real Estate Group, LLC and Keller Williams ONEChicago
+                do not guarantee figures shown here and are not responsible for decisions made based on this estimate.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ✅ FOOTER: paste your site footer markup (unchanged) -->
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="footer-brand">
+          templeton real estate group · chicago, il
+        </div>
+
+        <div class="footer-links">
+          <a href="/about.html">About</a> ·
+          <a href="/neighborhoods.html">Neighborhoods</a> ·
+          <a href="/reviews.html">Reviews</a> ·
+          <a href="/contact.html">Contact</a>
+        </div>
+
+        <div>
+          &copy; <span id="year"></span> Templeton Real Estate Group, LLC.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function num(id) {
+      const v = document.getElementById(id).value.trim().replace(/[$,]/g, "");
+      const n = Number(v);
+      return Number.isFinite(n) ? n : 0;
+    }
+    function money(n) {
+      return n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+    }
+
+    const defaults = {
+      salePrice: "500000",
+      mortgagePayoff: "0",
+      commissionPct: "5",
+      attorneyFee: "500",
+      locationMode: "chicago",
+      customLocalTax: "0",
+      titleSellerFees: "450",
+      taxProrationCredit: "0"
+    };
+
+    function resetDefaults() {
+      for (const [k, v] of Object.entries(defaults)) {
+        const el = document.getElementById(k);
+        if (!el) continue;
+        el.value = v;
+      }
+      calculate();
+    }
+
+    function transferTaxRates(mode) {
+      // Rates in $ per $1,000 of sale price (editable defaults)
+      if (mode === "chicago") return { city: 7.50, county: 0.50, state: 1.00 };
+      if (mode === "cook_non_chicago") return { city: 0.00, county: 0.50, state: 1.00 };
+      return { city: 0.00, county: 0.00, state: 0.00 };
+    }
+
+    function calculate() {
+      const price = num("salePrice");
+      const payoff = num("mortgagePayoff");
+
+      const commission = price * (num("commissionPct") / 100);
+      const attorney = num("attorneyFee");
+      const titleSellerFees = num("titleSellerFees");
+      const taxProrationCredit = num("taxProrationCredit");
+
+      const mode = document.getElementById("locationMode").value;
+      const rates = transferTaxRates(mode);
+      const customLocal = Math.max(num("customLocalTax"), 0);
+
+      const cityTax = price / 1000 * rates.city;
+      const countyTax = price / 1000 * rates.county;
+      const stateTax = price / 1000 * rates.state;
+      const customTax = price / 1000 * customLocal;
+
+      const sellerCosts =
+        commission +
+        attorney +
+        titleSellerFees +
+        taxProrationCredit +
+        cityTax + countyTax + stateTax + customTax;
+
+      const netBeforePayoff = price - sellerCosts;
+      const netAfterPayoff = netBeforePayoff - payoff;
+
+      document.getElementById("sellerCosts").textContent = money(sellerCosts);
+      document.getElementById("netBeforePayoff").textContent = money(netBeforePayoff);
+      document.getElementById("netAfterPayoff").textContent = money(netAfterPayoff);
+
+      const rows = [
+        ["Commission", commission],
+        ["Attorney fee", attorney],
+        ["Title/escrow seller fees (est.)", titleSellerFees],
+        ["Tax proration credit to buyer (est.)", taxProrationCredit],
+        ["City transfer tax", cityTax],
+        ["County transfer tax", countyTax],
+        ["State transfer tax", stateTax],
+        ["Custom local transfer tax", customTax],
+      ];
+
+      const tbody = document.getElementById("breakdown");
+      tbody.innerHTML = "";
+      for (const [label, val] of rows) {
+        if (val === 0) continue;
+        const tr = document.createElement("tr");
+        const td1 = document.createElement("td");
+        const td2 = document.createElement("td");
+        td1.textContent = label;
+        td2.textContent = money(val);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tbody.appendChild(tr);
+      }
+    }
+
+    document.getElementById("calcBtn").addEventListener("click", calculate);
+    document.getElementById("resetBtn").addEventListener("click", resetDefaults);
+
+    calculate();
+  </script>
+
+  <!-- IMPORTANT: like the buyer page, this expects your existing mega-menu JS is loaded globally -->
+</body>
+</html>
