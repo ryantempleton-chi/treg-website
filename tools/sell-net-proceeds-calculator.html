@@ -74,6 +74,12 @@
       color: var(--treg-charcoal);
     }
 
+    /* Read-only fields should look intentional (not disabled/greyed-out) */
+    .calc-field input[readonly] {
+      background: rgba(250, 250, 250, 0.75);
+      border-color: rgba(0, 0, 0, 0.10);
+    }
+
     .calc-actions {
       display: flex;
       flex-wrap: wrap;
@@ -142,6 +148,52 @@
       margin-top: 0.95rem;
       color: var(--treg-slate);
       font-size: 0.85rem;
+      line-height: 1.55;
+    }
+
+    /* Advanced accordion */
+    .calc-advanced {
+      margin-top: 0.9rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      background: rgba(250, 250, 250, 0.6);
+      padding: 0.2rem 0.85rem 0.85rem;
+    }
+
+    .calc-advanced summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 0.85rem 0.15rem 0.65rem;
+      font-family: "Oswald", system-ui, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .calc-advanced summary::-webkit-details-marker { display: none; }
+
+    .calc-advanced summary .caret {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-right: 2px solid rgba(0, 0, 0, 0.55);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.55);
+      transform: rotate(45deg);
+      transition: transform 180ms ease;
+      flex: 0 0 auto;
+    }
+
+    .calc-advanced[open] summary .caret {
+      transform: rotate(-135deg);
+    }
+
+    .calc-advanced .calc-note-sm {
+      margin: 0.25rem 0.15rem 0.85rem;
+      color: var(--treg-slate);
+      font-size: 0.9rem;
       line-height: 1.55;
     }
   </style>
@@ -325,7 +377,7 @@
                 </div>
 
                 <div class="calc-field">
-                  <label for="commissionPct">Total commission (%)</label>
+                  <label for="commissionPct">Total commission</label>
                   <input id="commissionPct" inputmode="decimal" value="5" />
                 </div>
 
@@ -340,22 +392,13 @@
                 </div>
 
                 <div class="calc-field">
-                  <label for="taxProrationFactor">Tax proration factor</label>
-                  <input id="taxProrationFactor" inputmode="decimal" value="1.05" />
+                  <label for="taxProrationFactorPct">Tax proration factor</label>
+                  <input id="taxProrationFactorPct" inputmode="decimal" value="105" />
                 </div>
 
                 <div class="calc-field calc-span-2">
-                  <label for="taxProrationMode">Tax proration credit to buyer</label>
-                  <select id="taxProrationMode">
-                    <option value="auto" selected>Auto-calc from closing date (common IL approach)</option>
-                    <option value="manual">Manual amount</option>
-                    <option value="none">None</option>
-                  </select>
-                </div>
-
-                <div class="calc-field calc-span-2">
-                  <label for="taxProrationManual">Tax proration credit (manual)</label>
-                  <input id="taxProrationManual" inputmode="decimal" value="0" />
+                  <label for="taxProrationCredit">Tax proration credit to buyer (auto)</label>
+                  <input id="taxProrationCredit" inputmode="decimal" value="$0" readonly />
                 </div>
 
                 <div class="calc-field">
@@ -372,17 +415,8 @@
                 </div>
 
                 <div class="calc-field calc-span-2">
-                  <label for="hoaProrationMode">HOA proration (credit to seller)</label>
-                  <select id="hoaProrationMode">
-                    <option value="auto" selected>Auto (seller receives reimbursement if paid through month-end)</option>
-                    <option value="manual">Manual amount</option>
-                    <option value="none">None</option>
-                  </select>
-                </div>
-
-                <div class="calc-field calc-span-2">
-                  <label for="hoaProrationManual">HOA proration credit (manual)</label>
-                  <input id="hoaProrationManual" inputmode="decimal" value="0" />
+                  <label for="hoaProrationCredit">HOA proration credit to seller (auto)</label>
+                  <input id="hoaProrationCredit" inputmode="decimal" value="$0" readonly />
                 </div>
 
                 <div class="calc-field calc-span-2">
@@ -400,8 +434,60 @@
                 </div>
 
                 <div class="calc-field">
+                  <label for="transferTaxTotal">Estimated transfer taxes (auto)</label>
+                  <input id="transferTaxTotal" inputmode="decimal" value="$0" readonly />
+                </div>
+
+                <div class="calc-field calc-span-2">
                   <label for="titleSellerFees">Title/escrow seller fees (est.)</label>
                   <input id="titleSellerFees" inputmode="decimal" value="450" />
+                </div>
+
+                <!-- ADVANCED OPTIONS -->
+                <div class="calc-span-2">
+                  <details class="calc-advanced" id="sellerAdvanced">
+                    <summary>
+                      Advanced options
+                      <span class="caret" aria-hidden="true"></span>
+                    </summary>
+
+                    <p class="calc-note-sm">
+                      Optional items that can apply depending on negotiated repairs/credits, HOA requirements, and payoff items.
+                      Leave at 0 if not applicable.
+                    </p>
+
+                    <div class="calc-form">
+                      <div class="calc-field">
+                        <label for="sellerConcession">Seller credit / concession</label>
+                        <input id="sellerConcession" inputmode="decimal" value="0" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="repairs">Repairs paid by seller (estimate)</label>
+                        <input id="repairs" inputmode="decimal" value="0" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="hoaDocs">HOA docs / paid letter / admin</label>
+                        <input id="hoaDocs" inputmode="decimal" value="0" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="moveOutFee">HOA move-out fee</label>
+                        <input id="moveOutFee" inputmode="decimal" value="0" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="municipalInspections">Municipal inspection / compliance</label>
+                        <input id="municipalInspections" inputmode="decimal" value="0" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="otherSellerCosts">Other seller costs (single line)</label>
+                        <input id="otherSellerCosts" inputmode="decimal" value="0" />
+                      </div>
+                    </div>
+                  </details>
                 </div>
 
                 <div class="calc-actions calc-span-2">
@@ -497,9 +583,14 @@
       });
     }
 
-    function percentFmt(n) {
-      const rounded = Math.round(n * 1000) / 1000;
+    function percentBareFmt(n) {
+      // numbers like 5 -> "5" ; 5.25 -> "5.25"
+      const rounded = Math.round((n || 0) * 1000) / 1000;
       return String(rounded).replace(/\.0+$/, "").replace(/(\.\d*[1-9])0+$/, "$1");
+    }
+
+    function percentWithSignFmt(n) {
+      return `${percentBareFmt(n)}%`;
     }
 
     function getVal(id) {
@@ -511,6 +602,7 @@
       const el = document.getElementById(id);
       const v = el ? String(el.value || "").trim() : "";
       if (!v) return null;
+      // noon local time helps avoid timezone day-shift
       const d = new Date(v + "T12:00:00");
       return Number.isFinite(d.getTime()) ? d : null;
     }
@@ -548,22 +640,29 @@
       el.value = `${yyyy}-${mm}-${dd}`;
     }
 
-    // ---------- Defaults ----------
+    // ---------- Defaults / formatting groups ----------
     const currencyFieldIds = [
       "salePrice",
       "mortgagePayoff",
       "attorneyFee",
       "annualTax",
-      "taxProrationManual",
       "monthlyHoa",
-      "hoaProrationManual",
-      "titleSellerFees"
+      "customLocalTax",
+      "titleSellerFees",
+
+      // Advanced
+      "sellerConcession",
+      "repairs",
+      "hoaDocs",
+      "moveOutFee",
+      "municipalInspections",
+      "otherSellerCosts"
     ];
 
-    const percentFieldIds = [
+    // These should show a trailing %
+    const percentSignFieldIds = [
       "commissionPct",
-      "customLocalTax",
-      "taxProrationFactor"
+      "taxProrationFactorPct"
     ];
 
     const defaults = {
@@ -573,16 +672,20 @@
       commissionPct: "5",
       attorneyFee: "500",
       annualTax: "9000",
-      taxProrationFactor: "1.05",
-      taxProrationMode: "auto",
-      taxProrationManual: "0",
+      taxProrationFactorPct: "105",
       monthlyHoa: "0",
       hoaPaidThrough: "month_end",
-      hoaProrationMode: "auto",
-      hoaProrationManual: "0",
       locationMode: "chicago",
       customLocalTax: "0",
-      titleSellerFees: "450"
+      titleSellerFees: "450",
+
+      // Advanced
+      sellerConcession: "0",
+      repairs: "0",
+      hoaDocs: "0",
+      moveOutFee: "0",
+      municipalInspections: "0",
+      otherSellerCosts: "0"
     };
 
     function resetDefaults() {
@@ -597,17 +700,18 @@
     }
 
     function transferTaxRates(mode) {
-      // Rates in $ per $1,000 of sale price (editable defaults)
+      // Rates in $ per $1,000 of sale price
       if (mode === "chicago") return { city: 7.50, county: 0.50, state: 1.00 };
       if (mode === "cook_non_chicago") return { city: 0.00, county: 0.50, state: 1.00 };
       return { city: 0.00, county: 0.00, state: 0.00 };
     }
 
-    function computeSellerTaxProration(closingDate, annualTax, factor) {
-      if (!closingDate) return 0;
+    function computeSellerTaxProration(closingDate, annualTax, factorPct) {
+      if (!closingDate || annualTax <= 0 || factorPct <= 0) return 0;
       const doy = dayOfYear(closingDate);
       const daysSellerOwes = Math.max(0, doy - 1);
       const diy = daysInYear(closingDate);
+      const factor = factorPct / 100; // 105 -> 1.05
       const base = (annualTax * factor) * (daysSellerOwes / diy);
       return Math.max(0, base);
     }
@@ -618,9 +722,10 @@
 
       const eom = endOfMonth(closingDate);
       const nextDay = new Date(closingDate.getFullYear(), closingDate.getMonth(), closingDate.getDate() + 1, 12);
-      const daysRemaining = daysBetween(nextDay, new Date(eom.getFullYear(), eom.getMonth(), eom.getDate() + 1, 12));
+      const monthEndPlus1 = new Date(eom.getFullYear(), eom.getMonth(), eom.getDate() + 1, 12);
+
+      const daysRemaining = daysBetween(nextDay, monthEndPlus1);
       const daysInMonth = eom.getDate();
-      // Buyer reimburses seller -> credit to seller
       return (monthlyHoa / daysInMonth) * Math.max(0, daysRemaining);
     }
 
@@ -629,11 +734,13 @@
       const payoff = getVal("mortgagePayoff");
       const closingDate = getDateVal("closingDate");
 
-      const commission = price * (getVal("commissionPct") / 100);
+      const commissionPct = getVal("commissionPct");
+      const commission = price * (commissionPct / 100);
+
       const attorney = getVal("attorneyFee");
       const titleSellerFees = getVal("titleSellerFees");
 
-      // Transfer taxes
+      // Transfer taxes (auto)
       const mode = document.getElementById("locationMode").value;
       const rates = transferTaxRates(mode);
       const customLocal = Math.max(getVal("customLocalTax"), 0);
@@ -642,48 +749,72 @@
       const countyTax = price / 1000 * rates.county;
       const stateTax = price / 1000 * rates.state;
       const customTax = price / 1000 * customLocal;
+      const transferTaxesTotal = cityTax + countyTax + stateTax + customTax;
 
-      // Taxes (proration credit paid by seller)
+      // Tax proration credit (AUTO only)
       const annualTax = getVal("annualTax");
-      const factor = Math.max(getVal("taxProrationFactor"), 0);
-      const taxMode = document.getElementById("taxProrationMode").value;
-      const taxProrationCredit = taxMode === "auto"
-        ? computeSellerTaxProration(closingDate, annualTax, factor)
-        : (taxMode === "manual" ? Math.max(getVal("taxProrationManual"), 0) : 0);
+      const factorPct = Math.max(getVal("taxProrationFactorPct"), 0);
+      const taxProrationCredit = computeSellerTaxProration(closingDate, annualTax, factorPct);
 
-      // HOA proration (credit to seller from buyer; reduces seller costs)
+      // HOA proration credit to seller (AUTO only)
       const monthlyHoa = Math.max(getVal("monthlyHoa"), 0);
       const hoaPaidThrough = document.getElementById("hoaPaidThrough").value;
-      const hoaMode = document.getElementById("hoaProrationMode").value;
-      const hoaCredit = hoaMode === "auto"
-        ? computeHoaProrationCreditToSeller(closingDate, monthlyHoa, hoaPaidThrough)
-        : (hoaMode === "manual" ? Math.max(getVal("hoaProrationManual"), 0) : 0);
+      const hoaCredit = computeHoaProrationCreditToSeller(closingDate, monthlyHoa, hoaPaidThrough);
+
+      // Advanced
+      const sellerConcession = Math.max(getVal("sellerConcession"), 0);
+      const repairs = Math.max(getVal("repairs"), 0);
+      const hoaDocs = Math.max(getVal("hoaDocs"), 0);
+      const moveOutFee = Math.max(getVal("moveOutFee"), 0);
+      const municipalInspections = Math.max(getVal("municipalInspections"), 0);
+      const otherSellerCosts = Math.max(getVal("otherSellerCosts"), 0);
+
+      const advancedCosts =
+        sellerConcession + repairs + hoaDocs + moveOutFee + municipalInspections + otherSellerCosts;
 
       const sellerCosts =
         commission +
         attorney +
         titleSellerFees +
         taxProrationCredit +
-        cityTax + countyTax + stateTax + customTax
+        transferTaxesTotal +
+        advancedCosts
         - hoaCredit;
 
       const netBeforePayoff = price - sellerCosts;
       const netAfterPayoff = netBeforePayoff - payoff;
 
+      // Write read-only computed fields
+      document.getElementById("taxProrationCredit").value = moneyFmt(taxProrationCredit);
+      document.getElementById("hoaProrationCredit").value = moneyFmt(hoaCredit);
+      document.getElementById("transferTaxTotal").value = moneyFmt(transferTaxesTotal);
+
+      // KPIs
       document.getElementById("sellerCosts").textContent = moneyFmt(sellerCosts);
       document.getElementById("netBeforePayoff").textContent = moneyFmt(netBeforePayoff);
       document.getElementById("netAfterPayoff").textContent = moneyFmt(netAfterPayoff);
 
+      // Breakdown table
       const rows = [
         ["Commission", commission],
         ["Attorney fee", attorney],
         ["Title/escrow seller fees (est.)", titleSellerFees],
-        ["Tax proration credit to buyer (est.)", taxProrationCredit],
+        ["Tax proration credit to buyer (auto)", taxProrationCredit],
         ["City transfer tax", cityTax],
         ["County transfer tax", countyTax],
         ["State transfer tax", stateTax],
         ["Custom local transfer tax", customTax],
-        ["HOA proration credit to seller (if applicable)", -hoaCredit]
+
+        // Advanced (only show if used)
+        ["Seller credit / concession", sellerConcession],
+        ["Repairs paid by seller", repairs],
+        ["HOA docs / paid letter / admin", hoaDocs],
+        ["HOA move-out fee", moveOutFee],
+        ["Municipal inspection / compliance", municipalInspections],
+        ["Other seller costs", otherSellerCosts],
+
+        // Credit to seller
+        ["HOA proration credit to seller (auto)", -hoaCredit]
       ];
 
       const tbody = document.getElementById("breakdown");
@@ -724,9 +855,9 @@
       el.value = moneyFmt(n);
     }
 
-    function formatNumericField(el) {
+    function formatPercentSignField(el) {
       const n = parseNumber(el.value);
-      el.value = percentFmt(n);
+      el.value = percentWithSignFmt(n);
     }
 
     function bindBlurFormatting() {
@@ -737,10 +868,10 @@
         el.addEventListener("focus", () => el.select());
       });
 
-      percentFieldIds.forEach((id) => {
+      percentSignFieldIds.forEach((id) => {
         const el = document.getElementById(id);
         if (!el) return;
-        el.addEventListener("blur", () => formatNumericField(el));
+        el.addEventListener("blur", () => formatPercentSignField(el));
         el.addEventListener("focus", () => el.select());
       });
     }
@@ -750,9 +881,10 @@
         const el = document.getElementById(id);
         if (el) formatCurrencyField(el);
       });
-      percentFieldIds.forEach((id) => {
+
+      percentSignFieldIds.forEach((id) => {
         const el = document.getElementById(id);
-        if (el) formatNumericField(el);
+        if (el) formatPercentSignField(el);
       });
     }
 
