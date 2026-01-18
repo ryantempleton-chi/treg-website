@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Buyer Closing Cost Calculator | Templeton Real Estate Group</title>
+  <meta name="description" content="Estimate buyer closing costs in Chicago and surrounding suburbs. Lender fees, title, recording, escrows, and prepaids." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts (site standard) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- Page-only CSS (namespaced to avoid conflicts) -->
+  <style>
+    .calc-page .hero-title { text-transform: lowercase; }
+    .calc-grid {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+    @media (min-width: 900px) {
+      .calc-grid { grid-template-columns: 1.05fr 0.95fr; }
+    }
+
+    .calc-card {
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.1rem;
+    }
+
+    .calc-card h2 {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 0.85rem;
+    }
+
+    .calc-form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    @media (min-width: 560px) {
+      .calc-form { grid-template-columns: 1fr 1fr; }
+      .calc-span-2 { grid-column: 1 / -1; }
+    }
+
+    .calc-field label {
+      display: block;
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--treg-slate);
+      margin-bottom: 0.45rem;
+    }
+
+    .calc-field input,
+    .calc-field select {
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      border-radius: 14px;
+      padding: 0.75rem 0.85rem;
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.95rem;
+      background: #fff;
+      color: var(--treg-charcoal);
+    }
+
+    .calc-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 0.35rem;
+    }
+
+    .calc-actions .btn { pointer-events: auto; }
+
+    .calc-note {
+      margin-top: 0.85rem;
+      color: var(--treg-slate);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .calc-results {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .calc-kpi {
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(250, 250, 250, 0.75);
+      padding: 0.95rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .calc-kpi strong {
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--treg-slate);
+      font-weight: 600;
+    }
+
+    .calc-kpi span {
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--treg-charcoal);
+      white-space: nowrap;
+    }
+
+    .calc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+    }
+    .calc-table th,
+    .calc-table td {
+      text-align: left;
+      padding: 0.7rem 0.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.92rem;
+    }
+    .calc-table th {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--treg-slate);
+    }
+    .calc-table td:last-child { text-align: right; white-space: nowrap; }
+
+    .calc-disclaimer {
+      margin-top: 0.95rem;
+      color: var(--treg-slate);
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+
+<body class="calc-page">
+  <div class="page">
+
+    <!-- ✅ Paste your existing HEADER here (unchanged) -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo-link">
+          <img
+            src="/assets/img/logo-transparent-lg.png"
+            alt="ryantempleton. chicago · templeton real estate group"
+            class="logo-img"
+          />
+        </a>
+
+        <button
+          class="menu-btn"
+          type="button"
+          aria-label="Open menu"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+        >
+          <span class="menu-btn-icon" aria-hidden="true"><span></span></span>
+          menu
+        </button>
+
+        <nav class="nav" aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/" class="nav-link">home</a></li>
+
+            <li class="nav-item has-dropdown">
+              <button class="nav-link-dropdown" type="button">about</button>
+              <ul class="nav-dropdown">
+                <li><a class="nav-dropdown-link" href="/about.html">our story</a></li>
+                <li><a class="nav-dropdown-link" href="/team/">meet the team</a></li>
+                <li><a class="nav-dropdown-link" href="/reviews.html">client reviews</a></li>
+                <li><a class="nav-dropdown-link" href="/partners.html">partners</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-dropdown">
+              <a href="#" class="nav-link nav-link-dropdown">buy | sell | rent</a>
+              <ul class="nav-dropdown">
+                <li><a href="/buy.html" class="nav-dropdown-link">buy</a></li>
+                <li><a href="/sell.html" class="nav-dropdown-link">sell</a></li>
+                <li><a href="/rent.html" class="nav-dropdown-link">rent</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="/neighborhoods.html" class="nav-link">neighborhoods</a></li>
+            <li class="nav-item"><a href="/contact.html" class="nav-link">contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="menu-backdrop" data-menu-close aria-hidden="true"></div>
+
+      <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+        <div class="menu-panel-inner">
+          <div class="menu-panel-top">
+            <div class="menu-panel-title">menu</div>
+
+            <div class="menu-panel-top-right">
+              <img
+                class="menu-panel-mark"
+                src="/assets/img/logo-transparent-lg.png"
+                alt="Templeton Real Estate Group"
+              />
+              <button class="menu-close" type="button" data-menu-close aria-label="Close menu">✕</button>
+            </div>
+          </div>
+
+          <div class="menu-layout">
+            <div class="menu-primary" aria-label="Primary menu links">
+              <a class="menu-primary-link" href="/buy.html">buy.</a>
+              <a class="menu-primary-link" href="/sell.html">sell.</a>
+              <a class="menu-primary-link" href="/rent.html">rent.</a>
+              <a class="menu-primary-link" href="/neighborhoods.html">neighborhoods.</a>
+              <a class="menu-primary-link" href="/partners.html">partners.</a>
+              <a class="menu-primary-link" href="/team/">meet the team.</a>
+              <a class="menu-primary-link" href="/contact.html">contact us.</a>
+
+              <div class="menu-cta-row">
+                <a class="btn btn-primary" href="/intake.html">start intake</a>
+                <a class="btn btn-ghost" href="/contact.html">email our team</a>
+              </div>
+            </div>
+
+            <div class="menu-secondary" aria-label="Secondary menu links">
+              <div class="menu-col">
+                <div class="menu-col-title">Work with us</div>
+                <a class="menu-link" href="/buy-process.html">Buy Process</a>
+                <a class="menu-link" href="/sell-process.html">Sell Process</a>
+                <a class="menu-link" href="/rent-process.html">Rent Process</a>
+                <a class="menu-link" href="/intake.html">New Client Intake</a>
+              </div>
+
+              <div class="menu-col">
+                <div class="menu-col-title">Company</div>
+                <a class="menu-link" href="/about.html">Our Story</a>
+                <a class="menu-link" href="/reviews.html">Client Reviews</a>
+                <a class="menu-link" href="/partners.html">Partners</a>
+                <a class="menu-link" href="/contact.html">Contact</a>
+              </div>
+
+              <div class="menu-col">
+                <div class="menu-col-title">Explore</div>
+                <a class="menu-link" href="/">Home</a>
+                <a class="menu-link" href="/neighborhoods.html">Neighborhood Guides</a>
+                <a class="menu-link" href="/partners.html">Partner Referrals</a>
+                <a class="menu-link" href="/reviews.html">Testimonials</a>
+              </div>
+
+              <div class="menu-col menu-col--spacer" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <img
+            src="/assets/img/icons/favicon-1500x1500-tran.png"
+            alt=""
+            aria-hidden="true"
+            class="menu-corner-mark"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main class="main calc-main">
+      <!-- HERO (uses your global hero classes) -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-label">Tools</div>
+          <h1 class="hero-title">buyer closing cost calculator</h1>
+          <p class="hero-subtitle">
+            A Chicago-area estimate for lender fees, title, recording, escrows, and prepaids.
+            Down payment is shown separately so you can plan total cash-to-close.
+          </p>
+
+          <div class="btn-row">
+            <a class="btn btn-ghost" href="/tools/sell-net-proceeds-calculator.html">seller calculator</a>
+            <a class="btn btn-primary" href="/intake.html">start intake</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="calc-grid">
+            <!-- Inputs -->
+            <div class="calc-card">
+              <h2>Inputs</h2>
+
+              <form class="calc-form" id="buyerCalc" novalidate>
+                <div class="calc-field">
+                  <label for="purchasePrice">Purchase price</label>
+                  <input id="purchasePrice" inputmode="decimal" value="450000" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="downPct">Down payment (%)</label>
+                  <input id="downPct" inputmode="decimal" value="20" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="interestRate">Interest rate (%)</label>
+                  <input id="interestRate" inputmode="decimal" value="6.5" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="daysPrepaid">Prepaid interest days</label>
+                  <input id="daysPrepaid" inputmode="numeric" value="10" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="annualTax">Annual property taxes (estimate)</label>
+                  <input id="annualTax" inputmode="decimal" value="9000" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="annualIns">Annual homeowner’s insurance (estimate)</label>
+                  <input id="annualIns" inputmode="decimal" value="1600" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="taxEscrowMonths">Tax escrow months</label>
+                  <input id="taxEscrowMonths" inputmode="numeric" value="2" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="insEscrowMonths">Insurance escrow months</label>
+                  <input id="insEscrowMonths" inputmode="numeric" value="3" />
+                </div>
+
+                <div class="calc-field calc-span-2">
+                  <label for="lenderFees">Lender fees (estimate)</label>
+                  <input id="lenderFees" inputmode="decimal" value="2200" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="pointsPct">Discount points (%)</label>
+                  <input id="pointsPct" inputmode="decimal" value="0" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="attorneyFee">Attorney fee (flat)</label>
+                  <input id="attorneyFee" inputmode="decimal" value="500" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="titleSettlementFee">Title/settlement fee (estimate)</label>
+                  <input id="titleSettlementFee" inputmode="decimal" value="2000" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="lendersTitle">Lender’s title insurance</label>
+                  <input id="lendersTitle" inputmode="decimal" value="575" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="includeOwnersTitle">Owner’s title insurance</label>
+                  <select id="includeOwnersTitle">
+                    <option value="yes" selected>Include</option>
+                    <option value="no">Exclude</option>
+                  </select>
+                </div>
+
+                <div class="calc-field">
+                  <label for="ownersTitle">Owner’s title insurance (if included)</label>
+                  <input id="ownersTitle" inputmode="decimal" value="2330" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="recordingFees">Recording fees (estimate)</label>
+                  <input id="recordingFees" inputmode="decimal" value="250" />
+                </div>
+
+                <div class="calc-field">
+                  <label for="miscTitleFees">Other title/escrow misc (est.)</label>
+                  <input id="miscTitleFees" inputmode="decimal" value="250" />
+                </div>
+
+                <div class="calc-actions calc-span-2">
+                  <button class="btn btn-primary" type="button" id="calcBtn">calculate</button>
+                  <button class="btn btn-ghost" type="button" id="resetBtn">reset</button>
+                </div>
+              </form>
+
+              <p class="calc-note">
+                These defaults are intentionally conservative. If you’d like, we can later replace certain items with Chicago-accurate formulas
+                (ex: recording, title ranges, escrows) as you collect more statements.
+              </p>
+            </div>
+
+            <!-- Results -->
+            <div class="calc-card">
+              <h2>Results</h2>
+
+              <div class="calc-results">
+                <div class="calc-kpi">
+                  <strong>Closing costs (excl. down payment)</strong>
+                  <span id="closingCosts">$—</span>
+                </div>
+                <div class="calc-kpi">
+                  <strong>Down payment</strong>
+                  <span id="downPayment">$—</span>
+                </div>
+                <div class="calc-kpi">
+                  <strong>Estimated cash to close</strong>
+                  <span id="cashToClose">$—</span>
+                </div>
+              </div>
+
+              <table class="calc-table" aria-label="Buyer closing cost breakdown">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Estimate</th>
+                  </tr>
+                </thead>
+                <tbody id="breakdown"></tbody>
+              </table>
+
+              <div class="calc-disclaimer">
+                This tool provides a rough estimate for planning purposes only. Actual fees and credits vary by lender, title company,
+                property tax bill, HOA requirements, and closing date. Templeton Real Estate Group, LLC and Keller Williams ONEChicago
+                do not guarantee figures shown here and are not responsible for decisions made based on this estimate.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ✅ Paste your existing FOOTER here (unchanged) -->
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="footer-brand">
+          templeton real estate group · chicago, il
+        </div>
+
+        <div class="footer-links">
+          <a href="/about.html">About</a> ·
+          <a href="/neighborhoods.html">Neighborhoods</a> ·
+          <a href="/reviews.html">Reviews</a> ·
+          <a href="/contact.html">Contact</a>
+        </div>
+
+        <div>
+          &copy; <span id="year"></span> Templeton Real Estate Group, LLC.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Helpers
+    function num(id) {
+      const v = document.getElementById(id).value.trim().replace(/[$,]/g, "");
+      const n = Number(v);
+      return Number.isFinite(n) ? n : 0;
+    }
+    function money(n) {
+      return n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+    }
+
+    const defaults = {
+      purchasePrice: "450000",
+      downPct: "20",
+      interestRate: "6.5",
+      daysPrepaid: "10",
+      annualTax: "9000",
+      annualIns: "1600",
+      taxEscrowMonths: "2",
+      insEscrowMonths: "3",
+      lenderFees: "2200",
+      pointsPct: "0",
+      attorneyFee: "500",
+      titleSettlementFee: "2000",
+      lendersTitle: "575",
+      includeOwnersTitle: "yes",
+      ownersTitle: "2330",
+      recordingFees: "250",
+      miscTitleFees: "250"
+    };
+
+    function resetDefaults() {
+      for (const [k, v] of Object.entries(defaults)) {
+        const el = document.getElementById(k);
+        if (!el) continue;
+        el.value = v;
+      }
+      calculate();
+    }
+
+    function calculate() {
+      const price = num("purchasePrice");
+      const downPct = num("downPct") / 100;
+      const loan = Math.max(price * (1 - downPct), 0);
+
+      const lenderFees = num("lenderFees");
+      const points = loan * (num("pointsPct") / 100);
+
+      const settlement = num("titleSettlementFee");
+      const lendersTitle = num("lendersTitle");
+      const miscTitle = num("miscTitleFees");
+      const recording = num("recordingFees");
+      const attorney = num("attorneyFee");
+
+      const includeOwners = document.getElementById("includeOwnersTitle").value === "yes";
+      const ownersTitle = includeOwners ? num("ownersTitle") : 0;
+
+      const annualTax = num("annualTax");
+      const annualIns = num("annualIns");
+      const taxEscMonths = Math.max(num("taxEscrowMonths"), 0);
+      const insEscMonths = Math.max(num("insEscrowMonths"), 0);
+
+      const taxEscrow = (annualTax / 12) * taxEscMonths;
+      const insEscrow = (annualIns / 12) * insEscMonths;
+
+      const rate = num("interestRate") / 100;
+      const days = Math.max(num("daysPrepaid"), 0);
+      const prepaidInterest = loan * rate / 365 * days;
+
+      const closingCosts =
+        lenderFees + points +
+        settlement + lendersTitle + ownersTitle + miscTitle +
+        recording + attorney +
+        taxEscrow + insEscrow + prepaidInterest;
+
+      const downPayment = price * downPct;
+      const cashToClose = closingCosts + downPayment;
+
+      document.getElementById("closingCosts").textContent = money(closingCosts);
+      document.getElementById("downPayment").textContent = money(downPayment);
+      document.getElementById("cashToClose").textContent = money(cashToClose);
+
+      const rows = [
+        ["Lender fees (est.)", lenderFees],
+        ["Discount points", points],
+        ["Title/settlement fee", settlement],
+        ["Lender’s title insurance", lendersTitle],
+        ["Owner’s title insurance", ownersTitle],
+        ["Other title/escrow misc", miscTitle],
+        ["Recording fees (est.)", recording],
+        ["Attorney fee", attorney],
+        [`Tax escrow (${taxEscMonths} mo.)`, taxEscrow],
+        [`Insurance escrow (${insEscMonths} mo.)`, insEscrow],
+        [`Prepaid interest (${days} days)`, prepaidInterest],
+      ];
+
+      const tbody = document.getElementById("breakdown");
+      tbody.innerHTML = "";
+      for (const [label, val] of rows) {
+        const tr = document.createElement("tr");
+        const td1 = document.createElement("td");
+        const td2 = document.createElement("td");
+        td1.textContent = label;
+        td2.textContent = money(val);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tbody.appendChild(tr);
+      }
+    }
+
+    document.getElementById("calcBtn").addEventListener("click", calculate);
+    document.getElementById("resetBtn").addEventListener("click", resetDefaults);
+
+    calculate();
+  </script>
+
+  <!-- IMPORTANT: this relies on your existing menu JS that toggles body.menu-open.
+       If that script is global elsewhere (recommended), you don't need anything here. -->
+</body>
+</html>
