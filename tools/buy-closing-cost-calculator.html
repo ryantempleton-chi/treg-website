@@ -483,16 +483,75 @@
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
   
-    // Helpers
-    function num(id) {
-      const v = document.getElementById(id).value.trim().replace(/[$,]/g, "");
-      const n = Number(v);
+    // ---------- Parsing + formatting helpers ----------
+    function parseNumber(raw) {
+      const s = String(raw ?? "").trim();
+      if (!s) return 0;
+      // keep digits, minus, decimal
+      const cleaned = s.replace(/[^0-9.\-]/g, "");
+      const n = Number(cleaned);
       return Number.isFinite(n) ? n : 0;
     }
-    function money(n) {
-      return n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  
+    function moneyFmt(n) {
+      return n.toLocaleString(undefined, {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      });
     }
   
+    function moneyFmt2(n) {
+      return n.toLocaleString(undefined, {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 2
+      });
+    }
+  
+    function percentFmt(n) {
+      // Show up to 3 decimals (enough for points like 0.125)
+      const rounded = Math.round(n * 1000) / 1000;
+      // Avoid trailing ".0"
+      return String(rounded).replace(/\.0+$/, "").replace(/(\.\d*[1-9])0+$/, "$1");
+    }
+  
+    function intFmt(n) {
+      return String(Math.max(0, Math.round(n)));
+    }
+  
+    function getVal(id) {
+      const el = document.getElementById(id);
+      return parseNumber(el ? el.value : 0);
+    }
+  
+    // ---------- Field groups ----------
+    const currencyFieldIds = [
+      "purchasePrice",
+      "annualTax",
+      "annualIns",
+      "lenderFees",
+      "attorneyFee",
+      "titleSettlementFee",
+      "lendersTitle",
+      "ownersTitle",
+      "recordingFees",
+      "miscTitleFees"
+    ];
+  
+    const percentFieldIds = [
+      "downPct",
+      "interestRate",
+      "pointsPct"
+    ];
+  
+    const intFieldIds = [
+      "daysPrepaid",
+      "taxEscrowMonths",
+      "insEscrowMonths"
+    ];
+  
+    // ---------- Defaults ----------
     const defaults = {
       purchasePrice: "450000",
       downPct: "20",
@@ -519,36 +578,38 @@
         if (!el) continue;
         el.value = v;
       }
-      calculate();
+      formatAll();   // format visible inputs
+      calculate();   // update results
     }
   
+    // ---------- Calculation ----------
     function calculate() {
-      const price = num("purchasePrice");
-      const downPct = num("downPct") / 100;
+      const price = getVal("purchasePrice");
+      const downPct = getVal("downPct") / 100;
       const loan = Math.max(price * (1 - downPct), 0);
   
-      const lenderFees = num("lenderFees");
-      const points = loan * (num("pointsPct") / 100);
+      const lenderFees = getVal("lenderFees");
+      const points = loan * (getVal("pointsPct") / 100);
   
-      const settlement = num("titleSettlementFee");
-      const lendersTitle = num("lendersTitle");
-      const miscTitle = num("miscTitleFees");
-      const recording = num("recordingFees");
-      const attorney = num("attorneyFee");
+      const settlement = getVal("titleSettlementFee");
+      const lendersTitle = getVal("lendersTitle");
+      const miscTitle = getVal("miscTitleFees");
+      const recording = getVal("recordingFees");
+      const attorney = getVal("attorneyFee");
   
       const includeOwners = document.getElementById("includeOwnersTitle").value === "yes";
-      const ownersTitle = includeOwners ? num("ownersTitle") : 0;
+      const ownersTitle = includeOwners ? getVal("ownersTitle") : 0;
   
-      const annualTax = num("annualTax");
-      const annualIns = num("annualIns");
-      const taxEscMonths = Math.max(num("taxEscrowMonths"), 0);
-      const insEscMonths = Math.max(num("insEscrowMonths"), 0);
+      const annualTax = getVal("annualTax");
+      const annualIns = getVal("annualIns");
+      const taxEscMonths = Math.max(getVal("taxEscrowMonths"), 0);
+      const insEscMonths = Math.max(getVal("insEscrowMonths"), 0);
   
       const taxEscrow = (annualTax / 12) * taxEscMonths;
       const insEscrow = (annualIns / 12) * insEscMonths;
   
-      const rate = num("interestRate") / 100;
-      const days = Math.max(num("daysPrepaid"), 0);
+      const rate = getVal("interestRate") / 100;
+      const days = Math.max(getVal("daysPrepaid"), 0);
       const prepaidInterest = loan * rate / 365 * days;
   
       const closingCosts =
@@ -560,9 +621,9 @@
       const downPayment = price * downPct;
       const cashToClose = closingCosts + downPayment;
   
-      document.getElementById("closingCosts").textContent = money(closingCosts);
-      document.getElementById("downPayment").textContent = money(downPayment);
-      document.getElementById("cashToClose").textContent = money(cashToClose);
+      document.getElementById("closingCosts").textContent = moneyFmt(closingCosts);
+      document.getElementById("downPayment").textContent = moneyFmt(downPayment);
+      document.getElementById("cashToClose").textContent = moneyFmt(cashToClose);
   
       const rows = [
         ["Lender fees (est.)", lenderFees],
@@ -585,14 +646,18 @@
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
         td1.textContent = label;
-        td2.textContent = money(val);
+  
+        // Keep table readable: show cents only for interest/points, otherwise whole dollars
+        const showCents = /interest|points/i.test(label);
+        td2.textContent = showCents ? moneyFmt2(val) : moneyFmt(val);
+  
         tr.appendChild(td1);
         tr.appendChild(td2);
         tbody.appendChild(tr);
       }
     }
   
-    // Live-recalc (debounced so typing feels smooth)
+    // ---------- Live recalc (debounced) ----------
     function bindLiveRecalc() {
       const form = document.getElementById("buyerCalc");
       if (!form) return;
@@ -603,17 +668,75 @@
         t = window.setTimeout(calculate, 120);
       };
   
-      const fields = form.querySelectorAll("input, select");
-      fields.forEach((el) => {
+      form.querySelectorAll("input, select").forEach((el) => {
         el.addEventListener("input", schedule);
         el.addEventListener("change", schedule);
       });
     }
   
+    // ---------- Formatting on blur ----------
+    function formatCurrencyField(el) {
+      const n = parseNumber(el.value);
+      el.value = moneyFmt(n);
+    }
+  
+    function formatPercentField(el) {
+      const n = parseNumber(el.value);
+      el.value = percentFmt(n);
+    }
+  
+    function formatIntField(el) {
+      const n = parseNumber(el.value);
+      el.value = intFmt(n);
+    }
+  
+    function bindBlurFormatting() {
+      currencyFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("blur", () => formatCurrencyField(el));
+        // nice UX: select all on focus for quick overwrite
+        el.addEventListener("focus", () => el.select());
+      });
+  
+      percentFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("blur", () => formatPercentField(el));
+        el.addEventListener("focus", () => el.select());
+      });
+  
+      intFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("blur", () => formatIntField(el));
+        el.addEventListener("focus", () => el.select());
+      });
+    }
+  
+    function formatAll() {
+      currencyFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) formatCurrencyField(el);
+      });
+      percentFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) formatPercentField(el);
+      });
+      intFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) formatIntField(el);
+      });
+    }
+  
+    // Buttons still work
     document.getElementById("calcBtn").addEventListener("click", calculate);
     document.getElementById("resetBtn").addEventListener("click", resetDefaults);
   
+    // Init
     bindLiveRecalc();
+    bindBlurFormatting();
+    formatAll();
     calculate();
   </script>
 </body>
