@@ -675,12 +675,18 @@
     function setReasonableDefaultDate() {
       const el = document.getElementById("closingDate");
       if (!el) return;
+    
+      // Don't override if user already picked a date
       if (String(el.value || "").trim()) return;
+    
       const today = new Date();
-      const guess = new Date(today.getFullYear(), today.getMonth() + 1, 15);
-      const yyyy = guess.getFullYear();
-      const mm = String(guess.getMonth() + 1).padStart(2, "0");
-      const dd = String(guess.getDate()).padStart(2, "0");
+      const plus30 = new Date(today);
+      plus30.setDate(today.getDate() + 30);
+    
+      const yyyy = plus30.getFullYear();
+      const mm = String(plus30.getMonth() + 1).padStart(2, "0");
+      const dd = String(plus30.getDate()).padStart(2, "0");
+    
       el.value = `${yyyy}-${mm}-${dd}`;
     }
 
