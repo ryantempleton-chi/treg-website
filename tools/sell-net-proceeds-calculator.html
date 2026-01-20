@@ -388,10 +388,10 @@
               <h2>Inputs</h2>
 
               <form class="calc-form" id="sellerCalc" novalidate>
-
-                <!-- SECTION: Sale + Payoff -->
+              
+                <!-- SECTION: Sales Details -->
                 <div class="calc-section calc-span-2">
-                  <div class="calc-section-title">Sale + Payoff</div>
+                  <div class="calc-section-title">Sales Details</div>
                 </div>
               
                 <div class="calc-field">
@@ -404,21 +404,12 @@
                   <input id="mortgagePayoff" inputmode="decimal" value="0" />
                 </div>
               
-                <!-- SECTION: Closing Timing -->
-                <div class="calc-section calc-span-2">
-                  <div class="calc-section-title">Closing Timing</div>
-                </div>
-              
                 <div class="calc-field">
                   <label for="closingDate">Estimated closing date</label>
                   <input id="closingDate" type="date" />
                 </div>
               
-                <!-- spacer to keep grid symmetry -->
-                <div class="calc-field" aria-hidden="true" style="opacity:0; pointer-events:none;">
-                  <label>&nbsp;</label>
-                  <input tabindex="-1" />
-                </div>
+                <div class="calc-spacer" aria-hidden="true"></div>
               
                 <!-- SECTION: Commissions + Legal -->
                 <div class="calc-section calc-span-2">
@@ -441,7 +432,7 @@
                 </div>
               
                 <div class="calc-field">
-                  <label for="annualTax">Property Taxes (annual)</label>
+                  <label for="annualTax">Property taxes (annual)</label>
                   <input id="annualTax" inputmode="decimal" value="9000" />
                 </div>
               
@@ -453,17 +444,6 @@
                 <div class="calc-field calc-auto-row" id="rowTaxProration">
                   <label for="taxProrationCredit">Tax proration credit (auto)</label>
                   <input id="taxProrationCredit" inputmode="decimal" value="$0" readonly />
-                </div>
-              
-                <!-- spacer -->
-                <div class="calc-field" aria-hidden="true" style="opacity:0; pointer-events:none;">
-                  <label>&nbsp;</label>
-                  <input tabindex="-1" />
-                </div>
-              
-                <!-- SECTION: HOA Proration -->
-                <div class="calc-section calc-span-2">
-                  <div class="calc-section-title">HOA Proration</div>
                 </div>
               
                 <div class="calc-field">
@@ -505,11 +485,7 @@
                   <input id="stateTransferTax" inputmode="decimal" value="$0" readonly />
                 </div>
               
-                <!-- spacer -->
-                <div class="calc-field" aria-hidden="true" style="opacity:0; pointer-events:none;">
-                  <label>&nbsp;</label>
-                  <input tabindex="-1" />
-                </div>
+                <div class="calc-spacer" aria-hidden="true"></div>
               
                 <!-- SECTION: Title / Escrow -->
                 <div class="calc-section calc-span-2">
@@ -517,15 +493,11 @@
                 </div>
               
                 <div class="calc-field">
-                  <label for="titleSellerFees">Est. Title/Escrow Fees</label>
+                  <label for="titleSellerFees">Est. title/escrow fees</label>
                   <input id="titleSellerFees" inputmode="decimal" value="450" />
                 </div>
               
-                <!-- spacer -->
-                <div class="calc-field" aria-hidden="true" style="opacity:0; pointer-events:none;">
-                  <label>&nbsp;</label>
-                  <input tabindex="-1" />
-                </div>
+                <div class="calc-spacer" aria-hidden="true"></div>
               
                 <!-- Advanced accordion -->
                 <div class="calc-field calc-span-2">
@@ -549,7 +521,7 @@
                       </div>
               
                       <div class="calc-field">
-                        <label for="otherSellerCosts">Additional / Other Seller Costs</label>
+                        <label for="otherSellerCosts">Additional / other seller costs</label>
                         <input id="otherSellerCosts" inputmode="decimal" value="0" />
                       </div>
               
