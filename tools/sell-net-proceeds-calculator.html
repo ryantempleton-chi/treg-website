@@ -361,58 +361,99 @@
               <h2>Inputs</h2>
 
               <form class="calc-form" id="sellerCalc" novalidate>
+
+                <!-- SECTION: Sale + Payoff -->
+                <div class="calc-section calc-span-2">
+                  <div class="calc-section-title">Sale + Payoff</div>
+                </div>
+              
                 <div class="calc-field">
                   <label for="salePrice">Sale price</label>
                   <input id="salePrice" inputmode="decimal" value="500000" />
                 </div>
-
+              
                 <div class="calc-field">
                   <label for="mortgagePayoff">Mortgage payoff (optional)</label>
                   <input id="mortgagePayoff" inputmode="decimal" value="0" />
                 </div>
-
+              
+                <!-- SECTION: Closing Timing -->
+                <div class="calc-section calc-span-2">
+                  <div class="calc-section-title">Closing Timing</div>
+                </div>
+              
                 <div class="calc-field">
                   <label for="closingDate">Estimated closing date</label>
                   <input id="closingDate" type="date" />
                 </div>
-
+              
+                <!-- spacer to keep grid symmetry -->
+                <div class="calc-field" aria-hidden="true" style="opacity:0; pointer-events:none;">
+                  <label>&nbsp;</label>
+                  <input tabindex="-1" />
+                </div>
+              
+                <!-- SECTION: Commissions + Legal -->
+                <div class="calc-section calc-span-2">
+                  <div class="calc-section-title">Commissions + Legal</div>
+                </div>
+              
                 <div class="calc-field">
                   <label for="commissionPct">Total commission (%)</label>
                   <input id="commissionPct" inputmode="decimal" value="6" />
                 </div>
-
+              
                 <div class="calc-field">
                   <label for="attorneyFee">Attorney fee (flat)</label>
                   <input id="attorneyFee" inputmode="decimal" value="500" />
                 </div>
-
+              
+                <!-- SECTION: Taxes + Prorations -->
+                <div class="calc-section calc-span-2">
+                  <div class="calc-section-title">Taxes + Prorations</div>
+                </div>
+              
                 <div class="calc-field">
                   <label for="annualTax">Property Taxes (annual)</label>
                   <input id="annualTax" inputmode="decimal" value="9000" />
                 </div>
-
+              
                 <div class="calc-field">
                   <label for="taxProrationPct">Tax proration factor (%)</label>
                   <input id="taxProrationPct" inputmode="decimal" value="105" />
                 </div>
-
-                <!-- AUTO tax proration credit (hidden until relevant) -->
-                <div class="calc-field calc-span-2 calc-auto-row" id="rowTaxProration">
-                  <label for="taxProrationCredit">Tax proration credit to buyer (auto)</label>
+              
+                <div class="calc-field calc-auto-row" id="rowTaxProration">
+                  <label for="taxProrationCredit">Tax proration credit (auto)</label>
                   <input id="taxProrationCredit" inputmode="decimal" value="$0" readonly />
                 </div>
-
+              
+                <!-- spacer -->
+                <div class="calc-field" aria-hidden="true" style="opacity:0; pointer-events:none;">
+                  <label>&nbsp;</label>
+                  <input tabindex="-1" />
+                </div>
+              
+                <!-- SECTION: HOA Proration -->
+                <div class="calc-section calc-span-2">
+                  <div class="calc-section-title">HOA Proration</div>
+                </div>
+              
                 <div class="calc-field">
-                  <label for="monthlyHoa">Monthly HOA (if applicable)</label>
+                  <label for="monthlyHoa">HOA (monthly)</label>
                   <input id="monthlyHoa" inputmode="decimal" value="0" />
                 </div>
-
-                <!-- AUTO HOA proration credit (hidden until relevant) -->
-                <div class="calc-field calc-span-2 calc-auto-row" id="rowHoaProration">
-                  <label for="hoaProrationCredit">HOA proration credit to seller (auto)</label>
+              
+                <div class="calc-field calc-auto-row" id="rowHoaProration">
+                  <label for="hoaProrationCredit">HOA proration credit (auto)</label>
                   <input id="hoaProrationCredit" inputmode="decimal" value="$0" readonly />
                 </div>
-
+              
+                <!-- SECTION: Transfer Taxes -->
+                <div class="calc-section calc-span-2">
+                  <div class="calc-section-title">Transfer Taxes</div>
+                </div>
+              
                 <div class="calc-field calc-span-2">
                   <label for="locationMode">Transfer tax location</label>
                   <select id="locationMode">
@@ -421,65 +462,81 @@
                     <option value="none">No transfer tax</option>
                   </select>
                 </div>
-
-                <!-- AUTO transfer taxes (hidden until relevant) -->
+              
                 <div class="calc-field calc-auto-row" id="rowCityTax">
                   <label for="cityTransferTax">City transfer tax (auto)</label>
                   <input id="cityTransferTax" inputmode="decimal" value="$0" readonly />
                 </div>
-
+              
                 <div class="calc-field calc-auto-row" id="rowCountyTax">
                   <label for="countyTransferTax">County transfer tax (auto)</label>
                   <input id="countyTransferTax" inputmode="decimal" value="$0" readonly />
                 </div>
-
+              
                 <div class="calc-field calc-auto-row" id="rowStateTax">
                   <label for="stateTransferTax">State transfer tax (auto)</label>
                   <input id="stateTransferTax" inputmode="decimal" value="$0" readonly />
                 </div>
-
+              
+                <!-- spacer -->
+                <div class="calc-field" aria-hidden="true" style="opacity:0; pointer-events:none;">
+                  <label>&nbsp;</label>
+                  <input tabindex="-1" />
+                </div>
+              
+                <!-- SECTION: Title / Escrow -->
+                <div class="calc-section calc-span-2">
+                  <div class="calc-section-title">Title / Escrow</div>
+                </div>
+              
                 <div class="calc-field">
-                  <label for="titleSellerFees">Title/escrow fees (est.)</label>
+                  <label for="titleSellerFees">Est. Title/Escrow Fees</label>
                   <input id="titleSellerFees" inputmode="decimal" value="450" />
                 </div>
-
+              
+                <!-- spacer -->
+                <div class="calc-field" aria-hidden="true" style="opacity:0; pointer-events:none;">
+                  <label>&nbsp;</label>
+                  <input tabindex="-1" />
+                </div>
+              
                 <!-- Advanced accordion -->
                 <div class="calc-field calc-span-2">
                   <details class="calc-accordion">
                     <summary>advanced options (optional)</summary>
                     <div class="accordion-body">
-
+              
                       <div class="calc-field">
                         <label for="recordingFees">Recording / release fees (est.)</label>
                         <input id="recordingFees" inputmode="decimal" value="0" />
                       </div>
-
+              
                       <div class="calc-field">
                         <label for="hoaDocsFees">HOA docs / move-out / paid assessment (est.)</label>
                         <input id="hoaDocsFees" inputmode="decimal" value="0" />
                       </div>
-
+              
                       <div class="calc-field">
                         <label for="sellerCredits">Seller credits (repairs / concessions)</label>
                         <input id="sellerCredits" inputmode="decimal" value="0" />
                       </div>
-
+              
                       <div class="calc-field">
                         <label for="otherSellerCosts">Additional / Other Seller Costs</label>
                         <input id="otherSellerCosts" inputmode="decimal" value="0" />
                       </div>
-
+              
                       <div class="calc-field accordion-span-2">
                         <div class="calc-help">
                           Optional fields let you account for common “extras” that can show up on a settlement statement.
                           Leave blank if you’re not sure.
                         </div>
                       </div>
-
+              
                     </div>
                   </details>
                 </div>
-
+              
                 <div class="calc-actions calc-span-2">
                   <button class="btn btn-primary" type="button" id="calcBtn">calculate</button>
                   <button class="btn btn-ghost" type="button" id="resetBtn">reset</button>
