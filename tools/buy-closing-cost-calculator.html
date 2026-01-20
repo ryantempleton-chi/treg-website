@@ -352,7 +352,7 @@
                 </div>
       
                 <!-- AUTO prepaid interest days (hidden until relevant) -->
-                <div class="calc-field calc-auto-row" id="rowPrepaidDays">
+                <div class="calc-field" id="rowPrepaidDays">
                   <label for="prepaidDaysAuto">Prepaid interest days (auto)</label>
                   <input id="prepaidDaysAuto" inputmode="numeric" value="0" readonly />
                 </div>
@@ -733,7 +733,6 @@
       // Show/hide auto rows only when relevant
       setRowVisible("rowPrepaidDays", prepaidDays > 0);
       setRowVisible("rowTaxCredit", isMeaningfullyNonZero(taxCredit));
-      setRowVisible("rowHoaProration", isMeaningfullyNonZero(hoaProration));
 
       // Closing costs include HOA proration; tax credit reduces buyer cash to close.
       const closingCosts =
