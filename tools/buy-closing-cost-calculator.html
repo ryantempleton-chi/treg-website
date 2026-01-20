@@ -156,15 +156,30 @@
       line-height: 1.55;
     }
 
-    /* Auto-calculated rows: hidden until relevant */
-    .calc-auto-row {
-      display: none;
-      opacity: 0;
-      transition: opacity 180ms ease;
+    /* ===========================
+       SECTION HEADERS (NEW)
+       =========================== */
+    .calc-section {
+      grid-column: 1 / -1;
+      margin-top: 0.25rem;
+      padding-top: 0.25rem;
     }
-    .calc-auto-row.is-visible {
-      display: block;
-      opacity: 1;
+
+    .calc-section-title {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--treg-charcoal);
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Clean spacer that does NOT add fake inputs */
+    .calc-spacer { display: none; }
+    @media (min-width: 560px) {
+      .calc-spacer { display: block; }
     }
   </style>
 </head>
@@ -329,111 +344,144 @@
             <!-- Inputs -->
             <div class="calc-card">
               <h2>Inputs</h2>
-      
+
               <form class="calc-form" id="buyerCalc" novalidate>
+
+                <!-- SECTION: Purchase + Loan -->
+                <div class="calc-section">
+                  <div class="calc-section-title">Purchase + Loan</div>
+                </div>
+
                 <div class="calc-field">
                   <label for="purchasePrice">Purchase price</label>
                   <input id="purchasePrice" inputmode="decimal" value="450000" />
                 </div>
-      
+
                 <div class="calc-field">
                   <label for="downPct">Down payment (%)</label>
                   <input id="downPct" inputmode="decimal" value="20" />
                 </div>
-      
+
                 <div class="calc-field">
                   <label for="closingDate">Estimated closing date</label>
                   <input id="closingDate" type="date" />
                 </div>
-      
+
                 <div class="calc-field">
                   <label for="interestRate">Interest rate (%)</label>
                   <input id="interestRate" inputmode="decimal" value="6.5" />
                 </div>
-      
-                <!-- AUTO prepaid interest days (hidden until relevant) -->
-                <div class="calc-field calc-auto-row" id="rowPrepaidDays">
+
+                <div class="calc-field">
                   <label for="prepaidDaysAuto">Prepaid interest days (auto)</label>
                   <input id="prepaidDaysAuto" inputmode="numeric" value="0" readonly />
                 </div>
-      
+
+                <div class="calc-spacer" aria-hidden="true"></div>
+
+                <!-- SECTION: Taxes + Credits -->
+                <div class="calc-section">
+                  <div class="calc-section-title">Taxes + Credits</div>
+                </div>
+
                 <div class="calc-field">
                   <label for="annualTax">Property taxes (annual)</label>
                   <input id="annualTax" inputmode="decimal" value="9000" />
                 </div>
-      
+
                 <div class="calc-field">
                   <label for="taxProrationPct">Tax proration factor (%)</label>
                   <input id="taxProrationPct" inputmode="decimal" value="105" />
                 </div>
-      
-                <!-- AUTO property tax credit (hidden until relevant) -->
-                <div class="calc-field calc-auto-row" id="rowTaxCredit">
-                  <label for="taxCreditAuto">Est. Tax Credit</label>
+
+                <div class="calc-field">
+                  <label for="taxCreditAuto">Est. tax credit</label>
                   <input id="taxCreditAuto" inputmode="decimal" value="$0" readonly />
                 </div>
-      
+
+                <div class="calc-spacer" aria-hidden="true"></div>
+
+                <!-- SECTION: HOA + Insurance -->
+                <div class="calc-section">
+                  <div class="calc-section-title">HOA + Insurance</div>
+                </div>
+
                 <div class="calc-field">
                   <label for="monthlyHoa">HOA (monthly)</label>
                   <input id="monthlyHoa" inputmode="decimal" value="0" />
                 </div>
-      
-                <!-- AUTO HOA proration (hidden until relevant) -->
-                <div class="calc-field" id="rowHoaProration">
+
+                <div class="calc-field">
                   <label for="hoaProrationAuto">HOA proration (auto)</label>
                   <input id="hoaProrationAuto" inputmode="decimal" value="$0" readonly />
                 </div>
-      
+
                 <div class="calc-field">
                   <label for="annualIns">Homeowner’s insurance (annual)</label>
                   <input id="annualIns" inputmode="decimal" value="1600" />
                 </div>
-      
+
+                <div class="calc-spacer" aria-hidden="true"></div>
+
+                <!-- SECTION: Lender / Origination -->
+                <div class="calc-section">
+                  <div class="calc-section-title">Lender / Origination</div>
+                </div>
+
                 <div class="calc-field">
                   <label for="lenderFees">Est. lender fees</label>
                   <input id="lenderFees" inputmode="decimal" value="2200" />
                 </div>
-      
-                <div class="calc-field">
-                  <label for="attorneyFee">Attorney fee (flat)</label>
-                  <input id="attorneyFee" inputmode="decimal" value="500" />
+
+                <div class="calc-spacer" aria-hidden="true"></div>
+
+                <!-- SECTION: Title + Legal + Recording -->
+                <div class="calc-section">
+                  <div class="calc-section-title">Title + Legal + Recording</div>
                 </div>
-      
+
                 <div class="calc-field">
                   <label for="titleSettlementFee">Est. title/escrow fees</label>
                   <input id="titleSettlementFee" inputmode="decimal" value="2000" />
                 </div>
-      
+
                 <div class="calc-field">
                   <label for="lendersTitle">Lender’s title insurance</label>
                   <input id="lendersTitle" inputmode="decimal" value="575" />
                 </div>
-      
+
                 <div class="calc-field">
                   <label for="recordingFees">Recording fees</label>
                   <input id="recordingFees" inputmode="decimal" value="250" />
                 </div>
-      
+
                 <div class="calc-field">
                   <label for="miscTitleFees">Additional title/escrow fees</label>
                   <input id="miscTitleFees" inputmode="decimal" value="250" />
                 </div>
-      
+
+                <div class="calc-field">
+                  <label for="attorneyFee">Attorney fee (flat)</label>
+                  <input id="attorneyFee" inputmode="decimal" value="500" />
+                </div>
+
+                <div class="calc-spacer" aria-hidden="true"></div>
+
                 <div class="calc-actions calc-span-2">
                   <button class="btn btn-primary" type="button" id="calcBtn">calculate</button>
                   <button class="btn btn-ghost" type="button" id="resetBtn">reset</button>
                 </div>
               </form>
-      
+
               <p class="calc-note">
                 These defaults are intentionally conservative. Actual costs can vary by lender, title company, HOA requirements, and closing date.
               </p>
             </div>
-      
+
             <!-- Results -->
             <div class="calc-card">
               <h2>Results</h2>
-      
+
               <div class="calc-results">
                 <div class="calc-kpi">
                   <strong>Closing costs (excl. down payment)</strong>
@@ -448,7 +496,7 @@
                   <span id="cashToClose">$—</span>
                 </div>
               </div>
-      
+
               <table class="calc-table" aria-label="Buyer closing cost breakdown">
                 <thead>
                   <tr>
@@ -458,7 +506,7 @@
                 </thead>
                 <tbody id="breakdown"></tbody>
               </table>
-      
+
               <div class="calc-disclaimer">
                 This tool provides a rough estimate for planning purposes only. Actual fees and credits vary by lender, title company,
                 municipality, property tax bill, HOA requirements, and closing date. Templeton Real Estate Group, LLC and Keller Williams ONEChicago
@@ -468,7 +516,7 @@
           </div>
         </div>
       </section>
-      </main>
+    </main>
 
     <!-- FOOTER (exact) -->
     <footer class="site-footer">
@@ -583,25 +631,6 @@
       el.value = `${yyyy}-${mm}-${dd}`;
     }
 
-    function isMeaningfullyNonZero(n) {
-      return Math.abs(Math.round(n || 0)) >= 1;
-    }
-
-    function setRowVisible(rowId, shouldShow) {
-      const row = document.getElementById(rowId);
-      if (!row) return;
-
-      if (shouldShow) {
-        row.style.display = "block";
-        requestAnimationFrame(() => row.classList.add("is-visible"));
-      } else {
-        row.classList.remove("is-visible");
-        window.setTimeout(() => {
-          if (!row.classList.contains("is-visible")) row.style.display = "none";
-        }, 200);
-      }
-    }
-
     // ---------- Field groups ----------
     const currencyFieldIds = [
       "purchasePrice",
@@ -631,8 +660,8 @@
       interestRate: "6.5",
       annualTax: "9000",
       taxProrationPct: "105",
-      annualIns: "1600",
       monthlyHoa: "0",
+      annualIns: "1600",
       lenderFees: "2200",
       attorneyFee: "500",
       titleSettlementFee: "2000",
@@ -722,17 +751,13 @@
       const monthlyHoa = Math.max(getVal("monthlyHoa"), 0);
       const hoaProration = computeHoaProrationBuyer(closingDate, monthlyHoa);
 
-      // Update readonly displays (always update values even if hidden)
+      // Update readonly displays
       const prepaidEl = document.getElementById("prepaidDaysAuto");
       const taxEl = document.getElementById("taxCreditAuto");
       const hoaEl = document.getElementById("hoaProrationAuto");
       if (prepaidEl) prepaidEl.value = intFmt(prepaidDays);
       if (taxEl) taxEl.value = moneyFmt(taxCredit);
       if (hoaEl) hoaEl.value = moneyFmt(hoaProration);
-
-      // Show/hide auto rows only when relevant
-      setRowVisible("rowPrepaidDays", prepaidDays > 0);
-      setRowVisible("rowTaxCredit", isMeaningfullyNonZero(taxCredit));
 
       // Closing costs include HOA proration; tax credit reduces buyer cash to close.
       const closingCosts =
@@ -751,18 +776,18 @@
       document.getElementById("cashToClose").textContent = moneyFmt(cashToClose);
 
       const rows = [
-        ["Est. Lender Fees", lenderFees],
-        ["Est. Title/Escrow Fees", settlement],
+        ["Est. lender fees", lenderFees],
+        ["Est. title/escrow fees", settlement],
         ["Lender’s title insurance", lendersTitle],
         ["Owner’s title insurance", ownersTitle],
-        ["Additional Title/Escrow Fees", miscTitle],
-        ["Recording Fees", recording],
+        ["Additional title/escrow fees", miscTitle],
+        ["Recording fees", recording],
         ["Attorney fee", attorney],
         [`Tax escrow (${DEFAULT_TAX_ESCROW_MONTHS} months baked in)`, taxEscrow],
         [`Insurance escrow (${DEFAULT_INS_ESCROW_MONTHS} months baked in)`, insEscrow],
         ["Prepaid interest", prepaidInterest],
-        ["HOA proration (auto, if applicable)", hoaProration],
-        ["Estimated property tax credit from seller (auto)", -taxCredit]
+        ["HOA proration (auto)", hoaProration],
+        ["Est. tax credit (auto)", -taxCredit]
       ];
 
       const tbody = document.getElementById("breakdown");
