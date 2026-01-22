@@ -1,10 +1,10 @@
 <!-- =========================
-     sell.html (FINAL)
+     sell.html (UPDATED to match BUY patterns)
      Notes:
-     - No “Call” button (per your request)
-     - Keeps current structure + voice
-     - Adds seller calculator CTAs in Hero + Final CTA
-     - Makes calculator button GOLD
+     - Adds centered hero buttons
+     - Adds hero photo card
+     - Adds calculator button twice (Hero + What to Expect)
+     - Adds "recent sale spotlight" card (SELL version of "recent purchase spotlight")
      ========================= -->
 <!doctype html>
 <html lang="en">
@@ -56,10 +56,29 @@
               with a focus on clarity, communication, and strong presentation.
             </p>
 
-            <div class="btn-row" style="margin-top: 1.4rem;">
+            <!-- Center the 3 buttons (match BUY) -->
+            <div class="btn-row btn-row-center" style="margin-top: 1.4rem;">
               <a href="/intake.html?service=sell" class="btn btn-primary">start seller intake</a>
               <a href="/sell-process.html" class="btn btn-ghost">view the full sell process</a>
               <a href="/tools/sell-net-proceeds-calculator.html" class="btn btn-gold">net proceeds calculator</a>
+            </div>
+
+            <!-- Hero photo card (match BUY) -->
+            <div
+              style="
+                margin-top: 1.5rem;
+                border-radius: 18px;
+                overflow: hidden;
+                border: 1px solid rgba(0, 0, 0, 0.06);
+                background: #fff;
+              "
+            >
+              <img
+                src="/assets/img/home/bean.jpg"
+                alt="Chicago skyline near Millennium Park"
+                loading="lazy"
+                style="display: block; width: 100%; height: 340px; object-fit: cover;"
+              />
             </div>
           </div>
         </section>
@@ -83,12 +102,47 @@
                   <li><strong>Offer strategy</strong> tailored to your priorities and risk tolerance.</li>
                 </ul>
 
+                <!-- Add calculator here too (match BUY: appears twice) -->
                 <div class="btn-row" style="justify-content: flex-start; margin-top: 1.2rem;">
                   <a href="/intake.html?service=sell" class="btn btn-primary">start seller intake</a>
-                  <a href="mailto:ryan@ryantempleton.com" class="btn btn-ghost">email our team</a>
+                  <a href="/sell-process.html" class="btn btn-ghost">see the interactive timeline</a>
+                  <a href="/tools/sell-net-proceeds-calculator.html" class="btn btn-gold">net proceeds calculator</a>
                 </div>
               </div>
 
+              <!-- SELL version of "recent purchase spotlight" -->
+              <div>
+                <div
+                  style="
+                    border: 1px solid rgba(0, 0, 0, 0.06);
+                    background: #fff;
+                    border-radius: 16px;
+                    overflow: hidden;
+                  "
+                >
+                  <img
+                    src="/assets/img/home/horizon.jpg"
+                    alt="Chicago skyline at sunrise"
+                    loading="lazy"
+                    style="display: block; width: 100%; height: 180px; object-fit: cover;"
+                  />
+                  <div style="padding: 1rem 1.1rem 1.05rem;">
+                    <div class="hero-label">featured</div>
+                    <h3 style="margin: 0 0 0.4rem;">recent sale spotlight</h3>
+                    <p style="margin: 0 0 0.75rem; color: var(--treg-slate); line-height: 1.55;">
+                      A quick seller mini-interview + how we positioned the home — what mattered most, what surprised
+                      them, and the advice they’d give someone selling for the first time.
+                    </p>
+                    <a class="btn btn-ghost" href="/contact.html">feature your story</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Keep your "a great fit for" block if you still want it
+                 (If you want the SELL page to be *exactly* like BUY, we can remove this section.) -->
+            <div class="section-grid two" style="margin-top: 1.6rem;">
+              <div></div>
               <div>
                 <h3 class="section-heading" style="font-size: 1rem;">a great fit for</h3>
                 <ul>
@@ -132,7 +186,7 @@
 
             <div class="section-cta-meta">the templeton real estate group · chicago &amp; surrounding suburbs</div>
 
-            <div class="btn-row" style="justify-content: center; margin-top: 1.25rem;">
+            <div class="btn-row btn-row-center" style="margin-top: 1.1rem;">
               <a href="/intake.html?service=sell" class="btn btn-primary">start seller intake</a>
               <a href="/sell-process.html" class="btn btn-ghost">view the full sell process</a>
               <a href="/tools/sell-net-proceeds-calculator.html" class="btn btn-gold">net proceeds calculator</a>
