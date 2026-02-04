@@ -17,57 +17,68 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
-    <!-- Optional: if you want a dedicated stylesheet later, add /assets/css/thank-you.css -->
+    <!-- Dedicated styles for this page (recommended) -->
+    <link rel="stylesheet" href="/assets/css/thank-you.css" />
+
+    <!-- Social / OG (optional but nice) -->
+    <meta property="og:title" content="Thank You | Templeton Real Estate Group" />
+    <meta
+      property="og:description"
+      content="We’ve received your intake. We’ll follow up shortly with clear next steps for buying, selling, renting, or landlord services in Chicago."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ryantempleton.com/thank-you.html" />
+    <!-- <meta property="og:image" content="https://ryantempleton.com/assets/img/og/thank-you.jpg" /> -->
+
+    <meta name="robots" content="noindex, nofollow" />
   </head>
 
   <body>
     <div class="page">
       <div id="site-header"></div>
 
-      <main class="main">
+      <main class="main thankyou">
         <!-- HERO -->
-        <section class="hero">
-          <div class="hero-inner">
+        <section class="hero thankyou-hero">
+          <div class="hero-inner thankyou-hero-inner">
             <div class="hero-label">thank you</div>
             <h1 class="hero-title">we’ve received your intake.</h1>
-            <p class="hero-subtitle" style="max-width: 880px;">
-              We’ll review your details and follow up soon with clear next steps. If you need us sooner, reach out anytime.
+            <p class="hero-subtitle">
+              We’ll review your details and follow up soon with clear next steps. If you need us sooner, reach out
+              anytime.
             </p>
+
+            <div class="thankyou-quick-actions" aria-label="Quick actions">
+              <a class="btn" href="/contact.html">contact us</a>
+              <a class="btn btn-outline" href="/">back to home</a>
+            </div>
           </div>
         </section>
 
-        <!-- CONFIRMATION CONTENT -->
-        <section class="intake-form">
+        <!-- CONTENT -->
+        <section class="thankyou-content">
           <div class="container">
-            <div class="intake-card" style="padding: 28px;">
-              <h2 style="margin: 0 0 10px; font-family: 'Oswald', sans-serif; letter-spacing: 0.04em; text-transform: uppercase;">
-                what happens next
-              </h2>
+            <div class="intake-card thankyou-card">
+              <h2 class="thankyou-h2">what happens next</h2>
 
-              <ul style="margin: 0; padding-left: 18px; line-height: 1.75;">
+              <ul class="thankyou-list">
                 <li>Our team will review your goals, timing, and must-haves.</li>
                 <li>We’ll reach out to confirm details and share a clean plan forward.</li>
-                <li>If it’s a rental search, we’ll start building a showing strategy and shortlist.</li>
+                <li class="thankyou-rent-only">
+                  If it’s a rental search, we’ll start building a showing strategy and shortlist.
+                </li>
               </ul>
 
-              <div style="margin-top: 18px;">
-                <p style="margin: 0 0 10px;">
-                  Prefer to connect right away? We’re happy to help.
-                </p>
-
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                  <a class="btn" href="/contact.html">contact us</a>
-                  <a class="btn btn-outline" href="/">back to home</a>
-                </div>
-
-                <p style="margin: 16px 0 0; font-size: 0.95rem; opacity: 0.9;">
+              <div class="thankyou-tip-wrap">
+                <p class="thankyou-tip">
                   Tip: If you were referred by someone, feel free to mention their name when we connect.
                 </p>
               </div>
             </div>
 
-            <p class="intake-note">
-              Thank you again for choosing Templeton Real Estate Group. We’re honored to help you navigate Chicago real estate with clarity and confidence.
+            <p class="intake-note thankyou-note">
+              Thank you again for choosing Templeton Real Estate Group. We’re honored to help you navigate Chicago real
+              estate with clarity and confidence.
             </p>
           </div>
         </section>
@@ -78,7 +89,7 @@
 
     <script src="/assets/js/layout.js"></script>
 
-    <!-- Optional service-based copy personalization -->
+    <!-- Optional: service-based copy personalization -->
     <script>
       (function () {
         const params = new URLSearchParams(window.location.search);
@@ -93,6 +104,7 @@
         const labelEl = document.querySelector(".hero-label");
         const titleEl = document.querySelector(".hero-title");
         const subEl = document.querySelector(".hero-subtitle");
+        const rentOnlyLi = document.querySelector(".thankyou-rent-only");
 
         if (!labelEl || !titleEl || !subEl) return;
 
@@ -155,6 +167,11 @@
           labelEl.textContent = copy[key].label;
           titleEl.textContent = copy[key].title;
           subEl.textContent = copy[key].sub;
+        }
+
+        // Only show the rental-specific bullet for rental intakes
+        if (rentOnlyLi) {
+          rentOnlyLi.style.display = key === "rent" ? "" : "none";
         }
       })();
     </script>
