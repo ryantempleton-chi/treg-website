@@ -16,20 +16,14 @@
       href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="/assets/css/style.css" />
-    <!-- Dedicated styles for this page (recommended) -->
+    <!-- Re-use existing card + note styles -->
+    <link rel="stylesheet" href="/assets/css/intake.css" />
+    <!-- New, page-specific styles -->
     <link rel="stylesheet" href="/assets/css/thank-you.css" />
 
-    <!-- Social / OG (optional but nice) -->
-    <meta property="og:title" content="Thank You | Templeton Real Estate Group" />
-    <meta
-      property="og:description"
-      content="We’ve received your intake. We’ll follow up shortly with clear next steps for buying, selling, renting, or landlord services in Chicago."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ryantempleton.com/thank-you.html" />
-    <!-- <meta property="og:image" content="https://ryantempleton.com/assets/img/og/thank-you.jpg" /> -->
-
+    <!-- This page is typically not something you want indexed -->
     <meta name="robots" content="noindex, nofollow" />
   </head>
 
@@ -44,32 +38,29 @@
             <div class="hero-label">thank you</div>
             <h1 class="hero-title">we’ve received your intake.</h1>
             <p class="hero-subtitle">
-              We’ll review your details and follow up soon with clear next steps. If you need us sooner, reach out
-              anytime.
+              We’ll review your details and follow up soon with clear next steps. If you need us sooner, reach out anytime.
             </p>
 
-            <div class="thankyou-quick-actions" aria-label="Quick actions">
-              <a class="btn" href="/contact.html">contact us</a>
+            <div class="thankyou-actions">
+              <a class="btn thankyou-btn-primary" href="/contact.html">contact us</a>
               <a class="btn btn-outline" href="/">back to home</a>
             </div>
           </div>
         </section>
 
         <!-- CONTENT -->
-        <section class="thankyou-content">
+        <section class="intake-form thankyou-content">
           <div class="container">
             <div class="intake-card thankyou-card">
-              <h2 class="thankyou-h2">what happens next</h2>
+              <div class="thankyou-card-inner">
+                <h2 class="thankyou-h2">what happens next</h2>
 
-              <ul class="thankyou-list">
-                <li>Our team will review your goals, timing, and must-haves.</li>
-                <li>We’ll reach out to confirm details and share a clean plan forward.</li>
-                <li class="thankyou-rent-only">
-                  If it’s a rental search, we’ll start building a showing strategy and shortlist.
-                </li>
-              </ul>
+                <ul class="thankyou-list">
+                  <li>Our team will review your goals, timing, and must-haves.</li>
+                  <li>We’ll reach out to confirm details and share a clean plan forward.</li>
+                  <li class="thankyou-rent-only">If it’s a rental search, we’ll start building a showing strategy and shortlist.</li>
+                </ul>
 
-              <div class="thankyou-tip-wrap">
                 <p class="thankyou-tip">
                   Tip: If you were referred by someone, feel free to mention their name when we connect.
                 </p>
@@ -77,8 +68,7 @@
             </div>
 
             <p class="intake-note thankyou-note">
-              Thank you again for choosing Templeton Real Estate Group. We’re honored to help you navigate Chicago real
-              estate with clarity and confidence.
+              Thank you again for choosing Templeton Real Estate Group. We’re honored to help you navigate Chicago real estate with clarity and confidence.
             </p>
           </div>
         </section>
