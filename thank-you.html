@@ -9,7 +9,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Fonts + Styles -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,14 +17,22 @@
       rel="stylesheet"
     />
 
+    <!-- Styles -->
     <link rel="stylesheet" href="/assets/css/style.css" />
-    <!-- Re-use existing card + note styles -->
     <link rel="stylesheet" href="/assets/css/intake.css" />
-    <!-- New, page-specific styles -->
     <link rel="stylesheet" href="/assets/css/thank-you.css" />
 
-    <!-- This page is typically not something you want indexed -->
+    <!-- Prevent indexing -->
     <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Google Ads base tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17883803611"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17883803611');
+    </script>
   </head>
 
   <body>
@@ -58,7 +66,9 @@
                 <ul class="thankyou-list">
                   <li>Our team will review your goals, timing, and must-haves.</li>
                   <li>We’ll reach out to confirm details and share a clean plan forward.</li>
-                  <li class="thankyou-rent-only">If it’s a rental search, we’ll start building a showing strategy and shortlist.</li>
+                  <li class="thankyou-rent-only">
+                    If it’s a rental search, we’ll start building a showing strategy and shortlist.
+                  </li>
                 </ul>
 
                 <p class="thankyou-tip">
@@ -68,7 +78,7 @@
             </div>
 
             <p class="intake-note thankyou-note">
-              Thank you again for choosing Templeton Real Estate Group.<br> 
+              Thank you again for choosing Templeton Real Estate Group.<br />
               We’re honored to help you navigate Chicago real estate with clarity and confidence.
             </p>
           </div>
@@ -78,9 +88,10 @@
       <div id="site-footer"></div>
     </div>
 
+    <!-- Global layout loader -->
     <script src="/assets/js/layout.js"></script>
 
-    <!-- Optional: service-based copy personalization -->
+    <!-- Service-based copy personalization -->
     <script>
       (function () {
         const params = new URLSearchParams(window.location.search);
@@ -103,19 +114,10 @@
           if (!v) return "";
           const s = v.replace(/\s+/g, "-").replace(/_/g, "-");
 
-          const buy = new Set(["buy", "buyer", "purchase", "purchasing", "buying", "homebuyer"]);
-          const sell = new Set(["sell", "seller", "sale", "selling", "list", "listing", "listings"]);
-          const rent = new Set(["rent", "renter", "rental", "leasing", "lease", "tenant", "tenant-rep"]);
-          const landlord = new Set([
-            "landlord",
-            "ll",
-            "owner",
-            "investor",
-            "property",
-            "property-owner",
-            "leasing-owner",
-            "landlord-rep"
-          ]);
+          const buy = new Set(["buy","buyer","purchase","purchasing","buying","homebuyer"]);
+          const sell = new Set(["sell","seller","sale","selling","list","listing","listings"]);
+          const rent = new Set(["rent","renter","rental","leasing","lease","tenant","tenant-rep"]);
+          const landlord = new Set(["landlord","ll","owner","investor","property","property-owner","leasing-owner","landlord-rep"]);
 
           if (buy.has(s)) return "buy";
           if (sell.has(s)) return "sell";
@@ -126,6 +128,7 @@
           if (s.includes("sell") || s.includes("list")) return "sell";
           if (s.includes("rent") || s.includes("lease")) return "rent";
           if (s.includes("landlord") || s.includes("owner") || s.includes("investor")) return "landlord";
+
           return "";
         };
 
@@ -133,36 +136,44 @@
 
         const copy = {
           buy: {
-            label: "thank you",
             title: "we’ve got your purchase details.",
             sub: "We’ll review your goals and follow up with clear next steps and a smart plan for buying in Chicago."
           },
           sell: {
-            label: "thank you",
             title: "we’ve got your sale details.",
             sub: "We’ll review your timeline and reach out with pricing thoughts and a clear strategy for selling in Chicago."
           },
           rent: {
-            label: "thank you",
             title: "we’ve got your rental details.",
             sub: "We’ll review your timing and must-haves, then follow up with a clean, organized plan for your Chicago apartment search."
           },
           landlord: {
-            label: "thank you",
             title: "we’ve got your property details.",
             sub: "We’ll review your goals and follow up with next steps for pricing, timing, and leasing in Chicago."
           }
         };
 
         if (key && copy[key]) {
-          labelEl.textContent = copy[key].label;
           titleEl.textContent = copy[key].title;
           subEl.textContent = copy[key].sub;
         }
 
-        // Only show the rental-specific bullet for rental intakes
         if (rentOnlyLi) {
           rentOnlyLi.style.display = key === "rent" ? "" : "none";
+        }
+      })();
+    </script>
+
+    <!-- Google Ads conversion: ONLY fires for real ad clicks -->
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const gclid = params.get("gclid");
+
+        if (gclid && typeof gtag === "function") {
+          gtag("event", "conversion", {
+            "send_to": "AW-17883803611/REPLACE_WITH_CONVERSION_LABEL"
+          });
         }
       })();
     </script>
