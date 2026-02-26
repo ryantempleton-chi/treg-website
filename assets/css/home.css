@@ -373,22 +373,31 @@
   text-align: left;
 }
 
+/* Top line (ALL CAPS Oswald) */
 .section-cta-main {
   font-family: "Oswald", system-ui, sans-serif;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--treg-charcoal);
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.25rem;
 }
 
+/* Bottom line ("connect with us today!") */
 .section-cta-meta {
   font-family: "PT Serif", Georgia, serif;
   font-size: 0.95rem;
   color: var(--treg-slate);
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
+/* Desktop spacing for buttons (now that buttons sit above meta) */
+.section-cta-actions .btn-row {
+  margin-top: 1.1rem;   /* space ABOVE buttons */
+  margin-bottom: 0.6rem; /* space BELOW buttons (tighter) */
+}
+
+/* Responsive */
 @media (max-width: 900px) {
   .section-inner-cta {
     grid-template-columns: 1fr;
@@ -402,6 +411,8 @@
 
   .section-cta-actions .btn-row {
     justify-content: center;
+    margin-top: 1.25rem;  /* a touch more space above buttons on mobile */
+    margin-bottom: 0.45rem; /* a touch less space below buttons on mobile */
   }
 }
 
