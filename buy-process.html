@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="stylesheet" href="/assets/css/process-timeline.css" />
 
+    <!-- NEW: page-only overrides -->
+    <link rel="stylesheet" href="/assets/css/buy-process.css" />
+
     <!-- Gold button (page-only) -->
     <style>
       .btn-gold {
@@ -42,7 +45,8 @@
     <link rel="icon" href="/faviconRT.ico" />
   </head>
 
-  <body>
+  <!-- IMPORTANT: add this class so CSS only affects this page -->
+  <body class="buy-process">
     <div class="page">
       <!-- Shared header -->
       <div id="site-header"></div>
@@ -68,7 +72,7 @@
         </section>
 
         <!-- TIMELINE (interactive) -->
-        <section class="section">
+        <section class="section section--timeline">
           <div class="container service-timeline buy-timeline" aria-label="Home buying timeline">
             <div class="timeline-head">
               <h2 class="section-heading">the home buying process</h2>
@@ -335,15 +339,15 @@
         </section>
 
         <!-- SECTION: HOW WE APPROACH BUYING -->
-        <section class="section section-muted buy-approach">
+        <section class="section section-muted buy-approach section--tight-top">
           <div class="container">
             <h2 class="section-heading">organized, not overwhelming</h2>
-        
+
             <p class="section-lede" style="max-width: 820px;">
               Chicago can move fast. Our job is to keep you competitive without rushing you into the wrong home.
             </p>
-        
-            <div class="section-grid two">
+
+            <div class="section-grid two buy-approach-grid">
               <div>
                 <ul>
                   <li><strong>Clear expectations from day one</strong> — timelines, next steps, and what matters most.</li>
@@ -353,27 +357,27 @@
                   <li><strong>Support through closing</strong> — lenders, attorneys, inspectors, vendors.</li>
                 </ul>
               </div>
-        
+
               <div>
-                <h3 class="section-heading" style="font-size: 1rem;">a great fit for</h3>
+                <h3 class="section-heading buy-fit-heading">a great fit for</h3>
                 <ul>
                   <li>First-time buyers who want a true guide, not just a door-opener.</li>
                   <li>Current owners moving up, downsizing, or changing neighborhoods.</li>
                   <li>Buyers weighing city vs. suburbs and trade-offs that actually matter.</li>
                 </ul>
-        
-                <!-- Buttons moved here (after "Great fit for") -->
-                <div class="btn-row" style="justify-content: flex-start; margin-top: 1.2rem;">
-                  <a href="/intake.html?service=buy" class="btn btn-primary">start buyer intake</a>
-                  <a href="mailto:ryan@ryantempleton.com" class="btn btn-ghost">email our team</a>
-                </div>
               </div>
+            </div>
+
+            <!-- MOVED: buttons now AFTER the “great fit for” column -->
+            <div class="btn-row buy-approach-cta">
+              <a href="/intake.html?service=buy" class="btn btn-primary">start buyer intake</a>
+              <a href="mailto:ryan@ryantempleton.com" class="btn btn-ghost">email our team</a>
             </div>
           </div>
         </section>
 
-        <!-- OPTIONAL: process-only extras below (keeps timeline untouched) -->
-        <section class="section">
+        <!-- OPTIONAL: process-only extras below -->
+        <section class="section section--tight">
           <div class="container">
             <h2 class="section-heading">common questions</h2>
             <p class="section-lede" style="max-width: 820px;">
@@ -388,18 +392,23 @@
         </section>
 
         <!-- FINAL CTA -->
-        <section class="section section-cta">
+        <section class="section section-cta section--tight">
           <div class="container">
             <div class="section-cta-title">ready to take the next step?</div>
 
+            <!-- Rephrased so “timeline.” doesn’t end up alone -->
             <div class="section-cta-text">
-              Answer a few quick questions and we’ll help you build a buying plan that fits your goals, budget, and
-              timeline.
+              Answer a few quick questions and we’ll help you build a buying plan that fits your goals, budget, and timing.
             </div>
 
-            <div class="section-cta-meta">the templeton real estate group · chicago &amp; suburbs</div>
+            <!-- Split brand + location onto separate lines -->
+            <div class="section-cta-meta section-cta-meta--stacked">
+              <span class="cta-brand">the templeton real estate group</span>
+              <span class="cta-loc">chicago &amp; suburbs</span>
+            </div>
 
-            <div class="btn-row" style="justify-content: center;">
+            <!-- Add breathing room BEFORE buttons -->
+            <div class="btn-row btn-row-center section-cta-buttons">
               <a href="/intake.html?service=buy" class="btn btn-primary">start buyer intake</a>
               <a href="/tools/buy-closing-cost-calculator.html" class="btn btn-ghost">closing cost calculator</a>
               <a href="/buy.html" class="btn btn-ghost">back to buy overview</a>
