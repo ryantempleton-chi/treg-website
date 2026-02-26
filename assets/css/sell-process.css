@@ -1,0 +1,90 @@
+/* =======================================
+   sell-process.css (page-only)
+   Targets: body.sell-process
+   Purpose:
+   - Match buy-process spacing & rhythm
+   - Clean mobile vertical gaps
+   - Standardize CTA breathing room
+   - Does NOT affect other pages
+   ======================================= */
+
+/* ---------------------------------------
+   Desktop + tablet
+   --------------------------------------- */
+
+/* Slightly tighter than global sections */
+.sell-process .section {
+  padding: 2.4rem 0;
+}
+
+/* Timeline section: remove excess space below */
+.sell-process .section--timeline {
+  padding-bottom: 1.5rem;
+}
+
+/* Trim container padding inside timeline section */
+.sell-process .service-timeline > .container,
+.sell-process .service-timeline {
+  padding-top: 0;
+}
+
+/* Overview / text-heavy sections feel better tighter */
+.sell-process .section-muted {
+  padding-top: 2.1rem;
+  padding-bottom: 2.1rem;
+}
+
+/* CTA sections: match buy spacing */
+.sell-process .section-cta.section--tight,
+.sell-process .section-cta {
+  padding-top: 1.85rem;
+  padding-bottom: 2.2rem;
+}
+
+/* CTA meta stacking (if used later) */
+.sell-process .section-cta-meta--stacked span {
+  display: block;
+  line-height: 1.35;
+}
+
+/* Space before CTA buttons */
+.sell-process .section-cta-buttons,
+.sell-process .section-cta .btn-row {
+  margin-top: 1.15rem;
+}
+
+
+/* ---------------------------------------
+   Mobile-only (this is where the magic is)
+   --------------------------------------- */
+@media (max-width: 640px) {
+  /* Global rhythm */
+  .sell-process .section {
+    padding: 2rem 0;
+  }
+
+  /* Timeline spacing */
+  .sell-process .section--timeline {
+    padding-bottom: 1.1rem;
+  }
+
+  /* Reduce empty bands around text sections */
+  .sell-process .section-muted {
+    padding-top: 1.4rem;
+    padding-bottom: 1.6rem;
+  }
+
+  /* CTA section breathing room */
+  .sell-process .section-cta {
+    padding-top: 1.55rem;
+    padding-bottom: 1.9rem;
+  }
+
+  .sell-process .section-cta-text {
+    margin-bottom: 1.05rem;
+  }
+
+  .sell-process .btn-row {
+    gap: 0.65rem;
+  }
+}
