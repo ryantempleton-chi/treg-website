@@ -1,120 +1,118 @@
 /* =======================================
    buy-process.css (page-only)
    Targets: body.buy-process
-   Purpose:
-   - Fix “too much blank space” between sections on mobile
-   - Clean up bottom CTA layout (meta stacking + button breathing room)
+   Goals:
+   - Reduce “blank bands” between sections (esp. mobile)
+   - Fix bottom CTA spacing (meta stacking + button breathing room)
+   - Trim container padding ONLY where it causes the gap
    - Do NOT affect other pages
    ======================================= */
 
 /* ---------------------------------------
-   Desktop + tablet (safe, subtle)
+   Base (desktop + tablet)
    --------------------------------------- */
 
-/* Slightly tighter rhythm than global */
-.buy-process .section {
-  padding: 2.4rem 0;
-}
-
-/* Timeline section: reduce dead space underneath */
+/* TIMELINE: keep top normal, reduce dead space below */
 .buy-process .section--timeline {
+  padding-top: 2.4rem;
   padding-bottom: 1.5rem;
 }
 
-/* Approach section (“organized, not overwhelming”) */
+/* APPROACH (“organized, not overwhelming”) */
 .buy-process .buy-approach {
   padding-top: 1.35rem;
   padding-bottom: 1.85rem;
 }
 
-/* IMPORTANT: your global .container adds vertical padding.
-   This is what causes the “extra band” feeling.
-   Page-only trim for this section’s container. */
+/* Global .container has 1.75rem top/bottom padding — trim it here only */
 .buy-process .buy-approach > .container {
   padding-top: 0.75rem;
   padding-bottom: 1.25rem;
 }
 
-/* Buttons after the grid need breathing room */
+/* Give the button row a touch of breathing room after the grid */
 .buy-process .buy-approach-cta {
   margin-top: 1.25rem;
 }
 
-/* Common questions: tighten the band */
+/* COMMON QUESTIONS: tighten the band */
 .buy-process .section--tight {
   padding-top: 1.6rem;
   padding-bottom: 1.9rem;
 }
 
-/* Final CTA: slightly tighter top, comfy bottom */
+/* FINAL CTA: tighten top a bit, keep bottom comfortable */
 .buy-process .section-cta.section--tight {
   padding-top: 1.85rem;
   padding-bottom: 2.2rem;
 }
 
-/* Stack brand + location cleanly */
+/* Meta lines stack cleanly */
 .buy-process .section-cta-meta--stacked span {
   display: block;
   line-height: 1.35;
 }
 
-/* Add space before CTA buttons (too crammed fix) */
+/* Add space between meta + buttons */
 .buy-process .section-cta-buttons {
   margin-top: 1.15rem;
 }
 
 
 /* ---------------------------------------
-   Mobile-only (actual target)
+   Mobile-only (real target)
    --------------------------------------- */
 @media (max-width: 640px) {
-  /* Slightly tighter overall section padding */
-  .buy-process .section {
-    padding: 2rem 0;
-  }
-
-  /* Timeline -> Approach gap */
+  /* TIMELINE: tighten bottom gap */
   .buy-process .section--timeline {
+    padding-top: 2rem;
     padding-bottom: 1.1rem;
   }
 
-  /* Approach section spacing */
+  /* APPROACH: slightly tighter */
   .buy-process .buy-approach {
     padding-top: 1.05rem;
     padding-bottom: 1.55rem;
   }
 
-  /* Trim the container padding more on mobile */
+  /* Trim container padding further on mobile */
   .buy-process .buy-approach > .container {
     padding-top: 0.6rem;
     padding-bottom: 1.05rem;
   }
 
-  /* CTA row after the grid */
   .buy-process .buy-approach-cta {
     margin-top: 1.1rem;
   }
 
-  /* Common questions: reduce empty space */
+  /* COMMON QUESTIONS: reduce empty space */
   .buy-process .section--tight {
     padding-top: 1.25rem;
     padding-bottom: 1.45rem;
   }
 
-  /* Bottom CTA: keep it tight but breathable */
+  /* FINAL CTA: tight but breathable */
   .buy-process .section-cta.section--tight {
     padding-top: 1.55rem;
     padding-bottom: 1.9rem;
   }
 
-  /* Text + meta spacing */
   .buy-process .section-cta-text {
     margin-bottom: 1.05rem;
   }
 
-  /* Meta + buttons spacing */
   .buy-process .section-cta-buttons {
     margin-top: 1.2rem;
     gap: 0.65rem;
+  }
+
+  /* Make CTA buttons look clean stacked on small screens */
+  .buy-process .btn-row {
+    justify-content: center;
+  }
+
+  .buy-process .btn-row .btn {
+    width: 100%;
+    max-width: 420px;
   }
 }
