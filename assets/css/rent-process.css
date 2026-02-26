@@ -2,8 +2,9 @@
    rent-process.css (page-only)
    Targets: body.rent-process
    Purpose:
-   - Match buy-process spacing & rhythm
-   - Clean mobile vertical gaps
+   - Match buy/sell spacing & rhythm
+   - Fix mobile vertical gaps
+   - Make HERO buttons full-width + stacked (incl. 3rd gold button)
    - Standardize CTA breathing room
    - Does NOT affect other pages
    ======================================= */
@@ -12,7 +13,7 @@
    Desktop + tablet
    --------------------------------------- */
 
-/* Slightly tighter than global sections */
+/* Slightly tighter rhythm than global */
 .rent-process .section {
   padding: 2.4rem 0;
 }
@@ -22,44 +23,76 @@
   padding-bottom: 1.5rem;
 }
 
-/* Keep gutters, trim ONLY vertical padding on the timeline container */
+/* If your timeline wrapper is .service-timeline (it is),
+   keep side gutters but trim vertical padding a bit */
 .rent-process .service-timeline {
   padding-top: 1rem;
   padding-bottom: 1.25rem;
 }
 
-/* Text-heavy muted sections */
+/* Text-heavy muted sections: keep readable but not tall */
 .rent-process .section-muted {
   padding-top: 2.1rem;
   padding-bottom: 2.1rem;
 }
 
-/* Final CTA: match buy spacing */
+/* FINAL CTA: match buy/sell */
 .rent-process .section-cta.section--tight,
 .rent-process .section-cta {
   padding-top: 1.85rem;
   padding-bottom: 2.2rem;
 }
 
-/* Optional stacked meta support (if you add it later) */
+/* Optional stacked meta support (if you use it later) */
 .rent-process .section-cta-meta--stacked span {
   display: block;
   line-height: 1.35;
 }
 
-/* Space before CTA buttons (use a class, not all btn-rows) */
+/* Give CTA buttons a little breathing room (avoid hitting every btn-row sitewide) */
 .rent-process .section-cta-buttons {
   margin-top: 1.15rem;
+}
+
+/* ---------------------------------------
+   HERO buttons (match buy/sell)
+   --------------------------------------- */
+
+/* Make the hero action buttons stack + stretch full width */
+.rent-process .hero .btn-row,
+.rent-process .hero .process-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.6rem;
+  margin-top: 1.4rem; /* replaces inline style if you remove it */
+}
+
+/* Full-width buttons in the hero */
+.rent-process .hero .btn-row .btn,
+.rent-process .hero .process-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Keep the stack from getting too wide on larger screens */
+@media (min-width: 641px) {
+  .rent-process .hero .btn-row,
+  .rent-process .hero .process-actions {
+    max-width: 420px;
+  }
 }
 
 /* ---------------------------------------
    Mobile-only
    --------------------------------------- */
 @media (max-width: 640px) {
+  /* Global rhythm */
   .rent-process .section {
     padding: 2rem 0;
   }
 
+  /* Timeline spacing */
   .rent-process .section--timeline {
     padding-bottom: 1.1rem;
   }
@@ -69,11 +102,13 @@
     padding-bottom: 1.1rem;
   }
 
+  /* Muted sections: reduce empty bands */
   .rent-process .section-muted {
     padding-top: 1.4rem;
     padding-bottom: 1.6rem;
   }
 
+  /* CTA section breathing room */
   .rent-process .section-cta {
     padding-top: 1.55rem;
     padding-bottom: 1.9rem;
@@ -85,5 +120,11 @@
 
   .rent-process .section-cta-buttons {
     gap: 0.65rem;
+  }
+
+  /* Hero buttons: slightly tighter gap on small screens */
+  .rent-process .hero .btn-row,
+  .rent-process .hero .process-actions {
+    gap: 0.55rem;
   }
 }
