@@ -864,30 +864,6 @@ li + li {
   padding-bottom: 2.2rem;
 }
 
-/* Buy process page: tighten spacing above "Organized, not overwhelming" */
-.buy-approach {
-  padding-top: 1.6rem;
-  padding-bottom: 2.2rem;
-}
-
-/* ✅ THIS is the missing piece:
-   Your global .container adds 1.75rem padding at the top,
-   which is why you still see a big gap. */
-.buy-approach > .container {
-  padding-top: 0.75rem;     /* reduce extra space above heading */
-  padding-bottom: 1.25rem;  /* optional: tighten bottom a bit */
-}
-
-@media (max-width: 640px) {
-  .buy-approach {
-    padding-top: 1.35rem;
-  }
-
-  .buy-approach > .container {
-    padding-top: 0.6rem;
-  }
-}
-
 .section:not(.section-muted):not(.section-cta) {
   padding-top: 2.4rem;
   padding-bottom: 2.4rem;
