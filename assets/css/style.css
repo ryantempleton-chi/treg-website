@@ -864,6 +864,18 @@ li + li {
   padding-bottom: 2.2rem;
 }
 
+/* Buy process page: tighten top padding for "Organized, not overwhelming" */
+.section.section-muted.buy-approach {
+  padding-top: 1.6rem;   /* less space above */
+  padding-bottom: 2.2rem; /* keep bottom the same */
+}
+
+@media (max-width: 640px) {
+  .section.section-muted.buy-approach {
+    padding-top: 1.35rem; /* slightly tighter on mobile */
+  }
+}
+
 .section:not(.section-muted):not(.section-cta) {
   padding-top: 2.4rem;
   padding-bottom: 2.4rem;
