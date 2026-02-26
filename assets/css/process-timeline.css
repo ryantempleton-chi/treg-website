@@ -443,3 +443,46 @@
     padding: 1.1rem 1.1rem;
   }
 }
+/* =======================================
+   MOBILE: 2 rows of 3 (icons + titles only)
+   Paste at VERY END of process-timeline.css
+   ======================================= */
+
+@media (max-width: 640px) {
+  /* Hide the descriptive bullet lists under each step */
+  .process-bullets {
+    display: none;
+  }
+
+  /* 2 rows of 3 */
+  .process-timeline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem 0.75rem;
+
+    /* tighten the timeline block */
+    padding: 0.9rem 0 0.25rem;
+
+    /* shrink the built-in knobs */
+    --circle: 68px;
+    --title-h: 26px;
+    --title-gap: 8px;
+  }
+
+  /* Titles a bit smaller + tighter */
+  .process-step-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    line-height: 1.1;
+  }
+
+  /* Slightly smaller icon inside the circle */
+  .process-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Panel can stay same, but a tiny top gap feels better */
+  .timeline-panel {
+    margin-top: 1rem;
+  }
+}
