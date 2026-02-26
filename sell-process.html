@@ -18,8 +18,25 @@
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="stylesheet" href="/assets/css/process-timeline.css" />
+
+    <!-- NEW: page-only overrides (sell spacing + CTA harmony) -->
+    <link rel="stylesheet" href="/assets/css/sell-process.css" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Templeton Real Estate Group" />
+    <meta property="og:title" content="Selling Process | Templeton Real Estate Group" />
+    <meta
+      property="og:description"
+      content="A step-by-step plan built for Chicago — so you always know what’s next."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ryantempleton.com/sell-process.html" />
+    <meta property="og:image" content="https://ryantempleton.com/assets/img/og-default.jpg" />
+
+    <link rel="icon" href="/faviconRT.ico" />
   </head>
 
+  <!-- IMPORTANT: class hooks for global + page-only process styles -->
   <body class="process-page sell-process">
     <div class="page">
       <!-- Shared header -->
@@ -37,6 +54,7 @@
               from first walkthrough to closing day.
             </p>
 
+            <!-- Matches buy-process hero actions -->
             <div class="process-actions">
               <a href="/intake.html?service=sell" class="btn btn-primary">start seller intake</a>
               <a href="/sell.html" class="btn btn-ghost">back to sell overview</a>
@@ -45,8 +63,8 @@
           </div>
         </section>
 
-        <!-- TIMELINE (interactive) — MOVED HERE UNCHANGED -->
-        <section class="section">
+        <!-- TIMELINE (interactive) -->
+        <section class="section section--timeline">
           <div class="container service-timeline sell-timeline" aria-label="Home selling timeline">
             <div class="timeline-head">
               <h2 class="section-heading">the selling process</h2>
@@ -391,9 +409,7 @@
             <div>
               <h2 class="section-heading">what we’re managing for you</h2>
 
-              <p class="section-lede">
-                While you focus on your move, we’re focused on everything it takes to sell well.
-              </p>
+              <p class="section-lede">While you focus on your move, we’re focused on everything it takes to sell well.</p>
 
               <ul>
                 <li>Coordinating photography, access, and showings</li>
@@ -421,8 +437,8 @@
           </div>
         </section>
 
-        <!-- CTA -->
-        <section class="section section-cta">
+        <!-- FINAL CTA (matches buy-process structure) -->
+        <section class="section section-cta section--tight">
           <div class="container">
             <div class="section-cta-title">want to talk through the selling process?</div>
 
@@ -431,13 +447,14 @@
               goals.
             </div>
 
-            <div class="section-cta-meta">
-              the templeton real estate group · chicago &amp; surrounding suburbs
+            <div class="section-cta-meta section-cta-meta--stacked">
+              <span class="cta-brand">the templeton real estate group</span>
+              <span class="cta-loc">chicago &amp; surrounding suburbs</span>
             </div>
 
-            <div class="btn-row">
+            <div class="btn-row btn-row-center section-cta-buttons">
               <a href="mailto:ryan@ryantempleton.com" class="btn btn-primary">email our team</a>
-              <a href="/tools/sell-net-proceeds-calculator.html" class="btn btn-ghost">net proceeds calculator</a>
+              <a href="/tools/sell-net-proceeds-calculator.html" class="btn btn-secondary">net proceeds calculator</a>
               <a href="/intake.html?service=sell" class="btn btn-ghost">start seller intake</a>
             </div>
           </div>
