@@ -394,6 +394,15 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+
+  /* Center CTA copy + buttons on mobile */
+  .section-cta-actions {
+    text-align: center;
+  }
+
+  .section-cta-actions .btn-row {
+    justify-content: center;
+  }
 }
 
 /* ======================================= */
