@@ -320,7 +320,16 @@
   gap: 0.75rem;
 }
 
+/* Mobile-only line breaks for hero title */
+.break-mobile {
+  display: none;
+}
+
 @media (max-width: 640px) {
+  .break-mobile {
+    display: block;
+  }
+
   .home-hero-grid {
     grid-template-columns: 1fr;
   }
@@ -328,6 +337,10 @@
   .home-hero-text {
     text-align: left;
     margin-left: 0;
+  }
+
+  .home-hero-title {
+    line-height: 1.08; /* optional tweak */
   }
 
   .hero .btn-row {
