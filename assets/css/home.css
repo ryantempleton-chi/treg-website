@@ -393,8 +393,8 @@
 
 /* Desktop spacing for buttons (now that buttons sit above meta) */
 .section-cta-actions .btn-row {
-  margin-top: 1.1rem;   /* space ABOVE buttons */
-  margin-bottom: 0.6rem; /* space BELOW buttons (tighter) */
+  margin-top: 0.8rem;   /* space ABOVE buttons */
+  margin-bottom: 0.5rem; /* space BELOW buttons (tighter) */
 }
 
 /* Responsive */
@@ -411,8 +411,8 @@
 
   .section-cta-actions .btn-row {
     justify-content: center;
-    margin-top: 1.25rem;  /* a touch more space above buttons on mobile */
-    margin-bottom: 0.45rem; /* a touch less space below buttons on mobile */
+    margin-top: 0.9rem;  /* a touch more space above buttons on mobile */
+    margin-bottom: 0.4rem; /* a touch less space below buttons on mobile */
   }
 }
 
