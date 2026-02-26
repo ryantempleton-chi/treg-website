@@ -225,6 +225,9 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--treg-slate);
+
+  display: block;
+  text-align: right;   /* ← THIS is the key change */
 }
 
 /* Centered CTA row */
