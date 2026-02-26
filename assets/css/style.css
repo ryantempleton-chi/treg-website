@@ -864,14 +864,14 @@ li + li {
   padding-bottom: 2.2rem;
 }
 
-/* Buy process page: tighten top padding for "Organized, not overwhelming" */
-.section.section-muted.buy-approach {
-  padding-top: 1.6rem;   /* less space above */
-  padding-bottom: 2.2rem; /* keep bottom the same */
+/* Buy process page: tighten spacing above "Organized, not overwhelming" */
+.buy-approach {
+  padding-top: 1.6rem;    /* reduce the gap above the heading */
+  padding-bottom: 2.2rem; /* keep the bottom consistent */
 }
 
 @media (max-width: 640px) {
-  .section.section-muted.buy-approach {
+  .buy-approach {
     padding-top: 1.35rem; /* slightly tighter on mobile */
   }
 }
