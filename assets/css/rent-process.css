@@ -1,0 +1,89 @@
+/* =======================================
+   rent-process.css (page-only)
+   Targets: body.rent-process
+   Purpose:
+   - Match buy-process spacing & rhythm
+   - Clean mobile vertical gaps
+   - Standardize CTA breathing room
+   - Does NOT affect other pages
+   ======================================= */
+
+/* ---------------------------------------
+   Desktop + tablet
+   --------------------------------------- */
+
+/* Slightly tighter than global sections */
+.rent-process .section {
+  padding: 2.4rem 0;
+}
+
+/* Timeline band: reduce dead space underneath */
+.rent-process .section--timeline {
+  padding-bottom: 1.5rem;
+}
+
+/* Keep gutters, trim ONLY vertical padding on the timeline container */
+.rent-process .service-timeline {
+  padding-top: 1rem;
+  padding-bottom: 1.25rem;
+}
+
+/* Text-heavy muted sections */
+.rent-process .section-muted {
+  padding-top: 2.1rem;
+  padding-bottom: 2.1rem;
+}
+
+/* Final CTA: match buy spacing */
+.rent-process .section-cta.section--tight,
+.rent-process .section-cta {
+  padding-top: 1.85rem;
+  padding-bottom: 2.2rem;
+}
+
+/* Optional stacked meta support (if you add it later) */
+.rent-process .section-cta-meta--stacked span {
+  display: block;
+  line-height: 1.35;
+}
+
+/* Space before CTA buttons (use a class, not all btn-rows) */
+.rent-process .section-cta-buttons {
+  margin-top: 1.15rem;
+}
+
+/* ---------------------------------------
+   Mobile-only
+   --------------------------------------- */
+@media (max-width: 640px) {
+  .rent-process .section {
+    padding: 2rem 0;
+  }
+
+  .rent-process .section--timeline {
+    padding-bottom: 1.1rem;
+  }
+
+  .rent-process .service-timeline {
+    padding-top: 0.9rem;
+    padding-bottom: 1.1rem;
+  }
+
+  .rent-process .section-muted {
+    padding-top: 1.4rem;
+    padding-bottom: 1.6rem;
+  }
+
+  .rent-process .section-cta {
+    padding-top: 1.55rem;
+    padding-bottom: 1.9rem;
+  }
+
+  .rent-process .section-cta-text {
+    margin-bottom: 1.05rem;
+  }
+
+  .rent-process .section-cta-buttons {
+    gap: 0.65rem;
+  }
+}
