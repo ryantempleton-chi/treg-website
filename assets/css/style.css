@@ -1122,6 +1122,65 @@ li + li {
 }
 
 /* =======================================
+   PROCESS PAGES (BUY / SELL / RENT)
+   Shared layout + hero button stack + section rhythm
+   Use by adding: class="process-page ..." on <body>
+   ======================================= */
+
+/* Shared section rhythm (matches your "buy" feel) */
+.process-page .section {
+  padding: 2.4rem 0;
+}
+
+@media (max-width: 640px) {
+  .process-page .section {
+    padding: 2rem 0;
+  }
+}
+
+/* Hero button stack (3 buttons like buy) */
+.process-page .process-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+  max-width: 560px; /* keeps it feeling intentional */
+}
+
+.process-page .process-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Optional: if you use a 3rd "tan" button */
+.btn-secondary {
+  background: var(--treg-taupe);
+  border: 1px solid var(--treg-taupe);
+  color: var(--treg-charcoal);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background: var(--treg-bronze);
+  border-color: var(--treg-bronze);
+  color: var(--treg-charcoal);
+  text-decoration: none;
+}
+
+/* Tighten the container padding inside sections on process pages (mobile “blank band” fix) */
+.process-page .section > .container {
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+
+@media (max-width: 640px) {
+  .process-page .section > .container {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+}
+
+/* =======================================
    MOBILE: HEADER SIMPLIFY + ALIGNMENT
    ======================================= */
 @media (max-width: 720px) {
