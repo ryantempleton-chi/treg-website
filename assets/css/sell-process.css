@@ -17,64 +17,64 @@
   padding: 2.4rem 0;
 }
 
-/* Timeline section: remove excess space below */
+/* Timeline section: reduce dead space underneath */
 .sell-process .section--timeline {
   padding-bottom: 1.5rem;
 }
 
-/* Trim container padding inside timeline section */
-.sell-process .service-timeline > .container,
+/* Trim ONLY vertical padding on the timeline container (keep side gutters!) */
 .sell-process .service-timeline {
-  padding-top: 0;
+  padding-top: 1rem;     /* tweakable */
+  padding-bottom: 1.25rem; /* tweakable */
 }
 
-/* Overview / text-heavy sections feel better tighter */
+/* Text-heavy band */
 .sell-process .section-muted {
   padding-top: 2.1rem;
   padding-bottom: 2.1rem;
 }
 
-/* CTA sections: match buy spacing */
+/* Final CTA: match buy spacing */
 .sell-process .section-cta.section--tight,
 .sell-process .section-cta {
   padding-top: 1.85rem;
   padding-bottom: 2.2rem;
 }
 
-/* CTA meta stacking (if used later) */
+/* Meta stacking */
 .sell-process .section-cta-meta--stacked span {
   display: block;
   line-height: 1.35;
 }
 
 /* Space before CTA buttons */
-.sell-process .section-cta-buttons,
-.sell-process .section-cta .btn-row {
+.sell-process .section-cta-buttons {
   margin-top: 1.15rem;
 }
 
-
 /* ---------------------------------------
-   Mobile-only (this is where the magic is)
+   Mobile-only
    --------------------------------------- */
 @media (max-width: 640px) {
-  /* Global rhythm */
   .sell-process .section {
     padding: 2rem 0;
   }
 
-  /* Timeline spacing */
   .sell-process .section--timeline {
     padding-bottom: 1.1rem;
   }
 
-  /* Reduce empty bands around text sections */
+  /* Keep gutters, trim vertical */
+  .sell-process .service-timeline {
+    padding-top: 0.9rem;
+    padding-bottom: 1.1rem;
+  }
+
   .sell-process .section-muted {
     padding-top: 1.4rem;
     padding-bottom: 1.6rem;
   }
 
-  /* CTA section breathing room */
   .sell-process .section-cta {
     padding-top: 1.55rem;
     padding-bottom: 1.9rem;
@@ -84,7 +84,8 @@
     margin-bottom: 1.05rem;
   }
 
-  .sell-process .btn-row {
+  /* Only tighten the CTA button row */
+  .sell-process .section-cta-buttons {
     gap: 0.65rem;
   }
 }
