@@ -22,18 +22,6 @@
     <!-- NEW: page-only overrides -->
     <link rel="stylesheet" href="/assets/css/buy-process.css" />
 
-    <!-- Gold button (page-only) -->
-    <style>
-      .btn-gold {
-        background: #c9b07a;
-        color: #1e180d;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-      }
-      .btn-gold:hover {
-        filter: brightness(0.96);
-      }
-    </style>
-
     <!-- Open Graph -->
     <meta property="og:site_name" content="Templeton Real Estate Group" />
     <meta property="og:title" content="Buying Process | Templeton Real Estate Group" />
@@ -45,7 +33,7 @@
     <link rel="icon" href="/faviconRT.ico" />
   </head>
 
-  <!-- IMPORTANT: add this class so CSS only affects this page -->
+  <!-- process-page = shared process styling; buy-process = page-only overrides -->
   <body class="process-page buy-process">
     <div class="page">
       <!-- Shared header -->
@@ -55,18 +43,18 @@
         <!-- HERO -->
         <section class="hero">
           <div class="hero-inner">
-            <div class="hero-label">services</div>
-            <h1 class="hero-title">the buy process</h1>
+            <div class="hero-label">buying process</div>
+            <h1 class="hero-title">how buying with treg works.</h1>
 
             <p class="hero-subtitle" style="max-width: 880px;">
               A clear, step-by-step path to buying in Chicago — with honest guidance, neighborhood insight, and a plan
               that fits your budget, timing, and long-term goals.
             </p>
 
-            <div class="btn-row" style="margin-top: 1.4rem;">
+            <div class="process-actions">
               <a href="/intake.html?service=buy" class="btn btn-primary">start buyer intake</a>
               <a href="/buy.html" class="btn btn-ghost">back to buy overview</a>
-              <a href="/tools/buy-closing-cost-calculator.html" class="btn btn-gold">closing cost calculator</a>
+              <a href="/tools/buy-closing-cost-calculator.html" class="btn btn-secondary">closing cost calculator</a>
             </div>
           </div>
         </section>
@@ -410,7 +398,7 @@
             <!-- Add breathing room BEFORE buttons -->
             <div class="btn-row btn-row-center section-cta-buttons">
               <a href="/intake.html?service=buy" class="btn btn-primary">start buyer intake</a>
-              <a href="/tools/buy-closing-cost-calculator.html" class="btn btn-ghost">closing cost calculator</a>
+              <a href="/tools/buy-closing-cost-calculator.html" class="btn btn-secondary">closing cost calculator</a>
               <a href="/buy.html" class="btn btn-ghost">back to buy overview</a>
             </div>
           </div>
