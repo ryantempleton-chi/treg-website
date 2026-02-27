@@ -1603,3 +1603,9 @@ li + li {
 #partners-cta .section-cta-meta {
   margin-bottom: 1.25rem;
 }
+
+/* Mobile-only line break helper (use <br class="treg-br"> in HTML) */
+.treg-br { display: none; }
+@media (max-width: 520px) {
+  .treg-br { display: inline; }
+}
