@@ -18,8 +18,6 @@
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="stylesheet" href="/assets/css/process-timeline.css" />
-
-    <!-- NEW: page-only overrides -->
     <link rel="stylesheet" href="/assets/css/buy-process.css" />
 
     <!-- Open Graph -->
@@ -33,7 +31,6 @@
     <link rel="icon" href="/faviconRT.ico" />
   </head>
 
-  <!-- process-page = shared process styling; buy-process = page-only overrides -->
   <body class="process-page buy-process">
     <div class="page">
       <!-- Shared header -->
@@ -87,7 +84,6 @@
                   data-step="preapproval"
                   style="--step-color: #f4eee6"
                 >
-                  <!-- Lucide: circle-dollar-sign -->
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -126,7 +122,6 @@
                   data-step="shopping"
                   style="--step-color: #e7ddcf"
                 >
-                  <!-- Lucide: shopping-cart -->
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -167,7 +162,6 @@
                   data-step="offer"
                   style="--step-color: #dccbb8"
                 >
-                  <!-- Lucide: handshake -->
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -210,7 +204,6 @@
                   data-step="diligence"
                   style="--step-color: #d8c7b3"
                 >
-                  <!-- Lucide: search-alert -->
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -250,7 +243,6 @@
                   data-step="preclosing"
                   style="--step-color: #c9b8a4"
                 >
-                  <!-- Lucide: list-checks -->
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -291,7 +283,6 @@
                   data-step="closing"
                   style="--step-color: #bfa889"
                 >
-                  <!-- Lucide: key-round -->
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -356,7 +347,6 @@
               </div>
             </div>
 
-            <!-- MOVED: buttons now AFTER the “great fit for” column -->
             <div class="btn-row buy-approach-cta">
               <a href="/intake.html?service=buy" class="btn btn-primary">start buyer intake</a>
               <a href="mailto:ryan@ryantempleton.com" class="btn btn-ghost">email our team</a>
@@ -364,7 +354,6 @@
           </div>
         </section>
 
-        <!-- OPTIONAL: process-only extras below -->
         <section class="section section--tight">
           <div class="container">
             <h2 class="section-heading">common questions</h2>
@@ -379,23 +368,19 @@
           </div>
         </section>
 
-        <!-- FINAL CTA -->
         <section class="section section-cta section--tight">
           <div class="container">
             <div class="section-cta-title">ready to take the next step?</div>
 
-            <!-- Rephrased so “timeline.” doesn’t end up alone -->
             <div class="section-cta-text">
               Answer a few quick questions and we’ll help you build a plan that fits your goals, budget, and timing.
             </div>
 
-            <!-- Split brand + location onto separate lines -->
             <div class="section-cta-meta section-cta-meta--stacked">
               <span class="cta-brand">the templeton real estate group</span>
               <span class="cta-loc">chicago &amp; suburbs</span>
             </div>
 
-            <!-- Add breathing room BEFORE buttons -->
             <div class="btn-row btn-row-center section-cta-buttons">
               <a href="/intake.html?service=buy" class="btn btn-primary">start buyer intake</a>
               <a href="/tools/buy-closing-cost-calculator.html" class="btn btn-secondary">closing cost calculator</a>
@@ -405,14 +390,13 @@
         </section>
       </main>
 
-      <!-- Shared footer -->
       <div id="site-footer"></div>
     </div>
 
     <script src="/assets/js/layout.js" defer></script>
     <script src="/assets/js/process-timeline.js" defer></script>
 
-    <!-- Page-specific content for the shared timeline component (UNCHANGED) -->
+    <!-- Page-specific content for the shared timeline component -->
     <script>
       (function initBuyTimelineWhenReady() {
         if (!window.TREG || typeof window.TREG.initProcessTimeline !== "function") {
@@ -422,45 +406,45 @@
         window.TREG.initProcessTimeline(
           {
             preapproval: {
-              title: "Getting Pre-Approved",
+              title: "Step 1: Getting Pre-Approved",
               body: `
-                <p>Before we tour homes, we want real numbers—so you can shop with confidence. A lender will help you understand what you can borrow based on income, debts, and underwriting guidelines, which may be different from what you’d feel comfortable paying month-to-month.</p>
-                <p>We’ll help you connect with a trusted lender (or work with yours) to get pre-approved or pre-qualified and build a clear target budget. Once that’s in place, every showing, comp, and offer strategy is grounded in reality—not guesswork.</p>
+                <p>Before we tour, we want real numbers — not guesswork. A lender will confirm what you qualify for and help you understand the monthly payment range that feels comfortable.</p>
+                <p>We’ll connect you with a trusted lender (or work with yours) so your budget is clear, your strategy is solid, and you can move quickly when the right home shows up.</p>
               `,
             },
             shopping: {
-              title: "Home Search",
+              title: "Step 2: Home Shopping",
               body: `
-                <p>This is where the search really begins. Once we’ve clarified your budget, timeline, and priorities, we’ll identify homes that genuinely fit—not just what’s available. We’ll talk through neighborhoods, building types, and trade-offs so you understand why a home works (or doesn’t), not just how it looks online.</p>
-                <p>We’ll also make sure you’re seeing the full market and staying ahead of new listings as they hit. When the right opportunity comes up, we’ll coordinate showings quickly—or preview properties for you if you’re out of town or short on time. The goal: move decisively without feeling rushed.</p>
+                <p>We’ll narrow your search into something realistic and efficient: neighborhoods, building types, must-haves, and smart trade-offs. Then we stay on top of new inventory so you’re seeing the right options as they hit the market.</p>
+                <p>When it makes sense, we stack showings to save time and help you compare homes clearly — layout, value, building rules, and the stuff photos don’t show.</p>
               `,
             },
             offer: {
-              title: "Offer & Negotiation",
+              title: "Step 3: Offer & Negotiation",
               body: `
-                <p>When you’re ready to pursue a home, we’ll structure a thoughtful, competitive offer based on comps, the property’s situation, and current market conditions—not a one-size-fits-all template. That includes price, timing, contingencies, and the terms that matter most.</p>
-                <p>After submission, the seller may accept, counter, or reject. If negotiations start, we’ll guide you through each move—where you have leverage, when it makes sense to push, and when holding firm protects your long-term position. Once everything is agreed to and signed, the contract is in place and we move into the next phase.</p>
+                <p>When you’re ready, we build an offer strategy based on comps, the property’s situation, and current demand — not a one-size-fits-all template. Price and terms both matter, and we’ll tailor them to the moment.</p>
+                <p>If there’s a counter or multiple-offer dynamic, we’ll guide each move so you stay competitive while protecting your long-term position.</p>
               `,
             },
             diligence: {
-              title: "Due Diligence",
+              title: "Step 4: Due Diligence",
               body: `
-                <p>Due diligence is your chance to confirm the home is the right decision—emotionally and practically. This is typically when inspections happen, disclosures are reviewed, financing is finalized, and we evaluate any concerns before moving forward.</p>
-                <p>If issues come up, we’ll help you prioritize what matters and negotiate repairs, credits, or other solutions when appropriate. We coordinate closely with your lender and attorney to keep timelines on track and make sure there are no surprises as you move toward closing.</p>
+                <p>This is where you confirm the home is the right decision. We coordinate inspection and attorney review, track deadlines, and help you prioritize what matters if issues come up.</p>
+                <p>If repairs or credits make sense, we’ll negotiate thoughtfully — aiming for solutions that keep the deal clean and moving.</p>
               `,
             },
             preclosing: {
-              title: "Pre-Closing & Title",
+              title: "Step 5: Pre-Closing & Title",
               body: `
-                <p>As closing approaches, it’s all about preparation and paperwork. Your attorney will review title, coordinate required documents, and ensure the property can transfer cleanly. Your lender will finalize the loan and issue the closing disclosure so you can review every dollar before signing.</p>
-                <p>We’ll also schedule a final walk-through to confirm the home is in the agreed-upon condition and any negotiated repairs are complete. If you’re out of town, we can handle the walk-through for you and keep you fully informed.</p>
+                <p>As we approach closing, the focus shifts to clean paperwork and clear timing. Your attorney and title company handle the legal side, and your lender finalizes the loan and issues the closing disclosure (so every dollar is reviewed before signing).</p>
+                <p>We’ll also schedule the final walkthrough to confirm the home is in agreed condition and any negotiated items are complete.</p>
               `,
             },
             closing: {
-              title: "Closing Day",
+              title: "Step 6: Closing Day",
               body: `
-                <p>Closing is the finish line—and the moment you officially become a homeowner. You’ll sign final documents, funds are distributed, and ownership transfers. In most cases, this is when you receive the keys.</p>
-                <p>After settlement, your attorney records the deed and final documents with the county to complete the transaction. Your part is straightforward—and we’ll make sure it feels calm, clear, and predictable from start to finish.</p>
+                <p>Closing is the finish line: you sign, funds move, ownership transfers, and you get the keys (in most cases, the same day).</p>
+                <p>Our job is to make this feel predictable — with no last-minute scrambling and no unanswered questions.</p>
               `,
             },
           },
