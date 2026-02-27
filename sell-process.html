@@ -18,8 +18,6 @@
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="stylesheet" href="/assets/css/process-timeline.css" />
-
-    <!-- NEW: page-only overrides (sell spacing + CTA harmony) -->
     <link rel="stylesheet" href="/assets/css/sell-process.css" />
 
     <!-- Open Graph -->
@@ -36,7 +34,6 @@
     <link rel="icon" href="/faviconRT.ico" />
   </head>
 
-  <!-- IMPORTANT: class hooks for global + page-only process styles -->
   <body class="process-page sell-process">
     <div class="page">
       <!-- Shared header -->
@@ -54,7 +51,6 @@
               from first walkthrough to closing day.
             </p>
 
-            <!-- Matches buy-process hero actions -->
             <div class="process-actions">
               <a href="/intake.html?service=sell" class="btn btn-primary">start seller intake</a>
               <a href="/sell.html" class="btn btn-ghost">back to sell overview</a>
@@ -330,76 +326,14 @@
             <h2 class="section-heading">a structured process for a smoother sale</h2>
 
             <p class="section-lede" style="max-width: 780px;">
-              No two homes or sellers are the same, but a strong process creates consistency. Our approach is built
-              around preparation, presentation, and communication — so you always know where things stand.
+              No two homes or sellers are the same — but a clear process creates consistency. We focus on preparation,
+              presentation, and communication so you always know what’s next.
             </p>
 
-            <p>
-              Below is the general outline we follow with sellers. We’ll tailor each step based on your property, your
-              timing, and your goals, whether you’re selling a condo in the city or a single-family home in the
-              suburbs.
+            <p style="max-width: 880px;">
+              Use the steps above to preview each phase of the sale. We’ll tailor the pace and priorities to your home,
+              your timing, and what matters most to you.
             </p>
-          </div>
-        </section>
-
-        <!-- STEP-BY-STEP -->
-        <section class="section section-muted">
-          <div class="container">
-            <h2 class="section-heading">step-by-step: selling with the templeton real estate group</h2>
-
-            <ol style="padding-left: 1.1rem; max-width: 820px;">
-              <li style="margin-bottom: 1.1rem;">
-                <strong>Step 1: Initial conversation &amp; property review</strong><br />
-                We’ll talk through your goals, timing, and what’s driving your move. Then we’ll review your property —
-                either virtually or in person — to understand condition, layout, and standout features.
-              </li>
-
-              <li style="margin-bottom: 1.1rem;">
-                <strong>Step 2: Pricing strategy &amp; market overview</strong><br />
-                Using recent comparable sales, current competition, and broader market context, we’ll recommend a
-                pricing strategy that aligns with your goals. You’ll see data and hear honest perspective so you can
-                make an informed decision.
-              </li>
-
-              <li style="margin-bottom: 1.1rem;">
-                <strong>Step 3: Prep, repairs, and presentation</strong><br />
-                We’ll identify which updates or touch-ups are worth doing — and which ones aren’t. This might include
-                decluttering, minor repairs, paint, light staging, or simply better furniture placement and styling.
-              </li>
-
-              <li style="margin-bottom: 1.1rem;">
-                <strong>Step 4: Photos, marketing, and listing launch</strong><br />
-                Once the home is ready, we’ll coordinate professional photography and craft listing copy that tells the
-                right story. Your home will be positioned thoughtfully on the MLS and major consumer platforms, with a
-                focus on first impressions.
-              </li>
-
-              <li style="margin-bottom: 1.1rem;">
-                <strong>Step 5: Showings &amp; feedback</strong><br />
-                We’ll manage showings and keep you updated on activity and feedback. If the market response suggests
-                adjustments — to price, presentation, or terms — we’ll talk through options and make changes together.
-              </li>
-
-              <li style="margin-bottom: 1.1rem;">
-                <strong>Step 6: Offers &amp; negotiation</strong><br />
-                When offers come in, we’ll break down the full picture: price, contingencies, timing, and strength of
-                the buyer. We’ll help you weigh the options and negotiate in a way that protects your interests while
-                keeping the deal moving forward.
-              </li>
-
-              <li style="margin-bottom: 1.1rem;">
-                <strong>Step 7: Attorney review, inspection, and appraisal</strong><br />
-                After going under contract, we’ll guide you through attorney review and inspection. We’ll help you
-                understand what’s typical, what’s reasonable to negotiate, and how to navigate any requests or issues
-                that come up — including appraisal.
-              </li>
-
-              <li style="margin-bottom: 1.1rem;">
-                <strong>Step 8: Final details &amp; closing</strong><br />
-                As closing approaches, we’ll help coordinate logistics, final walkthrough, and any remaining items on
-                the checklist. The goal is simple: fewer surprises, less stress, and a smooth handoff of keys.
-              </li>
-            </ol>
           </div>
         </section>
 
@@ -425,8 +359,7 @@
 
               <p>
                 You don’t have to be “ready tomorrow” to start the conversation. In many cases, the best results come
-                from connecting early — so we can help you plan prep, pricing, and timing in a way that feels calm and
-                intentional.
+                from connecting early — so we can plan prep, pricing, and timing in a way that feels calm and intentional.
               </p>
 
               <p>
@@ -437,14 +370,13 @@
           </div>
         </section>
 
-        <!-- FINAL CTA (matches buy-process structure) -->
+        <!-- FINAL CTA -->
         <section class="section section-cta section--tight">
           <div class="container">
             <div class="section-cta-title">want to talk through the selling process?</div>
 
             <div class="section-cta-text">
-              We’re here to walk you through these steps in more detail and tailor them to your home, timeline, and
-              goals.
+              We’re here to walk you through these steps in more detail and tailor them to your home, timeline, and goals.
             </div>
 
             <div class="section-cta-meta section-cta-meta--stacked">
@@ -468,7 +400,6 @@
     <script src="/assets/js/layout.js" defer></script>
     <script src="/assets/js/process-timeline.js" defer></script>
 
-    <!-- Page-specific content for the shared timeline component -->
     <script>
       (function initSellTimelineWhenReady() {
         if (!window.TREG || typeof window.TREG.initProcessTimeline !== "function") {
@@ -478,45 +409,45 @@
         window.TREG.initProcessTimeline(
           {
             consult: {
-              title: "Consultation & Plan",
+              title: "Step 1: Consultation & Plan",
               body: `
-                <p>We start with your goals, timing, and what a successful sale looks like. Then we do a walkthrough (virtual or in-person) to understand condition, layout, and your home’s best selling points.</p>
-                <p>From there, we map the plan: prep priorities, marketing timeline, and how we’ll communicate through each phase.</p>
+                <p>We start by getting clear on your goals, timing, and what a successful sale looks like. Then we do a walkthrough (virtual or in person) to understand condition, layout, and the strongest selling points.</p>
+                <p>You’ll leave this step with a simple plan: prep priorities, a target timeline, and how we’ll communicate at each phase so nothing feels confusing or last-minute.</p>
               `,
             },
             pricing: {
-              title: "Pricing & Positioning",
+              title: "Step 2: Pricing & Positioning",
               body: `
-                <p>Pricing isn’t just a number — it’s positioning. We’ll review comps, current competition, and buyer behavior to recommend a strategy that makes sense for your goals and the market.</p>
-                <p>You’ll understand the “why” behind the number, and how we’re planning to win attention (and strong offers) when your listing goes live.</p>
+                <p>Pricing is strategy — not guesswork. We’ll review recent comps, current competition, and buyer behavior to recommend a number and positioning that fits the market and your goals.</p>
+                <p>We’ll also talk through expectations: what strong early activity looks like, what signals we watch, and what we’ll adjust if the market gives us different feedback.</p>
               `,
             },
             prep: {
-              title: "Prep, Repairs & Presentation",
+              title: "Step 3: Prep, Repairs & Presentation",
               body: `
                 <p>We’ll identify what’s worth doing — and what isn’t. That may include minor repairs, paint, decluttering, light staging, or simply better furniture placement and styling.</p>
-                <p>The goal is the same every time: maximize first impressions without overspending.</p>
+                <p>The goal is a clean, polished first impression that helps buyers say “yes” faster — without overspending.</p>
               `,
             },
             launch: {
-              title: "Photos, Marketing & Launch",
+              title: "Step 4: Photos, Marketing & Launch",
               body: `
-                <p>Once the home is ready, we coordinate professional photography and craft listing copy that tells the right story. Then we launch thoughtfully on MLS and major platforms with a clean, modern presentation.</p>
-                <p>Strong marketing isn’t louder — it’s clearer. We focus on what buyers care about and how your home compares.</p>
+                <p>Once the home is ready, we coordinate professional photography and craft listing copy that tells the right story. Then we launch on MLS and major platforms with a modern, consistent presentation.</p>
+                <p>We focus on clarity: what buyers care about, how the home compares, and why it’s worth seeing in person.</p>
               `,
             },
             offers: {
-              title: "Showings, Feedback & Offers",
+              title: "Step 5: Showings, Feedback & Offers",
               body: `
-                <p>We manage showings and keep you updated on activity and feedback. If the market speaks differently than the data did, we’ll talk through adjustments and act quickly.</p>
-                <p>When offers arrive, we evaluate the full picture — price, terms, timing, and buyer strength — and negotiate with a strategy that protects you.</p>
+                <p>We manage showings and keep you updated on activity and feedback. If the market response suggests changes — to price, presentation, or terms — we’ll talk through options and move quickly.</p>
+                <p>When offers arrive, we evaluate the full picture: price, contingencies, timing, and buyer strength — then negotiate with a strategy that protects you and keeps the deal moving.</p>
               `,
             },
             closing: {
-              title: "Contract to Closing",
+              title: "Step 6: Contract to Closing",
               body: `
                 <p>After you’re under contract, we stay on top of the moving parts: attorney coordination, inspection, appraisal (if needed), timelines, and final logistics.</p>
-                <p>We aim for fewer surprises, clearer communication, and a smooth handoff — all the way to closing day.</p>
+                <p>Our job is to reduce surprises, keep communication clean, and make the finish line feel calm — all the way through closing day.</p>
               `,
             },
           },
