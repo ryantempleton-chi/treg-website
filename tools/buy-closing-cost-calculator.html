@@ -192,6 +192,17 @@
       white-space: nowrap;
     }
 
+    .calc-total-row td {
+      padding-top: 0.9rem;
+      border-top: 2px solid rgba(0, 0, 0, 0.12);
+      font-weight: 600;
+    }
+
+    .calc-total-row td:last-child {
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-size: 1.15rem;
+    }
+
     .calc-disclaimer {
       margin-top: 0.95rem;
       color: var(--treg-slate);
@@ -817,15 +828,22 @@
       const prepaidEl = document.getElementById("prepaidDaysAuto");
       const taxEl = document.getElementById("taxCreditAuto");
       const hoaEl = document.getElementById("hoaProrationAuto");
+
       if (prepaidEl) prepaidEl.value = intFmt(prepaidDays);
       if (taxEl) taxEl.value = moneyFmt(taxCredit);
       if (hoaEl) hoaEl.value = moneyFmt(hoaProration);
 
       const closingCosts =
         lenderFees +
-        settlement + lendersTitle + ownersTitle + miscTitle +
-        recording + attorney +
-        taxEscrow + insEscrow + prepaidInterest +
+        settlement +
+        lendersTitle +
+        ownersTitle +
+        miscTitle +
+        recording +
+        attorney +
+        taxEscrow +
+        insEscrow +
+        prepaidInterest +
         hoaProration -
         taxCredit;
 
@@ -858,28 +876,37 @@
       const monthlyTbody = document.getElementById("monthlyBreakdown");
       monthlyTbody.innerHTML = "";
 
+      let monthlyTotal = 0;
+
       for (const [label, val] of monthlyRows) {
         if (Math.round(val) === 0) continue;
+
+        monthlyTotal += val;
+
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
+
         td1.textContent = label;
         td2.textContent = moneyFmt(val);
+
         tr.appendChild(td1);
         tr.appendChild(td2);
         monthlyTbody.appendChild(tr);
       }
 
-      const totalTr = document.createElement("tr");
-      const totalTd1 = document.createElement("td");
-      const totalTd2 = document.createElement("td");
+      const totalRow = document.createElement("tr");
+      totalRow.classList.add("calc-total-row");
 
-      totalTd1.innerHTML = "<strong>Total estimated monthly payment</strong>";
-      totalTd2.innerHTML = `<strong>${moneyFmt(monthlyPayment)}</strong>`;
+      const totalLabel = document.createElement("td");
+      const totalValue = document.createElement("td");
 
-      totalTr.appendChild(totalTd1);
-      totalTr.appendChild(totalTd2);
-      monthlyTbody.appendChild(totalTr);
+      totalLabel.textContent = "Total estimated monthly payment";
+      totalValue.textContent = moneyFmt(monthlyTotal);
+
+      totalRow.appendChild(totalLabel);
+      totalRow.appendChild(totalValue);
+      monthlyTbody.appendChild(totalRow);
 
       const rows = [
         ["Est. lender fees", lenderFees],
@@ -898,13 +925,17 @@
 
       const tbody = document.getElementById("breakdown");
       tbody.innerHTML = "";
+
       for (const [label, val] of rows) {
         if (Math.round(val) === 0) continue;
+
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
+
         td1.textContent = label;
         td2.textContent = moneyFmt(val);
+
         tr.appendChild(td1);
         tr.appendChild(td2);
         tbody.appendChild(tr);
