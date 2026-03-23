@@ -5,11 +5,11 @@
   <title>Buyer Closing Cost Calculator | Templeton Real Estate Group</title>
   <meta
     name="description"
-    content="Estimate buyer closing costs and monthly payment in Chicago and surrounding suburbs. Includes lender fees, title, recording, escrows, prepaids, taxes, insurance, HOA, and PMI."
+    content="Estimate monthly payment and cash to close when buying in Chicago and surrounding suburbs. Includes principal, interest, taxes, insurance, HOA, PMI, lender fees, title, recording, escrows, and prepaids."
   />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Fonts (site standard) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -20,73 +20,70 @@
   <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/css/style.css" />
 
-  <!-- Page-only CSS -->
   <style>
     .calc-page .hero-title {
       text-transform: lowercase;
     }
 
-    .calc-grid {
+    .calc-shell {
       display: grid;
       gap: 1.25rem;
-      margin-top: 1.25rem;
+      margin-top: 1rem;
     }
 
-    @media (min-width: 900px) {
-      .calc-grid {
-        grid-template-columns: 1.05fr 0.95fr;
+    @media (min-width: 980px) {
+      .calc-shell {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        align-items: start;
       }
     }
 
     .calc-card {
-      border: 1px solid rgba(0, 0, 0, 0.06);
       background: #fff;
-      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 18px;
       padding: 1.1rem;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
     }
 
     .calc-card h2 {
+      margin: 0 0 0.8rem;
       font-family: "Oswald", system-ui, sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin: 0 0 0.85rem;
     }
 
     .calc-form {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.85rem;
+      gap: 0.9rem;
     }
 
     @media (min-width: 560px) {
       .calc-form {
         grid-template-columns: 1fr 1fr;
       }
-
-      .calc-span-2 {
-        grid-column: 1 / -1;
-      }
     }
 
     .calc-field label {
       display: block;
+      margin-bottom: 0.42rem;
       font-family: "Roboto", system-ui, sans-serif;
-      font-size: 0.78rem;
-      text-transform: uppercase;
+      font-size: 0.76rem;
       letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--treg-slate);
-      margin-bottom: 0.45rem;
     }
 
     .calc-field input,
     .calc-field select {
       width: 100%;
-      border: 1px solid rgba(0, 0, 0, 0.14);
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: 14px;
-      padding: 0.75rem 0.85rem;
+      padding: 0.78rem 0.85rem;
       font-family: "Roboto", system-ui, sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       background: #fff;
       color: var(--treg-charcoal);
     }
@@ -95,34 +92,47 @@
       background: rgba(250, 250, 250, 0.9);
     }
 
+    .calc-span-2 {
+      grid-column: 1 / -1;
+    }
+
     .calc-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-      margin-top: 0.35rem;
-    }
-
-    .calc-actions .btn {
-      pointer-events: auto;
+      gap: 0.7rem;
+      margin-top: 0.25rem;
     }
 
     .calc-note {
       margin-top: 0.85rem;
       color: var(--treg-slate);
+      font-size: 0.93rem;
       line-height: 1.6;
-      font-size: 0.95rem;
     }
 
-    .calc-results {
+    .summary-card {
+      padding: 1.15rem;
+    }
+
+    .summary-kicker {
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--treg-slate);
+      margin-bottom: 0.35rem;
+    }
+
+    .summary-stack {
       display: grid;
-      gap: 0.75rem;
+      gap: 0.85rem;
+      margin-top: 0.35rem;
     }
 
-    .calc-kpi {
-      border-radius: 16px;
+    .summary-box {
       border: 1px solid rgba(0, 0, 0, 0.06);
       background: rgba(250, 250, 250, 0.75);
+      border-radius: 16px;
       padding: 0.95rem 1rem;
       display: flex;
       justify-content: space-between;
@@ -130,7 +140,7 @@
       align-items: baseline;
     }
 
-    .calc-kpi strong {
+    .summary-box strong {
       font-family: "Roboto", system-ui, sans-serif;
       font-size: 0.78rem;
       text-transform: uppercase;
@@ -139,68 +149,122 @@
       font-weight: 600;
     }
 
-    .calc-kpi span {
+    .summary-box span {
       font-family: "League Spartan", system-ui, sans-serif;
+      font-size: 1.3rem;
       font-weight: 700;
-      font-size: 1.15rem;
       color: var(--treg-charcoal);
-      white-space: nowrap;
       text-align: right;
+      white-space: nowrap;
     }
 
-    .calc-subcard {
+    .summary-help {
+      margin: 0.95rem 0 0;
+      color: var(--treg-slate);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .calc-disclosure {
       margin-top: 1rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .calc-details {
       border: 1px solid rgba(0, 0, 0, 0.06);
       border-radius: 16px;
-      padding: 0.95rem 1rem;
       background: rgba(250, 250, 250, 0.45);
+      overflow: hidden;
     }
 
-    .calc-subcard h3 {
+    .calc-details summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.95rem 1rem;
       font-family: "Oswald", system-ui, sans-serif;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin: 0 0 0.65rem;
       color: var(--treg-charcoal);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .calc-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .calc-details summary::after {
+      content: "+";
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-size: 1.2rem;
+      line-height: 1;
+      color: var(--treg-slate);
+    }
+
+    .calc-details[open] summary::after {
+      content: "–";
+    }
+
+    .calc-details-body {
+      padding: 0 1rem 1rem;
     }
 
     .calc-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 0.25rem;
     }
 
     .calc-table th,
     .calc-table td {
       text-align: left;
-      padding: 0.7rem 0.5rem;
+      padding: 0.7rem 0.25rem;
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       font-family: "Roboto", system-ui, sans-serif;
       font-size: 0.92rem;
+      vertical-align: top;
     }
 
     .calc-table th {
-      font-size: 0.78rem;
-      text-transform: uppercase;
+      font-size: 0.76rem;
       letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--treg-slate);
     }
 
-    .calc-table td:last-child {
+    .calc-table td:last-child,
+    .calc-table th:last-child {
       text-align: right;
       white-space: nowrap;
     }
 
-    .calc-total-row td {
-      padding-top: 0.9rem;
-      border-top: 2px solid rgba(0, 0, 0, 0.12);
-      font-weight: 600;
+    .calc-table tr.total-row td {
+      font-weight: 700;
+      color: var(--treg-charcoal);
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
     }
 
-    .calc-total-row td:last-child {
-      font-family: "League Spartan", system-ui, sans-serif;
-      font-size: 1.15rem;
+    .advanced-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      margin-top: 0.2rem;
+    }
+
+    @media (min-width: 560px) {
+      .advanced-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .advanced-note {
+      margin-top: 0.85rem;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--treg-slate);
     }
 
     .calc-disclaimer {
@@ -209,39 +273,11 @@
       font-size: 0.85rem;
       line-height: 1.55;
     }
-
-    .calc-section {
-      grid-column: 1 / -1;
-      margin-top: 0.25rem;
-      padding-top: 0.25rem;
-    }
-
-    .calc-section-title {
-      font-family: "Oswald", system-ui, sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--treg-charcoal);
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-      padding-top: 0.85rem;
-      margin-top: 0.25rem;
-    }
-
-    .calc-spacer {
-      display: none;
-    }
-
-    @media (min-width: 560px) {
-      .calc-spacer {
-        display: block;
-      }
-    }
   </style>
 </head>
 
 <body class="calc-page">
   <div class="page">
-
     <!-- HEADER -->
     <header class="site-header">
       <div class="container header-inner">
@@ -371,8 +407,8 @@
           <div class="hero-label">Tools</div>
           <h1 class="hero-title">buyer closing cost calculator</h1>
           <p class="hero-subtitle">
-            Estimate both your upfront cash to close and your projected monthly payment,
-            including principal, interest, taxes, insurance, HOA, and PMI.
+            Estimate your projected monthly payment and cash to close in a cleaner, easier way —
+            then open the detailed assumptions only if you want to fine-tune the numbers.
           </p>
 
           <div class="btn-row">
@@ -384,18 +420,12 @@
 
       <section class="section">
         <div class="container">
-          <div class="calc-grid">
-
-            <!-- INPUTS -->
+          <div class="calc-shell">
+            <!-- LEFT: SIMPLE INPUTS -->
             <div class="calc-card">
-              <h2>Inputs</h2>
+              <h2>Quick inputs</h2>
 
               <form class="calc-form" id="buyerCalc" novalidate>
-                <!-- Purchase + Loan -->
-                <div class="calc-section">
-                  <div class="calc-section-title">Purchase + Loan</div>
-                </div>
-
                 <div class="calc-field">
                   <label for="purchasePrice">Purchase price</label>
                   <input id="purchasePrice" inputmode="decimal" value="450000" />
@@ -421,50 +451,8 @@
                 </div>
 
                 <div class="calc-field">
-                  <label for="closingDate">Estimated closing date</label>
-                  <input id="closingDate" type="date" />
-                </div>
-
-                <div class="calc-field">
-                  <label for="prepaidDaysAuto">Prepaid interest days (auto)</label>
-                  <input id="prepaidDaysAuto" inputmode="numeric" value="0" readonly />
-                </div>
-
-                <!-- Taxes + Credits -->
-                <div class="calc-section">
-                  <div class="calc-section-title">Taxes + Credits</div>
-                </div>
-
-                <div class="calc-field">
                   <label for="annualTax">Property taxes (annual)</label>
                   <input id="annualTax" inputmode="decimal" value="9000" />
-                </div>
-
-                <div class="calc-field">
-                  <label for="taxProrationPct">Tax proration factor (%)</label>
-                  <input id="taxProrationPct" inputmode="decimal" value="105" />
-                </div>
-
-                <div class="calc-field">
-                  <label for="taxCreditAuto">Est. tax credit</label>
-                  <input id="taxCreditAuto" inputmode="decimal" value="$0" readonly />
-                </div>
-
-                <div class="calc-spacer" aria-hidden="true"></div>
-
-                <!-- HOA + Insurance -->
-                <div class="calc-section">
-                  <div class="calc-section-title">HOA + Insurance</div>
-                </div>
-
-                <div class="calc-field">
-                  <label for="monthlyHoa">HOA (monthly)</label>
-                  <input id="monthlyHoa" inputmode="decimal" value="0" />
-                </div>
-
-                <div class="calc-field">
-                  <label for="hoaProrationAuto">HOA proration (auto)</label>
-                  <input id="hoaProrationAuto" inputmode="decimal" value="$0" readonly />
                 </div>
 
                 <div class="calc-field">
@@ -473,50 +461,13 @@
                 </div>
 
                 <div class="calc-field">
+                  <label for="monthlyHoa">HOA (monthly)</label>
+                  <input id="monthlyHoa" inputmode="decimal" value="0" />
+                </div>
+
+                <div class="calc-field">
                   <label for="monthlyPmi">PMI (monthly)</label>
                   <input id="monthlyPmi" inputmode="decimal" value="0" />
-                </div>
-
-                <!-- Lender Origination + Legal -->
-                <div class="calc-section">
-                  <div class="calc-section-title">Lender Origination &amp; Legal</div>
-                </div>
-
-                <div class="calc-field">
-                  <label for="lenderFees">Est. lender fees</label>
-                  <input id="lenderFees" inputmode="decimal" value="2200" />
-                </div>
-
-                <div class="calc-field">
-                  <label for="attorneyFee">Attorney fee (flat)</label>
-                  <input id="attorneyFee" inputmode="decimal" value="500" />
-                </div>
-
-                <div class="calc-spacer" aria-hidden="true"></div>
-
-                <!-- Title + Recording -->
-                <div class="calc-section">
-                  <div class="calc-section-title">Title &amp; Recording</div>
-                </div>
-
-                <div class="calc-field">
-                  <label for="titleSettlementFee">Est. title/escrow fees</label>
-                  <input id="titleSettlementFee" inputmode="decimal" value="2000" />
-                </div>
-
-                <div class="calc-field">
-                  <label for="lendersTitle">Lender’s title insurance</label>
-                  <input id="lendersTitle" inputmode="decimal" value="575" />
-                </div>
-
-                <div class="calc-field">
-                  <label for="recordingFees">Recording fees</label>
-                  <input id="recordingFees" inputmode="decimal" value="250" />
-                </div>
-
-                <div class="calc-field">
-                  <label for="miscTitleFees">Add'l title/escrow fees</label>
-                  <input id="miscTitleFees" inputmode="decimal" value="250" />
                 </div>
 
                 <div class="calc-actions calc-span-2">
@@ -526,61 +477,139 @@
               </form>
 
               <p class="calc-note">
-                These defaults are intentionally conservative. Actual costs can vary by lender, title company,
-                HOA requirements, insurance quote, PMI, and closing date.
+                Start with the basics here. Detailed lender, title, proration, and escrow assumptions are tucked below
+                so the page stays cleaner.
               </p>
             </div>
 
-            <!-- RESULTS -->
-            <div class="calc-card">
-              <h2>Results</h2>
+            <!-- RIGHT: SUMMARY + DETAILS -->
+            <div class="summary-card calc-card">
+              <div class="summary-kicker">Estimated results</div>
 
-              <div class="calc-results">
-                <div class="calc-kpi">
-                  <strong>Closing costs (excl. down payment)</strong>
-                  <span id="closingCosts">$—</span>
+              <div class="summary-stack">
+                <div class="summary-box">
+                  <strong>Estimated monthly payment</strong>
+                  <span id="monthlyPayment">$—</span>
                 </div>
 
-                <div class="calc-kpi">
-                  <strong>Down payment</strong>
-                  <span id="downPayment">$—</span>
-                </div>
-
-                <div class="calc-kpi">
+                <div class="summary-box">
                   <strong>Estimated cash to close</strong>
                   <span id="cashToClose">$—</span>
                 </div>
 
-                <div class="calc-kpi">
-                  <strong>Estimated monthly payment</strong>
-                  <span id="monthlyPayment">$—</span>
+                <div class="summary-box">
+                  <strong>Closing costs (excl. down payment)</strong>
+                  <span id="closingCosts">$—</span>
+                </div>
+
+                <div class="summary-box">
+                  <strong>Down payment</strong>
+                  <span id="downPayment">$—</span>
                 </div>
               </div>
 
-              <div class="calc-subcard">
-                <h3>Monthly payment breakdown</h3>
-                <table class="calc-table" aria-label="Estimated monthly payment breakdown">
-                  <thead>
-                    <tr>
-                      <th>Monthly cost</th>
-                      <th>Estimate</th>
-                    </tr>
-                  </thead>
-                  <tbody id="monthlyBreakdown"></tbody>
-                </table>
-              </div>
+              <p class="summary-help">
+                Monthly payment includes principal, interest, estimated property taxes, homeowner’s insurance,
+                HOA, and PMI if entered.
+              </p>
 
-              <div class="calc-subcard">
-                <h3>Closing cost breakdown</h3>
-                <table class="calc-table" aria-label="Buyer closing cost breakdown">
-                  <thead>
-                    <tr>
-                      <th>Category</th>
-                      <th>Estimate</th>
-                    </tr>
-                  </thead>
-                  <tbody id="breakdown"></tbody>
-                </table>
+              <div class="calc-disclosure">
+                <details class="calc-details" open>
+                  <summary>Monthly payment breakdown</summary>
+                  <div class="calc-details-body">
+                    <table class="calc-table" aria-label="Estimated monthly payment breakdown">
+                      <thead>
+                        <tr>
+                          <th>Monthly cost</th>
+                          <th>Estimate</th>
+                        </tr>
+                      </thead>
+                      <tbody id="monthlyBreakdown"></tbody>
+                    </table>
+                  </div>
+                </details>
+
+                <details class="calc-details">
+                  <summary>Closing cost breakdown</summary>
+                  <div class="calc-details-body">
+                    <table class="calc-table" aria-label="Buyer closing cost breakdown">
+                      <thead>
+                        <tr>
+                          <th>Category</th>
+                          <th>Estimate</th>
+                        </tr>
+                      </thead>
+                      <tbody id="breakdown"></tbody>
+                    </table>
+                  </div>
+                </details>
+
+                <details class="calc-details">
+                  <summary>Advanced assumptions</summary>
+                  <div class="calc-details-body">
+                    <div class="advanced-grid">
+                      <div class="calc-field">
+                        <label for="closingDate">Estimated closing date</label>
+                        <input id="closingDate" type="date" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="prepaidDaysAuto">Prepaid interest days (auto)</label>
+                        <input id="prepaidDaysAuto" inputmode="numeric" value="0" readonly />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="taxProrationPct">Tax proration factor (%)</label>
+                        <input id="taxProrationPct" inputmode="decimal" value="105" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="taxCreditAuto">Est. tax credit (auto)</label>
+                        <input id="taxCreditAuto" inputmode="decimal" value="$0" readonly />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="hoaProrationAuto">HOA proration (auto)</label>
+                        <input id="hoaProrationAuto" inputmode="decimal" value="$0" readonly />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="lenderFees">Est. lender fees</label>
+                        <input id="lenderFees" inputmode="decimal" value="2200" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="attorneyFee">Attorney fee (flat)</label>
+                        <input id="attorneyFee" inputmode="decimal" value="500" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="titleSettlementFee">Est. title/escrow fees</label>
+                        <input id="titleSettlementFee" inputmode="decimal" value="2000" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="lendersTitle">Lender’s title insurance</label>
+                        <input id="lendersTitle" inputmode="decimal" value="575" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="recordingFees">Recording fees</label>
+                        <input id="recordingFees" inputmode="decimal" value="250" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="miscTitleFees">Add'l title/escrow fees</label>
+                        <input id="miscTitleFees" inputmode="decimal" value="250" />
+                      </div>
+                    </div>
+
+                    <div class="advanced-note">
+                      Owner’s title insurance is currently baked in at a default planning estimate.
+                      Escrow assumptions are also baked in for a simplified planning model.
+                    </div>
+                  </div>
+                </details>
               </div>
 
               <div class="calc-disclaimer">
@@ -590,7 +619,6 @@
                 not responsible for decisions made based on this estimate.
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -615,7 +643,6 @@
         </div>
       </div>
     </footer>
-
   </div>
 
   <script>
@@ -828,22 +855,15 @@
       const prepaidEl = document.getElementById("prepaidDaysAuto");
       const taxEl = document.getElementById("taxCreditAuto");
       const hoaEl = document.getElementById("hoaProrationAuto");
-
       if (prepaidEl) prepaidEl.value = intFmt(prepaidDays);
       if (taxEl) taxEl.value = moneyFmt(taxCredit);
       if (hoaEl) hoaEl.value = moneyFmt(hoaProration);
 
       const closingCosts =
         lenderFees +
-        settlement +
-        lendersTitle +
-        ownersTitle +
-        miscTitle +
-        recording +
-        attorney +
-        taxEscrow +
-        insEscrow +
-        prepaidInterest +
+        settlement + lendersTitle + ownersTitle + miscTitle +
+        recording + attorney +
+        taxEscrow + insEscrow + prepaidInterest +
         hoaProration -
         taxCredit;
 
@@ -876,37 +896,27 @@
       const monthlyTbody = document.getElementById("monthlyBreakdown");
       monthlyTbody.innerHTML = "";
 
-      let monthlyTotal = 0;
-
       for (const [label, val] of monthlyRows) {
         if (Math.round(val) === 0) continue;
-
-        monthlyTotal += val;
-
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
-
         td1.textContent = label;
         td2.textContent = moneyFmt(val);
-
         tr.appendChild(td1);
         tr.appendChild(td2);
         monthlyTbody.appendChild(tr);
       }
 
-      const totalRow = document.createElement("tr");
-      totalRow.classList.add("calc-total-row");
-
-      const totalLabel = document.createElement("td");
-      const totalValue = document.createElement("td");
-
-      totalLabel.textContent = "Total estimated monthly payment";
-      totalValue.textContent = moneyFmt(monthlyTotal);
-
-      totalRow.appendChild(totalLabel);
-      totalRow.appendChild(totalValue);
-      monthlyTbody.appendChild(totalRow);
+      const totalMonthlyTr = document.createElement("tr");
+      totalMonthlyTr.className = "total-row";
+      const totalMonthlyTd1 = document.createElement("td");
+      const totalMonthlyTd2 = document.createElement("td");
+      totalMonthlyTd1.textContent = "Total estimated monthly payment";
+      totalMonthlyTd2.textContent = moneyFmt(monthlyPayment);
+      totalMonthlyTr.appendChild(totalMonthlyTd1);
+      totalMonthlyTr.appendChild(totalMonthlyTd2);
+      monthlyTbody.appendChild(totalMonthlyTr);
 
       const rows = [
         ["Est. lender fees", lenderFees],
@@ -928,18 +938,25 @@
 
       for (const [label, val] of rows) {
         if (Math.round(val) === 0) continue;
-
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
-
         td1.textContent = label;
         td2.textContent = moneyFmt(val);
-
         tr.appendChild(td1);
         tr.appendChild(td2);
         tbody.appendChild(tr);
       }
+
+      const totalClosingTr = document.createElement("tr");
+      totalClosingTr.className = "total-row";
+      const totalClosingTd1 = document.createElement("td");
+      const totalClosingTd2 = document.createElement("td");
+      totalClosingTd1.textContent = "Total closing costs";
+      totalClosingTd2.textContent = moneyFmt(closingCosts);
+      totalClosingTr.appendChild(totalClosingTd1);
+      totalClosingTr.appendChild(totalClosingTd2);
+      tbody.appendChild(totalClosingTr);
     }
 
     function bindLiveRecalc() {
