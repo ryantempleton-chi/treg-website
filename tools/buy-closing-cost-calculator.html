@@ -120,42 +120,112 @@
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--treg-slate);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
     }
 
-    .summary-stack {
+    .summary-hero-stack {
       display: grid;
       gap: 0.85rem;
       margin-top: 0.35rem;
     }
 
-    .summary-box {
+    @media (min-width: 640px) {
+      .summary-hero-stack {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .summary-hero {
+      border-radius: 18px;
+      padding: 1rem 1rem 0.95rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      min-height: 120px;
+      justify-content: center;
+    }
+
+    .summary-hero strong {
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      line-height: 1.4;
+      color: var(--treg-slate);
+    }
+
+    .summary-hero span {
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .summary-hero-primary {
+      background: var(--treg-charcoal);
+      color: #fff;
+      box-shadow: 0 14px 30px rgba(30, 24, 13, 0.16);
+    }
+
+    .summary-hero-primary strong {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .summary-hero-primary span {
+      color: #fff;
+      font-size: clamp(2.15rem, 5vw, 3rem);
+    }
+
+    .summary-hero-secondary {
+      background: rgba(201, 184, 164, 0.22);
+      border: 1px solid rgba(201, 184, 164, 0.45);
+    }
+
+    .summary-hero-secondary span {
+      color: var(--treg-charcoal);
+      font-size: clamp(1.9rem, 4vw, 2.65rem);
+    }
+
+    .summary-mini-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 0.85rem;
+    }
+
+    @media (min-width: 640px) {
+      .summary-mini-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .summary-mini {
       border: 1px solid rgba(0, 0, 0, 0.06);
       background: rgba(250, 250, 250, 0.75);
       border-radius: 16px;
-      padding: 0.95rem 1rem;
+      padding: 0.85rem 0.95rem;
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
       align-items: baseline;
+      gap: 0.8rem;
     }
 
-    .summary-box strong {
+    .summary-mini strong {
       font-family: "Roboto", system-ui, sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.73rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--treg-slate);
-      font-weight: 600;
+      line-height: 1.35;
     }
 
-    .summary-box span {
+    .summary-mini span {
       font-family: "League Spartan", system-ui, sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.22rem;
       font-weight: 700;
       color: var(--treg-charcoal);
-      text-align: right;
       white-space: nowrap;
+      text-align: right;
     }
 
     .summary-help {
@@ -245,6 +315,7 @@
       font-weight: 700;
       color: var(--treg-charcoal);
       border-top: 1px solid rgba(0, 0, 0, 0.12);
+      background: rgba(201, 184, 164, 0.12);
     }
 
     .advanced-grid {
@@ -421,7 +492,7 @@
       <section class="section">
         <div class="container">
           <div class="calc-shell">
-            <!-- LEFT: SIMPLE INPUTS -->
+            <!-- LEFT: QUICK INPUTS -->
             <div class="calc-card">
               <h2>Quick inputs</h2>
 
@@ -482,7 +553,7 @@
               </p>
             </div>
 
-            <!-- RIGHT: SUMMARY + DETAILS -->
+            <!-- RIGHT: RESULTS -->
             <div class="summary-card calc-card">
               <div class="summary-kicker">Estimated results</div>
 
@@ -491,19 +562,19 @@
                   <strong>Estimated monthly payment</strong>
                   <span id="monthlyPayment">$—</span>
                 </div>
-              
+
                 <div class="summary-hero summary-hero-secondary">
                   <strong>Estimated cash to close</strong>
                   <span id="cashToClose">$—</span>
                 </div>
               </div>
-              
+
               <div class="summary-mini-row">
                 <div class="summary-mini">
                   <strong>Closing costs only</strong>
                   <span id="closingCosts">$—</span>
                 </div>
-              
+
                 <div class="summary-mini">
                   <strong>Down payment</strong>
                   <span id="downPayment">$—</span>
