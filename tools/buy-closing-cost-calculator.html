@@ -857,6 +857,7 @@
 
       const monthlyTbody = document.getElementById("monthlyBreakdown");
       monthlyTbody.innerHTML = "";
+
       for (const [label, val] of monthlyRows) {
         if (Math.round(val) === 0) continue;
         const tr = document.createElement("tr");
@@ -868,6 +869,17 @@
         tr.appendChild(td2);
         monthlyTbody.appendChild(tr);
       }
+
+      const totalTr = document.createElement("tr");
+      const totalTd1 = document.createElement("td");
+      const totalTd2 = document.createElement("td");
+
+      totalTd1.innerHTML = "<strong>Total estimated monthly payment</strong>";
+      totalTd2.innerHTML = `<strong>${moneyFmt(monthlyPayment)}</strong>`;
+
+      totalTr.appendChild(totalTd1);
+      totalTr.appendChild(totalTd2);
+      monthlyTbody.appendChild(totalTr);
 
       const rows = [
         ["Est. lender fees", lenderFees],
