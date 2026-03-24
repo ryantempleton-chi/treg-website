@@ -3,236 +3,340 @@
 <head>
   <meta charset="utf-8" />
   <title>Seller Net Proceeds Calculator | Templeton Real Estate Group</title>
-  <meta name="description" content="Estimate seller closing costs and net proceeds in Chicago and surrounding suburbs, including transfer taxes, prorations, and commissions." />
+  <meta
+    name="description"
+    content="Estimate seller net proceeds in Chicago and surrounding suburbs. Includes commissions, transfer taxes, prorations, title fees, payoff, and common seller-side closing costs."
+  />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Fonts (site standard) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/css/style.css" />
 
-  <!-- Page-only CSS (namespaced; avoids global conflicts) -->
   <style>
-  .calc-page .hero-title { text-transform: lowercase; }
+    .calc-page .hero-title {
+      text-transform: lowercase;
+    }
 
-  .calc-grid {
-    display: grid;
-    gap: 1.25rem;
-    margin-top: 1.25rem;
-  }
-  @media (min-width: 900px) {
-    .calc-grid { grid-template-columns: 1.05fr 0.95fr; }
-  }
+    .calc-shell {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
 
-  .calc-card {
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    background: #fff;
-    border-radius: 16px;
-    padding: 1.1rem;
-  }
+    @media (min-width: 980px) {
+      .calc-shell {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        align-items: start;
+      }
+    }
 
-  .calc-card h2 {
-    font-family: "Oswald", system-ui, sans-serif;
-    font-size: 1.05rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 0 0 0.85rem;
-  }
+    .calc-card {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 18px;
+      padding: 1.1rem;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+    }
 
-  .calc-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-  }
-  @media (min-width: 560px) {
-    .calc-form { grid-template-columns: 1fr 1fr; }
-    .calc-span-2 { grid-column: 1 / -1; }
-  }
+    .calc-card h2 {
+      margin: 0 0 0.8rem;
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 1.02rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
-  .calc-field label {
-    display: block;
-    font-family: "Roboto", system-ui, sans-serif;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--treg-slate);
-    margin-bottom: 0.45rem;
-  }
+    .calc-form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
 
-  .calc-field input,
-  .calc-field select {
-    width: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.14);
-    border-radius: 14px;
-    padding: 0.75rem 0.85rem;
-    font-family: "Roboto", system-ui, sans-serif;
-    font-size: 0.95rem;
-    background: #fff;
-    color: var(--treg-charcoal);
-  }
+    @media (min-width: 560px) {
+      .calc-form {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
 
-  .calc-field input[readonly] {
-    background: rgba(250, 250, 250, 0.9);
-  }
+    .calc-field label {
+      display: block;
+      margin-bottom: 0.42rem;
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--treg-slate);
+    }
 
-  .calc-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    align-items: center;
-    margin-top: 0.35rem;
-  }
+    .calc-field input,
+    .calc-field select {
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 14px;
+      padding: 0.78rem 0.85rem;
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.96rem;
+      background: #fff;
+      color: var(--treg-charcoal);
+    }
 
-  .calc-actions .btn { pointer-events: auto; }
+    .calc-field input[readonly] {
+      background: rgba(250, 250, 250, 0.9);
+    }
 
-  .calc-results {
-    display: grid;
-    gap: 0.75rem;
-  }
+    .calc-span-2 {
+      grid-column: 1 / -1;
+    }
 
-  .calc-kpi {
-    border-radius: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    background: rgba(250, 250, 250, 0.75);
-    padding: 0.95rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: baseline;
-  }
+    .calc-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.25rem;
+    }
 
-  .calc-kpi strong {
-    font-family: "Roboto", system-ui, sans-serif;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--treg-slate);
-    font-weight: 600;
-  }
+    .calc-note {
+      margin-top: 0.85rem;
+      color: var(--treg-slate);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
 
-  .calc-kpi span {
-    font-family: "League Spartan", system-ui, sans-serif;
-    font-weight: 700;
-    font-size: 1.15rem;
-    color: var(--treg-charcoal);
-    white-space: nowrap;
-  }
+    .summary-card {
+      padding: 1.15rem;
+    }
 
-  .calc-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 0.75rem;
-  }
-  .calc-table th,
-  .calc-table td {
-    text-align: left;
-    padding: 0.7rem 0.5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    font-family: "Roboto", system-ui, sans-serif;
-    font-size: 0.92rem;
-  }
-  .calc-table th {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--treg-slate);
-  }
-  .calc-table td:last-child { text-align: right; white-space: nowrap; }
+    .summary-kicker {
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--treg-slate);
+      margin-bottom: 0.35rem;
+    }
 
-  .calc-disclaimer {
-    margin-top: 0.95rem;
-    color: var(--treg-slate);
-    font-size: 0.85rem;
-    line-height: 1.55;
-  }
+    .summary-hero-stack {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 0.35rem;
+    }
 
-  /* ===========================
-     SECTION HEADERS (match BUY)
-     =========================== */
-  .calc-section {
-    grid-column: 1 / -1;
-    margin-top: 0.25rem;
-    padding-top: 0.25rem;
-  }
+    .summary-hero {
+      border-radius: 18px;
+      padding: 1rem 1rem 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+    }
 
-  .calc-section-title {
-    font-family: "Oswald", system-ui, sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--treg-charcoal);
-    border-top: 1px solid rgba(0,0,0,0.08);
-    padding-top: 0.85rem;
-    margin-top: 0.25rem;
-  }
+    .summary-hero strong {
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
 
-  /* Clean spacer that does NOT add fake inputs */
-  .calc-spacer { display: none; }
-  @media (min-width: 560px) {
-    .calc-spacer { display: block; }
-  }
+    .summary-hero span {
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-size: 1.8rem;
+      line-height: 1;
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: right;
+    }
 
-  /* Auto-calculated rows: hidden until relevant */
-  .calc-auto-row {
-    display: none;
-    opacity: 0;
-    transition: opacity 180ms ease;
-  }
-  .calc-auto-row.is-visible {
-    display: block;
-    opacity: 1;
-  }
+    .summary-hero-primary {
+      background: var(--treg-charcoal);
+      border: 1px solid var(--treg-charcoal);
+    }
 
-  /* Simple accordion */
-  details.calc-accordion {
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 16px;
-    padding: 0.75rem 0.85rem;
-    background: rgba(250, 250, 250, 0.6);
-  }
-  details.calc-accordion summary {
-    cursor: pointer;
-    list-style: none;
-    font-family: "Roboto", system-ui, sans-serif;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--treg-slate);
-    user-select: none;
-  }
-  details.calc-accordion summary::-webkit-details-marker { display: none; }
+    .summary-hero-primary strong,
+    .summary-hero-primary span {
+      color: #fff;
+    }
 
-  .accordion-body {
-    margin-top: 0.85rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-  }
-  @media (min-width: 560px) {
-    .accordion-body { grid-template-columns: 1fr 1fr; }
-    .accordion-span-2 { grid-column: 1 / -1; }
-  }
+    .summary-hero-secondary {
+      background: rgba(201, 184, 164, 0.18);
+      border: 1px solid rgba(201, 184, 164, 0.5);
+    }
 
-  .calc-help {
-    margin-top: 0.35rem;
-    font-family: "PT Serif", serif;
-    font-size: 0.95rem;
-    color: var(--treg-slate);
-    line-height: 1.55;
-  }
-</style>
+    .summary-hero-secondary strong,
+    .summary-hero-secondary span {
+      color: var(--treg-charcoal);
+    }
+
+    .summary-mini-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 0.85rem;
+    }
+
+    @media (min-width: 560px) {
+      .summary-mini-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .summary-mini {
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(250, 250, 250, 0.75);
+      border-radius: 16px;
+      padding: 0.9rem 0.95rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .summary-mini strong {
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--treg-slate);
+      font-weight: 600;
+    }
+
+    .summary-mini span {
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--treg-charcoal);
+    }
+
+    .summary-help {
+      margin: 0.95rem 0 0;
+      color: var(--treg-slate);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .calc-disclosure {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .calc-details {
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 16px;
+      background: rgba(250, 250, 250, 0.45);
+      overflow: hidden;
+    }
+
+    .calc-details summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.95rem 1rem;
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 0.94rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--treg-charcoal);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .calc-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .calc-details summary::after {
+      content: "+";
+      font-family: "League Spartan", system-ui, sans-serif;
+      font-size: 1.2rem;
+      line-height: 1;
+      color: var(--treg-slate);
+    }
+
+    .calc-details[open] summary::after {
+      content: "–";
+    }
+
+    .calc-details-body {
+      padding: 0 1rem 1rem;
+    }
+
+    .calc-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .calc-table th,
+    .calc-table td {
+      text-align: left;
+      padding: 0.7rem 0.25rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      font-family: "Roboto", system-ui, sans-serif;
+      font-size: 0.92rem;
+      vertical-align: top;
+    }
+
+    .calc-table th {
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--treg-slate);
+    }
+
+    .calc-table td:last-child,
+    .calc-table th:last-child {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .calc-table tr.total-row td {
+      font-weight: 700;
+      color: var(--treg-charcoal);
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .advanced-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      margin-top: 0.2rem;
+    }
+
+    @media (min-width: 560px) {
+      .advanced-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .advanced-note {
+      margin-top: 0.85rem;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--treg-slate);
+    }
+
+    .calc-disclaimer {
+      margin-top: 0.95rem;
+      color: var(--treg-slate);
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+  </style>
 </head>
 
 <body class="calc-page">
   <div class="page">
-
-    <!-- HEADER (exact) -->
+    <!-- HEADER -->
     <header class="site-header">
       <div class="container header-inner">
-        <!-- Logo -->
         <a href="/" class="logo-link">
           <img
             src="/assets/img/logo-transparent-lg.png"
@@ -241,7 +345,6 @@
           />
         </a>
 
-        <!-- SERHANT-style Menu button -->
         <button
           class="menu-btn"
           type="button"
@@ -253,7 +356,6 @@
           menu
         </button>
 
-        <!-- Primary navigation -->
         <nav class="nav" aria-label="Primary navigation">
           <ul class="nav-list">
             <li class="nav-item"><a href="/" class="nav-link">home</a></li>
@@ -283,7 +385,6 @@
         </nav>
       </div>
 
-      <!-- Backdrop + panel -->
       <div class="menu-backdrop" data-menu-close aria-hidden="true"></div>
 
       <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
@@ -302,7 +403,6 @@
           </div>
 
           <div class="menu-layout">
-            <!-- LEFT: big primary links -->
             <div class="menu-primary" aria-label="Primary menu links">
               <a class="menu-primary-link" href="/buy.html">buy.</a>
               <a class="menu-primary-link" href="/sell.html">sell.</a>
@@ -312,14 +412,12 @@
               <a class="menu-primary-link" href="/team/">meet the team.</a>
               <a class="menu-primary-link" href="/contact.html">contact us.</a>
 
-              <!-- CTA row (left column) -->
               <div class="menu-cta-row">
                 <a class="btn btn-primary" href="/intake.html">start intake</a>
                 <a class="btn btn-ghost" href="/contact.html">email our team</a>
               </div>
             </div>
 
-            <!-- RIGHT: grouped subtle links -->
             <div class="menu-secondary" aria-label="Secondary menu links">
               <div class="menu-col">
                 <div class="menu-col-title">Work with us</div>
@@ -345,12 +443,10 @@
                 <a class="menu-link" href="/reviews.html">Testimonials</a>
               </div>
 
-              <!-- Spacer box (invisible) to force a perfect 2x2 grid -->
               <div class="menu-col menu-col--spacer" aria-hidden="true"></div>
             </div>
           </div>
 
-          <!-- Big corner favicon / mark (we'll position with CSS) -->
           <img
             src="/assets/img/icons/favicon-1500x1500-tran.png"
             alt=""
@@ -362,14 +458,13 @@
     </header>
 
     <main class="main">
-      <!-- HERO -->
       <section class="hero">
         <div class="hero-inner">
           <div class="hero-label">Tools</div>
           <h1 class="hero-title">seller net proceeds calculator</h1>
           <p class="hero-subtitle">
-            A quick estimate for commissions, transfer taxes, and common seller-side fees.
-            Add your payoff to see a ballpark net after payoff.
+            Estimate your projected net proceeds in a cleaner, easier way —
+            then open the detailed assumptions only if you want to fine-tune the numbers.
           </p>
 
           <div class="btn-row">
@@ -379,89 +474,50 @@
         </div>
       </section>
 
-      <!-- CONTENT -->
       <section class="section">
         <div class="container">
-          <div class="calc-grid">
-            <!-- Inputs -->
+          <div class="calc-shell">
+            <!-- LEFT: QUICK INPUTS -->
             <div class="calc-card">
-              <h2>Inputs</h2>
+              <h2>Quick inputs</h2>
 
               <form class="calc-form" id="sellerCalc" novalidate>
-              
-                <!-- SECTION: Sales Details -->
-                <div class="calc-section calc-span-2">
-                  <div class="calc-section-title">Sales Details</div>
-                </div>
-              
                 <div class="calc-field">
                   <label for="salePrice">Sale price</label>
                   <input id="salePrice" inputmode="decimal" value="500000" />
                 </div>
-              
+
                 <div class="calc-field">
-                  <label for="mortgagePayoff">Mortgage payoff (optional)</label>
+                  <label for="mortgagePayoff">Mortgage payoff</label>
                   <input id="mortgagePayoff" inputmode="decimal" value="0" />
                 </div>
-              
-                <div class="calc-field">
-                  <label for="closingDate">Estimated closing date</label>
-                  <input id="closingDate" type="date" />
-                </div>
-              
-                <div class="calc-spacer" aria-hidden="true"></div>
-              
-                <!-- SECTION: Commissions + Legal -->
-                <div class="calc-section calc-span-2">
-                  <div class="calc-section-title">Commissions + Legal</div>
-                </div>
-              
+
                 <div class="calc-field">
                   <label for="commissionPct">Total commission (%)</label>
                   <input id="commissionPct" inputmode="decimal" value="6" />
                 </div>
-              
+
                 <div class="calc-field">
-                  <label for="attorneyFee">Attorney fee (flat)</label>
-                  <input id="attorneyFee" inputmode="decimal" value="500" />
+                  <label for="closingDate">Estimated closing date</label>
+                  <input id="closingDate" type="date" />
                 </div>
-              
-                <!-- SECTION: Taxes + Prorations -->
-                <div class="calc-section calc-span-2">
-                  <div class="calc-section-title">Taxes + Prorations</div>
-                </div>
-              
+
                 <div class="calc-field">
                   <label for="annualTax">Property taxes (annual)</label>
                   <input id="annualTax" inputmode="decimal" value="9000" />
                 </div>
-              
-                <div class="calc-field">
-                  <label for="taxProrationPct">Tax proration factor (%)</label>
-                  <input id="taxProrationPct" inputmode="decimal" value="105" />
-                </div>
-              
-                <div class="calc-field calc-auto-row" id="rowTaxProration">
-                  <label for="taxProrationCredit">Tax proration credit (auto)</label>
-                  <input id="taxProrationCredit" inputmode="decimal" value="$0" readonly />
-                </div>
-              
+
                 <div class="calc-field">
                   <label for="monthlyHoa">HOA (monthly)</label>
                   <input id="monthlyHoa" inputmode="decimal" value="0" />
                 </div>
-              
-                <div class="calc-field calc-auto-row" id="rowHoaProration">
-                  <label for="hoaProrationCredit">HOA proration credit (auto)</label>
-                  <input id="hoaProrationCredit" inputmode="decimal" value="$0" readonly />
+
+                <div class="calc-field">
+                  <label for="attorneyFee">Attorney fee (flat)</label>
+                  <input id="attorneyFee" inputmode="decimal" value="500" />
                 </div>
-              
-                <!-- SECTION: Transfer Taxes -->
-                <div class="calc-section calc-span-2">
-                  <div class="calc-section-title">Transfer Taxes</div>
-                </div>
-              
-                <div class="calc-field calc-span-2">
+
+                <div class="calc-field">
                   <label for="locationMode">Transfer tax location</label>
                   <select id="locationMode">
                     <option value="chicago" selected>Chicago</option>
@@ -469,113 +525,140 @@
                     <option value="none">No transfer tax</option>
                   </select>
                 </div>
-              
-                <div class="calc-field calc-auto-row" id="rowCityTax">
-                  <label for="cityTransferTax">City transfer tax (auto)</label>
-                  <input id="cityTransferTax" inputmode="decimal" value="$0" readonly />
-                </div>
-              
-                <div class="calc-field calc-auto-row" id="rowCountyTax">
-                  <label for="countyTransferTax">County transfer tax (auto)</label>
-                  <input id="countyTransferTax" inputmode="decimal" value="$0" readonly />
-                </div>
-              
-                <div class="calc-field calc-auto-row" id="rowStateTax">
-                  <label for="stateTransferTax">State transfer tax (auto)</label>
-                  <input id="stateTransferTax" inputmode="decimal" value="$0" readonly />
-                </div>
-              
-                <div class="calc-spacer" aria-hidden="true"></div>
-              
-                <!-- SECTION: Title / Escrow -->
-                <div class="calc-section calc-span-2">
-                  <div class="calc-section-title">Title / Escrow</div>
-                </div>
-              
-                <div class="calc-field">
-                  <label for="titleSellerFees">Est. title/escrow fees</label>
-                  <input id="titleSellerFees" inputmode="decimal" value="450" />
-                </div>
-              
-                <div class="calc-spacer" aria-hidden="true"></div>
-              
-                <!-- Advanced accordion -->
-                <div class="calc-field calc-span-2">
-                  <details class="calc-accordion">
-                    <summary>advanced options (optional)</summary>
-                    <div class="accordion-body">
-              
-                      <div class="calc-field">
-                        <label for="recordingFees">Recording / release fees (est.)</label>
-                        <input id="recordingFees" inputmode="decimal" value="0" />
-                      </div>
-              
-                      <div class="calc-field">
-                        <label for="hoaDocsFees">HOA docs / move-out / paid assessment (est.)</label>
-                        <input id="hoaDocsFees" inputmode="decimal" value="0" />
-                      </div>
-              
-                      <div class="calc-field">
-                        <label for="sellerCredits">Seller credits (repairs / concessions)</label>
-                        <input id="sellerCredits" inputmode="decimal" value="0" />
-                      </div>
-              
-                      <div class="calc-field">
-                        <label for="otherSellerCosts">Additional / other seller costs</label>
-                        <input id="otherSellerCosts" inputmode="decimal" value="0" />
-                      </div>
-              
-                      <div class="calc-field accordion-span-2">
-                        <div class="calc-help">
-                          Optional fields let you account for common “extras” that can show up on a settlement statement.
-                          Leave blank if you’re not sure.
-                        </div>
-                      </div>
-              
-                    </div>
-                  </details>
-                </div>
-              
+
                 <div class="calc-actions calc-span-2">
                   <button class="btn btn-primary" type="button" id="calcBtn">calculate</button>
                   <button class="btn btn-ghost" type="button" id="resetBtn">reset</button>
                 </div>
               </form>
+
+              <p class="calc-note">
+                Start with the basics here. Detailed proration, title, HOA docs, seller credits,
+                and other assumptions are tucked below so the page stays cleaner.
+              </p>
             </div>
 
-            <!-- Results -->
-            <div class="calc-card">
-              <h2>Results</h2>
+            <!-- RIGHT: SUMMARY + DETAILS -->
+            <div class="summary-card calc-card">
+              <div class="summary-kicker">Estimated results</div>
 
-              <div class="calc-results">
-                <div class="calc-kpi">
+              <div class="summary-hero-stack">
+                <div class="summary-hero summary-hero-primary">
+                  <strong>Estimated net after payoff</strong>
+                  <span id="netAfterPayoff">$—</span>
+                </div>
+
+                <div class="summary-hero summary-hero-secondary">
                   <strong>Estimated seller costs</strong>
                   <span id="sellerCosts">$—</span>
                 </div>
-                <div class="calc-kpi">
-                  <strong>Estimated net (before payoff)</strong>
+              </div>
+
+              <div class="summary-mini-row">
+                <div class="summary-mini">
+                  <strong>Net before payoff</strong>
                   <span id="netBeforePayoff">$—</span>
                 </div>
-                <div class="calc-kpi">
-                  <strong>Estimated net (after payoff)</strong>
-                  <span id="netAfterPayoff">$—</span>
+
+                <div class="summary-mini">
+                  <strong>Mortgage payoff</strong>
+                  <span id="payoffDisplay">$—</span>
                 </div>
               </div>
 
-              <table class="calc-table" aria-label="Seller cost breakdown">
-                <thead>
-                  <tr>
-                    <th>Category</th>
-                    <th>Estimate</th>
-                  </tr>
-                </thead>
-                <tbody id="breakdown"></tbody>
-              </table>
+              <p class="summary-help">
+                Net proceeds reflect commission, transfer taxes, prorations, estimated title and legal fees,
+                and any optional seller-side costs you enter below.
+              </p>
+
+              <div class="calc-disclosure">
+                <details class="calc-details" open>
+                  <summary>Seller cost breakdown</summary>
+                  <div class="calc-details-body">
+                    <table class="calc-table" aria-label="Seller cost breakdown">
+                      <thead>
+                        <tr>
+                          <th>Category</th>
+                          <th>Estimate</th>
+                        </tr>
+                      </thead>
+                      <tbody id="breakdown"></tbody>
+                    </table>
+                  </div>
+                </details>
+
+                <details class="calc-details">
+                  <summary>Advanced assumptions</summary>
+                  <div class="calc-details-body">
+                    <div class="advanced-grid">
+                      <div class="calc-field">
+                        <label for="taxProrationPct">Tax proration factor (%)</label>
+                        <input id="taxProrationPct" inputmode="decimal" value="105" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="taxProrationCredit">Tax proration credit (auto)</label>
+                        <input id="taxProrationCredit" inputmode="decimal" value="$0" readonly />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="hoaProrationCredit">HOA proration credit (auto)</label>
+                        <input id="hoaProrationCredit" inputmode="decimal" value="$0" readonly />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="titleSellerFees">Est. title/escrow fees</label>
+                        <input id="titleSellerFees" inputmode="decimal" value="450" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="recordingFees">Recording / release fees</label>
+                        <input id="recordingFees" inputmode="decimal" value="0" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="hoaDocsFees">HOA docs / move-out / paid assessment</label>
+                        <input id="hoaDocsFees" inputmode="decimal" value="0" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="sellerCredits">Seller credits</label>
+                        <input id="sellerCredits" inputmode="decimal" value="0" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="otherSellerCosts">Additional / other seller costs</label>
+                        <input id="otherSellerCosts" inputmode="decimal" value="0" />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="cityTransferTax">City transfer tax (auto)</label>
+                        <input id="cityTransferTax" inputmode="decimal" value="$0" readonly />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="countyTransferTax">County transfer tax (auto)</label>
+                        <input id="countyTransferTax" inputmode="decimal" value="$0" readonly />
+                      </div>
+
+                      <div class="calc-field">
+                        <label for="stateTransferTax">State transfer tax (auto)</label>
+                        <input id="stateTransferTax" inputmode="decimal" value="$0" readonly />
+                      </div>
+                    </div>
+
+                    <div class="advanced-note">
+                      Transfer taxes and prorations are calculated automatically based on your selected location
+                      and closing date. Optional fields let you account for common extras that may show up on a settlement statement.
+                    </div>
+                  </div>
+                </details>
+              </div>
 
               <div class="calc-disclaimer">
-                This tool provides a rough estimate for planning purposes only. Actual costs and credits vary by municipality, proration method,
-                title company, lien payoffs, HOA requirements, and negotiated terms. Templeton Real Estate Group, LLC and Keller Williams ONEChicago
-                do not guarantee figures shown here and are not responsible for decisions made based on this estimate.
+                This tool provides a rough estimate for planning purposes only. Actual costs and credits vary by municipality,
+                proration method, title company, lien payoffs, HOA requirements, and negotiated terms. Templeton Real Estate Group, LLC
+                and Keller Williams ONEChicago do not guarantee figures shown here and are not responsible for decisions made based on this estimate.
               </div>
             </div>
           </div>
@@ -583,10 +666,9 @@
       </section>
     </main>
 
-    <!-- FOOTER (exact) -->
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="site-footer-inner">
-
         <div class="footer-brand">
           templeton real estate group · chicago, il
         </div>
@@ -601,17 +683,13 @@
         <div>
           &copy; <span id="year"></span> Templeton Real Estate Group, LLC.
         </div>
-
       </div>
     </footer>
-
   </div>
 
   <script>
-    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ---------- Parsing + formatting helpers ----------
     function parseNumber(raw) {
       const s = String(raw ?? "").trim();
       if (!s) return 0;
@@ -656,7 +734,7 @@
     }
 
     function daysBetween(a, b) {
-      const ms = (b.getTime() - a.getTime());
+      const ms = b.getTime() - a.getTime();
       return Math.max(0, Math.round(ms / 86400000));
     }
 
@@ -675,47 +753,25 @@
     function setReasonableDefaultDate() {
       const el = document.getElementById("closingDate");
       if (!el) return;
-    
-      // Don't override if user already picked a date
       if (String(el.value || "").trim()) return;
-    
+
       const today = new Date();
       const plus30 = new Date(today);
       plus30.setDate(today.getDate() + 30);
-    
+
       const yyyy = plus30.getFullYear();
       const mm = String(plus30.getMonth() + 1).padStart(2, "0");
       const dd = String(plus30.getDate()).padStart(2, "0");
-    
+
       el.value = `${yyyy}-${mm}-${dd}`;
     }
 
-    function isMeaningfullyNonZero(n) {
-      return Math.abs(Math.round(n || 0)) >= 1;
-    }
-
-    function setRowVisible(rowId, shouldShow) {
-      const row = document.getElementById(rowId);
-      if (!row) return;
-
-      if (shouldShow) {
-        row.style.display = "block";
-        requestAnimationFrame(() => row.classList.add("is-visible"));
-      } else {
-        row.classList.remove("is-visible");
-        window.setTimeout(() => {
-          if (!row.classList.contains("is-visible")) row.style.display = "none";
-        }, 200);
-      }
-    }
-
-    // ---------- Defaults + formatting groups ----------
     const currencyFieldIds = [
       "salePrice",
       "mortgagePayoff",
-      "attorneyFee",
       "annualTax",
       "monthlyHoa",
+      "attorneyFee",
       "titleSellerFees",
       "recordingFees",
       "hoaDocsFees",
@@ -731,13 +787,13 @@
     const defaults = {
       salePrice: "500000",
       mortgagePayoff: "0",
-      closingDate: "",
       commissionPct: "6",
-      attorneyFee: "500",
+      closingDate: "",
       annualTax: "9000",
-      taxProrationPct: "105",
       monthlyHoa: "0",
+      attorneyFee: "500",
       locationMode: "chicago",
+      taxProrationPct: "105",
       titleSellerFees: "450",
       recordingFees: "0",
       hoaDocsFees: "0",
@@ -757,17 +813,11 @@
     }
 
     function transferTaxRates(mode) {
-      // Rates in $ per $1,000 of sale price
-      // Chicago: City 7.50, Cook 0.50, IL State 1.00
       if (mode === "chicago") return { city: 7.50, county: 0.50, state: 1.00 };
-      // Cook (non-Chicago): no city, Cook 0.50, IL State 1.00
       if (mode === "cook_non_chicago") return { city: 0.00, county: 0.50, state: 1.00 };
-      // None
       return { city: 0.00, county: 0.00, state: 0.00 };
     }
 
-    // Common planning model:
-    // seller credit ~= (annual taxes * (1 + factor%)) * portion of year elapsed at closing.
     function computeSellerTaxProration(closingDate, annualTax, factorPct) {
       if (!closingDate || annualTax <= 0) return 0;
       const doy = dayOfYear(closingDate);
@@ -777,7 +827,6 @@
       return Math.max(0, (annualTax * factor) * (daysSellerOwes / diy));
     }
 
-    // HOA proration credit to seller (seller assumes HOA is prepaid through month-end)
     function computeHoaProrationCreditToSeller(closingDate, monthlyHoa) {
       if (!closingDate || monthlyHoa <= 0) return 0;
 
@@ -800,15 +849,15 @@
       const commission = price * (commissionPct / 100);
 
       const attorney = getVal("attorneyFee");
-      const titleSellerFees = getVal("titleSellerFees");
+      const annualTax = Math.max(getVal("annualTax"), 0);
+      const monthlyHoa = Math.max(getVal("monthlyHoa"), 0);
 
-      // Advanced
+      const titleSellerFees = Math.max(getVal("titleSellerFees"), 0);
       const recordingFees = Math.max(getVal("recordingFees"), 0);
       const hoaDocsFees = Math.max(getVal("hoaDocsFees"), 0);
       const sellerCredits = Math.max(getVal("sellerCredits"), 0);
       const otherSellerCosts = Math.max(getVal("otherSellerCosts"), 0);
 
-      // Transfer taxes (auto) — show 3 line items
       const mode = document.getElementById("locationMode").value;
       const rates = transferTaxRates(mode);
 
@@ -816,38 +865,18 @@
       const countyTax = Math.max(0, price / 1000 * rates.county);
       const stateTax = Math.max(0, price / 1000 * rates.state);
 
-      // Tax proration (auto only)
-      const annualTax = Math.max(getVal("annualTax"), 0);
       const taxProrationPct = Math.max(getVal("taxProrationPct"), 0);
       const taxProrationCredit = computeSellerTaxProration(closingDate, annualTax, taxProrationPct);
-
-      // HOA proration (auto only)
-      const monthlyHoa = Math.max(getVal("monthlyHoa"), 0);
       const hoaCredit = computeHoaProrationCreditToSeller(closingDate, monthlyHoa);
 
-      // Update readonly displays
-      const taxEl = document.getElementById("taxProrationCredit");
-      const hoaEl = document.getElementById("hoaProrationCredit");
-      const cityEl = document.getElementById("cityTransferTax");
-      const countyEl = document.getElementById("countyTransferTax");
-      const stateEl = document.getElementById("stateTransferTax");
-
-      if (taxEl) taxEl.value = moneyFmt(taxProrationCredit);
-      if (hoaEl) hoaEl.value = moneyFmt(hoaCredit);
-      if (cityEl) cityEl.value = moneyFmt(cityTax);
-      if (countyEl) countyEl.value = moneyFmt(countyTax);
-      if (stateEl) stateEl.value = moneyFmt(stateTax);
-
-      // Show/hide auto rows only when relevant
-      setRowVisible("rowTaxProration", isMeaningfullyNonZero(taxProrationCredit));
-      setRowVisible("rowHoaProration", isMeaningfullyNonZero(hoaCredit));
-      setRowVisible("rowCityTax", isMeaningfullyNonZero(cityTax));
-      setRowVisible("rowCountyTax", isMeaningfullyNonZero(countyTax));
-      setRowVisible("rowStateTax", isMeaningfullyNonZero(stateTax));
+      document.getElementById("taxProrationCredit").value = moneyFmt(taxProrationCredit);
+      document.getElementById("hoaProrationCredit").value = moneyFmt(hoaCredit);
+      document.getElementById("cityTransferTax").value = moneyFmt(cityTax);
+      document.getElementById("countyTransferTax").value = moneyFmt(countyTax);
+      document.getElementById("stateTransferTax").value = moneyFmt(stateTax);
 
       const transferTaxesTotal = cityTax + countyTax + stateTax;
 
-      // Seller costs: proration credit is a COST to seller; HOA proration is a CREDIT (reduces costs)
       const sellerCosts =
         commission +
         attorney +
@@ -857,8 +886,8 @@
         sellerCredits +
         otherSellerCosts +
         taxProrationCredit +
-        transferTaxesTotal
-        - hoaCredit;
+        transferTaxesTotal -
+        hoaCredit;
 
       const netBeforePayoff = price - sellerCosts;
       const netAfterPayoff = netBeforePayoff - payoff;
@@ -866,24 +895,26 @@
       document.getElementById("sellerCosts").textContent = moneyFmt(sellerCosts);
       document.getElementById("netBeforePayoff").textContent = moneyFmt(netBeforePayoff);
       document.getElementById("netAfterPayoff").textContent = moneyFmt(netAfterPayoff);
+      document.getElementById("payoffDisplay").textContent = moneyFmt(payoff);
 
       const rows = [
         ["Commission", commission],
         ["Attorney fee", attorney],
-        ["Title/escrow seller fees (est.)", titleSellerFees],
-        ["Recording / release fees (est.)", recordingFees],
-        ["HOA docs / move-out / paid assessment (est.)", hoaDocsFees],
-        ["Seller credits (repairs / concessions)", sellerCredits],
+        ["Title / escrow seller fees", titleSellerFees],
+        ["Recording / release fees", recordingFees],
+        ["HOA docs / move-out / paid assessment", hoaDocsFees],
+        ["Seller credits", sellerCredits],
         ["Other seller costs", otherSellerCosts],
         ["Tax proration credit to buyer (auto)", taxProrationCredit],
         ["City transfer tax (auto)", cityTax],
         ["County transfer tax (auto)", countyTax],
         ["State transfer tax (auto)", stateTax],
-        ["HOA proration credit to seller (auto, if applicable)", -hoaCredit]
+        ["HOA proration credit to seller (auto)", -hoaCredit]
       ];
 
       const tbody = document.getElementById("breakdown");
       tbody.innerHTML = "";
+
       for (const [label, val] of rows) {
         if (Math.round(val) === 0) continue;
         const tr = document.createElement("tr");
@@ -895,9 +926,18 @@
         tr.appendChild(td2);
         tbody.appendChild(tr);
       }
+
+      const totalTr = document.createElement("tr");
+      totalTr.className = "total-row";
+      const totalTd1 = document.createElement("td");
+      const totalTd2 = document.createElement("td");
+      totalTd1.textContent = "Total seller costs";
+      totalTd2.textContent = moneyFmt(sellerCosts);
+      totalTr.appendChild(totalTd1);
+      totalTr.appendChild(totalTd2);
+      tbody.appendChild(totalTr);
     }
 
-    // ---------- Live recalc (debounced) ----------
     function bindLiveRecalc() {
       const form = document.getElementById("sellerCalc");
       if (!form) return;
@@ -908,14 +948,12 @@
         t = window.setTimeout(calculate, 120);
       };
 
-      form.querySelectorAll("input, select, details").forEach((el) => {
+      form.querySelectorAll("input, select").forEach((el) => {
         el.addEventListener("input", schedule);
         el.addEventListener("change", schedule);
-        el.addEventListener("toggle", schedule);
       });
     }
 
-    // ---------- Formatting on blur ----------
     function formatCurrencyField(el) {
       const n = parseNumber(el.value);
       el.value = moneyFmt(n);
@@ -924,6 +962,18 @@
     function formatPercentPrettyField(el) {
       const n = parseNumber(el.value);
       el.value = percentDisplay(n);
+    }
+
+    function formatAll() {
+      currencyFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) formatCurrencyField(el);
+      });
+
+      percentPrettyFieldIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) formatPercentPrettyField(el);
+      });
     }
 
     function bindBlurFormatting() {
@@ -939,18 +989,6 @@
         if (!el) return;
         el.addEventListener("blur", () => formatPercentPrettyField(el));
         el.addEventListener("focus", () => el.select());
-      });
-    }
-
-    function formatAll() {
-      currencyFieldIds.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) formatCurrencyField(el);
-      });
-
-      percentPrettyFieldIds.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) formatPercentPrettyField(el);
       });
     }
 
