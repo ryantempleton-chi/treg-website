@@ -24,16 +24,34 @@
 
     <style>
       .hero-subtitle {
-        max-width: 880px;
+        max-width: 760px;
+      }
+
+      .intake-form {
+        padding-top: 24px;
+      }
+
+      .intake-form .container {
+        max-width: 1040px;
       }
 
       .intake-card {
         overflow: hidden;
+        border-radius: 24px;
+      }
+
+      .intake-card iframe {
+        display: block;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        border: 0;
       }
 
       .open-house-note {
         max-width: 760px;
-        margin: 20px auto 0;
+        margin: 18px auto 0;
+        padding: 0 16px;
         text-align: center;
         font-family: "PT Serif", serif;
         font-size: 0.98rem;
@@ -41,9 +59,109 @@
         color: var(--treg-slate, #373a3a);
       }
 
+      @media (max-width: 1024px) {
+        .intake-form {
+          padding-top: 20px;
+        }
+      }
+
       @media (max-width: 768px) {
+        .hero {
+          padding-top: 42px;
+          padding-bottom: 34px;
+        }
+
+        .hero-inner {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        .hero-label {
+          margin-bottom: 10px;
+        }
+
         .hero-title {
-          max-width: 12ch;
+          max-width: none;
+          font-size: clamp(2.2rem, 8vw, 3.1rem);
+          line-height: 0.96;
+          letter-spacing: -0.02em;
+          margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+          max-width: 34ch;
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+
+        .intake-form {
+          padding-top: 14px;
+          padding-bottom: 20px;
+        }
+
+        .intake-form .container {
+          padding-left: 14px;
+          padding-right: 14px;
+        }
+
+        .intake-card {
+          border-radius: 18px;
+        }
+
+        .open-house-note {
+          margin-top: 16px;
+          padding: 0 8px;
+          font-size: 0.96rem;
+          line-height: 1.65;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero {
+          padding-top: 34px;
+          padding-bottom: 28px;
+        }
+
+        .hero-inner {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .hero-label {
+          font-size: 0.72rem;
+          letter-spacing: 0.18em;
+        }
+
+        .hero-title {
+          font-size: clamp(2rem, 10vw, 2.7rem);
+          line-height: 0.98;
+          margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+          max-width: 30ch;
+          font-size: 0.98rem;
+          line-height: 1.55;
+        }
+
+        .intake-form {
+          padding-top: 10px;
+          padding-bottom: 16px;
+        }
+
+        .intake-form .container {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        .intake-card {
+          border-radius: 16px;
+        }
+
+        .open-house-note {
+          margin-top: 14px;
+          font-size: 0.93rem;
+          line-height: 1.6;
         }
       }
     </style>
@@ -79,7 +197,6 @@
                 src="https://form.jotform.com/260975721911158"
                 frameborder="0"
                 scrolling="no"
-                style="min-width: 100%; max-width: 100%; border: none;"
               ></iframe>
 
               <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
