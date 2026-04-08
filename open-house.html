@@ -5,42 +5,40 @@
     <title>Open House Sign-In | Templeton Real Estate Group</title>
     <meta
       name="description"
-      content="Open house sign-in for Templeton Real Estate Group. A few quick details so we can follow up and help with your home search."
+      content="Open house sign-in for Templeton Real Estate Group. Share a few quick details so we can follow up and help with your home search."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
 
-    <!-- Fonts + Styles -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Global Styles -->
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="stylesheet" href="/assets/css/intake.css" />
 
     <style>
-      .hero-label {
-        margin-bottom: 14px;
-      }
-
       .hero-subtitle {
         max-width: 880px;
       }
 
+      .intake-card {
+        overflow: hidden;
+      }
+
       .open-house-note {
         max-width: 760px;
-        margin: 18px auto 0;
+        margin: 20px auto 0;
         text-align: center;
         font-family: "PT Serif", serif;
         font-size: 0.98rem;
         line-height: 1.7;
         color: var(--treg-slate, #373a3a);
-      }
-
-      .intake-card {
-        overflow: hidden;
       }
 
       @media (max-width: 768px) {
@@ -53,6 +51,7 @@
 
   <body>
     <div class="page">
+      <!-- Header -->
       <div id="site-header"></div>
 
       <main class="main">
@@ -62,47 +61,48 @@
             <div class="hero-label">welcome in</div>
             <h1 class="hero-title">sign in for today’s open house.</h1>
             <p class="hero-subtitle">
-              Thanks for stopping by. Please take a moment to share a few quick details so we can follow up and help
-              with your search.
+              Thanks for stopping by. Please take a moment to share a few quick details so we can follow up and help with your search.
             </p>
           </div>
         </section>
 
-        <!-- FORM EMBED -->
+        <!-- FORM -->
         <section class="intake-form">
           <div class="container">
             <div class="intake-card">
               <iframe
-                id="JotFormIFrame-REPLACE_WITH_YOUR_FORM_ID"
+                id="JotFormIFrame-260975721911158"
                 title="Open House Sign-In"
                 onload="window.parent.scrollTo(0,0)"
                 allowtransparency="true"
                 allow="geolocation; microphone; camera; fullscreen; payment"
-                src="https://form.jotform.com/REPLACE_WITH_YOUR_FORM_ID"
+                src="https://form.jotform.com/260975721911158"
                 frameborder="0"
                 scrolling="no"
+                style="min-width:100%;max-width:100%;border:none;"
               ></iframe>
 
               <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
               <script>
                 window.jotformEmbedHandler(
-                  "iframe[id='JotFormIFrame-REPLACE_WITH_YOUR_FORM_ID']",
+                  "iframe[id='JotFormIFrame-260975721911158']",
                   "https://form.jotform.com/"
                 );
               </script>
             </div>
 
             <p class="open-house-note">
-              We’re glad you’re here. If you have questions about this home, similar properties, or your next move,
-              feel free to ask while you’re here today.
+              We’re glad you’re here. If you have any questions about this home, similar properties, or your next move, feel free to ask while you’re here today.
             </p>
           </div>
         </section>
       </main>
 
+      <!-- Footer -->
       <div id="site-footer"></div>
     </div>
 
+    <!-- Header/Footer Loader -->
     <script src="/assets/js/layout.js"></script>
   </body>
 </html>
