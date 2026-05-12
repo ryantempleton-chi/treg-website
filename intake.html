@@ -9,6 +9,28 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Open Graph / Link Preview -->
+    <meta property="og:site_name" content="Templeton Real Estate Group" />
+    <meta property="og:title" content="Client Intake | Templeton Real Estate Group" />
+    <meta
+      property="og:description"
+      content="Start your Chicago real estate intake with Templeton Real Estate Group. Quick next steps for buyers, sellers, renters, and landlords."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ryantempleton.com/intake.html" />
+    <meta property="og:image" content="https://ryantempleton.com/assets/img/og/intake-preview.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / Large Preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Client Intake | Templeton Real Estate Group" />
+    <meta
+      name="twitter:description"
+      content="Start your Chicago real estate intake with Templeton Real Estate Group. Quick next steps for buyers, sellers, renters, and landlords."
+    />
+    <meta name="twitter:image" content="https://ryantempleton.com/assets/img/og/intake-preview.jpg" />
+
     <!-- Fonts + Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -78,7 +100,6 @@
       (function () {
         const params = new URLSearchParams(window.location.search);
 
-        // Accept service from common params (service preferred, but supports a few fallbacks)
         const raw =
           (params.get("service") ||
             params.get("type") ||
@@ -94,11 +115,9 @@
 
         if (!labelEl || !titleEl || !subEl) return;
 
-        // Normalize common aliases -> canonical keys
         const normalizeService = (v) => {
           if (!v) return "";
 
-          // strip spaces/underscores for safer matching
           const s = v.replace(/\s+/g, "-").replace(/_/g, "-");
 
           const buy = new Set(["buy", "buyer", "purchase", "purchasing", "buying", "homebuyer"]);
@@ -120,10 +139,9 @@
           if (rent.has(s)) return "rent";
           if (landlord.has(s)) return "landlord";
 
-          // handle compound-ish values like "renting" or "seller-intake"
           if (s.includes("buy")) return "buy";
           if (s.includes("sell") || s.includes("list")) return "sell";
-          if (s.includes("rent") || s.includes("lease")) return "rent";
+          if (s.includes("rent" ) || s.includes("lease")) return "rent";
           if (s.includes("landlord") || s.includes("owner") || s.includes("investor")) return "landlord";
 
           return "";
