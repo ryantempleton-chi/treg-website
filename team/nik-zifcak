@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Nik Zifcak | Templeton Real Estate Group</title>
+    <meta
+      name="description"
+      content="Meet Nik Zifcak, Broker Associate with Templeton Real Estate Group — supporting buyers, renters, and clients across Chicago with clear communication and a steady, service-first approach."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts + Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Oswald:wght@400;500&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="page">
+      <div id="site-header"></div>
+
+      <main class="main">
+        <!-- HERO -->
+        <section class="hero">
+          <div class="hero-inner">
+            <div class="hero-label">meet the team</div>
+            <h1 class="hero-title">nik zifcak.</h1>
+            <p class="hero-subtitle">Broker Associate · Buyers, Rentals &amp; Client Support</p>
+          </div>
+        </section>
+
+        <!-- BODY -->
+        <section class="section">
+          <div class="container section-grid two">
+            <div>
+              <h2 class="section-heading">about nik</h2>
+
+              <p class="section-lede">
+                Nik Zifcak is a Broker Associate with Templeton Real Estate Group, supporting clients throughout Chicago
+                with a thoughtful, service-first approach.
+              </p>
+
+              <p>
+                Nik brings steady communication, strong follow-through, and a genuine desire to help clients feel
+                prepared at each step of the process.
+              </p>
+
+              <p>
+                Whether helping clients navigate a rental search, explore their first purchase, or understand the local
+                market, Nik focuses on making the experience feel organized, approachable, and clear.
+              </p>
+
+              <p>
+                Working closely with Ryan and the TREG team, Nik helps ensure clients receive responsive guidance,
+                practical next steps, and support from first conversation through move-in, closing, and beyond.
+              </p>
+
+              <!-- CONTACT ICONS -->
+              <div class="team-contact-icons" aria-label="Contact links for Nik Zifcak">
+                <a href="tel:+10000000000" aria-label="Call Nik Zifcak" title="Call Nik">
+                  <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                </a>
+
+                <a href="mailto:nik@example.com" aria-label="Email Nik Zifcak" title="Email Nik">
+                  <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                </a>
+
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Nik Zifcak on Instagram"
+                  title="Instagram"
+                >
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Nik Zifcak on LinkedIn"
+                  title="LinkedIn"
+                >
+                  <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <!-- ACTION BUTTONS -->
+              <div class="page-actions">
+                <a class="btn btn-primary" href="/contact.html">contact the team</a>
+                <a class="btn btn-ghost" href="/team/">back to team</a>
+              </div>
+            </div>
+
+            <aside>
+              <img
+                src="/assets/img/team/headshot-nik-zifcak.jpg"
+                alt="Nik Zifcak, Broker Associate at Templeton Real Estate Group"
+                class="about-photo"
+                loading="lazy"
+              />
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <div id="site-footer"></div>
+    </div>
+
+    <script src="/assets/js/layout.js"></script>
+  </body>
+</html>
