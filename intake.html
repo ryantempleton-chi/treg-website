@@ -40,6 +40,37 @@
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="stylesheet" href="/assets/css/intake.css" />
+
+    <!-- Intake page refinements -->
+    <style>
+      .intake-note-wrap {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+        box-sizing: border-box;
+      }
+
+      .intake-note {
+        width: 100%;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-wrap: balance;
+      }
+
+      @media (max-width: 640px) {
+        .intake-note-wrap {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .intake-note {
+          text-wrap: pretty;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -82,10 +113,12 @@
               </script>
             </div>
 
-            <p class="intake-note">
-              If anything changes in the meantime — timeline, budget, or priorities — don’t hesitate to reach out. Call,
-              text, or email us anytime!
-            </p>
+            <div class="intake-note-wrap">
+              <p class="intake-note">
+                If anything changes in the meantime — timeline, budget, or priorities — don’t hesitate to reach out.
+                Call, text, or email us anytime!
+              </p>
+            </div>
           </div>
         </section>
       </main>
@@ -120,9 +153,35 @@
 
           const s = v.replace(/\s+/g, "-").replace(/_/g, "-");
 
-          const buy = new Set(["buy", "buyer", "purchase", "purchasing", "buying", "homebuyer"]);
-          const sell = new Set(["sell", "seller", "sale", "selling", "list", "listing", "listings"]);
-          const rent = new Set(["rent", "renter", "rental", "leasing", "lease", "tenant", "tenant-rep"]);
+          const buy = new Set([
+            "buy",
+            "buyer",
+            "purchase",
+            "purchasing",
+            "buying",
+            "homebuyer"
+          ]);
+
+          const sell = new Set([
+            "sell",
+            "seller",
+            "sale",
+            "selling",
+            "list",
+            "listing",
+            "listings"
+          ]);
+
+          const rent = new Set([
+            "rent",
+            "renter",
+            "rental",
+            "leasing",
+            "lease",
+            "tenant",
+            "tenant-rep"
+          ]);
+
           const landlord = new Set([
             "landlord",
             "ll",
@@ -141,8 +200,14 @@
 
           if (s.includes("buy")) return "buy";
           if (s.includes("sell") || s.includes("list")) return "sell";
-          if (s.includes("rent" ) || s.includes("lease")) return "rent";
-          if (s.includes("landlord") || s.includes("owner") || s.includes("investor")) return "landlord";
+          if (s.includes("rent") || s.includes("lease")) return "rent";
+          if (
+            s.includes("landlord") ||
+            s.includes("owner") ||
+            s.includes("investor")
+          ) {
+            return "landlord";
+          }
 
           return "";
         };
@@ -155,16 +220,19 @@
             title: "let’s talk about your purchase.",
             sub: "Answer a few quick questions so we can recommend next steps, timing, and a smart game plan."
           },
+
           sell: {
             label: "get started",
             title: "let’s talk about your sale.",
             sub: "A quick intake so we can prep pricing thoughts, timelines, and a clear plan before we connect."
           },
+
           rent: {
             label: "get started",
             title: "let’s plan your rental search.",
             sub: "Share your timing, budget, and must-haves—then we’ll build a clean, organized showing plan."
           },
+
           landlord: {
             label: "get started",
             title: "let’s talk about your rental property.",
