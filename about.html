@@ -17,6 +17,36 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!-- About page refinements -->
+    <style>
+      /* Keep long-form copy at a consistent, readable width */
+      .about-copy {
+        width: 100%;
+        max-width: 880px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Keep paragraph edges consistent */
+      .about-copy .section-lede,
+      .about-copy p {
+        max-width: none !important;
+        width: 100%;
+      }
+
+      /* Ryan's two-column section should retain its existing layout */
+      .about-ryan-copy {
+        width: 100%;
+      }
+
+      /* Mobile */
+      @media (max-width: 640px) {
+        .about-copy {
+          max-width: 100%;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -39,31 +69,33 @@
         <!-- SECTION 1: PHILOSOPHY -->
         <section class="section">
           <div class="container">
-            <h2 class="section-heading">built on relationships, not transactions</h2>
+            <div class="about-copy">
+              <h2 class="section-heading">built on relationships, not transactions</h2>
 
-            <p class="section-lede" style="max-width: 780px;">
-              The Templeton Real Estate Group was created with a simple idea: combine the reach and resources of a major brokerage with the
-              care, creativity, and follow-through of a boutique team.
-            </p>
+              <p class="section-lede">
+                The Templeton Real Estate Group was created with a simple idea: combine the reach and resources of a major brokerage with the
+                care, creativity, and follow-through of a boutique team.
+              </p>
 
-            <p>
-              Our clients come to us at every stage of life — renting their first Chicago apartment, buying a condo or single-family home, upsizing,
-              downsizing, or relocating to a new neighborhood or suburb. No matter the price point or property type, the goal is the same: make the
-              process feel clear, calm, and intentional.
-            </p>
+              <p>
+                Our clients come to us at every stage of life — renting their first Chicago apartment, buying a condo or single-family home, upsizing,
+                downsizing, or relocating to a new neighborhood or suburb. No matter the price point or property type, the goal is the same: make the
+                process feel clear, calm, and intentional.
+              </p>
 
-            <p>
-              We lead with education and expectations, so you always know what’s happening, what comes next, and what your options are. From pricing
-              strategies and neighborhood comparisons to timing and offer structure, Templeton Real Estate Group is here to help you buy, sell, and rent
-              with confidence — not confusion.
-            </p>
+              <p>
+                We lead with education and expectations, so you always know what’s happening, what comes next, and what your options are. From pricing
+                strategies and neighborhood comparisons to timing and offer structure, Templeton Real Estate Group is here to help you buy, sell, and rent
+                with confidence — not confusion.
+              </p>
+            </div>
           </div>
         </section>
 
         <!-- SECTION 2: RYAN -->
         <section class="section">
           <div class="container section-grid two">
-            <div>
+            <div class="about-ryan-copy">
               <h2 class="section-heading">meet ryan, your lead broker</h2>
 
               <p class="section-lede">Hey there, friends!</p>
@@ -113,17 +145,20 @@
         <!-- SECTION 3: TEAM -->
         <section class="section section-muted">
           <div class="container">
-            <h2 class="section-heading">a growing chicago real estate team</h2>
 
-            <p class="section-lede" style="max-width: 780px;">
-              As demand for clear, straightforward guidance has grown, so has the Templeton Real Estate Group. We’ve built this team intentionally —
-              adding people who share the same standards around communication, follow-through, and treating every client like a long-term relationship.
-            </p>
+            <div class="about-copy">
+              <h2 class="section-heading">a growing chicago real estate team</h2>
 
-            <p>
-              Our structure is simple: you get the benefit of a responsive team with multiple points of support — while Ryan stays closely involved to
-              ensure strategy, details, and execution are consistently handled at a high level.
-            </p>
+              <p class="section-lede">
+                As demand for clear, straightforward guidance has grown, so has the Templeton Real Estate Group. We’ve built this team intentionally —
+                adding people who share the same standards around communication, follow-through, and treating every client like a long-term relationship.
+              </p>
+
+              <p>
+                Our structure is simple: you get the benefit of a responsive team with multiple points of support — while Ryan stays closely involved to
+                ensure strategy, details, and execution are consistently handled at a high level.
+              </p>
+            </div>
 
             <div class="team-grid">
               <!-- Ryan -->
@@ -131,11 +166,16 @@
                 <a class="team-card-overlay" href="/team/ryan-templeton.html" aria-label="Meet Ryan Templeton"></a>
 
                 <div class="team-thumb">
-                  <img src="/assets/img/team/headshot-ryan-templeton.jpg" alt="Ryan Templeton" loading="lazy" />
+                  <img
+                    src="/assets/img/team/headshot-ryan-templeton.jpg"
+                    alt="Ryan Templeton"
+                    loading="lazy"
+                  />
                 </div>
 
                 <h3 class="team-card-title">ryan templeton.</h3>
                 <div class="team-card-role">Founder &amp; Lead Broker</div>
+
                 <p class="team-card-text">
                   Leads strategy and client experience across the team — known for clear communication, thoughtful negotiation, and an organized approach
                   that keeps every move calm, intentional, and well-executed.
@@ -146,14 +186,23 @@
 
               <!-- Giovanna -->
               <article class="team-card">
-                <a class="team-card-overlay" href="/team/giovanna-giampaolo.html" aria-label="Meet Giovanna Giampaolo"></a>
+                <a
+                  class="team-card-overlay"
+                  href="/team/giovanna-giampaolo.html"
+                  aria-label="Meet Giovanna Giampaolo"
+                ></a>
 
                 <div class="team-thumb">
-                  <img src="/assets/img/team/headshot-giovanna-giampaolo.jpg" alt="Giovanna Giampaolo" loading="lazy" />
+                  <img
+                    src="/assets/img/team/headshot-giovanna-giampaolo.jpg"
+                    alt="Giovanna Giampaolo"
+                    loading="lazy"
+                  />
                 </div>
 
                 <h3 class="team-card-title">giovanna giampaolo.</h3>
                 <div class="team-card-role">Broker Associate</div>
+
                 <p class="team-card-text">
                   Serves clients across Chicago with a thoughtful, client-first approach — known for strong instincts, clear communication, and helping
                   people feel confident and supported at every step of the process.
@@ -164,14 +213,23 @@
 
               <!-- Moriah -->
               <article class="team-card">
-                <a class="team-card-overlay" href="/team/moriah-carson.html" aria-label="Meet Moriah Carson"></a>
+                <a
+                  class="team-card-overlay"
+                  href="/team/moriah-carson.html"
+                  aria-label="Meet Moriah Carson"
+                ></a>
 
                 <div class="team-thumb">
-                  <img src="/assets/img/team/headshot-moriah-carson.jpg" alt="Moriah Carson" loading="lazy" />
+                  <img
+                    src="/assets/img/team/headshot-moriah-carson.jpg"
+                    alt="Moriah Carson"
+                    loading="lazy"
+                  />
                 </div>
 
                 <h3 class="team-card-title">moriah carson.</h3>
                 <div class="team-card-role">Broker Associate</div>
+
                 <p class="team-card-text">
                   Focused on guiding buyers and sellers through Chicago real estate with clarity, education, and steady communication — helping clients
                   feel confident at every step of the process.
@@ -182,37 +240,28 @@
 
               <!-- Nik -->
               <article class="team-card">
-                <a class="team-card-overlay" href="/team/nik-zifcak.html" aria-label="Meet Nik Zifcak"></a>
+                <a
+                  class="team-card-overlay"
+                  href="/team/nik-zifcak.html"
+                  aria-label="Meet Nik Zifcak"
+                ></a>
 
                 <div class="team-thumb">
-                  <img src="/assets/img/team/headshot-nik-zifcak.jpg" alt="Nik Zifcak" loading="lazy" />
+                  <img
+                    src="/assets/img/team/headshot-nik-zifcak.jpg"
+                    alt="Nik Zifcak"
+                    loading="lazy"
+                  />
                 </div>
 
                 <h3 class="team-card-title">nik zifcak.</h3>
                 <div class="team-card-role">Broker Associate</div>
+
                 <p class="team-card-text">
                   Supports buyers, renters, and relocation clients with responsive communication, thoughtful guidance, and a service-first approach.
                 </p>
 
                 <a href="/team/nik-zifcak.html" class="team-card-link">meet nik</a>
-              </article>
-
-              <!-- Miriam -->
-              <article class="team-card">
-                <a class="team-card-overlay" href="/team/miriam-moss.html" aria-label="Meet Miriam Moss"></a>
-
-                <div class="team-thumb">
-                  <img src="/assets/img/team/headshot-miriam-moss.jpg" alt="Miriam Moss" loading="lazy" />
-                </div>
-
-                <h3 class="team-card-title">miriam moss.</h3>
-                <div class="team-card-role">Leasing Associate</div>
-                <p class="team-card-text">
-                  Detail-forward and solutions-oriented — helping keep deals organized, communication tight, and clients supported throughout the process,
-                  especially when the moving parts start to stack up.
-                </p>
-
-                <a href="/team/miriam-moss.html" class="team-card-link">meet miriam</a>
               </article>
             </div>
           </div>
