@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +20,7 @@
 
     <!-- About page refinements -->
     <style>
-      /* Keep long-form copy at a consistent, readable width */
+      /* Keep long-form copy at a consistent, readable width. */
       .about-copy {
         width: 100%;
         max-width: 880px;
@@ -29,33 +28,110 @@
         margin-right: auto;
       }
 
-      /* Keep paragraph edges consistent */
       .about-copy .section-lede,
       .about-copy p {
         max-width: none !important;
         width: 100%;
       }
 
-      /* Preserve Ryan's two-column section */
+      /* Preserve Ryan's existing two-column section. */
       .about-ryan-copy {
         width: 100%;
       }
 
-      /* Mobile */
+      /* Two equal-width team cards, centered below the introduction. */
+      .about-page .team-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+        gap: 32px;
+        width: 100%;
+        max-width: 880px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Equal-height cards with buttons anchored at the bottom. */
+      .about-page .team-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+
+      .about-page .team-card > :not(.team-card-overlay) {
+        flex-shrink: 0;
+      }
+
+      /* Taller photo areas show the complete original headshots. */
+      .about-page .team-card .team-thumb {
+        position: relative;
+        flex: 0 0 auto;
+        width: 100%;
+        height: 360px;
+        min-height: 360px;
+        max-height: none;
+        aspect-ratio: auto;
+        padding: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      .about-page .team-card .team-thumb img {
+        position: static;
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: none;
+        object-fit: contain;
+        object-position: center center;
+        transform: none;
+      }
+
+      .about-page .team-card-text {
+        margin-bottom: 24px;
+      }
+
+      .about-page .team-card-link {
+        position: relative;
+        z-index: 2;
+        align-self: flex-start;
+        margin-top: auto;
+      }
+
+      /* Keep the existing full-card links functional. */
+      .about-page .team-card-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+
       @media (max-width: 640px) {
         .about-copy {
           max-width: 100%;
+        }
+
+        .about-page .team-grid {
+          grid-template-columns: minmax(0, 1fr);
+          max-width: 440px;
+          gap: 24px;
+        }
+
+        .about-page .team-card .team-thumb {
+          height: 340px;
+          min-height: 340px;
         }
       }
     </style>
   </head>
 
-  <body>
+  <body class="about-page">
     <div class="page">
       <div id="site-header"></div>
 
       <main class="main">
-
         <!-- HERO -->
         <section class="hero">
           <div class="hero-inner">
@@ -120,7 +196,7 @@
 
               <div class="about-signoff about-signoff-wide">
                 <p class="about-closing">
-                  We look forward to the opportunity<br>
+                  We look forward to the opportunity<br />
                   of working with you!
                 </p>
 
@@ -147,7 +223,6 @@
         <!-- SECTION 3: TEAM -->
         <section class="section section-muted">
           <div class="container">
-
             <div class="about-copy">
               <h2 class="section-heading">a boutique team. a personal approach.</h2>
 
@@ -165,7 +240,6 @@
             </div>
 
             <div class="team-grid">
-
               <!-- Ryan -->
               <article class="team-card">
                 <a
@@ -220,7 +294,6 @@
 
                 <a href="/team/nik-zifcak.html" class="team-card-link">meet nik</a>
               </article>
-
             </div>
           </div>
         </section>
@@ -236,7 +309,6 @@
             </div>
           </div>
         </section>
-
       </main>
 
       <div id="site-footer"></div>
